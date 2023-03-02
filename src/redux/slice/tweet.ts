@@ -1,7 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type TweetType = {
+  id: number;
+  tweet: string;
+  createDate: Date;
+  reply: [];
+  retweetCount: number;
+  likeCount: number;
+  likeBy: [];
+  retweeetBy: [];
+};
+
 type InitialState = {
-  tweets: object[];
+  tweets: TweetType[];
 };
 
 const initialState: InitialState = {
@@ -12,8 +23,11 @@ const tweetSlice = createSlice({
   name: "tweet",
   initialState,
   reducers: {
-    create: (state, action: PayloadAction<object>) => {
+    create: (state, action: PayloadAction<TweetType>) => {
       state.tweets.push(action.payload);
+    },
+    destroy: (state, action: PayloadAction<TweetType>) => {
+      state.tweets.filter((tweet) => tweet.id !== action.payload.id);
     },
   },
 });
