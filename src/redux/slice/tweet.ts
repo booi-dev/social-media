@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type TweetType = {
-  id: number;
+export type TweetType = {
+  id: string;
   tweet: string;
   createDate: Date;
   reply: [];
