@@ -24,6 +24,8 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "no-console": "off",
+        'react/react-in-jsx-scope': 'off',
         "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }]
     }
 }
