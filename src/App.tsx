@@ -17,7 +17,7 @@ function App() {
 
   conlog("hello there");
 
-  return <div className="App bg-red-500">{greet}, ts, vite, tailwind</div>;
+  return <div className="App bg-blue-500">{greet}, ts, vite, tailwind</div>;
 }
 
 export default App;
