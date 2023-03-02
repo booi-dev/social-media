@@ -1,11 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [greet, setGreet] = useState<string>("Hello");
 
-  return <div className="App bg-red-500">Hello, ts, vite, tailwind</div>;
+  useEffect(() => {
+    let name;
+    name = "booi";
+    name = "haha";
+    setGreet(name);
+  }, []);
+
+  return <div className="App bg-red-500">{greet}, ts, vite, tailwind</div>;
 }
 
 export default App;
