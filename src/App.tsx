@@ -1,23 +1,8 @@
-import { useState, useEffect } from "react";
+import Home from "./pages/Home";
 import "./App.css";
 
 function App() {
-  const [greet, setGreet] = useState<string>("Hello");
-
-  useEffect(() => {
-    let name;
-    name = "booi";
-    name = "haha";
-    setGreet(name);
-  }, []);
-
-  const conlog = (val: string) => {
-    console.log(val);
-  };
-
-  conlog("hello there");
-
-  return <div className="App bg-blue-500">{greet}, ts, vite, tailwind</div>;
+  return <Home />;
 }
 
 export default App;
