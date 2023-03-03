@@ -10,14 +10,18 @@ function TweetForm() {
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setInputValue(e.target.value);
+    const { value } = e.target;
+    setInputValue(value);
   };
 
-  console.log(inputValue);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(inputValue);
+    setInputValue("");
+  };
 
   return (
-    <form className="flex flex-col gap-2">
+    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <div className="flex gap-1">
         <img
           className="h-14 w-14 rounded-full object-cover"
@@ -25,8 +29,10 @@ function TweetForm() {
           alt=""
         />
         <input
-          className="w-full border-[0px] font-medium text-app-black-3"
+          className="w-full border-[0px] text-app-font-20 font-normal text-app-black-3 focus:outline-none"
+          placeholder="tweet"
           onChange={handleInput}
+          value={inputValue}
         />
       </div>
       <div>
