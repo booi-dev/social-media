@@ -27,6 +27,18 @@ module.exports = {
       'pri-white-3': '#e7e9ea',
       'pri-white-4': '#d6d9db',
     },
+    fontSize: {
+      'app-11': '11px',
+      'app-13': '13px',
+      'app-14': '14px',
+      'app-15': '15px',
+      'app-17': '17px',
+      'app-20': '20px',
+    },
+    fontFamily: {
+      'app-sans': ['Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      'app-serif': ['Gerogia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+    },
     extend: {},
   },
   plugins: [],
