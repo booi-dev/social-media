@@ -1,7 +1,17 @@
+import TweetForm from "../features/tweet/TweetForm";
+
 function home() {
   return (
-    <div className="bg-pri-blue-1 font-app-serif text-app-20 font-bold">
-      home
+    <div
+      className="w-full max-w-[600px] border-[1px]
+      border-app-white-5 px-3"
+    >
+      <h1 className="py-3 text-app-font-20">Home</h1>
+      <div className="flex justify-around">
+        <h2>for you</h2>
+        <h2>for you</h2>
+      </div>
+      <TweetForm />
     </div>
   );
 }
