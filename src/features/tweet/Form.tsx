@@ -10,9 +10,9 @@ function TweetForm() {
   const { createTweet } = useTweetControls();
 
   const rawTweet: TweetType = {
-    id: nanoid(),
+    id: "",
     tweet: "",
-    createDate: new Date(),
+    date: new Date().toISOString(),
     reply: [],
     retweetCount: 0,
     likeCount: 0,
@@ -28,6 +28,7 @@ function TweetForm() {
     setInputValue(value);
     setNewTweet({
       ...newTweet,
+      id: nanoid(),
       tweet: value,
     });
   };
