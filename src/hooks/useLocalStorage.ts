@@ -31,7 +31,12 @@ function useLocalStorage() {
     return Object.values(localStorage);
   };
 
-  return { addData, deleteData, updateData, getData };
+  const clearData = () => {
+    console.log("clearing local storage");
+    localStorage.clear();
+  };
+
+  return { addData, deleteData, updateData, getData, clearData };
 }
 
 export default useLocalStorage;
