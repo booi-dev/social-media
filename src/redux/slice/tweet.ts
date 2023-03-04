@@ -33,4 +33,4 @@ const tweetSlice = createSlice({
 });
 
 export default tweetSlice.reducer;
-export const { create } = tweetSlice.actions;
+export const { create, destroy } = tweetSlice.actions;

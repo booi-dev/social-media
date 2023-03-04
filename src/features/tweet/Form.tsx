@@ -1,12 +1,9 @@
 import { useState } from "react";
 
-// import { useForm } from "react-hook-form";
-
 const picUrl =
   "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
 
 function TweetForm() {
-  //   const { register } = useForm();
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {

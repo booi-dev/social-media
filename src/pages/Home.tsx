@@ -1,4 +1,4 @@
-import TweetForm from "../features/tweet/TweetForm";
+import Form from "../features/tweet/Form";
 
 function home() {
   return (
@@ -11,7 +11,7 @@ function home() {
         <h2>for you</h2>
         <h2>for you</h2>
       </div>
-      <TweetForm />
+      <Form />
     </div>
   );
 }
