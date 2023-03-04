@@ -5,7 +5,7 @@ import { TweetType } from "../../redux/slice/tweet";
 function Feed() {
   const { tweetData } = useTweetControls();
 
-  console.log(tweetData);
+  //   console.log(tweetData);
 
   return (
     <div>

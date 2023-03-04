@@ -25,6 +25,10 @@ function TweetForm() {
   const [newTweet, setNewTweet] = useState(rawTweet);
   const [inputValue, setInputValue] = useState("");
 
+  const addDataToLocalStorage = (toBeAddData: TweetType) => {
+    addData(toBeAddData);
+  };
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputValue(value);
@@ -39,7 +43,7 @@ function TweetForm() {
     e.preventDefault();
     setInputValue("");
     createTweet(newTweet);
-    addData(newTweet);
+    addDataToLocalStorage(newTweet);
   };
 
   return (
