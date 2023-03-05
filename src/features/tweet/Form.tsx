@@ -15,7 +15,7 @@ function TweetForm() {
     id: "",
     tweet: "",
     createOn: new Date().toISOString(),
-    createBy: "",
+    createBy: "_nganu",
     replies: [],
     likeCount: 5,
     likeBy: [],
