@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { create, destroy, TweetType } from "../slice/tweet";
+import { create, destroy, replace, TweetType } from "../slice/tweet";
 
 function useTweetControls() {
   const tweetData = useAppSelector((state) => state.tweetStore.tweets);
@@ -13,7 +13,11 @@ function useTweetControls() {
     dispatch(destroy(t));
   };
 
-  return { tweetData, createTweet, deleteTweet };
+  const replaceTweets = (ts: TweetType[]) => {
+    dispatch(replace(ts));
+  };
+
+  return { tweetData, createTweet, deleteTweet, replaceTweets };
 }
 
 export default useTweetControls;

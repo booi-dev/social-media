@@ -24,7 +24,6 @@ function TweetForm() {
   };
 
   const [newTweet, setNewTweet] = useState(rawTweet);
-  // const [inputValue, setInputValue] = useState("");
 
   const addDataToLocalStorage = (toBeAddData: TweetType) => {
     addData(toBeAddData);
@@ -32,7 +31,6 @@ function TweetForm() {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    // setNewTweet(rawTweet);
     setNewTweet({
       ...newTweet,
       id: nanoid(),

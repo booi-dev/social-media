@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type TweetType = {
@@ -27,11 +28,14 @@ const tweetSlice = createSlice({
     create: (state, action: PayloadAction<TweetType>) => {
       state.tweets.push(action.payload);
     },
-    destroy: (state, action: PayloadAction<TweetType>) => {
-      state.tweets.filter((tweet) => tweet.id !== action.payload.id);
+    destroy: (state, action: PayloadAction<string>) => {
+      state.tweets.filter((tweet) => tweet.id !== action.payload);
+    },
+    replace: (state, action: PayloadAction<TweetType[]>) => {
+      state.tweets = action.payload;
     },
   },
 });
 
 export default tweetSlice.reducer;
-export const { create, destroy } = tweetSlice.actions;
+export const { create, destroy, replace } = tweetSlice.actions;

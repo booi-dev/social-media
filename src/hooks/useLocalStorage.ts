@@ -1,6 +1,9 @@
+import { TweetType } from "../redux/slice/tweet";
+
 function useLocalStorage() {
   const addData = (data: { id: string }) => {
     console.log("add data to LS");
+    console.log(data);
     localStorage.setItem(data.id, JSON.stringify(data));
   };
 
@@ -22,13 +25,16 @@ function useLocalStorage() {
       ...parsedValue,
       ...tobeUpdatedData,
     };
-
     localStorage.setItem(id, JSON.stringify(updatedData));
   };
 
   const getData = () => {
     console.log("get data from LS");
-    return Object.values(localStorage);
+    const dataList: TweetType[] = [];
+    Object.values(localStorage).forEach((d) => {
+      dataList.push(JSON.parse(d));
+    });
+    return dataList;
   };
 
   const clearData = () => {

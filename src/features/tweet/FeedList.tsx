@@ -1,11 +1,19 @@
-import React from "react";
+import { useEffect } from "react";
 import useTweetControls from "../../redux/control/tweetControls";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import { TweetType } from "../../redux/slice/tweet";
 
 import Feed from "./Feed";
 
 function FeedList() {
-  const { tweetData } = useTweetControls();
+  const { tweetData, replaceTweets } = useTweetControls();
+  const { getData } = useLocalStorage();
+
+  useEffect(() => {
+    replaceTweets(getData());
+  }, []);
+
+  console.log(getData());
 
   return (
     <>

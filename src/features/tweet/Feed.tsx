@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  BsChat,
-  BsSuitHeart,
-  BsTextRight,
-  BsFillCircleFill,
-} from "react-icons/bs";
+import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 import { TweetType } from "../../redux/slice/tweet";
