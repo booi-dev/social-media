@@ -24,9 +24,9 @@ function AppIcon(props: IconPropType) {
   };
 
   const bgColorVariants: colorVariantsType = {
-    blue: "hover:bg-blue-200",
-    pink: "hover:bg-pink-200",
-    green: "hover:bg-green-200",
+    blue: "hover:bg-blue-100",
+    pink: "hover:bg-pink-100",
+    green: "hover:bg-green-100",
   };
 
   return (

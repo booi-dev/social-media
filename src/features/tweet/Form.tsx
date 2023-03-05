@@ -14,8 +14,8 @@ function TweetForm() {
   const rawTweet: TweetType = {
     id: "",
     tweet: "",
-    createOn: new Date().toISOString(),
-    createBy: "_nganu",
+    timespan: Date.now(),
+    createBy: "booi_mangang",
     replies: [],
     likeCount: 5,
     likeBy: [],

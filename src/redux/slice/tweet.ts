@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type TweetType = {
   id: string;
   tweet: string;
-  createOn: string;
+  timespan: number;
   createBy: string;
   likeCount: number;
   likeBy: [];

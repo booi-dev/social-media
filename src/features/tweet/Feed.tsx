@@ -1,13 +1,16 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import {
-  differenceInMinutes,
-  differenceInHours,
-  differenceInSeconds,
-} from "date-fns";
-import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
+  BsChat,
+  BsSuitHeart,
+  BsTextRight,
+  BsFillCircleFill,
+} from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 import { TweetType } from "../../redux/slice/tweet";
+import addExtraProperties, {
+  EnhancedTweetType,
+} from "../../utils/addExtraProperties";
 import AppIcon from "../../components/AppIcon";
 
 type TweetPropType = {
@@ -17,30 +20,37 @@ type TweetPropType = {
 function Feed(props: TweetPropType) {
   const { tweet } = props;
 
-  const startDate = new Date(tweet?.createOn);
-  const currentDate = new Date();
+  const [enhancedTweet, setEnhancedTweet] = useState<EnhancedTweetType | null>(
+    null
+  );
 
-  console.log(differenceInSeconds(currentDate, startDate));
+  useEffect(() => {
+    setEnhancedTweet(addExtraProperties(tweet));
+    console.log(enhancedTweet);
+  }, [tweet]);
 
   return (
-    <div>
-      <div
-        key={tweet.id}
-        className="border-x-[1px] border-b-[1px] hover:bg-app-white-2"
-      >
-        <h1 className="p-2">{tweet.tweet}</h1>
-        <div className="flex w-full justify-around py-2">
-          {/* reple */}
-          <AppIcon icon={BsChat} color="blue" />
-          {/* retweet */}
-          <AppIcon icon={AiOutlineRetweet} color="green" />
-          {/* like */}
-          <AppIcon icon={BsSuitHeart} color="pink" />
-          {/* view */}
-          <AppIcon icon={BsTextRight} rotateDeg={90} color="blue" />
-          {/* share */}
-          <AppIcon icon={RxShare2} color="blue" />
-        </div>
+    <div
+      key={enhancedTweet?.id}
+      className="border-x-[1px] border-b-[1px] hover:bg-app-white-2"
+    >
+      <div className="flex items-center px-2 brightness-150">
+        <h2 className="text-app-black-1.2"> {`@${enhancedTweet?.createBy}`}</h2>
+        <div className="mx-1 align-middle text-app-black-1.2">·</div>
+        <h2 className="text-app-black-1.2"> {enhancedTweet?.timeSince} </h2>
+      </div>
+      <h1 className="p-2">{enhancedTweet?.tweet}</h1>
+      <div className="flex w-full justify-around py-2">
+        {/* reple */}
+        <AppIcon icon={BsChat} color="blue" />
+        {/* retweet */}
+        <AppIcon icon={AiOutlineRetweet} color="green" />
+        {/* like */}
+        <AppIcon icon={BsSuitHeart} color="pink" />
+        {/* view */}
+        <AppIcon icon={BsTextRight} rotateDeg={90} color="blue" />
+        {/* share */}
+        <AppIcon icon={RxShare2} color="blue" />
       </div>
     </div>
   );
