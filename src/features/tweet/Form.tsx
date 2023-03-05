@@ -14,11 +14,12 @@ function TweetForm() {
   const rawTweet: TweetType = {
     id: "",
     tweet: "",
-    date: new Date().toISOString(),
-    reply: [],
-    retweetCount: 0,
-    likeCount: 0,
+    createOn: new Date().toISOString(),
+    createBy: "",
+    replies: [],
+    likeCount: 5,
     likeBy: [],
+    retweetCount: 2,
     retweeetBy: [],
   };
 

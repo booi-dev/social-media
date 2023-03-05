@@ -3,12 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type TweetType = {
   id: string;
   tweet: string;
-  date: string;
-  reply: [];
-  retweetCount: number;
+  createOn: string;
+  createBy: string;
   likeCount: number;
   likeBy: [];
+  retweetCount: number;
   retweeetBy: [];
+  replies: [];
 };
 
 type InitialState = {
