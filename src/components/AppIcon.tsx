@@ -18,16 +18,29 @@ function AppIcon(props: IconPropType) {
   };
 
   const colorVariants: colorVariantsType = {
-    blue: "hover:text-pri-blue-1",
-    pink: "hover:text-[#db2777]",
-    green: "hover:text-green-400",
+    blue: "group-hover:text-pri-blue-1",
+    pink: "group-hover:text-pink-400",
+    green: "group-hover:text-green-400",
+  };
+
+  const bgColorVariants: colorVariantsType = {
+    blue: "hover:bg-blue-200",
+    pink: "hover:bg-pink-200",
+    green: "hover:bg-green-200",
   };
 
   return (
-    <div className="rounded-full bg-gray-500 p-2">
+    <div
+      className={`group rounded-full p-3 ${
+        color && bgColorVariants[color]
+      } transition-all duration-300`}
+    >
       <Icon
         size={size}
-        className={`rotate-${rotateDeg} ${color && colorVariants[color]}`}
+        className={`${rotateDeg && "rotate-90"}
+        ${
+          color && colorVariants[color]
+        } h-15 w-15 transition-all  duration-300`}
       />
     </div>
   );

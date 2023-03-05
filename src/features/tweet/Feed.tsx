@@ -12,22 +12,27 @@ function Feed() {
 
   //   console.log(tweetData);
 
+  console.log(tweetData);
+
   return (
     <div>
       {tweetData.map((tweet: TweetType) => (
-        <div key={tweet.id} className="hover:bg-app-white-3">
-          <h1 className="py-2">{tweet.tweet}</h1>
+        <div
+          key={tweet.id}
+          className="border-x-[1px] border-b-[1px] hover:bg-app-white-2"
+        >
+          <h1 className="p-2">{tweet.tweet}</h1>
           <div className="flex w-full justify-around py-2">
             {/* reple */}
-            <AppIcon icon={BsChat} size={20} color="blue" />
+            <AppIcon icon={BsChat} color="blue" />
             {/* retweet */}
-            <AppIcon icon={AiOutlineRetweet} size={20} color="green" />
+            <AppIcon icon={AiOutlineRetweet} color="green" />
             {/* like */}
-            <AppIcon icon={BsSuitHeart} size={20} color="pink" />
+            <AppIcon icon={BsSuitHeart} color="pink" />
             {/* view */}
-            <AppIcon icon={BsTextRight} size={20} rotateDeg={90} color="blue" />
+            <AppIcon icon={BsTextRight} rotateDeg={90} color="blue" />
             {/* share */}
-            <AppIcon icon={RxShare2} size={20} color="blue" />
+            <AppIcon icon={RxShare2} color="blue" />
           </div>
         </div>
       ))}
