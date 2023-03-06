@@ -48,7 +48,10 @@ function TweetForm() {
   };
 
   return (
-    <form className="mb-4 flex flex-col gap-2" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col gap-2 my-4 px-3 border-x-[1px] "
+      onSubmit={handleSubmit}
+    >
       <div className="flex gap-1">
         <img
           className="h-14 w-14 rounded-full object-cover"
@@ -62,10 +65,19 @@ function TweetForm() {
           value={newTweet.tweet}
         />
       </div>
-      <div>
-        <button type="submit" className="w-full bg-pri-blue-1 px-2">
-          tweet
-        </button>
+      <div className="flex justify-between">
+        <div>imgoi</div>
+        <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
+          {newTweet.tweet ? (
+            <button type="submit" className="bg-pri-blue-1">
+              Tweet
+            </button>
+          ) : (
+            <button type="button" className="bg-pri-blue-1 bg-opacity-60 ">
+              Tweet
+            </button>
+          )}
+        </div>
       </div>
     </form>
   );

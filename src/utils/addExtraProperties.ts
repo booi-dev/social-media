@@ -31,7 +31,7 @@ const addExtraProperties = (targetTweet: TweetType) => {
 
   const getElapse = () => {
     let elapse: string;
-    if (timeElapseInHour >= 8) elapse = format(targetTweet.timespan, "d-MMM");
+    if (timeElapseInHour >= 24) elapse = format(targetTweet.timespan, "d-MMM");
     else if (timeElapseInHour >= 1) elapse = `${timeElapseInHour}h`;
     else if (timeElapseInMin >= 1) elapse = `${timeElapseInMin}m`;
     else elapse = `${timeElapseInSeconds}s`;
