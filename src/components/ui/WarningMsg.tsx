@@ -27,17 +27,18 @@ function WarningMsg(props: WarningMsgType) {
           {" "}
           {warningDesc}
         </p>
-        <div className="mt-6 [&>button]:block [&>button]:w-full [&>button]:font-bold [&>button]:p-2  [&>button]:rounded-3xl [&>button]:transition-all [&>button]:duration-500">
+        <div className="mt-4 [&>button]:block [&>button]:w-full [&>button]:font-bold [&>button]:p-2  [&>button]:rounded-3xl [&>button]:transition-all [&>button]:duration-500">
           <button
             type="button"
-            className="text-app-white-1 bg-red-500 hover:bg-red-600"
+            className="text-app-white-1 bg-red-500 hover:bg-red-600 focus:bg-red-800 "
             onClick={handleConfirm}
           >
             {warningBtn}{" "}
           </button>
           <button
             type="button"
-            className="mt-2 border-app-gray-3 border-[1px] border-opacity-40 hover:bg-app-white-3"
+            className="mt-2 border-app-gray-3 border-[1px] border-opacity-40 hover:bg-app-white-3 focus:bg-app-white-4"
+            onClick={handleWarningClose}
           >
             Cancel
           </button>
