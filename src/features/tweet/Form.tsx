@@ -41,7 +41,9 @@ function TweetForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNewTweet(rawTweet);
+    // update redux store
     createTweet(newTweet);
+    // update local storage
     addDataToLocalStorage(newTweet);
   };
 
