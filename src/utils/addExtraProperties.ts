@@ -2,6 +2,7 @@ import {
   differenceInMinutes,
   differenceInHours,
   differenceInSeconds,
+  format,
 } from "date-fns";
 
 import { TweetType } from "../redux/slice/tweet";
@@ -29,13 +30,13 @@ const addExtraProperties = (targetTweet: TweetType) => {
   );
 
   const decideElapse = () => {
-    let decidedElapse: string;
+    let elapse: string;
+    if (timeElapseInHour >= 8) elapse = format(targetTweet.timespan, "d-MMM");
+    else if (timeElapseInHour >= 1) elapse = `${timeElapseInHour}h`;
+    else if (timeElapseInMin >= 1) elapse = `${timeElapseInMin}m`;
+    else elapse = `${timeElapseInSeconds}s`;
 
-    if (timeElapseInHour >= 1) decidedElapse = `${timeElapseInHour}h`;
-    else if (timeElapseInMin >= 1) decidedElapse = `${timeElapseInMin}m`;
-    else decidedElapse = `${timeElapseInSeconds}s`;
-
-    return decidedElapse;
+    return elapse;
   };
 
   return {

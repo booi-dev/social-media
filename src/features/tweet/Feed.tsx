@@ -32,7 +32,7 @@ function Feed(props: TweetPropType) {
       <div className="flex items-center px-2 brightness-150">
         <h2 className="text-app-black-1.2"> {`@${enhancedTweet?.createBy}`}</h2>
         <div className="mx-1 align-middle text-app-black-1.2">·</div>
-        <h2 className="text-app-black-1.2"> {enhancedTweet?.timeSince} </h2>
+        <h2 className="text-app-black-1.2"> {enhancedTweet?.timeElapse} </h2>
       </div>
       <h1 className="p-2">{enhancedTweet?.tweet}</h1>
       <div className="flex w-full justify-around py-2">
