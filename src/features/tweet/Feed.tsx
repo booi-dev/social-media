@@ -55,15 +55,15 @@ function Feed(props: TweetPropType) {
         <h1 className="p-2">{enhancedTweet?.tweet}</h1>
         <div className="flex w-full justify-around py-2">
           {/* reply */}
-          <AppIcon icon={BsChat} color="blue" />
+          <AppIcon icon={BsChat} hoverColor="blue" />
           {/* retweet */}
-          <AppIcon icon={AiOutlineRetweet} color="green" />
+          <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
           {/* like */}
-          <AppIcon icon={BsSuitHeart} color="pink" />
+          <AppIcon icon={BsSuitHeart} hoverColor="pink" />
           {/* view */}
-          <AppIcon icon={BsTextRight} rotateDeg={90} color="blue" />
+          <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
           {/* share */}
-          <AppIcon icon={RxShare2} color="blue" />
+          <AppIcon icon={RxShare2} hoverColor="blue" />
         </div>
         {isOption && (
           <div className="absolute top-0 right-0 min-w-[250px] py-4 rounded-lg  bg-white shadow-lg z-20">

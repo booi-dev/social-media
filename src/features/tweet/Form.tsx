@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
+
+import { VscSmiley } from "react-icons/vsc";
+import { MdOutlineBallot } from "react-icons/md";
+import { ImImage } from "react-icons/im";
+
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTweetControls from "../../redux/control/tweetControls";
+
+import AppIcon from "../../components/ui/AppIcon";
 import { TweetType } from "../../redux/slice/tweet";
 
 const picUrl =
@@ -65,8 +72,12 @@ function TweetForm() {
           value={newTweet.tweet}
         />
       </div>
-      <div className="flex justify-between">
-        <div>imgoi</div>
+      <div className="flex justify-between items-center py-1 px-4">
+        <div className="flex items-center">
+          <AppIcon icon={ImImage} size={22} color="blue" />
+          <AppIcon icon={MdOutlineBallot} size={25} color="blue" />
+          <AppIcon icon={VscSmiley} size={23} color="blue" />
+        </div>
         <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
           {newTweet.tweet ? (
             <button type="submit" className="bg-pri-blue-1">

@@ -4,11 +4,12 @@ type IconPropType = {
   icon: IconType;
   size?: number;
   rotateDeg?: number;
+  hoverColor?: string;
   color?: string;
 };
 
 function AppIcon(props: IconPropType) {
-  const { icon: Icon, size, rotateDeg, color } = props;
+  const { icon: Icon, size, rotateDeg, hoverColor, color } = props;
 
   type colorVariantsType = {
     [key: string]: string;
@@ -18,12 +19,18 @@ function AppIcon(props: IconPropType) {
   };
 
   const colorVariants: colorVariantsType = {
+    blue: "text-pri-blue-1",
+    pink: "text-pink-400",
+    green: "text-green-400",
+  };
+
+  const groupHoverColorVariants: colorVariantsType = {
     blue: "group-hover:text-pri-blue-1",
     pink: "group-hover:text-pink-400",
     green: "group-hover:text-green-400",
   };
 
-  const bgColorVariants: colorVariantsType = {
+  const hoverColorVariants: colorVariantsType = {
     blue: "hover:bg-blue-100",
     pink: "hover:bg-pink-100",
     green: "hover:bg-green-100",
@@ -32,15 +39,16 @@ function AppIcon(props: IconPropType) {
   return (
     <div
       className={`group rounded-full p-3 ${
-        color && bgColorVariants[color]
+        hoverColor && hoverColorVariants[hoverColor]
       } transition-all duration-300`}
     >
       <Icon
         size={size}
-        className={`${rotateDeg && "rotate-90"}
-        ${
-          color && colorVariants[color]
-        } h-15 w-15 transition-all  duration-300`}
+        className={`
+        ${hoverColor && groupHoverColorVariants[hoverColor]} 
+        ${color && colorVariants[color]} 
+        ${rotateDeg && "rotate-90"}
+        h-15 w-15 transition-all  duration-300`}
       />
     </div>
   );
@@ -49,6 +57,7 @@ function AppIcon(props: IconPropType) {
 AppIcon.defaultProps = {
   size: 20,
   rotateDeg: 0,
+  hoverColor: "",
   color: "",
 };
 
