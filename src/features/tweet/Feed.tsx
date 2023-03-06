@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
@@ -19,15 +19,15 @@ type TweetPropType = {
 function Feed(props: TweetPropType) {
   const { tweet } = props;
 
-  const [enhancedTweet, setEnhancedTweet] = useState<EnhancedTweetType | null>(
-    null
+  const [enhancedTweet] = useState<EnhancedTweetType>(
+    addExtraProperties(tweet)
   );
 
   const [isOption, setIsOption] = useState(false);
 
-  useEffect(() => {
-    setEnhancedTweet(addExtraProperties(tweet));
-  }, [tweet]);
+  // useEffect(() => {
+  //   setEnhancedTweet(addExtraProperties(tweet));
+  // }, [tweet]);
 
   return (
     <>
@@ -67,7 +67,7 @@ function Feed(props: TweetPropType) {
         </div>
         {isOption && (
           <div className="absolute top-0 right-0 min-w-[250px] py-4 rounded-lg  bg-white shadow-lg z-20">
-            <FeedOptions />
+            <FeedOptions tweet={enhancedTweet} />
           </div>
         )}
       </div>

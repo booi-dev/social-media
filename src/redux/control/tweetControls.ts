@@ -9,8 +9,8 @@ function useTweetControls() {
     dispatch(create(t));
   };
 
-  const deleteTweet = (t: TweetType) => {
-    dispatch(destroy(t));
+  const deleteTweet = (tID: string) => {
+    dispatch(destroy(tID));
   };
 
   const replaceTweets = (ts: TweetType[]) => {
