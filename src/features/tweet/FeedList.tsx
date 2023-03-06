@@ -3,7 +3,6 @@ import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import sortArray from "../../utils/sortArray";
 import { TweetType } from "../../redux/slice/tweet";
-
 import Feed from "./Feed";
 
 function FeedList() {

@@ -11,19 +11,19 @@ module.exports = {
       lg: '976',
       xl: '1440px'
     },
-    fontSize: {
-      'app-font-11': '11px',
-      'app-font-13': '13px',
-      'app-font-14': '14px',
-      'app-font-15': '15px',
-      'app-font-17': '17px',
-      'app-font-20': '20px',
-    },
     fontFamily: {
       'app-sans': ['Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       'app-serif': ['Gerogia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
     },
     extend: {
+      fontSize: {
+        'app-font-11': '11px',
+        'app-font-13': '13px',
+        'app-font-14': '14px',
+        'app-font-15': '15px',
+        'app-font-17': '17px',
+        'app-font-20': '20px',
+      },
       colors: {
         'pri-blue-1': '#1d9bf0',
 
