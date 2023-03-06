@@ -21,7 +21,6 @@ function Feed(props: TweetPropType) {
 
   useEffect(() => {
     setEnhancedTweet(addExtraProperties(tweet));
-    console.log(enhancedTweet);
   }, [tweet]);
 
   return (

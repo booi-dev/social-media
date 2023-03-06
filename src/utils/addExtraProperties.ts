@@ -9,7 +9,7 @@ import { TweetType } from "../redux/slice/tweet";
 
 export type EnhancedTweetType = TweetType & {
   createOn: Date;
-  timeSince: string;
+  timeElapse: string;
 };
 
 const addExtraProperties = (targetTweet: TweetType) => {
@@ -29,7 +29,7 @@ const addExtraProperties = (targetTweet: TweetType) => {
     new Date(targetTweet.timespan)
   );
 
-  const decideElapse = () => {
+  const getElapse = () => {
     let elapse: string;
     if (timeElapseInHour >= 8) elapse = format(targetTweet.timespan, "d-MMM");
     else if (timeElapseInHour >= 1) elapse = `${timeElapseInHour}h`;
@@ -42,7 +42,7 @@ const addExtraProperties = (targetTweet: TweetType) => {
   return {
     ...targetTweet,
     createOn: new Date(targetTweet.timespan),
-    timeSince: decideElapse(),
+    timeElapse: getElapse(),
   };
 };
 

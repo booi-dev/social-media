@@ -3,7 +3,6 @@ import { TweetType } from "../redux/slice/tweet";
 function useLocalStorage() {
   const addData = (data: { id: string }) => {
     console.log("add data to LS");
-    console.log(data);
     localStorage.setItem(data.id, JSON.stringify(data));
   };
 

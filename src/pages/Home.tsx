@@ -9,8 +9,8 @@ function home() {
     >
       <h1 className="py-3 text-app-font-20">Home</h1>
       <div className="flex justify-around">
-        <h2>for you</h2>
-        <h2>for you</h2>
+        <h2>For you</h2>
+        <h2>Following</h2>
       </div>
       <Form />
       <FeedList />
