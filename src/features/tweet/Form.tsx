@@ -12,7 +12,7 @@ import AppIcon from "../../components/ui/AppIcon";
 import { TweetType } from "../../redux/slice/tweet";
 
 const picUrl =
-  "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
+  "https://images.unsplash.com/photo-1578632749014-ca77efd052eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFuaW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
 
 function TweetForm() {
   const { addData } = useLocalStorage();
@@ -61,7 +61,7 @@ function TweetForm() {
     >
       <div className="flex gap-1">
         <img
-          className="h-14 w-14 rounded-full object-cover"
+          className="h-14 w-14 rounded-full object-cover bg-red-300"
           src={picUrl}
           alt=""
         />

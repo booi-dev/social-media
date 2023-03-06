@@ -25,10 +25,6 @@ function Feed(props: TweetPropType) {
 
   const [isOption, setIsOption] = useState(false);
 
-  // useEffect(() => {
-  //   setEnhancedTweet(addExtraProperties(tweet));
-  // }, [tweet]);
-
   return (
     <>
       <div
