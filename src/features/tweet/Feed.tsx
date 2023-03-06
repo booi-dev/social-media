@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
+import { GoKebabVertical } from "react-icons/go";
 import { TweetType } from "../../redux/slice/tweet";
 import addExtraProperties, {
   EnhancedTweetType,
@@ -26,16 +27,24 @@ function Feed(props: TweetPropType) {
   return (
     <div
       key={enhancedTweet?.id}
-      className="border-x-[1px] border-b-[1px] hover:bg-app-white-2"
+      className="relative border-x-[1px] border-b-[1px] hover:bg-app-white-2"
     >
-      <div className="flex items-center px-2 brightness-150">
-        <h2 className="text-app-black-1.2"> {`@${enhancedTweet?.createBy}`}</h2>
-        <div className="mx-1 align-middle text-app-black-1.2">·</div>
-        <h2 className="text-app-black-1.2"> {enhancedTweet?.timeElapse} </h2>
+      <div className="flex justify-between px-2 brightness-150">
+        <div className="flex">
+          <h2 className="text-app-black-1.2">
+            {`@${enhancedTweet?.createBy}`}
+          </h2>
+          <div className="mx-1 text-app-black-1.2">·</div>
+          <h2 className="text-app-black-1.2"> {enhancedTweet?.timeElapse} </h2>
+        </div>
+
+        <button type="button" className="">
+          <GoKebabVertical />
+        </button>
       </div>
       <h1 className="p-2">{enhancedTweet?.tweet}</h1>
       <div className="flex w-full justify-around py-2">
-        {/* reple */}
+        {/* reply */}
         <AppIcon icon={BsChat} color="blue" />
         {/* retweet */}
         <AppIcon icon={AiOutlineRetweet} color="green" />

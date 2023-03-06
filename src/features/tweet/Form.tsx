@@ -48,7 +48,7 @@ function TweetForm() {
   };
 
   return (
-    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+    <form className="mb-4 flex flex-col gap-2" onSubmit={handleSubmit}>
       <div className="flex gap-1">
         <img
           className="h-14 w-14 rounded-full object-cover"
