@@ -7,7 +7,7 @@ function App() {
     <div className="flex h-screen justify-center bg-app-white-1.2">
       <SideBar />
       <Main />
-      <div className="p-4 hidden">Widget</div>
+      <div className="p-4 hidden lg:block">Widget</div>
     </div>
   );
 }

@@ -5,19 +5,39 @@ type SidebarOptionType = {
   icon: IconType;
   iconActive: IconType;
   isActive: boolean;
+  setActive: () => void;
   size?: number;
 };
 
 function SidebarOption(props: SidebarOptionType) {
-  const { icon: Icon, iconActive: IconActive, isActive, text, size } = props;
-
-  console.log(size);
+  const {
+    icon: Icon,
+    iconActive: IconActive,
+    isActive,
+    setActive,
+    text,
+    size,
+  } = props;
 
   return (
-    <div className="flex items-center justify-center gap-4 rounded-full  hover:bg-app-white-3 cursor-pointer lg:w-full p-3 lg:px-4 lg:justify-start lg:p-2  ">
-      {isActive ? <IconActive size={size} /> : <Icon size={size} />}
-      <h1 className="hidden lg:block lg:text-app-font-20 "> {text}</h1>
-    </div>
+    <button
+      type="button"
+      className="flex items-center justify-center gap-4 rounded-full  hover:bg-app-white-3 cursor-pointer lg:w-full p-3 lg:px-4 lg:justify-start lg:p-2"
+      onClick={setActive}
+    >
+      {isActive ? (
+        <IconActive size={size} className="stroke-1" />
+      ) : (
+        <Icon size={size} />
+      )}
+      <h1
+        className={`hidden ${
+          isActive && "font-bold"
+        } lg:block lg:text-app-font-20`}
+      >
+        {text}
+      </h1>
+    </button>
   );
 }
 
