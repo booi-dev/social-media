@@ -44,7 +44,7 @@ function WarningMsg(props: WarningMsgType) {
           </button>
         </div>
       </div>
-      <BackDrop handleClose={handleWarningClose} />
+      <BackDrop handleClose={handleWarningClose} color="black" />
     </>
   );
 }

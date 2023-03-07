@@ -67,7 +67,9 @@ function Feed(props: TweetPropType) {
           </div>
         )}
       </div>
-      {isOption && <BackDrop handleClose={() => setIsOption(false)} />}
+      {isOption && (
+        <BackDrop handleClose={() => setIsOption(false)} color="black" />
+      )}
     </>
   );
 }
