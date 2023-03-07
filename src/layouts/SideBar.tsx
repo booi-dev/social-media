@@ -33,14 +33,13 @@ function SideBar() {
       <div className="relative py-4 ">
         {isOptionShow && (
           <>
-            <div className="absolute bottom-24 py-4 px-6 font-bold bg-white w-full rounded-2xl z-20 space-y-3 cursor-pointer">
-              <h1> Add an existing account </h1>
-              <h1> Log out @{userName}</h1>
+            <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:p-2  ">
+              <h1 className="hover:bg-app-white-3">Add an existing account</h1>
+              <h1 className="hover:bg-app-white-3"> Log out @{userName}</h1>
             </div>
             <BackDrop handleClose={() => setIsOptionShow(false)} />
           </>
         )}
-        {/* profile section */}
         <Profile
           userName={userName}
           menuBtnHandler={() => setIsOptionShow(true)}

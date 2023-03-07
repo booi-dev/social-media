@@ -18,6 +18,7 @@ function BackDrop(props: BackDropPropType) {
   const { handleClose, color } = props;
 
   const colorVariants: colorVariantType = {
+    transperant: "",
     white: "bg-white bg-opacity-40",
     black: "bg-black bg-opacity-40",
     blue: "bg-pri-blue-1 bg-opacity-40",
@@ -39,7 +40,7 @@ function BackDrop(props: BackDropPropType) {
 }
 
 BackDrop.defaultProps = {
-  color: "white",
+  color: "transperant",
 };
 
 export default BackDrop;
