@@ -9,6 +9,8 @@ import Form from "../features/tweet/Form";
 import BackDrop from "../components/ui/BackDrop";
 
 function SideBar() {
+  const userName = "nganu";
+
   const [isTweetFormShow, setIsTweetFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
 
@@ -31,14 +33,17 @@ function SideBar() {
       <div className="relative py-4 ">
         {isOptionShow && (
           <>
-            <div className="absolute bottom-24 p-4 font-bold bg-white w-full z-20">
-              <h1> Log out </h1>
+            <div className="absolute bottom-24 p-4 font-bold bg-white w-full rounded-full text-center z-20">
+              <h1> Log out @{userName}</h1>
             </div>
             <BackDrop handleClose={() => setIsOptionShow(false)} />
           </>
         )}
         {/* profile section */}
-        <Profile menuBtnHandler={() => setIsOptionShow(true)} />
+        <Profile
+          userName={userName}
+          menuBtnHandler={() => setIsOptionShow(true)}
+        />
       </div>
 
       {isTweetFormShow && (
