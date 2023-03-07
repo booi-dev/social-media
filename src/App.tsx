@@ -9,7 +9,6 @@ function App() {
       <SideBar />
       <Main />
       <Widget />
-      {/* <div className="p-4 hidden lg:block">Widget</div> */}
     </div>
   );
 }
