@@ -1,13 +1,13 @@
-import Home from "./pages/Home";
 import SideBar from "./layouts/SideBar";
+import Main from "./layouts/Main";
 import "./App.css";
 
 function App() {
   return (
     <div className="flex h-screen justify-center bg-app-white-1.2">
       <SideBar />
-      <Home />
-      <div>dfbfbj</div>
+      <Main />
+      <div className="p-4 hidden">Widget</div>
     </div>
   );
 }

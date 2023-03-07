@@ -8,7 +8,7 @@ module.exports = {
     screens: {
       sm: '480px',
       md: '768px',
-      lg: '976',
+      lg: '976px',
       xl: '1440px'
     },
     fontFamily: {
@@ -40,7 +40,6 @@ module.exports = {
         'app-white-2': '#eff3f4',
         'app-white-3': '#e7e9ea',
         'app-white-4': '#d6d9db',
-
         'app-white-5': '#cfd9de',
       },
     },

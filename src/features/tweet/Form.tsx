@@ -74,9 +74,14 @@ function TweetForm() {
       </div>
       <div className="flex justify-between items-center py-1 px-4">
         <div className="flex items-center">
-          <AppIcon icon={ImImage} size={22} color="blue" />
-          <AppIcon icon={MdOutlineBallot} size={25} color="blue" />
-          <AppIcon icon={VscSmiley} size={23} color="blue" />
+          <AppIcon icon={ImImage} size={22} color="blue" hoverColor="blue" />
+          <AppIcon
+            icon={MdOutlineBallot}
+            size={25}
+            color="blue"
+            hoverColor="blue"
+          />
+          <AppIcon icon={VscSmiley} size={23} color="blue" hoverColor="blue" />
         </div>
         <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
           {newTweet.tweet ? (

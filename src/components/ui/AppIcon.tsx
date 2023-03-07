@@ -40,7 +40,7 @@ function AppIcon(props: IconPropType) {
     <div
       className={`group rounded-full p-3 ${
         hoverColor && hoverColorVariants[hoverColor]
-      } transition-all duration-300`}
+      } transition-all duration-500`}
     >
       <Icon
         size={size}
