@@ -17,16 +17,19 @@ import {
 
 import AppIcon from "../components/ui/AppIcon";
 import SidebarOption from "../components/sidebar/SidebarOption";
+import Form from "../features/tweet/Form";
+import BackDrop from "../components/ui/BackDrop";
 
 function SideBar() {
   const [optionIndex, setOptionIndex] = useState("Home");
+  const [isTweetFormShow, setIsTweetFormShow] = useState(false);
 
   return (
-    <div className=" px-6">
-      <div className=" mb-4">
+    <div className="px-3 lg:w-[300px]">
+      <div className="mb-4 w-min">
         <AppIcon icon={BsTwitter} size={32} color="blue" hoverColor="blue" />
       </div>
-      <div className="flex flex-col items-start gap-1">
+      <div className="flex flex-col items-start gap-5">
         <SidebarOption
           text="Home"
           icon={AiOutlineHome}
@@ -77,6 +80,21 @@ function SideBar() {
           setActive={() => setOptionIndex("More")}
         />
       </div>
+      <button
+        type="button"
+        className="w-full p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1"
+        onClick={() => setIsTweetFormShow(true)}
+      >
+        Tweet
+      </button>
+      {isTweetFormShow && (
+        <>
+          <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
+            <Form />
+          </div>
+          <BackDrop handleClose={() => setIsTweetFormShow(false)} />
+        </>
+      )}
     </div>
   );
 }

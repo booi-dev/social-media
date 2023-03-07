@@ -55,19 +55,16 @@ function TweetForm() {
   };
 
   return (
-    <form
-      className="flex flex-col gap-2 my-4 px-3 border-x-[1px] "
-      onSubmit={handleSubmit}
-    >
+    <form className="flex flex-col gap-2 p-4 " onSubmit={handleSubmit}>
       <div className="flex gap-1">
         <img
-          className="h-14 w-14 rounded-full object-cover bg-red-300"
+          className="h-14 w-14 rounded-full object-cover"
           src={picUrl}
           alt=""
         />
         <input
           className="w-full border-[0px] text-app-font-20 font-normal text-app-black-3 focus:outline-none"
-          placeholder="tweet"
+          placeholder="What's happening"
           onChange={handleInput}
           value={newTweet.tweet}
         />

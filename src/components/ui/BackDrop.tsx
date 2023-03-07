@@ -11,7 +11,7 @@ const handleKeyDown = () => {
 function BackDrop({ handleClose }: BackDropPropType) {
   return (
     <div
-      className="fixed inset-0 w-full h-full bg-blue-200 bg-opacity-50 z-10"
+      className="fixed inset-0 w-full h-full bg-black bg-opacity-40 z-10"
       id="backdrop"
       role="button"
       tabIndex={0}

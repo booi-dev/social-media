@@ -1,5 +1,6 @@
 import SideBar from "./layouts/SideBar";
 import Main from "./layouts/Main";
+import Widget from "./layouts/Widget";
 import "./App.css";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <div className="flex h-screen justify-center bg-app-white-1.2">
       <SideBar />
       <Main />
-      <div className="p-4 hidden lg:block">Widget</div>
+      <Widget />
+      {/* <div className="p-4 hidden lg:block">Widget</div> */}
     </div>
   );
 }
