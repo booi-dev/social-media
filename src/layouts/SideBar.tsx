@@ -52,7 +52,10 @@ function SideBar() {
           <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
             <Form />
           </div>
-          <BackDrop handleClose={() => setIsTweetFormShow(false)} />
+          <BackDrop
+            handleClose={() => setIsTweetFormShow(false)}
+            color="black"
+          />
         </>
       )}
     </div>

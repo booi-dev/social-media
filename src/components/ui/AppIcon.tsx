@@ -8,15 +8,15 @@ type IconPropType = {
   color?: string;
 };
 
+type colorVariantsType = {
+  [key: string]: string;
+  blue: string;
+  pink: string;
+  green: string;
+};
+
 function AppIcon(props: IconPropType) {
   const { icon: Icon, size, rotateDeg, hoverColor, color } = props;
-
-  type colorVariantsType = {
-    [key: string]: string;
-    blue: string;
-    pink: string;
-    green: string;
-  };
 
   const colorVariants: colorVariantsType = {
     blue: "text-pri-blue-1",
