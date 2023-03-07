@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 
-type SidebarOptionType = {
+type OptionType = {
   text: string;
   icon: IconType;
   iconActive: IconType;
@@ -9,7 +9,7 @@ type SidebarOptionType = {
   size?: number;
 };
 
-function SidebarOption(props: SidebarOptionType) {
+function Option(props: OptionType) {
   const {
     icon: Icon,
     iconActive: IconActive,
@@ -41,8 +41,8 @@ function SidebarOption(props: SidebarOptionType) {
   );
 }
 
-SidebarOption.defaultProps = {
+Option.defaultProps = {
   size: 25,
 };
 
-export default SidebarOption;
+export default Option;
