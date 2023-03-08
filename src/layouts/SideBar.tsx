@@ -18,7 +18,7 @@ function SideBar() {
   return (
     <div className="flex justify-end h-screen lg:w-[540px]">
       <div className="flex flex-col justify-between items-center transition-all duration-500  sm:w-[88px] md:w-[200px] lg:w-[275px] px-3 ">
-        <div>
+        <div className="flex flex-col items-center lg:items-start">
           <div className="w-min mx-auto mb-4 lg:mx-0">
             <AppIcon
               icon={BsTwitter}
