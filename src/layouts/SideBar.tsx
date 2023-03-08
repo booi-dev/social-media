@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { BsTwitter } from "react-icons/bs";
+import { FaFeatherAlt } from "react-icons/fa";
 
 import AppIcon from "../components/ui/AppIcon";
 import SidebarOptions from "../components/sidebar/SidebarOptions";
@@ -15,8 +16,8 @@ function SideBar() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <div className="flex justify-end h-screen w-[540px] ">
-      <div className="flex flex-col justify-between w-[275px] px-3">
+    <div className="flex justify-end h-screen lg:w-[540px]">
+      <div className="flex flex-col justify-between items-center transition-all duration-500  sm:w-[88px] md:w-[200px] lg:w-[275px] px-3 ">
         <div>
           <div className="w-min mx-auto mb-4 lg:mx-0">
             <AppIcon
@@ -29,10 +30,11 @@ function SideBar() {
           <SidebarOptions />
           <button
             type="button"
-            className="w-[220px] p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1"
+            className="lg:w-[220px] p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1"
             onClick={() => setIsTweetFormShow(true)}
           >
-            Tweet
+            <FaFeatherAlt className="md:hidden" />
+            <span className="hidden md:block">Tweet</span>
           </button>
         </div>
 
