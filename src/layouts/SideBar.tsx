@@ -15,7 +15,7 @@ function SideBar() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <div className="flex flex-col justify-between px-3 lg:w-[300px] ">
+    <div className="flex flex-col justify-between px-3 bg-white lg:w-[300px] ">
       <div>
         <div className="mb-4 w-min">
           <AppIcon icon={BsTwitter} size={32} color="blue" hoverColor="blue" />
@@ -33,7 +33,7 @@ function SideBar() {
       <div className="relative py-4 ">
         {isOptionShow && (
           <>
-            <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:p-2  ">
+            <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
               <h1 className="hover:bg-app-white-3">Add an existing account</h1>
               <h1 className="hover:bg-app-white-3"> Log out @{userName}</h1>
             </div>
