@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
+import { BsArrowLeftShort } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { MdOutlineBallot } from "react-icons/md";
 import { ImImage } from "react-icons/im";
@@ -14,7 +15,13 @@ import { TweetType } from "../../redux/slice/tweet";
 const picUrl =
   "https://images.unsplash.com/photo-1578632749014-ca77efd052eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFuaW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
 
-function TweetForm() {
+type TweetFormType = {
+  handleClose?: () => void;
+};
+
+function TweetForm(props: TweetFormType) {
+  const { handleClose } = props;
+
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
 
@@ -52,10 +59,16 @@ function TweetForm() {
     createTweet(newTweet);
     // update local storage
     addDataToLocalStorage(newTweet);
+    // call close handler
+    handleClose?.();
   };
 
   return (
     <form className="flex flex-col gap-2 p-4 " onSubmit={handleSubmit}>
+      <button type="button" onClick={handleClose} className="md:hidden w-min ">
+        <AppIcon icon={BsArrowLeftShort} hoverColor="black" />
+      </button>
+
       <div className="flex gap-1">
         <img
           className="h-14 w-14 rounded-full object-cover"
@@ -95,5 +108,9 @@ function TweetForm() {
     </form>
   );
 }
+
+TweetForm.defaultProps = {
+  handleClose: undefined,
+};
 
 export default TweetForm;

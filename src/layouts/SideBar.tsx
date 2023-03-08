@@ -58,8 +58,8 @@ function SideBar() {
 
         {isTweetFormShow && (
           <>
-            <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
-              <TweetForm />
+            <div className="absolute inset-0 h-full w-full rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
+              <TweetForm handleClose={() => setIsTweetFormShow(false)} />
             </div>
             <BackDrop
               handleClose={() => setIsTweetFormShow(false)}

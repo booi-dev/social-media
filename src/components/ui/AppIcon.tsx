@@ -13,6 +13,7 @@ type colorVariantsType = {
   blue: string;
   pink: string;
   green: string;
+  black: string;
 };
 
 function AppIcon(props: IconPropType) {
@@ -22,18 +23,21 @@ function AppIcon(props: IconPropType) {
     blue: "text-pri-blue-1",
     pink: "text-pink-400",
     green: "text-green-400",
+    black: "text-black",
   };
 
   const groupHoverColorVariants: colorVariantsType = {
     blue: "group-hover:text-pri-blue-1",
     pink: "group-hover:text-pink-400",
     green: "group-hover:text-green-400",
+    black: "group-hover:text-bg-app-white-3",
   };
 
   const hoverColorVariants: colorVariantsType = {
     blue: "hover:bg-blue-100",
     pink: "hover:bg-pink-100",
     green: "hover:bg-green-100",
+    black: "hover:bg-app-white-3",
   };
 
   return (
