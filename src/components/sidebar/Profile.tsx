@@ -13,8 +13,8 @@ function Profile(props: ProfileType) {
     "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60";
 
   return (
-    <div className="flex md:gap-1.5 justify-between items-center md:p-3 rounded-full hover:bg-app-white-4 transition-all duration-500 cursor-pointer">
-      <div className="flex gap-1">
+    <div className="flex p-2 justify-between items-center rounded-full hover:bg-app-white-4 transition-all duration-500 cursor-pointer md:gap-2">
+      <div className="flex gap-2">
         <img
           src={profileImgLink}
           alt=""
