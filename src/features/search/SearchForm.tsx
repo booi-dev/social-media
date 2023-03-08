@@ -16,7 +16,7 @@ function SearchForm() {
         onChange={handlerInputChange}
         value={searchValue}
         placeholder="Search Twitter"
-        className="w-full p-2 rounded-3xl bg-inherit focus:outline-none"
+        className="w-full p-2.5 rounded-3xl bg-inherit focus:outline-none"
       />
     </form>
   );

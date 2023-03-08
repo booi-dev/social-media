@@ -15,48 +15,57 @@ function SideBar() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <div className="flex flex-col justify-between px-3 bg-white lg:w-[300px] ">
-      <div>
-        <div className="mb-4 w-min">
-          <AppIcon icon={BsTwitter} size={28} color="blue" hoverColor="blue" />
+    <div className="flex justify-end h-screen w-[540px] ">
+      <div className="flex flex-col justify-between w-[275px] px-3">
+        <div>
+          <div className="w-min mx-auto mb-4 lg:mx-0">
+            <AppIcon
+              icon={BsTwitter}
+              size={28}
+              color="blue"
+              hoverColor="blue"
+            />
+          </div>
+          <SidebarOptions />
+          <button
+            type="button"
+            className="w-[220px] p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1"
+            onClick={() => setIsTweetFormShow(true)}
+          >
+            Tweet
+          </button>
         </div>
-        <SidebarOptions />
-        <button
-          type="button"
-          className="w-full p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1"
-          onClick={() => setIsTweetFormShow(true)}
-        >
-          Tweet
-        </button>
-      </div>
 
-      <div className="relative py-4 ">
-        {isOptionShow && (
+        <div className="relative py-4 ">
+          {isOptionShow && (
+            <>
+              <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
+                <h1 className="hover:bg-app-white-3">
+                  Add an existing account
+                </h1>
+                <h1 className="hover:bg-app-white-3"> Log out @{userName}</h1>
+              </div>
+              <BackDrop handleClose={() => setIsOptionShow(false)} />
+            </>
+          )}
+          <Profile
+            userName={userName}
+            menuBtnHandler={() => setIsOptionShow(true)}
+          />
+        </div>
+
+        {isTweetFormShow && (
           <>
-            <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
-              <h1 className="hover:bg-app-white-3">Add an existing account</h1>
-              <h1 className="hover:bg-app-white-3"> Log out @{userName}</h1>
+            <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
+              <TweetForm />
             </div>
-            <BackDrop handleClose={() => setIsOptionShow(false)} />
+            <BackDrop
+              handleClose={() => setIsTweetFormShow(false)}
+              color="black"
+            />
           </>
         )}
-        <Profile
-          userName={userName}
-          menuBtnHandler={() => setIsOptionShow(true)}
-        />
       </div>
-
-      {isTweetFormShow && (
-        <>
-          <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
-            <TweetForm />
-          </div>
-          <BackDrop
-            handleClose={() => setIsTweetFormShow(false)}
-            color="black"
-          />
-        </>
-      )}
     </div>
   );
 }

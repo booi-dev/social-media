@@ -1,12 +1,13 @@
 import React from "react";
+import Widget from "./Widget";
 import Home from "../pages/Home";
-import Notification from "../pages/Notification";
+// import Notification from "../pages/Notification";
 
 function Main() {
   return (
-    <div className="w-full max-w-[600px]">
+    <div className="flex w-full gap-4">
       <Home />
-      <Notification />
+      <Widget />
     </div>
   );
 }

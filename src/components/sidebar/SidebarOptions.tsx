@@ -21,7 +21,7 @@ function SidebarOptions() {
   const [optionIndex, setOptionIndex] = useState("Home");
 
   return (
-    <div className="flex flex-col items-start gap-5">
+    <div className="flex flex-col lg:items-start gap-5">
       <Option
         text="Home"
         icon={AiOutlineHome}
