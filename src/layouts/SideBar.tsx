@@ -17,7 +17,7 @@ function SideBar() {
 
   return (
     <div className="flex justify-end h-screen lg:w-[540px]">
-      <div className="flex flex-col justify-between items-center w-[88px] transition-all duration-500 md:px-3 md:w-[200px] lg:w-[275px]  bg-red-300">
+      <div className="flex flex-col justify-between items-center w-[88px] transition-all duration-500 md:px-3 md:w-[200px] lg:w-[275px]">
         <div className="flex flex-col items-center lg:items-start">
           <div className="w-min mx-auto mb-4 lg:mx-0">
             <AppIcon
@@ -41,7 +41,7 @@ function SideBar() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute bottom-24 py-4 font-bold w-full rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
+              <div className="absolute w-[250px] bottom-24 py-4 font-bold rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
                 <h1 className="hover:bg-app-white-3">
                   Add an existing account
                 </h1>
