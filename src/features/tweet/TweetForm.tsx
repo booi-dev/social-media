@@ -63,7 +63,7 @@ function TweetForm() {
           alt=""
         />
         <input
-          className="w-full border-[0px] text-app-font-20 font-normal text-app-black-3 focus:outline-none"
+          className="w-full text-app-font-20 font-normal text-app-black-3 focus:outline-none"
           placeholder="What's happening"
           onChange={handleInput}
           value={newTweet.tweet}

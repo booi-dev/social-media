@@ -5,7 +5,7 @@ import { BsTwitter } from "react-icons/bs";
 import AppIcon from "../components/ui/AppIcon";
 import SidebarOptions from "../components/sidebar/SidebarOptions";
 import Profile from "../components/sidebar/Profile";
-import Form from "../features/tweet/Form";
+import TweetForm from "../features/tweet/TweetForm";
 import BackDrop from "../components/ui/BackDrop";
 
 function SideBar() {
@@ -18,7 +18,7 @@ function SideBar() {
     <div className="flex flex-col justify-between px-3 bg-white lg:w-[300px] ">
       <div>
         <div className="mb-4 w-min">
-          <AppIcon icon={BsTwitter} size={32} color="blue" hoverColor="blue" />
+          <AppIcon icon={BsTwitter} size={28} color="blue" hoverColor="blue" />
         </div>
         <SidebarOptions />
         <button
@@ -49,7 +49,7 @@ function SideBar() {
       {isTweetFormShow && (
         <>
           <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2  w-[550px] p-4 rounded-2xl bg-white z-20">
-            <Form />
+            <TweetForm />
           </div>
           <BackDrop
             handleClose={() => setIsTweetFormShow(false)}

@@ -1,4 +1,4 @@
-import Form from "../features/tweet/Form";
+import TweetForm from "../features/tweet/TweetForm";
 import FeedList from "../features/tweet/FeedList";
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
         </div>
       </div>
       <div className="border-x-[1px] border-b-[1px]">
-        <Form />
+        <TweetForm />
       </div>
       <FeedList />
     </div>
