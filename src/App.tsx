@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="flex">
+    <div className="relative flex">
       <SideBar />
       <Main />
     </div>

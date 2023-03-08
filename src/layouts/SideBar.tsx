@@ -16,7 +16,7 @@ function SideBar() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <div className="flex justify-end h-screen lg:w-[540px]">
+    <div className="sticky top-0 left-0 right-0 flex justify-end h-screen lg:w-[540px]">
       <div className="flex flex-col justify-between items-center w-[88px] transition-all duration-500 md:px-3 md:w-[200px] lg:w-[275px]">
         <div className="flex flex-col items-center lg:items-start">
           <div className="w-min mx-auto mb-4 lg:mx-0">

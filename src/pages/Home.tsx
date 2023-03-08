@@ -4,7 +4,7 @@ import FeedList from "../features/tweet/FeedList";
 function Home() {
   return (
     <div className="w-full max-w-[600px] bg-white border-app-white-5">
-      <div className="border-[1px]">
+      <div className="sticky top-0 left-0 right-0 bg-white z-10 border-[1px]">
         <h1 className="w-full py-2.5 px-3.5 text-app-font-20 font-bold">
           Home
         </h1>
