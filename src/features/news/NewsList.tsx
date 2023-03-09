@@ -39,7 +39,7 @@ const fakeNewsData: NewsType[] = [
 
 function NewsList() {
   return (
-    <div className="px-4 py-3 bg-app-white-3 rounded-2xl">
+    <div className="px-4 py-3 bg-app-white-2 rounded-2xl cursor-pointer">
       <h1 className="py-3 text-app-font-20 font-bold  ">What's happening</h1>
       {fakeNewsData.map((news) => (
         <News key={news.id} news={news} />
