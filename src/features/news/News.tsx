@@ -1,13 +1,22 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import React from "react";
 
-function News() {
+export type NewsType = {
+  id: number;
+  category: string;
+  topic: string;
+  tweetCounts: number;
+};
+
+type NewsPropType = {
+  news: NewsType;
+};
+
+function News({ news }: NewsPropType) {
   return (
-    <div>
-      <h1 className="px-4 py-3 text-app-font-20 font-bold rounded-2xl bg-app-white-3">
-        What's happening
-      </h1>
+    <div className="py-2">
+      <h2 className="text-app-gray-3"> {`${news.category}· Trending`}</h2>
+      <h1 className="font-bold text-app-font-17"> {`#${news.topic}`}</h1>
+      <h3 className="text-app-gray-3"> {`${news.tweetCounts}k Tweets`}</h3>
     </div>
   );
 }
