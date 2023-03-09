@@ -13,7 +13,7 @@ type SuggestionPropType = {
 
 function Suggestion({ suggestion }: SuggestionPropType) {
   return (
-    <div className="flex py-2 px-4 justify-between items-center gap-2">
+    <div className="flex py-2 px-4 justify-between items-center gap-2 hover:bg-app-white-3">
       <div className="flex items-center gap-2">
         <img
           src={suggestion.displayPic}

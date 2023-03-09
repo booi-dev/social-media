@@ -8,7 +8,7 @@ function Home() {
         <h1 className="w-full py-2.5 px-3.5 text-app-font-20 font-bold">
           Home
         </h1>
-        <div className="flex justify-around">
+        <div className="flex justify-around pb-2">
           <h2>For you</h2>
           <h2>Following</h2>
         </div>
