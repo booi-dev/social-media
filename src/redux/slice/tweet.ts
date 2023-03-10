@@ -13,11 +13,11 @@ export type TweetType = {
   replies: [];
 };
 
-type InitialState = {
+type InitialStateType = {
   tweets: TweetType[];
 };
 
-const initialState: InitialState = {
+const initialState: InitialStateType = {
   tweets: [],
 };
 

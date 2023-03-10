@@ -10,7 +10,7 @@ function SearchForm() {
   };
 
   return (
-    <form className="flex items-center gap-2 px-3 bg-app-white-3 rounded-3xl">
+    <form className="flex items-center gap-2 px-3 bg-app-white-2 rounded-3xl">
       <BiSearch size={23} className="text-app-gray-3" />
       <input
         onChange={handlerInputChange}
