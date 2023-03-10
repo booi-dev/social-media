@@ -106,27 +106,27 @@ function TweetForm(props: TweetFormType) {
             placeholder="What's happening"
             onChange={handleInput}
             value={newTweet.tweet}
-            className={`w-full ${
+            className={`w-full px-2 ${
               isLargeTextArea && "min-h-[150px] "
             } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
           />
           <div className="flex justify-between items-center w-full py-1">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               <AppIcon
                 icon={ImImage}
-                size={22}
+                size={18}
                 color="blue"
                 hoverColor="blue"
               />
               <AppIcon
                 icon={MdOutlineBallot}
-                size={25}
+                size={22}
                 color="blue"
                 hoverColor="blue"
               />
               <AppIcon
                 icon={VscSmiley}
-                size={23}
+                size={20}
                 color="blue"
                 hoverColor="blue"
               />

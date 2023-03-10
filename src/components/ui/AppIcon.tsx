@@ -42,7 +42,7 @@ function AppIcon(props: IconPropType) {
 
   return (
     <div
-      className={`group rounded-full ${
+      className={`p-3 group rounded-full ${
         hoverColor && hoverColorVariants[hoverColor]
       } transition-all duration-500`}
     >
@@ -59,7 +59,7 @@ function AppIcon(props: IconPropType) {
 }
 
 AppIcon.defaultProps = {
-  size: 20,
+  size: 18,
   rotateDeg: 0,
   hoverColor: "",
   color: "",
