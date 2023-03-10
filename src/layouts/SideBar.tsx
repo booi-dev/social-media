@@ -34,7 +34,7 @@ function SideBar() {
           <SidebarOptions />
           <button
             type="button"
-            className="lg:w-[220px] p-3 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 md:py-1"
+            className="lg:w-[220px] p-4 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 md:py-3"
             onClick={() => setIsTweetFormShow(true)}
           >
             <FaFeatherAlt className="md:hidden" />
