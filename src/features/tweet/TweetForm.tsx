@@ -91,7 +91,7 @@ function TweetForm(props: TweetFormType) {
           value={newTweet.tweet}
         />
         <div className="flex justify-between items-center w-full py-1">
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <AppIcon icon={ImImage} size={22} color="blue" hoverColor="blue" />
             <AppIcon
               icon={MdOutlineBallot}
