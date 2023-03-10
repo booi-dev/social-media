@@ -8,7 +8,7 @@ import useUserControls from "../redux/control/userControls";
 import AppIcon from "../components/ui/AppIcon";
 import HeaderOptions from "../components/header/HeaderOptions";
 import Profile from "../components/header/Profile";
-import TweetForm from "../features/tweet/TweetForm";
+import TweetForm from "../components/tweetbox/TweetBox";
 import BackDrop from "../components/ui/BackDrop";
 
 function Header() {

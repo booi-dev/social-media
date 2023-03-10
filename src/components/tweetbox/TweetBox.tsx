@@ -2,31 +2,30 @@ import { useState, useRef } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
 import { BsArrowLeftShort } from "react-icons/bs";
-import { VscSmiley } from "react-icons/vsc";
-import { MdOutlineBallot } from "react-icons/md";
-import { ImImage } from "react-icons/im";
 import { FiChevronDown } from "react-icons/fi";
-
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTweetControls from "../../redux/control/tweetControls";
 
-import AppIcon from "../../components/ui/AppIcon";
+import AppIcon from "../ui/AppIcon";
+import TweetBtnPanel from "./TweetBtnPanel";
+import TweetAudienceFilter from "./TweetAudienceFilter";
+
 import { TweetType } from "../../redux/slice/tweet";
 
-type TweetFormType = {
+type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
   userPic: string;
 };
 
-function TweetForm(props: TweetFormType) {
+function TweetBox(props: TweetBoxType) {
   const { handleClose, isLargeTextArea, userPic } = props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
 
   const rawTweet: TweetType = {
-    id: "",
+    id: nanoid(),
     tweet: "",
     timespan: Date.now(),
     createBy: "booi_mangang",
@@ -38,6 +37,7 @@ function TweetForm(props: TweetFormType) {
   };
 
   const [newTweet, setNewTweet] = useState(rawTweet);
+  const [isAudienceFilter, setIsAudienceFilter] = useState(false);
 
   const addDataToLocalStorage = (toBeAddData: TweetType) => {
     addData(toBeAddData);
@@ -55,7 +55,6 @@ function TweetForm(props: TweetFormType) {
     }
   };
 
-  //
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     resizeArea();
     const { value } = e.target;
@@ -69,22 +68,24 @@ function TweetForm(props: TweetFormType) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNewTweet(rawTweet);
-    // update redux store
     createTweet(newTweet);
-    // update local storage
     addDataToLocalStorage(newTweet);
-    // call close handler
     handleClose?.();
   };
 
   return (
-    <>
+    <div className="relative">
       {handleClose && (
         <button type="button" onClick={handleClose} className="md:hidden pt-2">
           <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
         </button>
       )}
+
       <form className="flex gap-3 pt-0" onSubmit={handleSubmit}>
+        {isAudienceFilter && (
+          <TweetAudienceFilter handleClose={() => setIsAudienceFilter(false)} />
+        )}
+
         <div className="shrink-0 w-14 h-14">
           <img
             className="w-full h-full rounded-full object-cover"
@@ -95,6 +96,7 @@ function TweetForm(props: TweetFormType) {
         <div className="w-full">
           <button
             type="button"
+            onClick={() => setIsAudienceFilter(true)}
             className="flex items-center gap-1 w-min px-3 mb-1 hover:bg-pri-blue-1 hover:bg-opacity-20 rounded-full text-pri-blue-1 font-bold border-[1px] border-app-white-5 "
           >
             Everyone
@@ -110,48 +112,16 @@ function TweetForm(props: TweetFormType) {
               isLargeTextArea && "min-h-[150px] "
             } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
           />
-          <div className="flex justify-between items-center w-full py-1">
-            <div className="flex items-center gap-1">
-              <AppIcon
-                icon={ImImage}
-                size={18}
-                color="blue"
-                hoverColor="blue"
-              />
-              <AppIcon
-                icon={MdOutlineBallot}
-                size={22}
-                color="blue"
-                hoverColor="blue"
-              />
-              <AppIcon
-                icon={VscSmiley}
-                size={20}
-                color="blue"
-                hoverColor="blue"
-              />
-            </div>
-            <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
-              {newTweet.tweet ? (
-                <button type="submit" className="bg-pri-blue-1">
-                  Tweet
-                </button>
-              ) : (
-                <button type="button" className="bg-pri-blue-1 bg-opacity-60 ">
-                  Tweet
-                </button>
-              )}
-            </div>
-          </div>
+          <TweetBtnPanel newTweet={newTweet} />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
-TweetForm.defaultProps = {
+TweetBox.defaultProps = {
   handleClose: undefined,
   isLargeTextArea: false,
 };
 
-export default TweetForm;
+export default TweetBox;

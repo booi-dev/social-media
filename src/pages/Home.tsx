@@ -1,5 +1,5 @@
 import useUserControls from "../redux/control/userControls";
-import TweetForm from "../features/tweet/TweetForm";
+import TweetForm from "../components/tweetbox/TweetBox";
 import FeedList from "../features/tweet/FeedList";
 
 function Home() {
