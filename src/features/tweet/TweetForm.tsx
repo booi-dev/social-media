@@ -12,15 +12,13 @@ import useTweetControls from "../../redux/control/tweetControls";
 import AppIcon from "../../components/ui/AppIcon";
 import { TweetType } from "../../redux/slice/tweet";
 
-const picUrl =
-  "https://images.unsplash.com/photo-1578632749014-ca77efd052eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFuaW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
-
 type TweetFormType = {
   handleClose?: () => void;
+  userPic: string;
 };
 
 function TweetForm(props: TweetFormType) {
-  const { handleClose } = props;
+  const { handleClose, userPic } = props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
@@ -72,7 +70,7 @@ function TweetForm(props: TweetFormType) {
       <div className="flex gap-1">
         <img
           className="h-14 w-14 rounded-full object-cover"
-          src={picUrl}
+          src={userPic}
           alt=""
         />
         <input
