@@ -11,10 +11,14 @@ export type UserType = {
 
 const initialUser: UserType = {
   id: "",
-  displayName: "x__x",
+  // displayName: "x__x",
+  // displayPic:
+  //   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+  // userName: "o_o",
+  displayName: "Santidas Gausa",
   displayPic:
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-  userName: "o_o",
+    "https://images.pexels.com/photos/1036642/pexels-photo-1036642.jpeg?auto=compress&cs=tinysrgb&w=600",
+  userName: "gausa",
   email: "booimangang@gmail.com",
 };
 

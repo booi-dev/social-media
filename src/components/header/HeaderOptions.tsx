@@ -17,7 +17,7 @@ import {
 
 import Option from "./Option";
 
-function SidebarOptions() {
+function HeaderOptions() {
   const [optionIndex, setOptionIndex] = useState("Home");
 
   return (
@@ -75,4 +75,4 @@ function SidebarOptions() {
   );
 }
 
-export default SidebarOptions;
+export default HeaderOptions;

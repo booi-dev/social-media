@@ -84,10 +84,10 @@ function TweetForm(props: TweetFormType) {
           <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
         </button>
       )}
-      <form className="flex gap-4 pt-0" onSubmit={handleSubmit}>
-        <div className="h-14 w-14 ">
+      <form className="flex gap-3 pt-0" onSubmit={handleSubmit}>
+        <div className="shrink-0 w-14 h-14">
           <img
-            className="w-full rounded-full object-cover"
+            className="w-full h-full rounded-full object-cover"
             src={userPic}
             alt=""
           />

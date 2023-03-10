@@ -1,11 +1,11 @@
-import SideBar from "./layouts/SideBar";
+import Header from "./layouts/Header";
 import Main from "./layouts/Main";
 import "./App.css";
 
 function App() {
   return (
     <div className="relative flex">
-      <SideBar />
+      <Header />
       <Main />
     </div>
   );
