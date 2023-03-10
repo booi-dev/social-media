@@ -15,7 +15,7 @@ function Home() {
           <h2>Following</h2>
         </div>
       </div>
-      <div className="border-x-[1px] border-b-[1px]">
+      <div className="p-2 border-x-[1px] border-b-[1px] md:p-4">
         <TweetForm userPic={user.displayPic} />
       </div>
       <FeedList />

@@ -29,7 +29,7 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={enhancedTweet?.id}
-        className="relative px-4 border-x-[1px] border-b-[1px] hover:bg-app-white-2"
+        className="relative px-1 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
           <div className="flex">

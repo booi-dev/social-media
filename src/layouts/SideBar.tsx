@@ -21,7 +21,7 @@ function SideBar() {
 
   return (
     <div className="flex justify-end h-screen lg:w-[540px]">
-      <div className="flex flex-col items-center w-[80px] h-full transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
+      <div className="flex flex-col justify-between items-center w-[80px] h-full transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
         <div className="flex flex-col items-center lg:items-start">
           <div className="w-min my-4 lg:mx-2">
             <AppIcon
@@ -64,9 +64,10 @@ function SideBar() {
 
         {isTweetFormShow && (
           <>
-            <div className="absolute inset-0 h-full w-full rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
+            <div className="absolute inset-0 h-full w-full p-2 rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
               <TweetForm
                 handleClose={() => setIsTweetFormShow(false)}
+                isLargeTextArea
                 userPic={user.displayPic}
               />
             </div>
