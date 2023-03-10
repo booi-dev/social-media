@@ -11,10 +11,10 @@ export type UserType = {
 
 const initialUser: UserType = {
   id: "",
-  displayName: "Booi Mangang",
+  displayName: "x__x",
   displayPic:
-    "https://images.pexels.com/photos/3764119/pexels-photo-3764119.jpeg?auto=compress&cs=tinysrgb&w=600",
-  userName: "bo_ma",
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+  userName: "o_o",
   email: "booimangang@gmail.com",
 };
 
