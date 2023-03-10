@@ -11,6 +11,9 @@ import TweetBtnPanel from "./TweetBtnPanel";
 import TweetAudienceFilter from "./TweetAudienceFilter";
 
 import { TweetType } from "../../redux/slice/tweet";
+// import findHashTags from "../../utils/findHashTag";
+
+import RichEditor from "../ui/RichEditor";
 
 type TweetBoxType = {
   handleClose?: () => void;
@@ -55,13 +58,19 @@ function TweetBox(props: TweetBoxType) {
     }
   };
 
+  // finding hash tags
+
+  // const highLightHashTags = (sentence: string) => {
+  //   const tags = findHashTags(sentence);
+  //   console.log(tags);
+  // };
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     resizeArea();
-    const { value } = e.target;
+    // highLightHashTags(e.target.value);
     setNewTweet({
       ...newTweet,
-      id: nanoid(),
-      tweet: value,
+      tweet: e.target.value,
     });
   };
 
@@ -90,7 +99,7 @@ function TweetBox(props: TweetBoxType) {
           <img
             className="w-full h-full rounded-full object-cover"
             src={userPic}
-            alt=""
+            alt="twitter profile"
           />
         </div>
         <div className="w-full">
@@ -113,6 +122,7 @@ function TweetBox(props: TweetBoxType) {
             } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
           />
           <TweetBtnPanel newTweet={newTweet} />
+          <RichEditor />
         </div>
       </form>
     </div>

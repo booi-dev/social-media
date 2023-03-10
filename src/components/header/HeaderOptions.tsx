@@ -21,7 +21,7 @@ function HeaderOptions() {
   const [optionIndex, setOptionIndex] = useState("Home");
 
   return (
-    <div className="flex flex-col lg:items-start gap-5">
+    <div className="flex flex-col lg:items-start md:gap-2 lg:gap-3">
       <Option
         text="Home"
         icon={AiOutlineHome}

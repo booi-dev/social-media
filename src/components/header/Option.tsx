@@ -22,7 +22,7 @@ function Option(props: OptionType) {
   return (
     <button
       type="button"
-      className="flex items-center justify-center gap-4 rounded-full  hover:bg-app-white-3 cursor-pointer p-3 lg:justify-start lg:p-2"
+      className="flex items-center justify-center gap-4 rounded-full  hover:bg-app-white-3 cursor-pointer p-3 lg:justify-start lg:py-2 lg:px-4 "
       onClick={setActive}
     >
       {isActive ? (

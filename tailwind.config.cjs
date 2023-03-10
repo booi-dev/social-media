@@ -27,6 +27,7 @@ module.exports = {
       },
       colors: {
         'pri-blue-1': '#1d9bf0',
+        'pri-blue-2': '#1A8BD8',
 
         'app-black-1': '#090809',
         'app-black-1.2': '#000000a6',

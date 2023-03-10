@@ -23,7 +23,7 @@ function Header() {
     <div className="flex justify-end h-screen lg:w-[540px]">
       <div className="flex flex-col justify-between items-center w-[80px] h-full transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
         <div className="flex flex-col items-center lg:items-start">
-          <div className="w-min my-4 lg:mx-2">
+          <div className="w-min mt-2 lg:mx-2">
             <AppIcon
               icon={BsTwitter}
               size={28}
@@ -34,7 +34,7 @@ function Header() {
           <HeaderOptions />
           <button
             type="button"
-            className="lg:w-[220px] p-4 mt-4 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 md:py-3"
+            className="lg:w-[220px] p-4 mt-2 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 hover:bg-pri-blue-2 md:py-3"
             onClick={() => setIsTweetFormShow(true)}
           >
             <FaFeatherAlt className="md:hidden" />
