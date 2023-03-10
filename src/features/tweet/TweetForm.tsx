@@ -9,6 +9,7 @@ import { ImImage } from "react-icons/im";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTweetControls from "../../redux/control/tweetControls";
 
+import AutoResizeTextArea from "../../components/ui/AutoResizeTextArea";
 import AppIcon from "../../components/ui/AppIcon";
 import { TweetType } from "../../redux/slice/tweet";
 
@@ -41,7 +42,7 @@ function TweetForm(props: TweetFormType) {
     addData(toBeAddData);
   };
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     setNewTweet({
       ...newTweet,
@@ -73,8 +74,8 @@ function TweetForm(props: TweetFormType) {
           src={userPic}
           alt=""
         />
-        <input
-          className="w-full text-app-font-20 font-normal text-app-black-3 focus:outline-none"
+        <AutoResizeTextArea
+          maxLength={280}
           placeholder="What's happening"
           onChange={handleInput}
           value={newTweet.tweet}
