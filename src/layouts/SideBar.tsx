@@ -3,6 +3,8 @@ import { useState } from "react";
 import { BsTwitter } from "react-icons/bs";
 import { FaFeatherAlt } from "react-icons/fa";
 
+import useUserControls from "../redux/control/userControls";
+
 import AppIcon from "../components/ui/AppIcon";
 import SidebarOptions from "../components/sidebar/SidebarOptions";
 import Profile from "../components/sidebar/Profile";
@@ -11,6 +13,8 @@ import BackDrop from "../components/ui/BackDrop";
 
 function SideBar() {
   const userName = "nganu";
+
+  const { user } = useUserControls();
 
   const [isTweetFormShow, setIsTweetFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
@@ -51,7 +55,9 @@ function SideBar() {
             </>
           )}
           <Profile
-            userName={userName}
+            displayName={user.displayName}
+            displayPic={user.displayPic}
+            userName={user.userName}
             menuBtnHandler={() => setIsOptionShow(true)}
           />
         </div>

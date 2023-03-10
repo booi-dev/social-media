@@ -1,16 +1,14 @@
-import React from "react";
 import { GoKebabHorizontal } from "react-icons/go";
 
 type ProfileType = {
+  displayName: string;
+  displayPic: string;
   userName: string;
   menuBtnHandler: () => void;
 };
 
 function Profile(props: ProfileType) {
-  const { userName, menuBtnHandler } = props;
-
-  const profileImgLink =
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60";
+  const { displayName, displayPic, userName, menuBtnHandler } = props;
 
   return (
     <button
@@ -20,12 +18,12 @@ function Profile(props: ProfileType) {
     >
       <div className="flex gap-2">
         <img
-          src={profileImgLink}
+          src={displayPic}
           alt=""
           className="w-12 h-12 rounded-full object-cover"
         />
         <div className="hidden text-start lg:block ">
-          <h1> Booi Mangang</h1>
+          <h1>{displayName}</h1>
           <h2> @{userName}</h2>
         </div>
       </div>

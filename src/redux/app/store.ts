@@ -4,7 +4,7 @@ import tweetReducer from "../slice/tweet";
 
 const store = configureStore({
   reducer: {
-    userReducer,
+    userStore: userReducer,
     tweetStore: tweetReducer,
   },
 });
