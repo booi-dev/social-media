@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserType } from "../../types/UserType";
 
 const initialUser: UserType = {
-  uid: "03",
+  uid: "02",
   // displayName: "x__x",
   // displayPic:
   //   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",

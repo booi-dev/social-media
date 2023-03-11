@@ -56,7 +56,7 @@ function Header() {
           )}
           <Profile
             displayName={user.displayName}
-            displayPic={user.displayPic}
+            displayPicURL={user.displayPicURL}
             userName={user.userName}
             menuBtnHandler={() => setIsOptionShow(true)}
           />
@@ -68,7 +68,6 @@ function Header() {
               <TweetForm
                 handleClose={() => setIsTweetFormShow(false)}
                 isLargeTextArea
-                userPic={user.displayPic}
               />
             </div>
             <BackDrop

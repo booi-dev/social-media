@@ -20,7 +20,7 @@ const tweetSlice = createSlice({
     },
     destroy: (state, action: PayloadAction<string>) => {
       state.tweets = state.tweets.filter(
-        (tweet) => tweet.id !== action.payload
+        (tweet) => tweet.tid !== action.payload
       );
     },
     replace: (state, action: PayloadAction<TweetType[]>) => {

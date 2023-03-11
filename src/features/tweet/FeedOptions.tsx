@@ -17,8 +17,8 @@ function FeedOptions({ tweet }: FeedOptionsType) {
   const [isWarning, setIsWarning] = useState(false);
 
   const handleDelete = () => {
-    deleteTweet(tweet.id);
-    deleteData(tweet.id);
+    deleteTweet(tweet.tid);
+    deleteData(tweet.tid);
   };
 
   return (

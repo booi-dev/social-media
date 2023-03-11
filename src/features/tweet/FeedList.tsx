@@ -21,7 +21,7 @@ function FeedList() {
   return (
     <>
       {sortedTweets.map((tweet: TweetType) => (
-        <Feed key={tweet.id} tweet={tweet} />
+        <Feed key={tweet.tid} tweet={tweet} />
       ))}
     </>
   );

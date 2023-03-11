@@ -1,17 +1,21 @@
 import { useState } from "react";
+
 import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 import { GoKebabVertical } from "react-icons/go";
-import { TweetType } from "../../types";
-import addExtraProperties, {
-  EnhancedTweetType,
-} from "../../utils/addExtraProperties";
+
+import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
 import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
+
+import addExtraProperties, {
+  EnhancedTweetType,
+} from "../../utils/addExtraProperties";
+import { TweetType } from "../../types";
 
 type TweetPropType = {
   tweet: TweetType;
@@ -20,11 +24,15 @@ type TweetPropType = {
 function Feed(props: TweetPropType) {
   const { tweet } = props;
 
+  const { getTweetCreator } = useGetProperties();
+
   const [enhancedTweet] = useState<EnhancedTweetType>(
     addExtraProperties(tweet)
   );
 
   const [isOption, setIsOption] = useState(false);
+
+  const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
     <>
@@ -33,9 +41,17 @@ function Feed(props: TweetPropType) {
         className="relative px-1 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
-          <div className="flex">
+          <div className="flex items-center gap-2">
+            <img
+              src={tweetCreator?.displayPicURL}
+              alt=""
+              className="w-12 h-12 rounded-full object-cover"
+            />
+            <h2 className="text-app-black-1 font-bold">
+              {tweetCreator?.displayName}
+            </h2>
             <h2 className="text-app-black-1.2">
-              {`@${enhancedTweet?.createBy}`}
+              {`@${tweetCreator?.userName}`}
             </h2>
             <div className="mx-1 text-app-black-1.2">·</div>
             <h2 className="text-app-black-1.2">{enhancedTweet?.timeElapse}</h2>

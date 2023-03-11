@@ -1,5 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { UserType, createUser, updateName } from "../slice/user";
+import { createUser, updateName } from "../slice/user";
+import { UserType } from "../../types";
 
 function useUserControls() {
   const user = useAppSelector((state) => state.userStore);

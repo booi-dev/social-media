@@ -3,36 +3,35 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
+
+import useUserControls from "../../redux/control/userControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTweetControls from "../../redux/control/tweetControls";
-import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../ui/AppIcon";
 import TweetBtnPanel from "./TweetBtnPanel";
 import TweetAudienceFilter from "./TweetAudienceFilter";
 
-import { TweetType } from "../../types";
-
 import findHashTags from "../../utils/findHashTag";
+import { TweetType } from "../../types";
 
 type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
-  userPic: string;
 };
 
 function TweetBox(props: TweetBoxType) {
-  const { handleClose, isLargeTextArea, userPic } = props;
+  const { handleClose, isLargeTextArea } = props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
-  const { getTweetCreator } = useGetProperties();
+  const { user } = useUserControls();
 
   const rawTweet: TweetType = {
     tid: nanoid(),
     tweet: "",
     timespan: Date.now(),
-    createBy: "booi_mangang",
+    createBy: user.uid,
     hashtags: [],
     replyBy: [],
     likeBy: [],
@@ -44,6 +43,8 @@ function TweetBox(props: TweetBoxType) {
   const [hashtags, setHashtags] = useState<string[]>([]);
 
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
+
+  // const tweetCreator = getTweetCreator()
 
   const addDataToLocalStorage = (toBeAddData: TweetType) => {
     addData(toBeAddData);
@@ -61,7 +62,8 @@ function TweetBox(props: TweetBoxType) {
     }
   };
 
-  //
+  // hash tags
+
   const createHashTags = (sentence: string) => {
     const tags = findHashTags(sentence);
     setHashtags(tags);
@@ -87,6 +89,7 @@ function TweetBox(props: TweetBoxType) {
     addDataToLocalStorage(newTweet);
     setHashtags([]);
     handleClose?.();
+    console.log(newTweet);
   };
 
   return (
@@ -105,7 +108,7 @@ function TweetBox(props: TweetBoxType) {
         <div className="shrink-0 w-14 h-14">
           <img
             className="w-full h-full rounded-full object-cover"
-            src={userPic}
+            src={user.displayPicURL}
             alt="twitter profile"
           />
         </div>
