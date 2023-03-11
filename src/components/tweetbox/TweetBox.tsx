@@ -40,8 +40,10 @@ function TweetBox(props: TweetBoxType) {
   };
 
   const [newTweet, setNewTweet] = useState(rawTweet);
-  const [isAudienceFilter, setIsAudienceFilter] = useState(false);
   const [characterCount, setCharacterCount] = useState(280);
+  const [hashtags, setHashtags] = useState<string[]>([]);
+
+  const [isAudienceFilter, setIsAudienceFilter] = useState(false);
 
   const addDataToLocalStorage = (toBeAddData: TweetType) => {
     addData(toBeAddData);
@@ -59,12 +61,18 @@ function TweetBox(props: TweetBoxType) {
     }
   };
 
+  //
+  const createHashTags = (sentence: string) => {
+    const tags = findHashTags(sentence);
+    setHashtags(tags);
+    return tags;
+  };
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     resizeArea();
-    setCharacterCount(characterCount - value.length);
-    const tags = findHashTags(value);
-    console.log(tags);
+    setCharacterCount(280 - value.length);
+    const tags = createHashTags(value);
     setNewTweet({
       ...newTweet,
       hashtags: tags,
@@ -88,7 +96,7 @@ function TweetBox(props: TweetBoxType) {
         </button>
       )}
 
-      <form className="flex gap-3 pt-0" onSubmit={handleSubmit}>
+      <form className="flex gap-3 w-full pt-0" onSubmit={handleSubmit}>
         {isAudienceFilter && (
           <TweetAudienceFilter handleClose={() => setIsAudienceFilter(false)} />
         )}
@@ -111,7 +119,7 @@ function TweetBox(props: TweetBoxType) {
           </button>
           <textarea
             ref={textAreaRef}
-            maxLength={280}
+            maxLength={500}
             placeholder="What's happening"
             onChange={handleInput}
             value={newTweet.tweet}
@@ -119,6 +127,11 @@ function TweetBox(props: TweetBoxType) {
               isLargeTextArea && "min-h-[150px] "
             } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
           />
+          <div className=" flex gap-2 px-2 text-pri-blue-1">
+            {hashtags.map((tag) => (
+              <div key={tag}>{tag}</div>
+            ))}
+          </div>
           <TweetBtnPanel tweet={newTweet} characterCount={characterCount} />
         </div>
       </form>

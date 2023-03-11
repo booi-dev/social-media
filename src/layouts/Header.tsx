@@ -64,7 +64,7 @@ function Header() {
 
         {isTweetFormShow && (
           <>
-            <div className="absolute inset-0 h-full w-full p-2 rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
+            <div className="absolute inset-0 p-2 rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
               <TweetForm
                 handleClose={() => setIsTweetFormShow(false)}
                 isLargeTextArea

@@ -6,7 +6,7 @@ import { ImImage } from "react-icons/im";
 
 import AppIcon from "../ui/AppIcon";
 
-import { TweetType } from "../../redux/slice/tweet";
+import { TweetType } from "../../types";
 
 type TweetBtnPanelType = {
   tweet: TweetType;
@@ -29,12 +29,14 @@ function TweetBtnPanel(props: TweetBtnPanelType) {
         <AppIcon icon={VscSmiley} size={20} color="blue" hoverColor="blue" />
       </div>
       <div className="flex gap-1.5 text-app-gray-3 items-center">
-        <div>{characterCount}</div>
+        <div className={`${characterCount < 0 && "text-red-500"}`}>
+          {characterCount}
+        </div>
 
         <div className="border-r-[1px] border-app-gray-3 h-5 " />
 
-        <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
-          {tweet.tweet ? (
+        <div className="[&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
+          {tweet.tweet && characterCount > 0 && characterCount < 280 ? (
             <button type="submit" className="bg-pri-blue-1">
               Tweet
             </button>
