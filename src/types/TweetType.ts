@@ -4,9 +4,7 @@ export type TweetType = {
   timespan: number;
   createBy: string;
   hashtags: string[];
-  likeCount: number;
   likeBy: [];
-  retweetCount: number;
   retweeetBy: [];
-  replies: [];
+  replyBy: [];
 };

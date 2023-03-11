@@ -3,7 +3,7 @@ import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 import { GoKebabVertical } from "react-icons/go";
-import { TweetType } from "../../redux/slice/tweet";
+import { TweetType } from "../../types";
 import addExtraProperties, {
   EnhancedTweetType,
 } from "../../utils/addExtraProperties";
@@ -29,7 +29,7 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={enhancedTweet?.id}
-        className="relative px-1 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
+        className="relative px-1 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
           <div className="flex">
@@ -51,13 +51,25 @@ function Feed(props: TweetPropType) {
         <h1 className="p-2">{enhancedTweet?.tweet}</h1>
         <div className="flex w-full justify-around py-2">
           {/* reply */}
-          <AppIcon icon={BsChat} hoverColor="blue" />
+          <div className="flex items-center">
+            <AppIcon icon={BsChat} hoverColor="blue" />
+            {enhancedTweet?.replyBy.length > 0 && enhancedTweet?.replyBy.length}
+          </div>
           {/* retweet */}
-          <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+          <div className="flex items-center">
+            <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+            {enhancedTweet?.retweeetBy.length > 0 &&
+              enhancedTweet?.retweeetBy.length}
+          </div>
           {/* like */}
-          <AppIcon icon={BsSuitHeart} hoverColor="pink" />
+          <div className="flex items-center">
+            <AppIcon icon={BsSuitHeart} hoverColor="pink" />
+            {enhancedTweet?.likeBy.length > 0 && enhancedTweet?.likeBy.length}
+          </div>
           {/* view */}
-          <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
+          <div className="hidden sm:block">
+            <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
+          </div>
           {/* share */}
           <AppIcon icon={RxShare2} hoverColor="blue" />
         </div>

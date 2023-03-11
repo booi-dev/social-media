@@ -32,10 +32,8 @@ function TweetBox(props: TweetBoxType) {
     timespan: Date.now(),
     createBy: "booi_mangang",
     hashtags: [],
-    replies: [],
-    likeCount: 5,
+    replyBy: [],
     likeBy: [],
-    retweetCount: 2,
     retweeetBy: [],
   };
 
@@ -85,6 +83,7 @@ function TweetBox(props: TweetBoxType) {
     setNewTweet(rawTweet);
     createTweet(newTweet);
     addDataToLocalStorage(newTweet);
+    setHashtags([]);
     handleClose?.();
   };
 
@@ -132,7 +131,11 @@ function TweetBox(props: TweetBoxType) {
               <div key={tag}>{tag}</div>
             ))}
           </div>
-          <TweetBtnPanel tweet={newTweet} characterCount={characterCount} />
+          <TweetBtnPanel
+            tweet={newTweet}
+            characterCount={characterCount}
+            isLargeTextArea={isLargeTextArea}
+          />
         </div>
       </form>
     </div>

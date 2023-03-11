@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import sortArray from "../../utils/sortArray";
-import { TweetType } from "../../redux/slice/tweet";
+import { TweetType } from "../../types";
 import Feed from "./Feed";
 
 function FeedList() {

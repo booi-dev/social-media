@@ -11,7 +11,7 @@ function Home() {
           Home
         </h1>
         <div className="flex justify-around items-center pb-2 h-[53px] font-medium text-app-gray-3">
-          <h2 className={`text-app-black-1`}>For you</h2>
+          <h2 className="text-app-black-1">For you</h2>
           <h2>Following</h2>
         </div>
       </div>
