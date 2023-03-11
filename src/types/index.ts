@@ -1,2 +1,2 @@
 export * from "./TweetType";
-// export * from './Post';
+export * from "./UserType";

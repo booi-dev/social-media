@@ -5,6 +5,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTweetControls from "../../redux/control/tweetControls";
+import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../ui/AppIcon";
 import TweetBtnPanel from "./TweetBtnPanel";
@@ -25,9 +26,10 @@ function TweetBox(props: TweetBoxType) {
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
+  const { getTweetCreator } = useGetProperties();
 
   const rawTweet: TweetType = {
-    id: nanoid(),
+    tid: nanoid(),
     tweet: "",
     timespan: Date.now(),
     createBy: "booi_mangang",

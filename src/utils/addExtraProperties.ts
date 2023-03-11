@@ -5,7 +5,7 @@ import {
   format,
 } from "date-fns";
 
-import { TweetType } from "../redux/slice/tweet";
+import { TweetType } from "../types";
 
 export type EnhancedTweetType = TweetType & {
   createOn: Date;

@@ -15,8 +15,6 @@ type TweetBtnPanelType = {
 function TweetBtnPanel(props: TweetBtnPanelType) {
   const { tweet, characterCount, isLargeTextArea } = props;
 
-  console.log("large", isLargeTextArea);
-
   return (
     <div
       className={`flex ${

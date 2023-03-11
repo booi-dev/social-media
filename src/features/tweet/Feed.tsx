@@ -11,6 +11,7 @@ import addExtraProperties, {
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
 import FeedOptions from "./FeedOptions";
+import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
 type TweetPropType = {
   tweet: TweetType;
@@ -28,7 +29,7 @@ function Feed(props: TweetPropType) {
   return (
     <>
       <div
-        key={enhancedTweet?.id}
+        key={enhancedTweet?.tid}
         className="relative px-1 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
@@ -37,10 +38,7 @@ function Feed(props: TweetPropType) {
               {`@${enhancedTweet?.createBy}`}
             </h2>
             <div className="mx-1 text-app-black-1.2">·</div>
-            <h2 className="text-app-black-1.2">
-              {" "}
-              {enhancedTweet?.timeElapse}{" "}
-            </h2>
+            <h2 className="text-app-black-1.2">{enhancedTweet?.timeElapse}</h2>
           </div>
 
           <button type="button" className="" onClick={() => setIsOption(true)}>
@@ -48,7 +46,10 @@ function Feed(props: TweetPropType) {
           </button>
         </div>
 
-        <h1 className="p-2">{enhancedTweet?.tweet}</h1>
+        <div className="p-2">
+          <TweetWithHighlightedHashTags tweet={enhancedTweet?.tweet} />
+        </div>
+
         <div className="flex w-full justify-around py-2">
           {/* reply */}
           <div className="flex items-center">
