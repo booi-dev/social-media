@@ -4,7 +4,7 @@ function findHashTags(sentence: string) {
   const hashtags: string[] = [];
 
   words.forEach((word) => {
-    if (word.startsWith(symbol)) {
+    if (word.startsWith(symbol) && word.length > 1) {
       console.log(word);
       hashtags.push(word);
     }

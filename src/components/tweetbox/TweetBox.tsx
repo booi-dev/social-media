@@ -11,7 +11,7 @@ import TweetBtnPanel from "./TweetBtnPanel";
 import TweetAudienceFilter from "./TweetAudienceFilter";
 
 import { TweetType } from "../../redux/slice/tweet";
-// import findHashTags from "../../utils/findHashTag";
+import findHashTags from "../../utils/findHashTag";
 
 type TweetBoxType = {
   handleClose?: () => void;
@@ -57,18 +57,12 @@ function TweetBox(props: TweetBoxType) {
     }
   };
 
-  // finding hash tags
-
-  // const highLightHashTags = (sentence: string) => {
-  //   const tags = findHashTags(sentence);
-  //   console.log(tags);
-  // };
-
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     resizeArea();
-    // highLightHashTags(e.target.value);
     setCharacterCount(characterCount - value.length);
+    const hashtags = findHashTags(value);
+    console.log(hashtags);
     setNewTweet({
       ...newTweet,
       tweet: e.target.value,
