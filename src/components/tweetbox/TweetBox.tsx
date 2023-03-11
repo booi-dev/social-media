@@ -13,8 +13,6 @@ import TweetAudienceFilter from "./TweetAudienceFilter";
 import { TweetType } from "../../redux/slice/tweet";
 // import findHashTags from "../../utils/findHashTag";
 
-import RichEditor from "../ui/RichEditor";
-
 type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
@@ -41,6 +39,7 @@ function TweetBox(props: TweetBoxType) {
 
   const [newTweet, setNewTweet] = useState(rawTweet);
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
+  const [characterCount, setCharacterCount] = useState(280);
 
   const addDataToLocalStorage = (toBeAddData: TweetType) => {
     addData(toBeAddData);
@@ -66,8 +65,10 @@ function TweetBox(props: TweetBoxType) {
   // };
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target;
     resizeArea();
     // highLightHashTags(e.target.value);
+    setCharacterCount(characterCount - value.length);
     setNewTweet({
       ...newTweet,
       tweet: e.target.value,
@@ -121,8 +122,7 @@ function TweetBox(props: TweetBoxType) {
               isLargeTextArea && "min-h-[150px] "
             } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
           />
-          <TweetBtnPanel newTweet={newTweet} />
-          <RichEditor />
+          <TweetBtnPanel tweet={newTweet} characterCount={characterCount} />
         </div>
       </form>
     </div>

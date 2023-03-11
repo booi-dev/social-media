@@ -1,5 +1,5 @@
 import useUserControls from "../redux/control/userControls";
-import TweetForm from "../components/tweetbox/TweetBox";
+import TweetBox from "../components/tweetbox/TweetBox";
 import FeedList from "../features/tweet/FeedList";
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
         </div>
       </div>
       <div className="p-2 border-x-[1px] border-b-[1px] md:p-4">
-        <TweetForm userPic={user.displayPic} />
+        <TweetBox userPic={user.displayPic} />
       </div>
       <FeedList />
     </div>
