@@ -28,8 +28,10 @@ function TweetBtnPanel(props: TweetBtnPanelType) {
         />
         <AppIcon icon={VscSmiley} size={20} color="blue" hoverColor="blue" />
       </div>
-      <div className="flex gap-2 text-app-gray-3 items-center">
+      <div className="flex gap-1.5 text-app-gray-3 items-center">
         <div>{characterCount}</div>
+
+        <div className="border-r-[1px] border-app-gray-3 h-5 " />
 
         <div className="  [&>button]:rounded-3xl [&>button]:text-app-white-1   [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
           {tweet.tweet ? (
