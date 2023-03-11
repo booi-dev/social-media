@@ -10,7 +10,8 @@ import AppIcon from "../ui/AppIcon";
 import TweetBtnPanel from "./TweetBtnPanel";
 import TweetAudienceFilter from "./TweetAudienceFilter";
 
-import { TweetType } from "../../redux/slice/tweet";
+import { TweetType } from "../../types";
+
 import findHashTags from "../../utils/findHashTag";
 
 type TweetBoxType = {
@@ -30,6 +31,7 @@ function TweetBox(props: TweetBoxType) {
     tweet: "",
     timespan: Date.now(),
     createBy: "booi_mangang",
+    hashtags: [],
     replies: [],
     likeCount: 5,
     likeBy: [],
@@ -61,10 +63,11 @@ function TweetBox(props: TweetBoxType) {
     const { value } = e.target;
     resizeArea();
     setCharacterCount(characterCount - value.length);
-    const hashtags = findHashTags(value);
-    console.log(hashtags);
+    const tags = findHashTags(value);
+    console.log(tags);
     setNewTweet({
       ...newTweet,
+      hashtags: tags,
       tweet: e.target.value,
     });
   };

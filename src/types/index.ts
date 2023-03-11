@@ -1,1 +1,2 @@
-export { de };
+export * from "./TweetType";
+// export * from './Post';
