@@ -22,7 +22,7 @@ function TrendingList() {
       <h1 className="py-2 px-4 text-app-font-20 font-bold  ">
         What's happening
       </h1>
-      {sortedTrendingTags.slice(0, 5).map((tag) => (
+      {sortedTrendingTags.slice(0, 4).map((tag) => (
         <Trending key={tag.tag} tag={tag} />
       ))}
     </div>

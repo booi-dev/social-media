@@ -13,8 +13,6 @@ export type TweetType = {
   retweeetBy: string[];
   replyBy: string[];
   tweetKind?: TweetKind;
-
-  [key: string]: string | number | string[] | TweetKind | undefined;
 };
 
 // twitter type.

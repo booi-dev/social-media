@@ -14,7 +14,7 @@ type MoreType = {
 function More(props: MoreType) {
   const { closeHandler } = props;
 
-  const [activeIndex, setActiveIndex] = useState("setting");
+  const [activeIndex, setActiveIndex] = useState("");
 
   return (
     <>

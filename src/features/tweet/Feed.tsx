@@ -39,7 +39,7 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={enhancedTweet?.tid}
-        className="relative px-1 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
+        className="relative px-1 pt-2.5 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
           <div className="flex items-center gap-1.5">
@@ -72,7 +72,7 @@ function Feed(props: TweetPropType) {
           <TweetWithHighlightedHashTags tweet={enhancedTweet?.tweet} />
         </div>
 
-        <div className="flex w-full justify-around py-2">
+        <div className="flex w-full justify-around ">
           {/* reply */}
           <div className="flex items-center">
             <AppIcon icon={BsChat} hoverColor="blue" />
