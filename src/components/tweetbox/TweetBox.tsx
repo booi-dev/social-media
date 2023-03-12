@@ -34,7 +34,7 @@ function TweetBox(props: TweetBoxType) {
     createBy: user.uid,
     hashtags: [],
     replyBy: [],
-    likeBy: [],
+    likeBy: ["01", "02"],
     retweeetBy: [],
   };
 

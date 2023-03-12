@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserType } from "./user";
+import { UserType } from "../../types";
 
 type InitialUserType = {
   users: UserType[];
@@ -18,7 +18,7 @@ const usersSlice = createSlice({
       state.users.push(action.payload);
     },
     destroy: (state, action: PayloadAction<string>) => {
-      state.users = state.users.filter((user) => user.id !== action.payload);
+      state.users = state.users.filter((user) => user.uid !== action.payload);
     },
   },
 });

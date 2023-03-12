@@ -51,11 +51,15 @@ function Feed(props: TweetPropType) {
             <h2 className="text-app-black-1 font-bold">
               {tweetCreator?.displayName}
             </h2>
-            <VerificationBadge type={tweetCreator?.verification.type} />
+
+            {tweetCreator?.verification.state && (
+              <VerificationBadge type={tweetCreator?.verification.type} />
+            )}
+
             <h2 className="text-app-black-1.2">
               {`@${tweetCreator?.userName}`}
             </h2>
-            <div className="mx-1 text-app-black-1.2">·</div>
+            <div className="mx-.5 text-app-black-1.2">·</div>
             <h2 className="text-app-black-1.2">{enhancedTweet?.timeElapse}</h2>
           </div>
 

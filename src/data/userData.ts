@@ -10,7 +10,7 @@ function userData() {
       userName: "goku",
       email: "goku@strongest.com",
       verification: {
-        state: false,
+        state: true,
         type: "blue",
       },
     },
@@ -47,7 +47,7 @@ function userData() {
       email: "luffy@pirateking.com",
       verification: {
         state: false,
-        type: "blue",
+        type: "none",
       },
     },
   ];

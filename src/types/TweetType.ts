@@ -9,9 +9,9 @@ export type TweetType = {
   timespan: number;
   createBy: string;
   hashtags: string[];
-  likeBy: [];
-  retweeetBy: [];
-  replyBy: [];
+  likeBy: string[];
+  retweeetBy: string[];
+  replyBy: string[];
   tweetKind?: TweetKind;
 };
 
