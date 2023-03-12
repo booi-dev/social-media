@@ -9,6 +9,7 @@ type OptionType = {
   clickHandler?: () => void;
   size?: number;
   isHideOnSmall?: boolean;
+  extraStyle?: string;
 };
 
 function Option(props: OptionType) {
@@ -20,6 +21,7 @@ function Option(props: OptionType) {
     setActive,
     clickHandler,
     size,
+    extraStyle,
     isHideOnSmall,
   } = props;
 
@@ -35,7 +37,7 @@ function Option(props: OptionType) {
       onClick={handleBtnClick}
     >
       {isActive ? (
-        <IconActive size={size} className="stroke-1" />
+        <IconActive size={size} className={extraStyle} />
       ) : (
         <Icon size={size} />
       )}
@@ -52,6 +54,7 @@ function Option(props: OptionType) {
 
 Option.defaultProps = {
   size: 25,
+  extraStyle: "",
   clickHandler: undefined,
   isHideOnSmall: true,
 };

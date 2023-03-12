@@ -36,6 +36,7 @@ function HeaderOptions() {
         iconActive={CiHashtag}
         isActive={optionIndex === "Explore"}
         setActive={() => setOptionIndex("Explore")}
+        extraStyle="stroke-1"
       />
       <Option
         text="Notification"

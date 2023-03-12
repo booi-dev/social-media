@@ -20,27 +20,27 @@ function More(props: MoreType) {
     <>
       <div className="absolute bottom-0 left-0 -right-40 flex flex-col  items-start bg-app-white-1 rounded-md shadow-2xl p-1 py-4 md:gap-2 lg:-right-24 lg:items-start lg:gap-3 z-20">
         <Option
-          text="setting"
+          text="Setting"
           icon={IoSettingsOutline}
           iconActive={IoSettingsSharp}
-          isActive={activeIndex === "setting"}
-          setActive={() => setActiveIndex("setting")}
+          isActive={activeIndex === "Setting"}
+          setActive={() => setActiveIndex("Setting")}
           isHideOnSmall={false}
         />
         <Option
-          text="darkmode"
+          text="Darkmode"
           icon={MdOutlineDarkMode}
           iconActive={MdDarkMode}
-          isActive={activeIndex === "darkmode"}
-          setActive={() => setActiveIndex("darkmode")}
+          isActive={activeIndex === "Darkmode"}
+          setActive={() => setActiveIndex("Darkmode")}
           isHideOnSmall={false}
         />
         <Option
-          text="logout"
+          text="Logout"
           icon={BiLogOutCircle}
           iconActive={BiLogOutCircle}
-          isActive={activeIndex === "logout"}
-          setActive={() => setActiveIndex("logout")}
+          isActive={activeIndex === "Logout"}
+          setActive={() => setActiveIndex("Logout")}
           isHideOnSmall={false}
         />
       </div>
