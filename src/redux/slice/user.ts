@@ -2,21 +2,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserType } from "../../types/UserType";
 
+import userData from "../../data/userData";
+
+const users = userData();
+
+const randomUser: UserType = users[Math.floor(Math.random() * users.length)];
+
 const initialUser: UserType = {
   uid: "04",
   // displayName: "x__x",
   // displayPic:
   //   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
   // userName: "o_o",
-  displayName: "Santidas Gausa",
-  displayPicURL:
-    "https://images.pexels.com/photos/1036642/pexels-photo-1036642.jpeg?auto=compress&cs=tinysrgb&w=600",
-  userName: "gausa",
-  email: "booimangang@gmail.com",
-  verification: {
-    state: true,
-    type: "",
-  },
+  displayName: randomUser.displayName,
+  displayPicURL: randomUser.displayPicURL,
+  userName: randomUser.userName,
+  email: randomUser.email,
+  verification: randomUser.verification,
 };
 
 const userSlice = createSlice({
