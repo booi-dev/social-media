@@ -1,13 +1,15 @@
 import { useEffect, useMemo } from "react";
 import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import sortArray from "../../utils/sortArray";
 import { TweetType } from "../../types";
 import Feed from "./Feed";
 
 function FeedList() {
   const { tweetData, replaceTweets } = useTweetControls();
   const { getData } = useLocalStorage();
+
+  const sortArray = ([...toBeSortArray]: TweetType[]) =>
+    toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
   useEffect(() => {
     replaceTweets(sortArray(getData()));

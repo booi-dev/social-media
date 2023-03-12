@@ -1,12 +1,12 @@
 import React from "react";
-import NewsList from "../features/news/NewsList";
+import TrendingList from "../features/trending/TrendingList";
 import SuggestionList from "../features/suggestion/SuggestionList";
 
 function Widget() {
   return (
     <div>
       <div className="flex flex-col gap-4">
-        <NewsList />
+        <TrendingList />
         <SuggestionList />
       </div>
     </div>
