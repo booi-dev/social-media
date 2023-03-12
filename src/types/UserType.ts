@@ -4,4 +4,10 @@ export type UserType = {
   displayPicURL: string;
   userName: string;
   email: string;
+  verification: {
+    state: boolean;
+    type: string;
+  };
 };
+
+// verififiation type: blue, gold, gray

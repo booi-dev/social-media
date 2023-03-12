@@ -9,6 +9,7 @@ import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
+import VerificationBadge from "../../components/ui/VerificationBadge";
 import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
@@ -41,7 +42,7 @@ function Feed(props: TweetPropType) {
         className="relative px-1 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
       >
         <div className="flex justify-between px-2 brightness-150">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <img
               src={tweetCreator?.displayPicURL}
               alt=""
@@ -50,6 +51,7 @@ function Feed(props: TweetPropType) {
             <h2 className="text-app-black-1 font-bold">
               {tweetCreator?.displayName}
             </h2>
+            <VerificationBadge type={tweetCreator?.verification.type} />
             <h2 className="text-app-black-1.2">
               {`@${tweetCreator?.userName}`}
             </h2>
