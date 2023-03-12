@@ -9,19 +9,20 @@ import {
   IoBookmarkOutline,
   IoBookmark,
 } from "react-icons/io5";
-
 import {
   HiOutlineChatBubbleBottomCenter,
   HiChatBubbleBottomCenter,
 } from "react-icons/hi2";
 
 import Option from "./Option";
+import More from "./More";
 
 function HeaderOptions() {
   const [optionIndex, setOptionIndex] = useState("Home");
+  const [isMoreClick, setIsMoreClick] = useState(false);
 
   return (
-    <div className="flex flex-col lg:items-start md:gap-2 lg:gap-3">
+    <div className="relative flex flex-col lg:items-start md:gap-2 lg:gap-3">
       <Option
         text="Home"
         icon={AiOutlineHome}
@@ -70,7 +71,9 @@ function HeaderOptions() {
         iconActive={CiCircleMore}
         isActive={optionIndex === "More"}
         setActive={() => setOptionIndex("More")}
+        clickHandler={() => setIsMoreClick(true)}
       />
+      {isMoreClick && <More closeHandler={() => setIsMoreClick(false)} />}
     </div>
   );
 }
