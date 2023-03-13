@@ -4,9 +4,11 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="relative flex">
-      <Header />
-      <Main />
+    <div className="dark">
+      <div className="relative flex dark:bg-app-black-1 dark:text-app-white-1.2 ">
+        <Header />
+        <Main />
+      </div>
     </div>
   );
 }

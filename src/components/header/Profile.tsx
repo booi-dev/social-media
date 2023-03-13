@@ -14,7 +14,7 @@ function Profile(props: ProfileType) {
     <button
       type="button"
       onClick={menuBtnHandler}
-      className="flex justify-between items-center bg-app-white-2 w-full p-2 rounded-full hover:bg-app-white-4 transition-all duration-500 cursor-pointer md:gap-2"
+      className="flex justify-between items-center bg-inherit dark:bg-app-black-3 w-full p-2 rounded-full hover:bg-app-white-4 transition-all duration-500 cursor-pointer md:gap-2"
     >
       <div className="flex gap-2">
         <img

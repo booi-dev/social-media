@@ -22,7 +22,7 @@ function HeaderOptions() {
   const [isMoreClick, setIsMoreClick] = useState(false);
 
   return (
-    <div className="relative flex flex-col lg:items-start md:gap-2 lg:gap-3">
+    <div className="relative flex flex-col bg-inherit lg:items-start md:gap-2 lg:gap-3">
       <Option
         text="Home"
         icon={AiOutlineHome}

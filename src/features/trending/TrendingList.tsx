@@ -18,8 +18,8 @@ function TrendingList() {
   const sortedTrendingTags = sortArray(trendingTags, "count");
 
   return (
-    <div className="py-4 bg-app-white-2 rounded-2xl cursor-pointer">
-      <h1 className="py-2 px-4 text-app-font-20 font-bold  ">
+    <div className="py-4 bg-app-white-2 dark:bg-app-black-3 text-inherit rounded-2xl cursor-pointer">
+      <h1 className="py-2 px-4 text-app-font-20 font-bold ">
         What's happening
       </h1>
       {sortedTrendingTags.slice(0, 4).map((tag) => (

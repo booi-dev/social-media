@@ -3,7 +3,9 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+
   ],
+  darkMode: 'class',
   theme: {
     screens: {
       sm: '500px',
@@ -30,8 +32,8 @@ module.exports = {
         'pri-blue-2': '#1A8BD8',
 
         'app-black-1': '#090809',
-        'app-black-1.2': '#000000a6',
-        'app-black-3': '#0f1419bf',
+        'app-black-1.2': '#e2e8f0',
+        'app-black-3': '#232324',
 
         'app-gray-1': '#2f3336',
         'app-gray-2': '#333639',

@@ -11,7 +11,7 @@ type SuggestionType = {
 
 function Suggestion({ user }: SuggestionType) {
   return (
-    <div className="flex py-2 px-4 justify-between items-center gap-2 hover:bg-app-white-3">
+    <div className="flex py-2 px-4 justify-between items-center gap-2 hover:bg-app-white-3 dark:hover:bg-transparent">
       <div className="flex items-center gap-2">
         <img
           src={user.displayPicURL}
@@ -25,7 +25,7 @@ function Suggestion({ user }: SuggestionType) {
       </div>
       <button
         type="button"
-        className="py-2 px-5 bg-app-black-1 text-white font-bold rounded-full"
+        className="py-2 px-5 bg-app-black-1 text-inherit font-bold rounded-full"
       >
         Follow
       </button>

@@ -39,16 +39,16 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={enhancedTweet?.tid}
-        className="relative px-1 pt-2.5 text-app-black-3 border-x-[1px] border-b-[1px] hover:bg-app-white-2 md:px-4"
+        className="relative px-1 pt-2.5 text-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1 hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
-        <div className="flex justify-between px-2 brightness-150">
-          <div className="flex items-center gap-1.5">
+        <div className="flex justify-between px-2 text-inherit">
+          <div className="flex items-center gap-1.5 text-inherit">
             <img
               src={tweetCreator?.displayPicURL}
               alt=""
               className="w-12 h-12 rounded-full object-cover"
             />
-            <h2 className="text-app-black-1 font-bold">
+            <h2 className="text-inherit font-bold">
               {tweetCreator?.displayName}
             </h2>
 
@@ -56,11 +56,9 @@ function Feed(props: TweetPropType) {
               <VerificationBadge type={tweetCreator?.verification.type} />
             )}
 
-            <h2 className="text-app-black-1.2">
-              {`@${tweetCreator?.userName}`}
-            </h2>
-            <div className="mx-.5 text-app-black-1.2">·</div>
-            <h2 className="text-app-black-1.2">{enhancedTweet?.timeElapse}</h2>
+            <h2 className="text-inherited">{`@${tweetCreator?.userName}`}</h2>
+            <div className="mx-.5 text-inherited">·</div>
+            <h2 className="text-inherited">{enhancedTweet?.timeElapse}</h2>
           </div>
 
           <button type="button" className="" onClick={() => setIsOption(true)}>
@@ -97,7 +95,7 @@ function Feed(props: TweetPropType) {
           <AppIcon icon={RxShare2} hoverColor="blue" />
         </div>
         {isOption && (
-          <div className="absolute top-0 right-0 min-w-[250px] py-4 rounded-lg  bg-white shadow-lg z-20">
+          <div className="absolute top-2 right-2 min-w-[250px] py-4 rounded-lg text-inherit bg-inherit dark:bg-app-black-3 shadow-lg z-20">
             <FeedOptions tweet={enhancedTweet} />
           </div>
         )}

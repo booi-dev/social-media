@@ -129,7 +129,7 @@ function TweetBox(props: TweetBoxType) {
             value={newTweet.tweet}
             className={`w-full px-2 ${
               isLargeTextArea && "min-h-[150px] "
-            } text-app-font-20 font-normal text-app-black-3 focus:outline-none resize-none hide-scrollbar`}
+            } text-app-font-20 font-normal bg-inherit text-inherit focus:outline-none resize-none hide-scrollbar`}
           />
           <div className=" flex gap-2 px-2 text-pri-blue-1">
             {hashtags.map((tag) => (

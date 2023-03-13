@@ -9,7 +9,7 @@ function Trending({ tag }: NewsPropType) {
   const randomCategory = tag.category[randomEl(tag.category.length)];
 
   return (
-    <div className="py-2 px-4 hover:bg-app-white-3">
+    <div className="py-2 px-4 hover:bg-app-white-3 dark:hover:bg-transparent">
       <h2 className="text-app-gray-3 capitalize">
         {`${randomCategory} · Trending`}
       </h2>

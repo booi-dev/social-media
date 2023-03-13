@@ -20,9 +20,9 @@ function Header() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <div className="flex justify-end h-screen lg:w-[540px]">
-      <div className="flex flex-col justify-between items-center w-[80px] h-full transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
-        <div className="flex flex-col items-center lg:items-start">
+    <header className="flex justify-end h-screen lg:w-[540px] bg-inherit text-inherit">
+      <div className="flex flex-col justify-between items-center w-[80px] h-full bg-inherit transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
+        <div className="flex flex-col items-center lg:items-start bg-inherit">
           <div className="w-min mt-2 lg:mx-2">
             <AppIcon
               icon={BsTwitter}
@@ -45,7 +45,7 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute w-[250px] bottom-24 py-4 font-bold rounded-2xl z-20 space-y-1 bg-white shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
+              <div className="absolute w-[250px] bottom-24 py-4 font-bold rounded-2xl z-20 space-y-1 bg-inherit dark:bg-app-black-3 shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
                 <h1 className="hover:bg-app-white-3">
                   Add an existing account
                 </h1>
@@ -64,7 +64,7 @@ function Header() {
 
         {isTweetFormShow && (
           <>
-            <div className="absolute inset-0 p-2 rounded-2xl bg-white z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
+            <div className="absolute inset-0 p-2 rounded-2xl bg-inherit dark:bg-app-black-3 z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
               <TweetForm
                 handleClose={() => setIsTweetFormShow(false)}
                 isLargeTextArea
@@ -77,7 +77,7 @@ function Header() {
           </>
         )}
       </div>
-    </div>
+    </header>
   );
 }
 

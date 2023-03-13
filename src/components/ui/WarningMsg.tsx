@@ -21,7 +21,7 @@ function WarningMsg(props: WarningMsgType) {
 
   return (
     <>
-      <div className="fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-1/2 w-[300px] h-auto p-8 rounded-lg bg-white shadow-lg z-20">
+      <div className="fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-1/2 w-[300px] h-auto p-8 rounded-lg text-inherit bg-inherit shadow-lg z-20">
         <h1 className="text-app-font-20 font-bold"> {warningText}</h1>
         <p className="text-app-font-14 text-app-black-1.2 leading-4">
           {" "}
