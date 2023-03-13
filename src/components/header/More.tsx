@@ -33,7 +33,7 @@ function More(props: MoreType) {
           isHideOnSmall={false}
         />
         <Option
-          text={theme === "dark" ? "Light" : "Dark"}
+          text={theme === "dark" ? "Light Theme" : "Dark Theme"}
           icon={theme === "dark" ? BsSun : MdDarkMode}
           iconActive={theme === "dark" ? BsSun : MdDarkMode}
           isActive={activeIndex === "Darkmode"}

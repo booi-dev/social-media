@@ -25,7 +25,7 @@ function Suggestion({ user }: SuggestionType) {
       </div>
       <button
         type="button"
-        className="py-2 px-5 bg-app-black-1 text-inherit font-bold rounded-full"
+        className="py-2 px-5 bg-app-black-1 text-app-white-1 dark:text-inherit font-bold rounded-full"
       >
         Follow
       </button>
