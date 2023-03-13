@@ -31,10 +31,6 @@ function Feed(props: TweetPropType) {
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
 
-  // const [enhancedTweet] = useState<EnhancedTweetType>(
-  //   addExtraProperties(tweet)
-  // );
-
   const [isOption, setIsOption] = useState(false);
   const [isReTweet, setIsReTweet] = useState(false);
 
@@ -43,7 +39,7 @@ function Feed(props: TweetPropType) {
   return (
     <>
       <div
-        key={tweet?.tid}
+        key={tweet.tid}
         className="relative px-1 pt-2.5 text-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1 hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
         <div className="flex justify-between px-2 text-inherit">
@@ -63,7 +59,7 @@ function Feed(props: TweetPropType) {
 
             <h2 className="text-inherited">{`@${tweetCreator?.userName}`}</h2>
             <div className="mx-.5 text-inherited">·</div>
-            <h2 className="text-inherited">{getTimeElapse(tweet?.timespan)}</h2>
+            <h2 className="text-inherited">{getTimeElapse(tweet.timespan)}</h2>
           </div>
 
           <button type="button" className="" onClick={() => setIsOption(true)}>
@@ -72,14 +68,14 @@ function Feed(props: TweetPropType) {
         </div>
 
         <div className="p-2">
-          <TweetWithHighlightedHashTags tweet={tweet?.tweet} />
+          <TweetWithHighlightedHashTags tweet={tweet.tweet} />
         </div>
 
         <div className="flex w-full justify-around ">
           {/* reply */}
           <div className="flex items-center">
             <AppIcon icon={BsChat} hoverColor="blue" />
-            {tweet?.replyBy.length > 0 && tweet?.replyBy.length}
+            {tweet.replyBy.length > 0 && tweet.replyBy.length}
           </div>
           {/* retweet */}
           <div className="relative">
@@ -89,14 +85,14 @@ function Feed(props: TweetPropType) {
               className="flex items-center"
             >
               <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
-              {tweet?.retweeetBy.length > 0 && tweet?.retweeetBy.length}
+              {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
             </button>
             {isReTweet && <ReTweet closeHandler={() => setIsReTweet(false)} />}
           </div>
           {/* like */}
           <div className="flex items-center">
             <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-            {tweet?.likeBy.length > 0 && tweet?.likeBy.length}
+            {tweet.likeBy.length > 0 && tweet.likeBy.length}
           </div>
           {/* view */}
           <div className="hidden sm:block">
