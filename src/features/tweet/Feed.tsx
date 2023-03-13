@@ -12,6 +12,7 @@ import BackDrop from "../../components/ui/BackDrop";
 import VerificationBadge from "../../components/ui/VerificationBadge";
 import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
+import ReTweet from "./ReTweet";
 
 import addExtraProperties, {
   EnhancedTweetType,
@@ -32,6 +33,7 @@ function Feed(props: TweetPropType) {
   );
 
   const [isOption, setIsOption] = useState(false);
+  const [isReTweet, setIsReTweet] = useState(false);
 
   const tweetCreator = getTweetCreator(tweet.createBy);
 
@@ -77,10 +79,17 @@ function Feed(props: TweetPropType) {
             {enhancedTweet?.replyBy.length > 0 && enhancedTweet?.replyBy.length}
           </div>
           {/* retweet */}
-          <div className="flex items-center">
-            <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
-            {enhancedTweet?.retweeetBy.length > 0 &&
-              enhancedTweet?.retweeetBy.length}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsReTweet(true)}
+              className="flex items-center"
+            >
+              <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+              {enhancedTweet?.retweeetBy.length > 0 &&
+                enhancedTweet?.retweeetBy.length}
+            </button>
+            {isReTweet && <ReTweet closeHandler={() => setIsReTweet(false)} />}
           </div>
           {/* like */}
           <div className="flex items-center">
