@@ -1,5 +1,3 @@
-import React from "react";
-
 function TweetWithHighlightedHashTags({ tweet }: { tweet: string }) {
   const symbol = "#";
   /* eslint-disable-next-line */
@@ -9,9 +7,13 @@ function TweetWithHighlightedHashTags({ tweet }: { tweet: string }) {
 
   words.forEach((word) => {
     if (word.startsWith(symbol) && word.length > 1) {
-      wordsWithClasses.push(<span className="text-pri-blue-1">{word} </span>);
+      wordsWithClasses.push(
+        <span key={word} className="text-pri-blue-1">
+          {word}
+        </span>
+      );
     } else {
-      wordsWithClasses.push(<> {word} </>);
+      wordsWithClasses.push(<span key={word}> {word} </span>);
     }
   });
 
