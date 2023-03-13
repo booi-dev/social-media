@@ -30,7 +30,7 @@ function TweetBox(props: TweetBoxType) {
   const rawTweet: TweetType = {
     tid: nanoid(),
     tweet: "",
-    timespan: Date.now(),
+    timespan: 0,
     createBy: user.uid,
     hashtags: [],
     replyBy: [],
@@ -77,6 +77,7 @@ function TweetBox(props: TweetBoxType) {
     const tags = createHashTags(value);
     setNewTweet({
       ...newTweet,
+      timespan: Date.now(),
       hashtags: tags,
       tweet: e.target.value,
     });
