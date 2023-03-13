@@ -44,12 +44,6 @@ function TweetBox(props: TweetBoxType) {
 
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
 
-  // const tweetCreator = getTweetCreator()
-
-  const addDataToLocalStorage = (toBeAddData: TweetType) => {
-    addData(toBeAddData);
-  };
-
   // text area auto resizing
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -87,7 +81,7 @@ function TweetBox(props: TweetBoxType) {
     e.preventDefault();
     setNewTweet(rawTweet);
     createTweet(newTweet);
-    addDataToLocalStorage(newTweet);
+    addData(newTweet);
     setHashtags([]);
     handleClose?.();
     console.log(newTweet);

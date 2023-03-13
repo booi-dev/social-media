@@ -40,9 +40,9 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={tweet.tid}
-        className="relative px-1 pt-2.5 text-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1 hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
+        className="relative px-1 pt-2.5 bg-inherit text-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1 hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
-        <div className="flex justify-between px-2 text-inherit">
+        <div className="flex justify-between px-2 bg-inherit text-inherit">
           <div className="flex items-center gap-1.5 text-inherit">
             <img
               src={tweetCreator?.displayPicURL}
@@ -71,14 +71,14 @@ function Feed(props: TweetPropType) {
           <TweetWithHighlightedHashTags tweet={tweet.tweet} />
         </div>
 
-        <div className="flex w-full justify-around ">
+        <div className="flex justify-around w-full bg-inherit ">
           {/* reply */}
           <div className="flex items-center">
             <AppIcon icon={BsChat} hoverColor="blue" />
             {tweet.replyBy.length > 0 && tweet.replyBy.length}
           </div>
           {/* retweet */}
-          <div className="relative">
+          <div className="relative bg-inherit">
             <button
               type="button"
               onClick={() => setIsReTweet(true)}
@@ -87,7 +87,9 @@ function Feed(props: TweetPropType) {
               <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
               {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
             </button>
-            {isReTweet && <ReTweet closeHandler={() => setIsReTweet(false)} />}
+            {isReTweet && (
+              <ReTweet tweet={tweet} closeHandler={() => setIsReTweet(false)} />
+            )}
           </div>
           {/* like */}
           <div className="flex items-center">
