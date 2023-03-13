@@ -5,20 +5,18 @@ import { TweetType } from "../../types";
 import Feed from "./Feed";
 
 function FeedList() {
-  const { tweetData, replaceTweets } = useTweetControls();
   const { getData } = useLocalStorage();
+  const { tweetData, replaceTweets } = useTweetControls();
+  const userData = getData();
 
   const sortArray = ([...toBeSortArray]: TweetType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
   useEffect(() => {
-    replaceTweets(sortArray(getData()));
+    replaceTweets(userData);
   }, []);
 
-  const sortedTweets = useMemo(
-    () => [...tweetData].sort((a, b) => b.timespan - a.timespan),
-    [tweetData]
-  );
+  const sortedTweets = useMemo(() => sortArray(tweetData), [tweetData]);
 
   return (
     <>
