@@ -4,7 +4,7 @@ import { create, destroy, replace } from "../slice/tweet";
 import { TweetType } from "../../types";
 
 function useTweetControls() {
-  const tweetData = useAppSelector((state) => state.tweetStore.tweets);
+  const tweetData = useAppSelector((state) => state.tweetStore);
   const dispatch = useAppDispatch();
 
   const createTweet = (t: TweetType) => {
