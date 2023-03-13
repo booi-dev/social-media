@@ -14,9 +14,12 @@ import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 import ReTweet from "./ReTweet";
 
-import addExtraProperties, {
-  EnhancedTweetType,
-} from "../../utils/addExtraProperties";
+// import addExtraProperties, {
+//   EnhancedTweetType,
+// } from "../../utils/addExtraProperties";
+
+// import getTimeElapse from "../../utils/getTimeElapse";
+
 import { TweetType } from "../../types";
 
 type TweetPropType = {
@@ -26,11 +29,11 @@ type TweetPropType = {
 function Feed(props: TweetPropType) {
   const { tweet } = props;
 
-  const { getTweetCreator } = useGetProperties();
+  const { getTweetCreator, getTimeElapse } = useGetProperties();
 
-  const [enhancedTweet] = useState<EnhancedTweetType>(
-    addExtraProperties(tweet)
-  );
+  // const [enhancedTweet] = useState<EnhancedTweetType>(
+  //   addExtraProperties(tweet)
+  // );
 
   const [isOption, setIsOption] = useState(false);
   const [isReTweet, setIsReTweet] = useState(false);
@@ -40,7 +43,7 @@ function Feed(props: TweetPropType) {
   return (
     <>
       <div
-        key={enhancedTweet?.tid}
+        key={tweet?.tid}
         className="relative px-1 pt-2.5 text-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1 hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
         <div className="flex justify-between px-2 text-inherit">
@@ -60,7 +63,7 @@ function Feed(props: TweetPropType) {
 
             <h2 className="text-inherited">{`@${tweetCreator?.userName}`}</h2>
             <div className="mx-.5 text-inherited">·</div>
-            <h2 className="text-inherited">{enhancedTweet?.timeElapse}</h2>
+            <h2 className="text-inherited">{getTimeElapse(tweet?.timespan)}</h2>
           </div>
 
           <button type="button" className="" onClick={() => setIsOption(true)}>
@@ -69,14 +72,14 @@ function Feed(props: TweetPropType) {
         </div>
 
         <div className="p-2">
-          <TweetWithHighlightedHashTags tweet={enhancedTweet?.tweet} />
+          <TweetWithHighlightedHashTags tweet={tweet?.tweet} />
         </div>
 
         <div className="flex w-full justify-around ">
           {/* reply */}
           <div className="flex items-center">
             <AppIcon icon={BsChat} hoverColor="blue" />
-            {enhancedTweet?.replyBy.length > 0 && enhancedTweet?.replyBy.length}
+            {tweet?.replyBy.length > 0 && tweet?.replyBy.length}
           </div>
           {/* retweet */}
           <div className="relative">
@@ -86,15 +89,14 @@ function Feed(props: TweetPropType) {
               className="flex items-center"
             >
               <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
-              {enhancedTweet?.retweeetBy.length > 0 &&
-                enhancedTweet?.retweeetBy.length}
+              {tweet?.retweeetBy.length > 0 && tweet?.retweeetBy.length}
             </button>
             {isReTweet && <ReTweet closeHandler={() => setIsReTweet(false)} />}
           </div>
           {/* like */}
           <div className="flex items-center">
             <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-            {enhancedTweet?.likeBy.length > 0 && enhancedTweet?.likeBy.length}
+            {tweet?.likeBy.length > 0 && tweet?.likeBy.length}
           </div>
           {/* view */}
           <div className="hidden sm:block">
@@ -105,7 +107,7 @@ function Feed(props: TweetPropType) {
         </div>
         {isOption && (
           <div className="absolute top-2 right-2 min-w-[250px] py-4 rounded-lg text-inherit bg-inherit dark:bg-app-black-3 shadow-lg z-20">
-            <FeedOptions tweet={enhancedTweet} />
+            <FeedOptions tweet={tweet} />
           </div>
         )}
       </div>

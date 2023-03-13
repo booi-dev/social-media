@@ -3,11 +3,12 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { BsPin } from "react-icons/bs";
 import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { EnhancedTweetType } from "../../utils/addExtraProperties";
 import WarningMsg from "../../components/ui/WarningMsg";
 
+import { TweetType } from "../../types";
+
 type FeedOptionsType = {
-  tweet: EnhancedTweetType;
+  tweet: TweetType;
 };
 
 function FeedOptions({ tweet }: FeedOptionsType) {
