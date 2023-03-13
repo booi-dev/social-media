@@ -22,7 +22,7 @@ function Header() {
   return (
     <header className="flex justify-end h-screen lg:w-[540px] bg-inherit text-inherit">
       <div className="flex flex-col justify-between items-center w-[80px] h-full bg-inherit transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
-        <div className="flex flex-col items-center lg:items-start bg-inherit">
+        <div className="flex flex-col items-center lg:items-start bg-inherit ">
           <div className="w-min mt-2 lg:mx-2">
             <AppIcon
               icon={BsTwitter}
