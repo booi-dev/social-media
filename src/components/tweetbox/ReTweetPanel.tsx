@@ -18,8 +18,10 @@ function ReTweet(props: ReTweetType) {
   const { tweet, closeHandler } = props;
 
   const { user } = useUserControls();
-  const { addData } = useLocalStorage();
+  const { addData, updateData } = useLocalStorage();
   const { createTweet } = useTweetControls();
+
+  const newTid = nanoid();
 
   const newTweet: TweetType = {
     ...tweet,
@@ -32,12 +34,16 @@ function ReTweet(props: ReTweetType) {
       kind: "retweet",
       referenceTid: tweet.tid,
     },
-    tid: nanoid(),
+    tid: newTid,
   };
 
   const handleReTweet = () => {
-    addData(newTweet);
+    // create new tweet - redux store
     createTweet(newTweet);
+    // add new data to local storate
+    addData(newTweet);
+    // update the retweet count of the original array
+    updateData(tweet.tid, { retweeetBy: [...tweet.retweeetBy, newTid] });
     closeHandler();
   };
 

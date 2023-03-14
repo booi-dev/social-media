@@ -6,15 +6,15 @@ function useLocalStorage() {
     localStorage.setItem(data.tid, JSON.stringify(data));
   };
 
-  const deleteData = (id: string) => {
+  const deleteData = (did: string) => {
     console.log("delete data from LS");
-    localStorage.removeItem(id);
+    localStorage.removeItem(did);
   };
 
-  const updateData = (id: string, tobeUpdatedData: object) => {
-    console.log("update data in LS");
+  const updateData = (did: string, tobeUpdatedData: object) => {
+    console.log("update data in LS", tobeUpdatedData);
 
-    const currentValue = localStorage.getItem(id);
+    const currentValue = localStorage.getItem(did);
 
     if (!currentValue) return;
 
@@ -24,7 +24,7 @@ function useLocalStorage() {
       ...parsedValue,
       ...tobeUpdatedData,
     };
-    localStorage.setItem(id, JSON.stringify(updatedData));
+    localStorage.setItem(did, JSON.stringify(updatedData));
   };
 
   const getData = () => {
