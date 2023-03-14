@@ -7,7 +7,9 @@ import { RxShare2 } from "react-icons/rx";
 import useUserControls from "../../redux/control/userControls";
 
 import AppIcon from "../../components/ui/AppIcon";
+import BackDrop from "../../components/ui/BackDrop";
 import ReTweetPanel from "../../components/tweetbox/ReTweetPanel";
+import ReplyTweetBox from "../../components/tweetbox/ReplyTweetBox";
 
 import { TweetType } from "../../types";
 
@@ -25,55 +27,76 @@ function TweetActions(props: TweetActionsType) {
   const { user } = useUserControls();
 
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
+  const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
 
   const hasReTweeted = !!tweet.retweeetBy.find((uid) => uid === user.uid);
 
   return (
-    <div className="flex justify-around w-full bg-inherit ">
-      {/* ............reply............ */}
-      <div className="flex items-center">
-        <AppIcon icon={BsChat} hoverColor="blue" />
-        {tweet.replyBy.length > 0 && tweet.replyBy.length}
-      </div>
-      {/* ............retweet ............ */}
-      <div className="relative bg-inherit">
+    <>
+      <div className="flex justify-around w-full bg-inherit text-inherit border-x-[0px] border-b-[1px] dark:border-app-gray-1">
+        {/* ............reply............ */}
         <button
           type="button"
-          onClick={() => setIsReTweetBtnClick(true)}
+          onClick={() => setIsReplyBtnClick(true)}
           className="flex items-center"
         >
-          {hasReTweeted ? (
-            <AppIcon icon={AiOutlineRetweet} color="green" />
-          ) : (
-            <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
-          )}
-          <span className={`${hasReTweeted && "text-green-400"}`}>
-            {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
-          </span>
+          <AppIcon icon={BsChat} hoverColor="blue" />
+          {tweet.replyBy.length > 0 && tweet.replyBy.length}
         </button>
-        {isReTweetBtnClick && (
-          <ReTweetPanel
-            tweet={tweet}
-            reTweetState={{
-              state: hasReTweeted,
-              retweetedTid: tweetState.actionedTweetTid,
-            }}
-            closeHandler={() => setIsReTweetBtnClick(false)}
+        {/* ............retweet ............ */}
+        <div className="relative bg-inherit">
+          <button
+            type="button"
+            onClick={() => setIsReTweetBtnClick(true)}
+            className="flex items-center"
+          >
+            {hasReTweeted ? (
+              <AppIcon icon={AiOutlineRetweet} color="green" />
+            ) : (
+              <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+            )}
+            <span className={`${hasReTweeted && "text-green-400"}`}>
+              {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
+            </span>
+          </button>
+          {isReTweetBtnClick && (
+            <ReTweetPanel
+              tweet={tweet}
+              reTweetState={{
+                state: hasReTweeted,
+                retweetedTid: tweetState.actionedTweetTid,
+              }}
+              closeHandler={() => setIsReTweetBtnClick(false)}
+            />
+          )}
+        </div>
+        {/* ............like............ */}
+        <div className="flex items-center">
+          <AppIcon icon={BsSuitHeart} hoverColor="pink" />
+          {tweet.likeBy.length > 0 && tweet.likeBy.length}
+        </div>
+        {/* ............view............ */}
+        <div className="hidden sm:block">
+          <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
+        </div>
+        {/* ............share............ */}
+        <AppIcon icon={RxShare2} hoverColor="blue" />
+      </div>
+      {isReplyBtnClick && (
+        <>
+          <div className="fixed inset-0 h-screen py-10 min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:h-min z-20">
+            <ReplyTweetBox
+              tweet={tweet}
+              closeHandler={() => setIsReplyBtnClick(false)}
+            />
+          </div>
+          <BackDrop
+            handleClose={() => setIsReplyBtnClick(false)}
+            color="white"
           />
-        )}
-      </div>
-      {/* ............like............ */}
-      <div className="flex items-center">
-        <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-        {tweet.likeBy.length > 0 && tweet.likeBy.length}
-      </div>
-      {/* ............view............ */}
-      <div className="hidden sm:block">
-        <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
-      </div>
-      {/* ............share............ */}
-      <AppIcon icon={RxShare2} hoverColor="blue" />
-    </div>
+        </>
+      )}
+    </>
   );
 }
 

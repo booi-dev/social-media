@@ -12,10 +12,14 @@ import { TweetType } from "../../types";
 
 type ReTweetFeedType = {
   tweet: TweetType;
+  tweetState: {
+    state: "normal" | "retweet";
+    actionedTweetTid?: string;
+  };
 };
 
 function ReTweetFeed(props: ReTweetFeedType) {
-  const { tweet } = props;
+  const { tweet, tweetState } = props;
 
   const { user } = useUserControls();
   const { findTweet } = useTweetControls();
@@ -30,7 +34,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
   const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
-    <div className="border-x-[1px] border-inherit">
+    <div className="border-inherit">
       <h1 className="flex items-center gap-2 px-2 text-app-font-14 font-bold text-app-gray-3 ">
         <AiOutlineRetweet className="stroke-2" />
         {`${
@@ -40,7 +44,10 @@ function ReTweetFeed(props: ReTweetFeedType) {
       {originalTweet ? (
         <Feed
           tweet={originalTweet}
-          tweetState={{ state: "retweet", actionedTweetTid: tweet.tid }}
+          tweetState={{
+            state: "retweet",
+            actionedTweetTid: tweetState.actionedTweetTid,
+          }}
         />
       ) : (
         <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">

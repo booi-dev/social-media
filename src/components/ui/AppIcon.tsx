@@ -4,8 +4,8 @@ type IconPropType = {
   icon: IconType;
   size?: number;
   rotateDeg?: number;
-  hoverColor?: string;
-  color?: string;
+  hoverColor?: "blue" | "pink" | "green" | "black";
+  color?: "blue" | "pink" | "green" | "black";
 };
 
 type colorVariantsType = {
