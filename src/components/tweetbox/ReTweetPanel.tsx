@@ -60,8 +60,14 @@ function ReTweetPanel(props: ReTweetType) {
     if (reTweetState.retweetedTid) deleteTweet(reTweetState.retweetedTid);
     // delete retweeted tweet data from Local Storage
     if (reTweetState.retweetedTid) deleteData(reTweetState.retweetedTid);
-    // update retweetby - remove user id from retweetby array
-    updateData(tweet.tid, { retweeetBy: [...tweet.retweeetBy, newTid] });
+    // update retweetby - remove user-id from the array - Redux Store
+    updateTweet(tweet.tid, {
+      retweeetBy: [...tweet.retweeetBy.filter((uid) => uid !== user.uid)],
+    });
+    // update retweetby - remove user-id from retweetby array
+    updateData(tweet.tid, {
+      retweeetBy: [...tweet.retweeetBy.filter((uid) => uid !== user.uid)],
+    });
     // close panel
     closeHandler();
   };
