@@ -5,6 +5,7 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 import { GoKebabVertical } from "react-icons/go";
 
+import useUserControls from "../../redux/control/userControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../../components/ui/AppIcon";
@@ -24,11 +25,14 @@ function Feed(props: TweetPropType) {
   const { tweet } = props;
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
+  const { user } = useUserControls();
 
   const [isOption, setIsOption] = useState(false);
   const [isReTweet, setIsReTweet] = useState(false);
 
   const tweetCreator = getTweetCreator(tweet.createBy);
+
+  const hasReTweeted = !!tweet.retweeetBy.find((uid) => user.uid);
 
   return (
     <>
@@ -66,38 +70,46 @@ function Feed(props: TweetPropType) {
         </div>
 
         <div className="flex justify-around w-full bg-inherit ">
-          {/* reply */}
+          {/* ............reply............ */}
           <div className="flex items-center">
             <AppIcon icon={BsChat} hoverColor="blue" />
             {tweet.replyBy.length > 0 && tweet.replyBy.length}
           </div>
-          {/* retweet */}
+          {/* ............retweet ............ */}
           <div className="relative bg-inherit">
             <button
               type="button"
               onClick={() => setIsReTweet(true)}
               className="flex items-center"
             >
-              <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
-              {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
+              {hasReTweeted ? (
+                <AppIcon icon={AiOutlineRetweet} color="green" />
+              ) : (
+                <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+              )}
+
+              <span className={`${hasReTweeted && "text-green-400"}`}>
+                {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
+              </span>
             </button>
             {isReTweet && (
               <ReTweetPanel
                 tweet={tweet}
+                hasReTweeted={hasReTweeted}
                 closeHandler={() => setIsReTweet(false)}
               />
             )}
           </div>
-          {/* like */}
+          {/* ............like............ */}
           <div className="flex items-center">
             <AppIcon icon={BsSuitHeart} hoverColor="pink" />
             {tweet.likeBy.length > 0 && tweet.likeBy.length}
           </div>
-          {/* view */}
+          {/* ............view............ */}
           <div className="hidden sm:block">
             <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
           </div>
-          {/* share */}
+          {/* ............share............ */}
           <AppIcon icon={RxShare2} hoverColor="blue" />
         </div>
         {isOption && (
