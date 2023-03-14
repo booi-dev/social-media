@@ -15,11 +15,14 @@ function useTweetControls() {
     dispatch(destroy(tid));
   };
 
+  const findTweet = (tid: string) =>
+    tweetData.find((tweet) => tweet.tid === tid);
+
   const replaceTweets = (ts: TweetType[]) => {
     dispatch(replace(ts));
   };
 
-  return { tweetData, createTweet, deleteTweet, replaceTweets };
+  return { tweetData, createTweet, deleteTweet, findTweet, replaceTweets };
 }
 
 export default useTweetControls;

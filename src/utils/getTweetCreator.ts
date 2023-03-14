@@ -1,7 +1,7 @@
-import userData from "../data/userData";
+import usersData from "../data/usersData";
 
 function getTweetCreator(toGetUid: string) {
-  const users = userData();
+  const users = usersData();
   const user = users.find((u) => u.uid === toGetUid);
   return user;
 }

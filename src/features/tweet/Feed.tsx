@@ -12,13 +12,7 @@ import BackDrop from "../../components/ui/BackDrop";
 import VerificationBadge from "../../components/ui/VerificationBadge";
 import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
-import ReTweet from "./ReTweet";
-
-// import addExtraProperties, {
-//   EnhancedTweetType,
-// } from "../../utils/addExtraProperties";
-
-// import getTimeElapse from "../../utils/getTimeElapse";
+import ReTweetPanel from "../../components/tweetbox/ReTweetPanel";
 
 import { TweetType } from "../../types";
 
@@ -88,7 +82,10 @@ function Feed(props: TweetPropType) {
               {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
             </button>
             {isReTweet && (
-              <ReTweet tweet={tweet} closeHandler={() => setIsReTweet(false)} />
+              <ReTweetPanel
+                tweet={tweet}
+                closeHandler={() => setIsReTweet(false)}
+              />
             )}
           </div>
           {/* like */}

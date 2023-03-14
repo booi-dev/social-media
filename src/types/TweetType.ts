@@ -1,6 +1,6 @@
 type TweetKind = {
   kind: string;
-  reference: string;
+  referenceTid: string;
 };
 
 export type TweetType = {

@@ -1,6 +1,6 @@
 import { UserType } from "../types";
 
-function userData() {
+function usersData() {
   const data: UserType[] = [
     {
       uid: "01",
@@ -55,4 +55,4 @@ function userData() {
   return data;
 }
 
-export default userData;
+export default usersData;

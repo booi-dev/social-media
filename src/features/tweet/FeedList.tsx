@@ -1,8 +1,11 @@
 import { useEffect, useMemo } from "react";
 import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { TweetType } from "../../types";
+
 import Feed from "./Feed";
+import ReTweetFeed from "./ReTweetFeed";
+
+import { TweetType } from "../../types";
 
 function FeedList() {
   const { getData } = useLocalStorage();
@@ -20,9 +23,12 @@ function FeedList() {
 
   return (
     <>
-      {sortedTweets.map((tweet: TweetType) => (
-        <Feed key={tweet.tid} tweet={tweet} />
-      ))}
+      {sortedTweets.map((tweet: TweetType) => {
+        if (tweet.tweetKind?.kind === "retweet") {
+          return <ReTweetFeed key={tweet.tid} tweet={tweet} />;
+        }
+        return <Feed key={tweet.tid} tweet={tweet} />;
+      })}
     </>
   );
 }

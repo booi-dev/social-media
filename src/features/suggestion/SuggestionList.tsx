@@ -1,6 +1,6 @@
 import React from "react";
 import Suggestion from "./Suggestion";
-import userData from "../../data/userData";
+import userData from "../../data/usersData";
 
 function SuggestionList() {
   const users = userData();

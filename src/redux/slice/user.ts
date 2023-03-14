@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserType } from "../../types/UserType";
 
-import userData from "../../data/userData";
+import userData from "../../data/usersData";
 
 const users = userData();
 
