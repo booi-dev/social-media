@@ -6,7 +6,7 @@ import useUserControls from "../../redux/control/userControls";
 import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
-import BackDrop from "../ui/BackDrop";
+import BackDrop from "../../components/ui/BackDrop";
 import { TweetType } from "../../types";
 
 type ReTweetType = {

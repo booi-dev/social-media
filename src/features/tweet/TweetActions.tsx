@@ -8,8 +8,8 @@ import useUserControls from "../../redux/control/userControls";
 
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
-import ReTweetPanel from "../../components/tweetbox/ReTweetPanel";
-import ReplyTweetBox from "../../components/tweetbox/ReplyTweetBox";
+import ReTweetPanel from "./ReTweetPanel";
+import TweetReplyBox from "./TweetReplyBox";
 
 import { TweetType } from "../../types";
 
@@ -33,7 +33,7 @@ function TweetActions(props: TweetActionsType) {
 
   return (
     <>
-      <div className="flex justify-around w-full bg-inherit text-inherit border-x-[0px] border-b-[1px] dark:border-app-gray-1">
+      <div className="flex justify-between w-full pb-2 bg-inherit text-inherit border-x-[0px]  ">
         {/* ............reply............ */}
         <button
           type="button"
@@ -85,7 +85,7 @@ function TweetActions(props: TweetActionsType) {
       {isReplyBtnClick && (
         <>
           <div className="fixed inset-0 h-screen py-10 min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:h-min z-20">
-            <ReplyTweetBox
+            <TweetReplyBox
               tweet={tweet}
               closeHandler={() => setIsReplyBtnClick(false)}
             />

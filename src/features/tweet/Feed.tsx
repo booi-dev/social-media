@@ -4,7 +4,7 @@ import { GoKebabVertical } from "react-icons/go";
 
 import useGetProperties from "../../hooks/useGetProperties";
 
-// import TweetActions from "./TweetActions";
+import TweetActions from "./TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
 import VerificationBadge from "../../components/ui/VerificationBadge";
 import FeedOptions from "./FeedOptions";
@@ -34,7 +34,7 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={tweet.tid}
-        className="relative flex px-1 pt-2.5 bg-inherit text-inherit  hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
+        className="relative flex px-1 pt-3 bg-inherit text-inherit  hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
         <div className="w-12 h-12 shrink-0">
           <img
@@ -42,7 +42,6 @@ function Feed(props: TweetPropType) {
             alt=""
             className="w-full h-full rounded-full object-cover"
           />
-          {/* <div className="w-[1.5px] min-h-[50px] translate-x-10  -translate-y-0 bg-app-gray-3" /> */}
         </div>
         <div className="flex-1">
           <div className="flex justify-between px-2 bg-inherit text-inherit bg">
@@ -70,6 +69,7 @@ function Feed(props: TweetPropType) {
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
+          <TweetActions tweet={tweet} tweetState={{ state: "normal" }} />
         </div>
 
         {isOption && (

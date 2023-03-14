@@ -1,9 +1,9 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 
-import AppIcon from "../ui/AppIcon";
-import Feed from "../../features/tweet/Feed";
-import TweetBox from "./TweetBox";
+import AppIcon from "../../components/ui/AppIcon";
+// import Feed from "../../features/tweet/Feed";
+import TweetBox from "../../components/tweetbox/TweetBox";
 
 import useGetProperties from "../../hooks/useGetProperties";
 
@@ -14,7 +14,7 @@ type ReplyTweetBoxType = {
   closeHandler: () => void;
 };
 
-function ReplyTweetBox(props: ReplyTweetBoxType) {
+function TweetReplyBox(props: ReplyTweetBoxType) {
   const { closeHandler, tweet } = props;
 
   const { getTweetCreator } = useGetProperties();
@@ -22,7 +22,7 @@ function ReplyTweetBox(props: ReplyTweetBoxType) {
   const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
-    <div className="relative bg-app-black-3 w-full h-full rounded-md z-20">
+    <div className="relative bg-app-black-3 w-full h-full rounded-xl z-20">
       <button
         type="button"
         onClick={closeHandler}
@@ -31,7 +31,7 @@ function ReplyTweetBox(props: ReplyTweetBoxType) {
         <AppIcon icon={IoMdClose} size={26} hoverColor="black" />
       </button>
       <div className="px-3 md:px-0">
-        <Feed tweet={tweet} tweetState={{ state: "normal" }} />
+        {/* <Feed tweet={tweet} tweetState={{ state: "normal" }} /> */}
       </div>
       <h1 className="px-4 text-app-gray-3">
         {`Replying to @${tweetCreator?.userName}`}
@@ -43,4 +43,4 @@ function ReplyTweetBox(props: ReplyTweetBoxType) {
   );
 }
 
-export default ReplyTweetBox;
+export default TweetReplyBox;
