@@ -23,6 +23,23 @@ const tweetSlice = createSlice({
         (tweet) => tweet.tid !== action.payload
       );
     },
+    update: (state, action) => {
+      console.log(action.payload);
+      const updatedTweets = state.tweets.map((tweet) => {
+        if (tweet.tid === action.payload.tid) {
+          return {
+            ...tweet,
+            ...action.payload.tobeUpdateProperty,
+          };
+        }
+        return tweet;
+      });
+      return {
+        ...state,
+        tweets: updatedTweets,
+      };
+    },
+
     replace: (state, action: PayloadAction<TweetType[]>) => {
       state.tweets = action.payload;
     },
@@ -30,4 +47,4 @@ const tweetSlice = createSlice({
 });
 
 export default tweetSlice.reducer;
-export const { create, destroy, replace } = tweetSlice.actions;
+export const { create, destroy, update, replace } = tweetSlice.actions;

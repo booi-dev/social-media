@@ -11,16 +11,19 @@ import { TweetType } from "../../types";
 
 type ReTweetType = {
   tweet: TweetType;
-  hasReTweeted: boolean;
   closeHandler: () => void;
+  reTweetState: {
+    state: boolean;
+    retweetedTid?: string;
+  };
 };
 
-function ReTweet(props: ReTweetType) {
-  const { tweet, hasReTweeted, closeHandler } = props;
+function ReTweetPanel(props: ReTweetType) {
+  const { tweet, reTweetState, closeHandler } = props;
 
   const { user } = useUserControls();
-  const { addData, updateData } = useLocalStorage();
-  const { createTweet } = useTweetControls();
+  const { addData, updateData, deleteData } = useLocalStorage();
+  const { createTweet, deleteTweet, updateTweet } = useTweetControls();
 
   const newTid = nanoid();
 
@@ -43,18 +46,33 @@ function ReTweet(props: ReTweetType) {
     createTweet(newTweet);
     // add new data to local storate
     addData(newTweet);
-    // update the retweet count of the original array
+    // update retweetby - add user id to the array - Redux Store
+    updateTweet(tweet.tid, { retweeetBy: [...tweet.retweeetBy, user.uid] });
+    // update retweetby - add user id to the array - Local Store
+    updateData(tweet.tid, { retweeetBy: [...tweet.retweeetBy, user.uid] });
+    // close panel
+    closeHandler();
+  };
+
+  const handleUndoReTweet = () => {
+    console.log("undoing retweet", tweet, reTweetState.retweetedTid);
+    // delete THE retweeted tweet - redux store
+    if (reTweetState.retweetedTid) deleteTweet(reTweetState.retweetedTid);
+    // delete retweeted tweet data from Local Storage
+    if (reTweetState.retweetedTid) deleteData(reTweetState.retweetedTid);
+    // update retweetby - remove user id from retweetby array
     updateData(tweet.tid, { retweeetBy: [...tweet.retweeetBy, newTid] });
+    // close panel
     closeHandler();
   };
 
   return (
     <>
       <div className="absolute -right-5 -left-5 -bottom-10 flex flex-col gap-3 p-3 rounded-md bg-inherit dark:bg-app-black-1 text-inherit font-bold shadow shadow-app-gray-3 w-[170px] z-20">
-        {hasReTweeted ? (
+        {reTweetState.state ? (
           <button
             type="button"
-            onClick={handleReTweet}
+            onClick={handleUndoReTweet}
             className="flex items-center gap-2"
           >
             <AiOutlineRetweet />
@@ -81,4 +99,8 @@ function ReTweet(props: ReTweetType) {
   );
 }
 
-export default ReTweet;
+// ReTweetPanel.defaultProps = {
+//   reTweetedTid: false,
+// };
+
+export default ReTweetPanel;

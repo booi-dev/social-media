@@ -19,20 +19,24 @@ import { TweetType } from "../../types";
 
 type TweetPropType = {
   tweet: TweetType;
+  tweetState: {
+    state: "normal" | "retweet";
+    actionedTweetTid?: string;
+  };
 };
 
 function Feed(props: TweetPropType) {
-  const { tweet } = props;
+  const { tweet, tweetState } = props;
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
   const { user } = useUserControls();
 
   const [isOption, setIsOption] = useState(false);
-  const [isReTweet, setIsReTweet] = useState(false);
+  const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
 
   const tweetCreator = getTweetCreator(tweet.createBy);
 
-  const hasReTweeted = !!tweet.retweeetBy.find((uid) => user.uid);
+  const hasReTweeted = !!tweet.retweeetBy.find((uid) => uid === user.uid);
 
   return (
     <>
@@ -79,7 +83,7 @@ function Feed(props: TweetPropType) {
           <div className="relative bg-inherit">
             <button
               type="button"
-              onClick={() => setIsReTweet(true)}
+              onClick={() => setIsReTweetBtnClick(true)}
               className="flex items-center"
             >
               {hasReTweeted ? (
@@ -87,16 +91,18 @@ function Feed(props: TweetPropType) {
               ) : (
                 <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
               )}
-
               <span className={`${hasReTweeted && "text-green-400"}`}>
                 {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
               </span>
             </button>
-            {isReTweet && (
+            {isReTweetBtnClick && (
               <ReTweetPanel
                 tweet={tweet}
-                hasReTweeted={hasReTweeted}
-                closeHandler={() => setIsReTweet(false)}
+                reTweetState={{
+                  state: hasReTweeted,
+                  retweetedTid: tweetState.actionedTweetTid,
+                }}
+                closeHandler={() => setIsReTweetBtnClick(false)}
               />
             )}
           </div>

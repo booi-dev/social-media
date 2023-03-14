@@ -27,7 +27,13 @@ function FeedList() {
         if (tweet.tweetKind?.kind === "retweet") {
           return <ReTweetFeed key={tweet.tid} tweet={tweet} />;
         }
-        return <Feed key={tweet.tid} tweet={tweet} />;
+        return (
+          <Feed
+            key={tweet.tid}
+            tweet={tweet}
+            tweetState={{ state: "normal" }}
+          />
+        );
       })}
     </>
   );
