@@ -11,11 +11,12 @@ import { TweetType } from "../../types";
 
 type ReTweetType = {
   tweet: TweetType;
+  hasReTweeted: boolean;
   closeHandler: () => void;
 };
 
 function ReTweet(props: ReTweetType) {
-  const { tweet, closeHandler } = props;
+  const { tweet, hasReTweeted, closeHandler } = props;
 
   const { user } = useUserControls();
   const { addData, updateData } = useLocalStorage();
@@ -49,18 +50,30 @@ function ReTweet(props: ReTweetType) {
 
   return (
     <>
-      <div className="absolute -right-5 -left-5 -bottom-10 flex flex-col gap-3 p-3 rounded-md bg-inherit dark:bg-app-black-1 text-inherit shadow shadow-app-gray-3 w-[150px] z-20">
-        <button
-          type="button"
-          onClick={handleReTweet}
-          className="flex items-center gap-2"
-        >
-          <AiOutlineRetweet />
-          Retweet
-        </button>
+      <div className="absolute -right-5 -left-5 -bottom-10 flex flex-col gap-3 p-3 rounded-md bg-inherit dark:bg-app-black-1 text-inherit font-bold shadow shadow-app-gray-3 w-[170px] z-20">
+        {hasReTweeted ? (
+          <button
+            type="button"
+            onClick={handleReTweet}
+            className="flex items-center gap-2"
+          >
+            <AiOutlineRetweet />
+            Undo Retweet
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleReTweet}
+            className="flex items-center gap-2"
+          >
+            <AiOutlineRetweet />
+            Retweet
+          </button>
+        )}
+
         <button type="button" className="flex items-center gap-2">
           <TbPencilMinus />
-          Quote Tweet{" "}
+          Quote Tweet
         </button>
       </div>
       <BackDrop handleClose={closeHandler} />
