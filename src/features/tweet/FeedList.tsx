@@ -22,7 +22,7 @@ function FeedList() {
   const sortedTweets = useMemo(() => sortArray(tweetData), [tweetData]);
 
   return (
-    <div className="border-x-[1px] border-b-[1px] dark:border-app-gray-1">
+    <div className="bg-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1">
       {sortedTweets.map((tweet: TweetType) => {
         if (tweet.tweetKind?.kind === "retweet") {
           return (

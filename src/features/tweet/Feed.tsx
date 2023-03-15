@@ -32,7 +32,7 @@ function Feed(props: TweetPropType) {
         <div className="w-12 h-12 shrink-0">
           <TweetCreatorPic tweetCreatorUid={tweet.createBy} />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 bg-inherit">
           <div className="flex justify-between px-2 bg-inherit text-inherit bg">
             <div className="flex items-center gap-1.5 text-inherit">
               <TweetSignature

@@ -23,7 +23,7 @@ function More(props: MoreType) {
 
   return (
     <>
-      <div className="absolute bottom-0 left-0 -right-40 flex flex-col  items-start p-1 py-4 bg-inherit dark:bg-app-black-3 rounded-md shadow-2xl md:gap-2 lg:-right-24 lg:items-start lg:gap-3 z-20">
+      <div className="absolute bottom-0 left-0 -right-40 flex flex-col  items-start p-1 py-4 bg-inherit rounded-md shadow shadow-app-gray-3 md:gap-2 lg:-right-24 lg:items-start lg:gap-3 z-20">
         <Option
           text="Setting"
           icon={IoSettingsOutline}
@@ -50,7 +50,7 @@ function More(props: MoreType) {
           isHideOnSmall={false}
         />
       </div>
-      <BackDrop handleClose={closeHandler} color="black" />
+      <BackDrop handleClose={closeHandler} />
     </>
   );
 }
