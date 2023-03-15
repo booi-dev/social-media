@@ -18,10 +18,11 @@ import { TweetType } from "../../types";
 type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
+  isFilterBtnHidden?: boolean;
 };
 
 function TweetBox(props: TweetBoxType) {
-  const { handleClose, isLargeTextArea } = props;
+  const { handleClose, isLargeTextArea, isFilterBtnHidden } = props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
@@ -108,14 +109,17 @@ function TweetBox(props: TweetBoxType) {
           />
         </div>
         <div className="w-full">
-          <button
-            type="button"
-            onClick={() => setIsAudienceFilter(true)}
-            className="flex items-center gap-1 w-min px-3 mb-1 hover:bg-pri-blue-1 hover:bg-opacity-20 rounded-full text-pri-blue-1 font-bold border-[1px] border-app-white-5 "
-          >
-            Everyone
-            <FiChevronDown className="stroke-2 translate-y-[2px]" />
-          </button>
+          {!isFilterBtnHidden && (
+            <button
+              type="button"
+              onClick={() => setIsAudienceFilter(true)}
+              className="flex items-center gap-1 w-min px-3 mb-1 hover:bg-pri-blue-1 hover:bg-opacity-20 rounded-full text-pri-blue-1 font-bold border-[1px] border-app-white-5 "
+            >
+              Everyone
+              <FiChevronDown className="stroke-2 translate-y-[2px]" />
+            </button>
+          )}
+
           <textarea
             ref={textAreaRef}
             maxLength={500}
@@ -145,6 +149,7 @@ function TweetBox(props: TweetBoxType) {
 TweetBox.defaultProps = {
   handleClose: undefined,
   isLargeTextArea: false,
+  isFilterBtnHidden: false,
 };
 
 export default TweetBox;
