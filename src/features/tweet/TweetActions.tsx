@@ -86,10 +86,10 @@ function TweetActions(props: TweetActionsType) {
       {isReplyBtnClick && (
         <>
           <div className="fixed inset-0 h-screen py-10 min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:h-min z-20">
-            <TweetReplyBox
+            {/* <TweetReplyBox
               tweet={tweet}
               closeHandler={() => setIsReplyBtnClick(false)}
-            />
+            /> */}
           </div>
           <BackDrop
             handleClose={() => setIsReplyBtnClick(false)}

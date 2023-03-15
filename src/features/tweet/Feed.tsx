@@ -2,12 +2,13 @@ import { useState } from "react";
 
 import { GoKebabVertical } from "react-icons/go";
 
-import useGetProperties from "../../hooks/useGetProperties";
+// import useGetProperties from "../../hooks/useGetProperties";
 
+import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
 import TweetOptions from "./TweetOptions";
 import TweetActions from "./TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
-import VerificationBadge from "../../components/ui/VerificationBadge";
+// import VerificationBadge from "../../components/ui/VerificationBadge";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
 import { TweetType, ActionStateType } from "../../types";
@@ -21,11 +22,11 @@ function Feed(props: TweetPropType) {
   const { tweet, actionState } = props;
   // console.log(tweet.tid, tweet.reTweets);
 
-  const { getTweetCreator, getTimeElapse } = useGetProperties();
+  // const { getTweetCreator } = useGetProperties();
 
   const [isOption, setIsOption] = useState(false);
 
-  const tweetCreator = getTweetCreator(tweet.createBy);
+  // const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
     <>
@@ -34,26 +35,15 @@ function Feed(props: TweetPropType) {
         className="relative flex px-1 pt-3 bg-inherit text-inherit  hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
       >
         <div className="w-12 h-12 shrink-0">
-          <img
-            src={tweetCreator?.displayPicURL}
-            alt=""
-            className="w-full h-full rounded-full object-cover"
-          />
+          <TweetCreatorPic tweetCreatorUid={tweet.createBy} />
         </div>
         <div className="flex-1">
           <div className="flex justify-between px-2 bg-inherit text-inherit bg">
             <div className="flex items-center gap-1.5 text-inherit">
-              <h2 className="text-inherit font-bold">
-                {tweetCreator?.displayName}
-              </h2>
-              {tweetCreator?.verification.state && (
-                <VerificationBadge type={tweetCreator?.verification.type} />
-              )}
-              <h2 className="text-inherited">{`@${tweetCreator?.userName}`}</h2>
-              <div className="mx-.5 text-inherited">·</div>
-              <h2 className="text-inherited">
-                {getTimeElapse(tweet.timespan)}
-              </h2>
+              <TweetSignature
+                tweetCreatorUid={tweet.createBy}
+                tweetTimespan={tweet.timespan}
+              />
             </div>
             <button
               type="button"
