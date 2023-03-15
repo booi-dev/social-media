@@ -29,7 +29,10 @@ function TweetActions(props: TweetActionsType) {
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
 
+  // retweet
   const hasReTweeted = !!tweet.retweeetBy.find((uid) => uid === user.uid);
+
+  // reply
 
   return (
     <>

@@ -23,12 +23,8 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
 
   return (
     <div className="relative bg-app-black-3 w-full h-full rounded-xl z-20">
-      <button
-        type="button"
-        onClick={closeHandler}
-        className="hover:text-pri-blue-1 transition-all duration-500"
-      >
-        <AppIcon icon={IoMdClose} size={26} hoverColor="black" />
+      <button type="button" onClick={closeHandler}>
+        <AppIcon icon={IoMdClose} size={26} hoverColor="blue" />
       </button>
       <div className="px-3 md:px-0">
         {/* <Feed tweet={tweet} tweetState={{ state: "normal" }} /> */}

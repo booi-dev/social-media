@@ -13,7 +13,7 @@ type FeedOptionsType = {
   tweet: TweetType;
 };
 
-function FeedOptions({ tweet }: FeedOptionsType) {
+function TweetOptions({ tweet }: FeedOptionsType) {
   const { deleteTweet } = useTweetControls();
   const { deleteData } = useLocalStorage();
 
@@ -59,4 +59,4 @@ function FeedOptions({ tweet }: FeedOptionsType) {
   );
 }
 
-export default FeedOptions;
+export default TweetOptions;

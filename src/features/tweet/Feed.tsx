@@ -4,10 +4,10 @@ import { GoKebabVertical } from "react-icons/go";
 
 import useGetProperties from "../../hooks/useGetProperties";
 
+import TweetOptions from "./TweetOptions";
 import TweetActions from "./TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
 import VerificationBadge from "../../components/ui/VerificationBadge";
-import FeedOptions from "./FeedOptions";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
 import { TweetType } from "../../types";
@@ -22,7 +22,6 @@ type TweetPropType = {
 
 function Feed(props: TweetPropType) {
   const { tweet, tweetState } = props;
-  console.log(tweetState.state);
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
 
@@ -69,12 +68,12 @@ function Feed(props: TweetPropType) {
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
-          <TweetActions tweet={tweet} tweetState={{ state: "normal" }} />
+          <TweetActions tweet={tweet} tweetState={tweetState} />
         </div>
 
         {isOption && (
           <div className="absolute top-2 right-2 min-w-[250px] py-4 rounded-lg text-inherit bg-inherit dark:bg-app-black-3 shadow-lg z-20">
-            <FeedOptions tweet={tweet} />
+            <TweetOptions tweet={tweet} />
           </div>
         )}
       </div>
