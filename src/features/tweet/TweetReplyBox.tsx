@@ -20,7 +20,7 @@ function OriginalTweet({ tweet }: OriginalTweetType) {
   return (
     <div className="flex flex-col px-4 ">
       <div className="flex gap-4 ">
-        <div className="w-12 h-12 shrink-0">
+        <div className="w-14 h-14 shrink-0">
           <TweetCreatorPic tweetCreatorUid={tweet.createBy} />
         </div>
         <div className="flex items-center gap-1.5 text-inherit">
@@ -33,16 +33,17 @@ function OriginalTweet({ tweet }: OriginalTweetType) {
 
       <div className="flex gap-4">
         <div className="flex justify-center w-12">
-          <div className="w-[1px] h-full bg-app-gray-3" />
+          <div className="w-[1px] h-full bg-app-white-3 dark:bg-app-gray-3" />
         </div>
         <div>{tweet.tweet}</div>
       </div>
       <div className="flex gap-4">
         <div className="flex justify-center w-12">
-          <div className="w-[1px] h-full bg-app-gray-3" />
+          <div className="w-[1px] h-full bg-app-white-3 dark:bg-app-gray-3" />
         </div>
-        <h1 className=" py-2 text-app-gray-3">
-          {`Replying to @${tweetCreator?.userName}`}
+        <h1 className=" py-3 text-app-gray-3">
+          Replying to
+          <span className="text-pri-blue-1"> @{tweetCreator?.userName}</span>
         </h1>
       </div>
     </div>
@@ -58,7 +59,7 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
   const { closeHandler, tweet } = props;
 
   return (
-    <div className="relative bg-app-black-3 w-full h-full rounded-xl z-20">
+    <div className="relative w-screen sm:w-full h-full bg-app-white-1 shadow shadow-app-gray-3 dark:bg-app-black-1  rounded-xl z-20">
       <button type="button" onClick={closeHandler}>
         <AppIcon icon={IoMdClose} size={26} hoverColor="blue" />
       </button>

@@ -19,7 +19,7 @@ function BackDrop(props: BackDropPropType) {
 
   const colorVariants: colorVariantType = {
     transperant: "",
-    white: "bg-white bg-opacity-40",
+    white: "bg-white bg-opacity-30",
     black: "bg-black bg-opacity-40",
     blue: "bg-pri-blue-1 bg-opacity-40",
   };
