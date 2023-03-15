@@ -31,7 +31,7 @@ function FeedList() {
               tweet={tweet}
               actionState={{
                 state: "retweet",
-                actionTweetTid: tweet.tweetKind.referenceTid,
+                actionTweetId: tweet.tweetKind.referenceTid,
               }}
             />
           );

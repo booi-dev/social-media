@@ -63,11 +63,11 @@ function TweetActions(props: TweetActionsType) {
           {isReTweetBtnClick && (
             <ReTweetPanel
               tweet={tweet}
+              closeHandler={() => setIsReTweetBtnClick(false)}
               reTweetState={{
                 state: hasReTweeted,
-                reTweetId: actionState.actionTweetTid,
+                reTweetId: actionState.actionTweetId,
               }}
-              closeHandler={() => setIsReTweetBtnClick(false)}
             />
           )}
         </div>

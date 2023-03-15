@@ -37,13 +37,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
         } Retweeted`}
       </h1>
       {originalTweet ? (
-        <Feed
-          tweet={originalTweet}
-          actionState={{
-            state: "retweet",
-            actionTweetTid: actionState.actionTweetTid,
-          }}
-        />
+        <Feed tweet={originalTweet} actionState={actionState} />
       ) : (
         <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">
           --Tweet not found

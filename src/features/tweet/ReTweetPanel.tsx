@@ -59,18 +59,24 @@ function ReTweetPanel(props: ReTweetType) {
   };
 
   const handleUndoReTweet = () => {
-    console.log("undoing retweet", tweet, reTweetState.reTweetId);
-    // delete THE retweeted tweet - redux store
-    if (reTweetState.reTweetId) deleteTweet(reTweetState.reTweetId);
-    // delete retweeted tweet data from Local Storage
-    if (reTweetState.reTweetId) deleteData(reTweetState.reTweetId);
-    // update retweetby - remove user-id from the array - Redux Store
+    console.log("undoing retweet", reTweetState.reTweetId);
+
+    // DELETE the retweeted tweet - redux store & LS
+    tweet.reTweets.forEach((retweet) => {
+      if (retweet.byUid === user.uid) {
+        deleteTweet(retweet.reTweetTid);
+        deleteData(retweet.reTweetTid);
+      }
+    });
+
+    // UPDATE reTweets - remove user-id from retweetby array
     updateTweet(tweet.tid, {
       reTweets: [
         ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
       ],
     });
-    // update retweetby - remove user-id from retweetby array
+
+    // UPDATE reTweets - remove user-id from retweetby array
     updateData(tweet.tid, {
       reTweets: [
         ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
