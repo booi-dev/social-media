@@ -14,20 +14,26 @@ type FeedOptionsType = {
 };
 
 function TweetOptions({ tweet }: FeedOptionsType) {
+  //
   const { deleteTweet } = useTweetControls();
   const { deleteData } = useLocalStorage();
 
   const [isWarning, setIsWarning] = useState(false);
 
   const deleteReTweets = () => {
-    console.log("sdf");
+    // delete every retweets
+    tweet.reTweets.forEach((retweeets) => {
+      deleteTweet(retweeets.reTweetTid);
+      deleteData(retweeets.reTweetTid);
+    });
+    // keep the replies
   };
 
   //
   const handleDelete = () => {
+    deleteReTweets();
     deleteTweet(tweet.tid);
     deleteData(tweet.tid);
-    deleteReTweets();
   };
 
   return (

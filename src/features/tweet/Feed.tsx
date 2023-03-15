@@ -19,7 +19,7 @@ type TweetPropType = {
 
 function Feed(props: TweetPropType) {
   const { tweet, actionState } = props;
-  console.log(tweet.tid, tweet.reTweets);
+  // console.log(tweet.tid, tweet.reTweets);
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
 

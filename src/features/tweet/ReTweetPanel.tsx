@@ -119,8 +119,4 @@ function ReTweetPanel(props: ReTweetType) {
   );
 }
 
-// ReTweetPanel.defaultProps = {
-//   reTweetedTid: false,
-// };
-
 export default ReTweetPanel;
