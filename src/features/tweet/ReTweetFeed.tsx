@@ -6,19 +6,15 @@ import useGetProperties from "../../hooks/useGetProperties";
 
 import Feed from "./Feed";
 
-import { TweetType } from "../../types";
+import { TweetType, ActionStateType } from "../../types";
 
 type ReTweetFeedType = {
   tweet: TweetType;
-  tweetState: {
-    state: "normal" | "retweet";
-    actionedTweetTid?: string;
-  };
+  actionState: ActionStateType;
 };
 
 function ReTweetFeed(props: ReTweetFeedType) {
-  const { tweet, tweetState } = props;
-  console.log(tweet.tweetKind?.referenceTid);
+  const { tweet, actionState } = props;
 
   const { user } = useUserControls();
   const { findTweet } = useTweetControls();
@@ -30,7 +26,6 @@ function ReTweetFeed(props: ReTweetFeedType) {
 
   if (tweet.tweetKind) {
     originalTweet = findTweet(tweet.tweetKind.referenceTid);
-    console.log(originalTweet);
   }
 
   return (
@@ -44,9 +39,9 @@ function ReTweetFeed(props: ReTweetFeedType) {
       {originalTweet ? (
         <Feed
           tweet={originalTweet}
-          tweetState={{
+          actionState={{
             state: "retweet",
-            actionedTweetTid: tweetState.actionedTweetTid,
+            actionTweetTid: actionState.actionTweetTid,
           }}
         />
       ) : (

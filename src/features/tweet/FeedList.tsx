@@ -29,9 +29,9 @@ function FeedList() {
             <ReTweetFeed
               key={tweet.tid}
               tweet={tweet}
-              tweetState={{
+              actionState={{
                 state: "retweet",
-                actionedTweetTid: tweet.tweetKind.referenceTid,
+                actionTweetTid: tweet.tweetKind.referenceTid,
               }}
             />
           );
@@ -40,7 +40,7 @@ function FeedList() {
           <Feed
             key={tweet.tid}
             tweet={tweet}
-            tweetState={{ state: "normal" }}
+            actionState={{ state: "normal" }}
           />
         );
       })}

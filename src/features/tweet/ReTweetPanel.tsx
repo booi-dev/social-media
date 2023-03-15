@@ -14,7 +14,7 @@ type ReTweetType = {
   closeHandler: () => void;
   reTweetState: {
     state: boolean;
-    retweetedTid?: string;
+    reTweetId?: string;
   };
 };
 
@@ -47,28 +47,32 @@ function ReTweetPanel(props: ReTweetType) {
     // add new data to local storate
     addData(newTweet);
     // update retweetby - add user id to the array - Redux Store
-    updateTweet(tweet.tid, { reTweets: [...tweet.reTweets, user.uid] });
+    updateTweet(tweet.tid, {
+      reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
+    });
     // update retweetby - add user id to the array - Local Store
-    updateData(tweet.tid, { reTweets: [...tweet.reTweets, user.uid] });
+    updateData(tweet.tid, {
+      reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
+    });
     // close panel
     closeHandler();
   };
 
   const handleUndoReTweet = () => {
-    console.log("undoing retweet", tweet, reTweetState.retweetedTid);
+    console.log("undoing retweet", tweet, reTweetState.reTweetId);
     // delete THE retweeted tweet - redux store
-    if (reTweetState.retweetedTid) deleteTweet(reTweetState.retweetedTid);
+    if (reTweetState.reTweetId) deleteTweet(reTweetState.reTweetId);
     // delete retweeted tweet data from Local Storage
-    if (reTweetState.retweetedTid) deleteData(reTweetState.retweetedTid);
+    if (reTweetState.reTweetId) deleteData(reTweetState.reTweetId);
     // update retweetby - remove user-id from the array - Redux Store
     updateTweet(tweet.tid, {
-      retweeetBy: [
+      reTweets: [
         ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
       ],
     });
     // update retweetby - remove user-id from retweetby array
     updateData(tweet.tid, {
-      retweeetBy: [
+      reTweets: [
         ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
       ],
     });

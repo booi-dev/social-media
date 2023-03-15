@@ -1,11 +1,11 @@
 type ReTweetType = {
   byUid: string;
-  tweet: string;
+  reTweetTid: string;
 };
 
 type ReplyType = {
   byUid: string;
-  tweet: string;
+  replyTid: string;
 };
 
 type TweetKindType = {

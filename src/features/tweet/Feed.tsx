@@ -10,18 +10,16 @@ import BackDrop from "../../components/ui/BackDrop";
 import VerificationBadge from "../../components/ui/VerificationBadge";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
-import { TweetType } from "../../types";
+import { TweetType, ActionStateType } from "../../types";
 
 type TweetPropType = {
   tweet: TweetType;
-  tweetState: {
-    state: "normal" | "retweet";
-    actionedTweetTid?: string;
-  };
+  actionState: ActionStateType;
 };
 
 function Feed(props: TweetPropType) {
-  const { tweet, tweetState } = props;
+  const { tweet, actionState } = props;
+  console.log(tweet.tid, tweet.reTweets);
 
   const { getTweetCreator, getTimeElapse } = useGetProperties();
 
@@ -68,7 +66,7 @@ function Feed(props: TweetPropType) {
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
-          <TweetActions tweet={tweet} tweetState={tweetState} />
+          <TweetActions tweet={tweet} actionState={actionState} />
         </div>
 
         {isOption && (
