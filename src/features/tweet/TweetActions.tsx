@@ -85,7 +85,7 @@ function TweetActions(props: TweetActionsType) {
       </div>
       {isReplyBtnClick && (
         <>
-          <div className="fixed inset-0 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:h-min z-20">
+          <div className="fixed inset-0 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[500px]  sm:h-min z-20">
             <TweetReplyBox
               tweet={tweet}
               closeHandler={() => setIsReplyBtnClick(false)}
