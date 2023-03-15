@@ -19,14 +19,9 @@ type TweetPropType = {
 };
 
 function Feed(props: TweetPropType) {
+  //
   const { tweet, actionState } = props;
-  // console.log(tweet.tid, tweet.reTweets);
-
-  // const { getTweetCreator } = useGetProperties();
-
   const [isOption, setIsOption] = useState(false);
-
-  // const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
     <>
