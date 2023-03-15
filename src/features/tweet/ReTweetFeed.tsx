@@ -1,5 +1,3 @@
-import React from "react";
-
 import { AiOutlineRetweet } from "react-icons/ai";
 
 import useUserControls from "../../redux/control/userControls";
@@ -20,18 +18,20 @@ type ReTweetFeedType = {
 
 function ReTweetFeed(props: ReTweetFeedType) {
   const { tweet, tweetState } = props;
+  console.log(tweet.tweetKind?.referenceTid);
 
   const { user } = useUserControls();
   const { findTweet } = useTweetControls();
   const { getTweetCreator } = useGetProperties();
 
+  const tweetCreator = getTweetCreator(tweet.createBy);
+
   let originalTweet: TweetType | undefined;
 
   if (tweet.tweetKind) {
     originalTweet = findTweet(tweet.tweetKind.referenceTid);
+    console.log(originalTweet);
   }
-
-  const tweetCreator = getTweetCreator(tweet.createBy);
 
   return (
     <div className="border-inherit">

@@ -33,9 +33,9 @@ function TweetBox(props: TweetBoxType) {
     timespan: 0,
     createBy: user.uid,
     hashtags: [],
-    replyBy: [],
-    likeBy: ["01", "02"],
-    retweeetBy: [],
+    likes: ["01", "02"],
+    replies: [],
+    reTweets: [],
   };
 
   const [newTweet, setNewTweet] = useState(rawTweet);

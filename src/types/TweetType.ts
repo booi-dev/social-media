@@ -1,5 +1,15 @@
-type TweetKind = {
-  kind: string;
+type ReTweetType = {
+  byUid: string;
+  tweet: string;
+};
+
+type ReplyType = {
+  byUid: string;
+  tweet: string;
+};
+
+type TweetKindType = {
+  kind: "normal" | "reply" | "retweet" | "mention";
   referenceTid: string;
 };
 
@@ -9,10 +19,10 @@ export type TweetType = {
   timespan: number;
   createBy: string;
   hashtags: string[];
-  likeBy: string[];
-  retweeetBy: string[];
-  replyBy: string[];
-  tweetKind?: TweetKind;
+  likes: string[];
+  reTweets: ReTweetType[];
+  replies: ReplyType[];
+  tweetKind?: TweetKindType;
 };
 
 // twitter type.

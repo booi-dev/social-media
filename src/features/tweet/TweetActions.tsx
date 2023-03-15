@@ -29,10 +29,9 @@ function TweetActions(props: TweetActionsType) {
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
 
-  // retweet
-  const hasReTweeted = !!tweet.retweeetBy.find((uid) => uid === user.uid);
-
-  // reply
+  const hasReTweeted = !!tweet.reTweets.find(
+    (retweet) => retweet.byUid === user.uid
+  );
 
   return (
     <>
@@ -44,7 +43,7 @@ function TweetActions(props: TweetActionsType) {
           className="flex items-center"
         >
           <AppIcon icon={BsChat} hoverColor="blue" />
-          {tweet.replyBy.length > 0 && tweet.replyBy.length}
+          {tweet.replies.length > 0 && tweet.replies.length}
         </button>
         {/* ............retweet ............ */}
         <div className="relative bg-inherit">
@@ -59,7 +58,7 @@ function TweetActions(props: TweetActionsType) {
               <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
             )}
             <span className={`${hasReTweeted && "text-green-400"}`}>
-              {tweet.retweeetBy.length > 0 && tweet.retweeetBy.length}
+              {tweet.reTweets.length > 0 && tweet.reTweets.length}
             </span>
           </button>
           {isReTweetBtnClick && (
@@ -76,7 +75,7 @@ function TweetActions(props: TweetActionsType) {
         {/* ............like............ */}
         <div className="flex items-center">
           <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-          {tweet.likeBy.length > 0 && tweet.likeBy.length}
+          {tweet.likes.length > 0 && tweet.likes.length}
         </div>
         {/* ............view............ */}
         <div className="hidden sm:block">

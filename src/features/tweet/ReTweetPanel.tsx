@@ -32,8 +32,8 @@ function ReTweetPanel(props: ReTweetType) {
     timespan: Date.now(),
     createBy: user.uid,
     hashtags: [],
-    replyBy: [],
-    likeBy: [],
+    likes: [],
+    replies: [],
     tweetKind: {
       kind: "retweet",
       referenceTid: tweet.tid,
@@ -47,9 +47,9 @@ function ReTweetPanel(props: ReTweetType) {
     // add new data to local storate
     addData(newTweet);
     // update retweetby - add user id to the array - Redux Store
-    updateTweet(tweet.tid, { retweeetBy: [...tweet.retweeetBy, user.uid] });
+    updateTweet(tweet.tid, { reTweets: [...tweet.reTweets, user.uid] });
     // update retweetby - add user id to the array - Local Store
-    updateData(tweet.tid, { retweeetBy: [...tweet.retweeetBy, user.uid] });
+    updateData(tweet.tid, { reTweets: [...tweet.reTweets, user.uid] });
     // close panel
     closeHandler();
   };
@@ -62,11 +62,15 @@ function ReTweetPanel(props: ReTweetType) {
     if (reTweetState.retweetedTid) deleteData(reTweetState.retweetedTid);
     // update retweetby - remove user-id from the array - Redux Store
     updateTweet(tweet.tid, {
-      retweeetBy: [...tweet.retweeetBy.filter((uid) => uid !== user.uid)],
+      retweeetBy: [
+        ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
+      ],
     });
     // update retweetby - remove user-id from retweetby array
     updateData(tweet.tid, {
-      retweeetBy: [...tweet.retweeetBy.filter((uid) => uid !== user.uid)],
+      retweeetBy: [
+        ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
+      ],
     });
     // close panel
     closeHandler();
