@@ -20,11 +20,11 @@ type TweetBoxType = {
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
-  isTweetHaveAction?: {
+  isTweetHaveType?: {
     state: true;
     actionerUid: string;
-    action: "reply" | "retweet" | "mention";
-    actionTweet: TweetType;
+    type: "reply" | "retweet" | "mention";
+    originalTweetId: string;
   };
 };
 
@@ -34,7 +34,7 @@ function TweetBox(props: TweetBoxType) {
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
-    isTweetHaveAction,
+    isTweetHaveType,
   } = props;
 
   const { addData } = useLocalStorage();
@@ -53,23 +53,23 @@ function TweetBox(props: TweetBoxType) {
     mentions: [],
   };
 
-  if (isTweetHaveAction) {
-    if (isTweetHaveAction.action === "reply") {
+  if (isTweetHaveType) {
+    if (isTweetHaveType.type === "reply") {
       rawTweet.replies.push({
-        byUid: isTweetHaveAction.actionerUid,
-        tweetId: isTweetHaveAction.actionTweet.tid,
+        byUid: isTweetHaveType.actionerUid,
+        tweetId: isTweetHaveType.originalTweetId,
       });
     }
-    if (isTweetHaveAction.action === "mention") {
+    if (isTweetHaveType.type === "mention") {
       rawTweet.mentions.push({
-        byUid: isTweetHaveAction.actionerUid,
-        tweetId: isTweetHaveAction.actionTweet.tid,
+        byUid: isTweetHaveType.actionerUid,
+        tweetId: isTweetHaveType.originalTweetId,
       });
     }
 
-    rawTweet.tweetAction = {
-      action: isTweetHaveAction?.action || "normal",
-      referenceTid: isTweetHaveAction?.actionTweet?.tid || null,
+    rawTweet.tweetType = {
+      type: isTweetHaveType?.type || "normal",
+      referenceTid: isTweetHaveType?.originalTweetId || null,
     };
   }
 
@@ -185,7 +185,7 @@ TweetBox.defaultProps = {
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
-  isTweetHaveAction: null,
+  isTweetHaveType: null,
 };
 
 export default TweetBox;

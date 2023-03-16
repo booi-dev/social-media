@@ -34,8 +34,8 @@ function ReTweetPanel(props: ReTweetType) {
     hashtags: [],
     likes: [],
     replies: [],
-    tweetKind: {
-      kind: "retweet",
+    tweetType: {
+      type: "retweet",
       referenceTid: tweet.tid,
     },
     tid: newTid,
@@ -64,8 +64,8 @@ function ReTweetPanel(props: ReTweetType) {
     // DELETE the retweeted tweet - redux store & LS
     tweet.reTweets.forEach((retweet) => {
       if (retweet.byUid === user.uid) {
-        deleteTweet(retweet.reTweetTid);
-        deleteData(retweet.reTweetTid);
+        deleteTweet(retweet.tweetId);
+        deleteData(retweet.tweetId);
       }
     });
 
