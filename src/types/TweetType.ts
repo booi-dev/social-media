@@ -8,9 +8,9 @@ type ReplyType = {
   replyTid: string;
 };
 
-type TweetKindType = {
-  kind: "normal" | "reply" | "retweet" | "mention";
-  referenceTid: string;
+type TweetActionType = {
+  action: "normal" | "reply" | "retweet" | "mention";
+  referenceTid: string | null;
 };
 
 export type TweetType = {
@@ -22,7 +22,7 @@ export type TweetType = {
   likes: string[];
   reTweets: ReTweetType[];
   replies: ReplyType[];
-  tweetKind?: TweetKindType;
+  tweetAction?: TweetActionType;
 };
 
 // twitter type.

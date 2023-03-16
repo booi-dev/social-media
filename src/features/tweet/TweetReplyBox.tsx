@@ -69,10 +69,11 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
           handleClose={closeHandler}
           isLargeTextArea
           isFilterBtnHidden
-          isTweetHaveKind={{
+          isTweetHaveAction={{
             state: true,
+            actionerUid: user.uid,
             kind: "reply",
-            referenceTid: tweet.tid,
+            actionTweet: tweet,
           }}
         />
       </div>

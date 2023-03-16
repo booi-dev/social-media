@@ -20,10 +20,11 @@ type TweetBoxType = {
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
-  isTweetHaveKind?: {
+  isTweetHaveAction?: {
     state: true;
-    kind: "reply" | "retweet" | "mention";
-    referenceTid: string;
+    actionerUid: string,
+    action: "reply" | "retweet" | "mention";
+    actionTweet: TweetType;
   };
 };
 
@@ -33,7 +34,7 @@ function TweetBox(props: TweetBoxType) {
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
-    isTweetHaveKind,
+    isTweetHaveAction,
   } = props;
 
   const { addData } = useLocalStorage();
@@ -49,11 +50,17 @@ function TweetBox(props: TweetBoxType) {
     likes: ["01", "02"],
     replies: [],
     reTweets: [],
-    tweetKind: {
-      kind: isTweetHaveKind?.kind || "normal",
-      referenceTid: isTweetHaveKind?.referenceTid || "",
-    },
   };
+
+  if (isTweetHaveAction?.state) {
+    rawTweet.replies = {
+      byUid: 
+    }
+    rawTweet.tweetAction = {
+      kind: isTweetHaveKind?.kind || "normal",
+      referenceTid: isTweetHaveKind?.actionTweet?.tid || null,
+    };
+  }
 
   const [newTweet, setNewTweet] = useState(rawTweet);
   const [characterCount, setCharacterCount] = useState(280);
