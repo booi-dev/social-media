@@ -18,8 +18,8 @@ function useTweetControls() {
     dispatch(destroy(tid));
   };
 
-  const updateTweet = (tid: string, tobeUpdateProperty: object) => {
-    dispatch(update({ tid, tobeUpdateProperty }));
+  const updateTweet = (targetTId: string, tobeUpdateProperty: object) => {
+    dispatch(update({ targetTId, tobeUpdateProperty }));
   };
 
   const replaceTweets = (ts: TweetType[]) => {

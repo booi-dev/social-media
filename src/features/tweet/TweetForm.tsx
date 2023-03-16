@@ -1,47 +1,44 @@
 import { useState, useRef } from "react";
-import { nanoid } from "@reduxjs/toolkit";
 
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 
-import useUserControls from "../../redux/control/userControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import useTweetControls from "../../redux/control/tweetControls";
-
-import AppIcon from "../ui/AppIcon";
-import TweetBtnPanel from "./TweetBtnPanel";
-import TweetAudienceFilter from "./TweetAudienceFilter";
+import AppIcon from "../../components/ui/AppIcon";
+import TweetBtnPanel from "../../components/tweetbox/TweetBtnPanel";
+import TweetAudienceFilter from "../../components/tweetbox/TweetAudienceFilter";
 
 import findHashTags from "../../utils/findHashTag";
-import { TweetType } from "../../types";
 
-type TweetBoxType = {
-  handleClose?: () => void;
+import { TweetType, UserType } from "../../types";
+
+type TweetFormType = {
+  user: UserType;
+  newTId: string;
+  submitHandler: (newTweet: TweetType) => void;
+  tweetHaveType: {
+    type: "normal" | "retweet" | "reply" | "mention";
+    originalTweetId?: string | null;
+  };
+  closeHandler?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
-  isTweetHaveType?: {
-    state: true;
-    type: "reply" | "retweet" | "mention";
-    originalTweet: TweetType;
-  };
 };
 
-function TweetBox(props: TweetBoxType) {
+function TweetForm(props: TweetFormType) {
   const {
-    handleClose,
+    user,
+    newTId,
+    submitHandler,
+    closeHandler,
+    tweetHaveType,
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
-    isTweetHaveType,
   } = props;
 
-  const { addData, updateData } = useLocalStorage();
-  const { createTweet, updateTweet } = useTweetControls();
-  const { user } = useUserControls();
-
   const rawTweet: TweetType = {
-    tid: nanoid(),
+    tid: newTId,
     tweet: "",
     timespan: 0,
     createBy: user.uid,
@@ -51,21 +48,15 @@ function TweetBox(props: TweetBoxType) {
     reTweets: [],
     mentions: [],
     tweetType: {
-      type: "normal",
+      type: tweetHaveType.type,
+      originalTweetId: tweetHaveType.originalTweetId,
     },
   };
 
-  if (isTweetHaveType) {
-    rawTweet.tweetType = {
-      type: isTweetHaveType.type,
-      referenceTid: isTweetHaveType.originalTweet.tid,
-    };
-  }
-
   const [newTweet, setNewTweet] = useState(rawTweet);
-  const [characterCount, setCharacterCount] = useState(280);
-  const [hashtags, setHashtags] = useState<string[]>([]);
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
+  const [hashtags, setHashtags] = useState<string[]>([]);
+  const [characterCount, setCharacterCount] = useState(280);
 
   // text area auto resizing
 
@@ -87,6 +78,11 @@ function TweetBox(props: TweetBoxType) {
     return tags;
   };
 
+  const resetRawTweet = () => {
+    setNewTweet(rawTweet);
+    setHashtags([]);
+  };
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     resizeArea();
@@ -100,42 +96,18 @@ function TweetBox(props: TweetBoxType) {
     });
   };
 
-  const createNewTweet = () => {
-    createTweet(newTweet);
-    addData(newTweet);
-  };
-
-  const updateOldTweet = () => {
-    const targetTId = isTweetHaveType?.originalTweet.tid;
-    const tobeUpdateProperty = {
-      replies: [...isTweetHaveType?.originalTweet.replies],
-    };
-
-    updateTweet(targetTId, tobeUpdateProperty);
-    updateData(targetTId, tobeUpdateProperty);
-  };
-
-  const resetRawTweet = () => {
-    setNewTweet(rawTweet);
-    setHashtags([]);
-  };
-
-  //
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (newTweet.tweetType.type === "normal") createNewTweet();
-    if (newTweet.tweetType.type === "reply") updateOldTweet();
-
+    submitHandler(newTweet);
     resetRawTweet();
-    handleClose?.();
+    closeHandler?.();
     console.log(newTweet);
   };
 
   return (
     <div className="relative">
       {isBackBtnShow && (
-        <button type="button" onClick={handleClose} className="md:hidden pt-2">
+        <button type="button" onClick={closeHandler} className="md:hidden pt-2">
           <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
         </button>
       )}
@@ -190,12 +162,11 @@ function TweetBox(props: TweetBoxType) {
   );
 }
 
-TweetBox.defaultProps = {
-  handleClose: undefined,
+TweetForm.defaultProps = {
+  closeHandler: undefined,
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
-  isTweetHaveType: null,
 };
 
-export default TweetBox;
+export default TweetForm;

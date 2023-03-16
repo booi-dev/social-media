@@ -1,9 +1,7 @@
-// import useUserControls from "../redux/control/userControls";
-import TweetBox from "../components/tweetbox/TweetBox";
+import NewTweetForm from "../features/tweetActions/NewTweetForm";
 import FeedList from "../features/tweet/FeedList";
 
 function Home() {
-  // const { user } = useUserControls();
   return (
     <div className="w-full h-screen overflow-y-scroll hide-scrollbar max-w-[600px] bg-inherit text-inherit border-app-white-5 dark:border-app-gray-1">
       <div className="sticky top-0 left-0 right-0 bg-inherit z-[5] border-[1px] dark:border-app-gray-1">
@@ -16,7 +14,7 @@ function Home() {
         </div>
       </div>
       <div className="p-2 border-x-[1px] border-b-[1px]  dark:border-app-gray-1 md:p-4">
-        <TweetBox />
+        <NewTweetForm />
       </div>
       <FeedList />
     </div>

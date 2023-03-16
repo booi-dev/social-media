@@ -5,7 +5,7 @@ type ActionType = {
 
 type TweetTypeType = {
   type: "normal" | "reply" | "retweet" | "mention";
-  referenceTid: string | null;
+  originalTweetId?: string | null;
 };
 
 export type TweetType = {
@@ -18,5 +18,5 @@ export type TweetType = {
   reTweets: ActionType[];
   replies: ActionType[];
   mentions: ActionType[];
-  tweetType?: TweetTypeType;
+  tweetType: TweetTypeType;
 };

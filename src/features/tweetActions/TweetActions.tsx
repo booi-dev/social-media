@@ -9,7 +9,7 @@ import useUserControls from "../../redux/control/userControls";
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
 import ReTweetPanel from "./ReTweetPanel";
-import TweetReplyBox from "./TweetReplyBox";
+import TweetReplyForm from "./TweetReplyForm";
 
 import { TweetType, TypeStateType } from "../../types";
 
@@ -84,8 +84,8 @@ function TweetActions(props: TweetActionsType) {
       {isReplyBtnClick && (
         <>
           <div className="fixed inset-0 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[500px]  sm:h-min z-20">
-            <TweetReplyBox
-              tweet={tweet}
+            <TweetReplyForm
+              originalTweet={tweet}
               closeHandler={() => setIsReplyBtnClick(false)}
             />
           </div>
