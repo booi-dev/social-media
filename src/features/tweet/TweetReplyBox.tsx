@@ -66,6 +66,7 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
       <OriginalTweet tweet={tweet} />
       <div className="py-2 px-4 ">
         <TweetBox
+          handleClose={closeHandler}
           isLargeTextArea
           isFilterBtnHidden
           isTweetHaveKind={{

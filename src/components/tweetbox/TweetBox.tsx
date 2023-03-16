@@ -19,6 +19,7 @@ type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
+  isBackBtnShow?: boolean;
   isTweetHaveKind?: {
     state: true;
     kind: "reply" | "retweet" | "mention";
@@ -27,8 +28,13 @@ type TweetBoxType = {
 };
 
 function TweetBox(props: TweetBoxType) {
-  const { handleClose, isLargeTextArea, isFilterBtnHidden, isTweetHaveKind } =
-    props;
+  const {
+    handleClose,
+    isLargeTextArea,
+    isBackBtnShow,
+    isFilterBtnHidden,
+    isTweetHaveKind,
+  } = props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
@@ -100,7 +106,7 @@ function TweetBox(props: TweetBoxType) {
 
   return (
     <div className="relative">
-      {handleClose && (
+      {isBackBtnShow && (
         <button type="button" onClick={handleClose} className="md:hidden pt-2">
           <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
         </button>
@@ -159,6 +165,7 @@ function TweetBox(props: TweetBoxType) {
 TweetBox.defaultProps = {
   handleClose: undefined,
   isLargeTextArea: false,
+  isBackBtnShow: false,
   isFilterBtnHidden: false,
   isTweetHaveKind: {},
 };

@@ -68,6 +68,7 @@ function Header() {
               <TweetForm
                 handleClose={() => setIsTweetFormShow(false)}
                 isLargeTextArea
+                isBackBtnShow
               />
             </div>
             <BackDrop
