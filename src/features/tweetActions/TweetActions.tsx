@@ -11,15 +11,15 @@ import BackDrop from "../../components/ui/BackDrop";
 import ReTweetPanel from "./ReTweetPanel";
 import TweetReplyBox from "./TweetReplyBox";
 
-import { TweetType, ActionStateType } from "../../types";
+import { TweetType, TypeStateType } from "../../types";
 
 type TweetActionsType = {
   tweet: TweetType;
-  actionState: ActionStateType;
+  typeState: TypeStateType;
 };
 
 function TweetActions(props: TweetActionsType) {
-  const { tweet, actionState } = props;
+  const { tweet, typeState } = props;
 
   const { user } = useUserControls();
 
@@ -64,7 +64,7 @@ function TweetActions(props: TweetActionsType) {
               closeHandler={() => setIsReTweetBtnClick(false)}
               reTweetState={{
                 state: hasReTweeted,
-                reTweetId: actionState.actionTweetId,
+                reTweetId: typeState.originalTweetId,
               }}
             />
           )}

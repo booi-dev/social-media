@@ -6,21 +6,21 @@ import { GoKebabVertical } from "react-icons/go";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
 import TweetOptions from "./TweetOptions";
-import TweetActions from "./TweetActions";
+import TweetActions from "../tweetActions/TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
 // import VerificationBadge from "../../components/ui/VerificationBadge";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
-import { TweetType, ActionStateType } from "../../types";
+import { TweetType, TypeStateType } from "../../types";
 
 type TweetPropType = {
   tweet: TweetType;
-  actionState: ActionStateType;
+  typeState: TypeStateType;
 };
 
 function Feed(props: TweetPropType) {
   //
-  const { tweet, actionState } = props;
+  const { tweet, typeState } = props;
   const [isOption, setIsOption] = useState(false);
 
   return (
@@ -51,7 +51,7 @@ function Feed(props: TweetPropType) {
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
-          <TweetActions tweet={tweet} actionState={actionState} />
+          <TweetActions tweet={tweet} typeState={typeState} />
         </div>
 
         {isOption && (

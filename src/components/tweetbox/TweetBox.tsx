@@ -22,7 +22,6 @@ type TweetBoxType = {
   isBackBtnShow?: boolean;
   isTweetHaveType?: {
     state: true;
-    actionerUid: string;
     type: "reply" | "retweet" | "mention";
     originalTweetId: string;
   };
@@ -54,22 +53,9 @@ function TweetBox(props: TweetBoxType) {
   };
 
   if (isTweetHaveType) {
-    if (isTweetHaveType.type === "reply") {
-      rawTweet.replies.push({
-        byUid: isTweetHaveType.actionerUid,
-        tweetId: isTweetHaveType.originalTweetId,
-      });
-    }
-    if (isTweetHaveType.type === "mention") {
-      rawTweet.mentions.push({
-        byUid: isTweetHaveType.actionerUid,
-        tweetId: isTweetHaveType.originalTweetId,
-      });
-    }
-
     rawTweet.tweetType = {
-      type: isTweetHaveType?.type || "normal",
-      referenceTid: isTweetHaveType?.originalTweetId || null,
+      type: isTweetHaveType.type,
+      referenceTid: isTweetHaveType.originalTweetId,
     };
   }
 

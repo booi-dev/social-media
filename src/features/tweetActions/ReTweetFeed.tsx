@@ -4,17 +4,22 @@ import useUserControls from "../../redux/control/userControls";
 import useTweetControls from "../../redux/control/tweetControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
-import Feed from "./Feed";
+import Feed from "../tweet/Feed";
 
-import { TweetType, ActionStateType } from "../../types";
+import { TweetType } from "../../types";
+
+type TypeStateType = {
+  type: "normal" | "retweet" | "reply" | "mention";
+  originalTweetId: string;
+};
 
 type ReTweetFeedType = {
   tweet: TweetType;
-  actionState: ActionStateType;
+  typeState: TypeStateType;
 };
 
 function ReTweetFeed(props: ReTweetFeedType) {
-  const { tweet, actionState } = props;
+  const { tweet, typeState } = props;
 
   const { user } = useUserControls();
   const { findTweet } = useTweetControls();
@@ -22,11 +27,9 @@ function ReTweetFeed(props: ReTweetFeedType) {
 
   const tweetCreator = getTweetCreator(tweet.createBy);
 
-  let originalTweet: TweetType | undefined;
-
-  if (tweet.tweetKind) {
-    originalTweet = findTweet(tweet.tweetKind.referenceTid);
-  }
+  const originalTweet: TweetType | undefined = findTweet(
+    typeState.originalTweetId
+  );
 
   return (
     <div className="border-inherit">
@@ -37,7 +40,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
         } Retweeted`}
       </h1>
       {originalTweet ? (
-        <Feed tweet={originalTweet} actionState={actionState} />
+        <Feed tweet={originalTweet} typeState={typeState} />
       ) : (
         <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">
           --Tweet not found

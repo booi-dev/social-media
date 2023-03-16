@@ -7,7 +7,7 @@ import TweetBox from "../../components/tweetbox/TweetBox";
 import useUserControls from "../../redux/control/userControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
-import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
+import TweetSignature, { TweetCreatorPic } from "../tweet/TweetSignature";
 
 import { TweetType } from "../../types";
 
@@ -74,7 +74,6 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
           isFilterBtnHidden
           isTweetHaveType={{
             state: true,
-            actionerUid: user.uid,
             type: "reply",
             originalTweetId: tweet.tid,
           }}

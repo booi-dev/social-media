@@ -7,7 +7,7 @@ function useTweetControls() {
   const tweetData = useAppSelector((state) => state.tweetStore.tweets);
   const dispatch = useAppDispatch();
 
-  const findTweet = (tid: string) =>
+  const findTweet = (tid: string): TweetType | undefined =>
     tweetData.find((tweet) => tweet.tid === tid);
 
   const createTweet = (t: TweetType) => {
