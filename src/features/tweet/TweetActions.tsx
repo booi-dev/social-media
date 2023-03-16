@@ -30,8 +30,6 @@ function TweetActions(props: TweetActionsType) {
     (retweet) => retweet.byUid === user.uid
   );
 
-  console.log(hasReTweeted);
-
   return (
     <>
       <div className="flex justify-between w-full pb-2 bg-inherit text-inherit border-x-[0px]  ">

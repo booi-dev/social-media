@@ -65,7 +65,15 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
       </button>
       <OriginalTweet tweet={tweet} />
       <div className="py-2 px-4 ">
-        <TweetBox isLargeTextArea isFilterBtnHidden />
+        <TweetBox
+          isLargeTextArea
+          isFilterBtnHidden
+          isTweetHaveKind={{
+            state: true,
+            kind: "reply",
+            referenceTid: tweet.tid,
+          }}
+        />
       </div>
     </div>
   );

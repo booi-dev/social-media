@@ -19,10 +19,16 @@ type TweetBoxType = {
   handleClose?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
+  isTweetHaveKind?: {
+    state: true;
+    kind: "reply" | "retweet" | "mention";
+    referenceTid: string;
+  };
 };
 
 function TweetBox(props: TweetBoxType) {
-  const { handleClose, isLargeTextArea, isFilterBtnHidden } = props;
+  const { handleClose, isLargeTextArea, isFilterBtnHidden, isTweetHaveKind } =
+    props;
 
   const { addData } = useLocalStorage();
   const { createTweet } = useTweetControls();
@@ -37,6 +43,10 @@ function TweetBox(props: TweetBoxType) {
     likes: ["01", "02"],
     replies: [],
     reTweets: [],
+    tweetKind: {
+      kind: isTweetHaveKind?.kind || "normal",
+      referenceTid: isTweetHaveKind?.referenceTid || "",
+    },
   };
 
   const [newTweet, setNewTweet] = useState(rawTweet);
@@ -150,6 +160,7 @@ TweetBox.defaultProps = {
   handleClose: undefined,
   isLargeTextArea: false,
   isFilterBtnHidden: false,
+  isTweetHaveKind: {},
 };
 
 export default TweetBox;
