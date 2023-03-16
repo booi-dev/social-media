@@ -1,11 +1,11 @@
-type ReTweetType = {
-  byUid: string;
-  reTweetTid: string;
-};
+// type ReTweetType = {
+//   byUid: string;
+//   reTweetTid: string;
+// };
 
-type ReplyType = {
+type ActionType = {
   byUid: string;
-  replyTid: string;
+  tweetId: string;
 };
 
 type TweetActionType = {
@@ -20,8 +20,9 @@ export type TweetType = {
   createBy: string;
   hashtags: string[];
   likes: string[];
-  reTweets: ReTweetType[];
-  replies: ReplyType[];
+  reTweets: ActionType[];
+  replies: ActionType[];
+  mentions: ActionType[];
   tweetAction?: TweetActionType;
 };
 

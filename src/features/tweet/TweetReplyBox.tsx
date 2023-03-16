@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import AppIcon from "../../components/ui/AppIcon";
 import TweetBox from "../../components/tweetbox/TweetBox";
 
+import useUserControls from "../../redux/control/userControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
@@ -58,6 +59,8 @@ type ReplyTweetBoxType = {
 function TweetReplyBox(props: ReplyTweetBoxType) {
   const { closeHandler, tweet } = props;
 
+  const { user } = useUserControls();
+
   return (
     <div className="relative w-screen sm:w-full h-full bg-app-white-1 shadow shadow-app-gray-3 dark:bg-app-black-1  rounded-xl z-20">
       <button type="button" onClick={closeHandler}>
@@ -72,7 +75,7 @@ function TweetReplyBox(props: ReplyTweetBoxType) {
           isTweetHaveAction={{
             state: true,
             actionerUid: user.uid,
-            kind: "reply",
+            action: "reply",
             actionTweet: tweet,
           }}
         />

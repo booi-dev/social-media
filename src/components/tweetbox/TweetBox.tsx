@@ -22,7 +22,7 @@ type TweetBoxType = {
   isBackBtnShow?: boolean;
   isTweetHaveAction?: {
     state: true;
-    actionerUid: string,
+    actionerUid: string;
     action: "reply" | "retweet" | "mention";
     actionTweet: TweetType;
   };
@@ -50,15 +50,26 @@ function TweetBox(props: TweetBoxType) {
     likes: ["01", "02"],
     replies: [],
     reTweets: [],
+    mentions: [],
   };
 
-  if (isTweetHaveAction?.state) {
-    rawTweet.replies = {
-      byUid: 
+  if (isTweetHaveAction) {
+    if (isTweetHaveAction.action === "reply") {
+      rawTweet.replies.push({
+        byUid: isTweetHaveAction.actionerUid,
+        tweetId: isTweetHaveAction.actionTweet.tid,
+      });
     }
+    if (isTweetHaveAction.action === "mention") {
+      rawTweet.mentions.push({
+        byUid: isTweetHaveAction.actionerUid,
+        tweetId: isTweetHaveAction.actionTweet.tid,
+      });
+    }
+
     rawTweet.tweetAction = {
-      kind: isTweetHaveKind?.kind || "normal",
-      referenceTid: isTweetHaveKind?.actionTweet?.tid || null,
+      action: isTweetHaveAction?.action || "normal",
+      referenceTid: isTweetHaveAction?.actionTweet?.tid || null,
     };
   }
 
@@ -174,7 +185,7 @@ TweetBox.defaultProps = {
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
-  isTweetHaveKind: {},
+  isTweetHaveAction: null,
 };
 
 export default TweetBox;
