@@ -9,7 +9,7 @@ import TweetAudienceFilter from "../../components/tweetbox/TweetAudienceFilter";
 
 import findHashTags from "../../utils/findHashTag";
 
-import { TweetType, UserType } from "../../types";
+import { TweetType, UserType, HashTagType } from "../../types";
 
 type TweetFormType = {
   user: UserType;
@@ -55,7 +55,7 @@ function TweetForm(props: TweetFormType) {
 
   const [newTweet, setNewTweet] = useState(rawTweet);
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
-  const [hashtags, setHashtags] = useState<string[]>([]);
+  const [hashtags, setHashtags] = useState<HashTagType[]>([]);
   const [characterCount, setCharacterCount] = useState(280);
 
   // text area auto resizing
@@ -148,7 +148,7 @@ function TweetForm(props: TweetFormType) {
           />
           <div className=" flex gap-2 px-2 text-pri-blue-1">
             {hashtags.map((tag) => (
-              <div key={tag}>{tag}</div>
+              <div key={tag.tagId}>{tag.tagName}</div>
             ))}
           </div>
           <TweetBtnPanel

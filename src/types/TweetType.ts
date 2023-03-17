@@ -1,3 +1,5 @@
+import { HashTagType } from "./HashtagType";
+
 type ActionType = {
   byUid: string;
   tweetId: string;
@@ -13,7 +15,7 @@ export type TweetType = {
   tweet: string;
   timespan: number;
   createBy: string;
-  hashtags: string[];
+  hashtags: HashTagType[];
   likes: string[];
   reTweets: ActionType[];
   replies: ActionType[];

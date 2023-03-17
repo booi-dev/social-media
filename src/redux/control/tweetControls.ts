@@ -11,14 +11,17 @@ function useTweetControls() {
     tweetData.find((tweet) => tweet.tid === tid);
 
   const createTweet = (t: TweetType) => {
+    console.log("add tweet to redux store");
     dispatch(create(t));
   };
 
   const deleteTweet = (tid: string) => {
+    console.log("delete tweet from redux store");
     dispatch(destroy(tid));
   };
 
   const updateTweet = (targetTId: string, tobeUpdateProperty: object) => {
+    console.log("update tweet redux store");
     dispatch(update({ targetTId, tobeUpdateProperty }));
   };
 

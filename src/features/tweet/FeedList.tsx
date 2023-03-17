@@ -58,7 +58,6 @@ function FeedList() {
               typeState={{ type: "normal" }}
               tweetActions={TweetActions}
             />
-            {/* <TweetActions tweet={tweet} typeState={{ type: "normal" }} /> */}
           </div>
         );
       })}

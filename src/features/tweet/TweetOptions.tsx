@@ -23,10 +23,9 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   const deleteReTweets = () => {
     // delete every retweets
     tweet.reTweets.forEach((retweeets) => {
-      deleteTweet(retweeets.reTweetTid);
-      deleteData(retweeets.reTweetTid);
+      deleteTweet(retweeets.tweetId);
+      deleteData(retweeets.tweetId);
     });
-    // keep the replies
   };
 
   //
