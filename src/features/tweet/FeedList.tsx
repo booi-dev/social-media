@@ -3,6 +3,7 @@ import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Feed from "./Feed";
+import TweetActions from "../tweetActions/TweetActions";
 import ReTweetFeed from "./ReTweetFeed";
 import ReplyTweedFeed from "./ReplyTweedFeed";
 
@@ -57,7 +58,10 @@ function FeedList() {
         }
 
         return (
-          <Feed key={tweet.tid} tweet={tweet} typeState={{ type: "normal" }} />
+          <div key={tweet.tid}>
+            <Feed tweet={tweet} />
+            <TweetActions tweet={tweet} typeState={{ type: "normal" }} />
+          </div>
         );
       })}
     </div>

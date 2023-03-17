@@ -5,6 +5,7 @@ import useTweetControls from "../../redux/control/tweetControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
 import Feed from "./Feed";
+import TweetActions from "../tweetActions/TweetActions";
 
 import { TweetType } from "../../types";
 
@@ -40,7 +41,10 @@ function ReTweetFeed(props: ReTweetFeedType) {
         } Retweeted`}
       </h1>
       {originalTweet ? (
-        <Feed tweet={originalTweet} typeState={typeState} />
+        <div>
+          <Feed tweet={originalTweet} />
+          <TweetActions tweet={tweet} typeState={typeState} />
+        </div>
       ) : (
         <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">
           --Tweet not found

@@ -15,12 +15,12 @@ import { TweetType, TypeStateType } from "../../types";
 
 type TweetPropType = {
   tweet: TweetType;
-  typeState: TypeStateType;
+  // typeState: TypeStateType;
 };
 
 function Feed(props: TweetPropType) {
   //
-  const { tweet, typeState } = props;
+  const { tweet } = props;
   const [isOption, setIsOption] = useState(false);
 
   return (
@@ -51,7 +51,7 @@ function Feed(props: TweetPropType) {
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
-          <TweetActions tweet={tweet} typeState={typeState} />
+          {/* <TweetActions tweet={tweet} typeState={typeState} /> */}
         </div>
 
         {isOption && (

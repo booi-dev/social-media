@@ -29,6 +29,7 @@ function ReTweetPanel(props: ReTweetType) {
 
   const newTweet: TweetType = {
     ...tweet,
+    tweet: "replying...",
     timespan: Date.now(),
     createBy: user.uid,
     hashtags: [],
@@ -36,7 +37,7 @@ function ReTweetPanel(props: ReTweetType) {
     replies: [],
     tweetType: {
       type: "retweet",
-      referenceTid: tweet.tid,
+      originalTweetId: tweet.tid,
     },
     tid: newTid,
   };
