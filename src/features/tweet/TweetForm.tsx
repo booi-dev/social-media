@@ -142,9 +142,9 @@ function TweetForm(props: TweetFormType) {
             placeholder="What's happening"
             onChange={handleInput}
             value={newTweet.tweet}
-            className={`w-full px-2 ${
-              isLargeTextArea && "min-h-[150px] "
-            } text-app-font-20 font-normal bg-inherit text-inherit focus:outline-none resize-none hide-scrollbar`}
+            className={`w-full px-1 ${isLargeTextArea && "min-h-[150px]"}  ${
+              isFilterBtnHidden && "pt-3"
+            }  text-app-font-20 font-normal bg-inherit text-inherit focus:outline-none resize-none hide-scrollbar`}
           />
           <div className=" flex gap-2 px-2 text-pri-blue-1">
             {hashtags.map((tag) => (
