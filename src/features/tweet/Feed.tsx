@@ -2,13 +2,11 @@ import { useState } from "react";
 
 import { GoKebabHorizontal } from "react-icons/go";
 
-// import useGetProperties from "../../hooks/useGetProperties";
+import useUserControls from "../../redux/control/userControls";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
 import TweetOptions from "./TweetOptions";
-// import TweetActions from "../tweetActions/TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
-// import VerificationBadge from "../../components/ui/VerificationBadge";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
 import { TweetType, TypeStateType } from "../../types";
@@ -32,6 +30,9 @@ function Feed(props: TweetPropType) {
     tweetActions: TweetActions,
     wrappedTweet: WrappedTweet,
   } = props;
+
+  const { user } = useUserControls();
+
   const [isOption, setIsOption] = useState(false);
 
   return (
@@ -51,13 +52,15 @@ function Feed(props: TweetPropType) {
                 tweetTimespan={tweet.timespan}
               />
             </div>
-            <button
-              type="button"
-              className=""
-              onClick={() => setIsOption(true)}
-            >
-              <GoKebabHorizontal />
-            </button>
+            {user.uid === tweet.createBy && (
+              <button
+                type="button"
+                className=""
+                onClick={() => setIsOption(true)}
+              >
+                <GoKebabHorizontal />
+              </button>
+            )}
           </div>
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
