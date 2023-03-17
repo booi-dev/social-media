@@ -43,19 +43,14 @@ function ReTweetPanel(props: ReTweetType) {
   };
 
   const handleReTweet = () => {
-    // create new tweet - redux store
     createTweet(newTweet);
-    // add new data to local storate
     addData(newTweet);
-    // update retweetby - add user id to the array - Redux Store
     updateTweet(tweet.tid, {
       reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
     });
-    // update retweetby - add user id to the array - Local Store
     updateData(tweet.tid, {
       reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
     });
-    // close panel
     closeHandler();
   };
 

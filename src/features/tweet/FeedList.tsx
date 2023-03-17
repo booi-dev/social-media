@@ -5,7 +5,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import Feed from "./Feed";
 import TweetActions from "../tweetActions/TweetActions";
 import ReTweetFeed from "./ReTweetFeed";
-import ReplyTweedFeed from "./ReplyTweedFeed";
+import ReplyTweedFeed from "./ReplyTweetFeed";
 
 import { TweetType } from "../../types";
 
@@ -25,42 +25,40 @@ function FeedList() {
 
   return (
     <div className="bg-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1">
-      {sortedTweets.map((tweet: TweetType) => {
-        if (
-          tweet.tweetType?.type === "retweet" &&
-          tweet.tweetType.originalTweetId
-        ) {
+      {sortedTweets.map((t: TweetType) => {
+        if (t.tweetType?.type === "retweet" && t.tweetType.originalTweetId) {
           return (
             <ReTweetFeed
-              key={tweet.tid}
-              tweet={tweet}
+              key={t.tid}
+              tweet={t}
               typeState={{
                 type: "retweet",
-                originalTweetId: tweet.tweetType.originalTweetId,
+                originalTweetId: t.tweetType.originalTweetId,
               }}
             />
           );
         }
-        if (
-          tweet.tweetType?.type === "reply" &&
-          tweet.tweetType.originalTweetId
-        ) {
+        if (t.tweetType?.type === "reply" && t.tweetType.originalTweetId) {
           return (
             <ReplyTweedFeed
-              key={tweet.tid}
-              tweet={tweet}
+              key={t.tid}
+              tweet={t}
               typeState={{
                 type: "reply",
-                originalTweetId: tweet.tweetType.originalTweetId,
+                originalTweetId: t.tweetType.originalTweetId,
               }}
             />
           );
         }
 
         return (
-          <div key={tweet.tid}>
-            <Feed tweet={tweet} />
-            <TweetActions tweet={tweet} typeState={{ type: "normal" }} />
+          <div key={t.tid}>
+            <Feed
+              tweet={t}
+              typeState={{ type: "normal" }}
+              tweetActions={TweetActions}
+            />
+            {/* <TweetActions tweet={tweet} typeState={{ type: "normal" }} /> */}
           </div>
         );
       })}

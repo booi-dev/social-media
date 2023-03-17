@@ -34,7 +34,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
 
   return (
     <div className="border-inherit">
-      <h1 className="flex items-center gap-2 px-2 text-app-font-14 font-bold text-app-gray-3 ">
+      <h1 className="flex items-center gap-2 px-2 pt-2 text-app-font-14 font-bold text-app-gray-3 ">
         <AiOutlineRetweet className="stroke-2" />
         {`${
           user.uid === tweetCreator?.uid ? "You" : tweetCreator?.displayName
@@ -42,8 +42,11 @@ function ReTweetFeed(props: ReTweetFeedType) {
       </h1>
       {originalTweet ? (
         <div>
-          <Feed tweet={originalTweet} />
-          <TweetActions tweet={tweet} typeState={typeState} />
+          <Feed
+            tweet={originalTweet}
+            typeState={typeState}
+            tweetActions={TweetActions}
+          />
         </div>
       ) : (
         <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">

@@ -1,26 +1,37 @@
 import { useState } from "react";
 
-import { GoKebabVertical } from "react-icons/go";
+import { GoKebabHorizontal } from "react-icons/go";
 
 // import useGetProperties from "../../hooks/useGetProperties";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
 import TweetOptions from "./TweetOptions";
-import TweetActions from "../tweetActions/TweetActions";
+// import TweetActions from "../tweetActions/TweetActions";
 import BackDrop from "../../components/ui/BackDrop";
 // import VerificationBadge from "../../components/ui/VerificationBadge";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
 import { TweetType, TypeStateType } from "../../types";
 
+type TweetActionsType = {
+  tweet: TweetType;
+  typeState: TypeStateType;
+};
+
 type TweetPropType = {
   tweet: TweetType;
-  // typeState: TypeStateType;
+  typeState: TypeStateType;
+  tweetActions?: React.FC<TweetActionsType> | null;
+  wrappedTweet?: React.ReactElement | null;
 };
 
 function Feed(props: TweetPropType) {
-  //
-  const { tweet } = props;
+  const {
+    tweet,
+    typeState,
+    tweetActions: TweetActions,
+    wrappedTweet: WrappedTweet,
+  } = props;
   const [isOption, setIsOption] = useState(false);
 
   return (
@@ -45,13 +56,14 @@ function Feed(props: TweetPropType) {
               className=""
               onClick={() => setIsOption(true)}
             >
-              <GoKebabVertical />
+              <GoKebabHorizontal />
             </button>
           </div>
           <div className="p-2">
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
-          {/* <TweetActions tweet={tweet} typeState={typeState} /> */}
+          {WrappedTweet}
+          {TweetActions && <TweetActions tweet={tweet} typeState={typeState} />}
         </div>
 
         {isOption && (
@@ -66,5 +78,10 @@ function Feed(props: TweetPropType) {
     </>
   );
 }
+
+Feed.defaultProps = {
+  tweetActions: null,
+  wrappedTweet: null,
+};
 
 export default Feed;
