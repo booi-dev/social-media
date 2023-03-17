@@ -15,9 +15,9 @@ function VerificationBadge(props: VerificationBadgeType) {
   const { type: color } = props;
 
   const badgeColorVariant: BadgeColorVariant = {
-    blue: "text-sky-700",
-    gold: "text-yellow-700",
-    gray: "text-gray-600",
+    blue: "text-sky-600",
+    gold: "text-yellow-500",
+    gray: "text-gray-500",
   };
 
   return <MdVerified className={`${color && badgeColorVariant[color]}`} />;

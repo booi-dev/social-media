@@ -3,7 +3,8 @@ import useTweetControls from "../../redux/control/tweetControls";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Feed from "./Feed";
-import ReTweetFeed from "../tweetActions/ReTweetFeed";
+import ReTweetFeed from "./ReTweetFeed";
+import ReplyTweedFeed from "./ReplyTweedFeed";
 
 import { TweetType } from "../../types";
 
@@ -24,18 +25,37 @@ function FeedList() {
   return (
     <div className="bg-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1">
       {sortedTweets.map((tweet: TweetType) => {
-        if (tweet.tweetType?.type === "retweet") {
+        if (
+          tweet.tweetType?.type === "retweet" &&
+          tweet.tweetType.originalTweetId
+        ) {
           return (
             <ReTweetFeed
               key={tweet.tid}
               tweet={tweet}
               typeState={{
                 type: "retweet",
-                originalTweetId: tweet.tweetType.referenceTid,
+                originalTweetId: tweet.tweetType.originalTweetId,
               }}
             />
           );
         }
+        if (
+          tweet.tweetType?.type === "reply" &&
+          tweet.tweetType.originalTweetId
+        ) {
+          return (
+            <ReplyTweedFeed
+              key={tweet.tid}
+              tweet={tweet}
+              typeState={{
+                type: "reply",
+                originalTweetId: tweet.tweetType.originalTweetId,
+              }}
+            />
+          );
+        }
+
         return (
           <Feed key={tweet.tid} tweet={tweet} typeState={{ type: "normal" }} />
         );

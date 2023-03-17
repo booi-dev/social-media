@@ -4,7 +4,7 @@ import useUserControls from "../../redux/control/userControls";
 import useTweetControls from "../../redux/control/tweetControls";
 import useGetProperties from "../../hooks/useGetProperties";
 
-import Feed from "../tweet/Feed";
+import Feed from "./Feed";
 
 import { TweetType } from "../../types";
 
