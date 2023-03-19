@@ -24,8 +24,9 @@ const tweetSlice = createSlice({
       );
     },
     update: (state, action) => {
+      console.log(action.payload);
       const updatedTweets = state.tweets.map((tweet) => {
-        if (tweet.tid === action.payload.tid) {
+        if (tweet.tid === action.payload.targetTId) {
           return {
             ...tweet,
             ...action.payload.tobeUpdateProperty,

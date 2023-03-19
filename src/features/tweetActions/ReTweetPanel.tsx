@@ -29,7 +29,7 @@ function ReTweetPanel(props: ReTweetType) {
 
   const newTweet: TweetType = {
     ...tweet,
-    tweet: "replying...",
+    tweet: "retweeting..",
     timespan: Date.now(),
     createBy: user.uid,
     hashtags: [],
