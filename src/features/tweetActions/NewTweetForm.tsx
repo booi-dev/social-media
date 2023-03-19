@@ -1,10 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 
 import useUserControls from "../../redux/control/userControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import useTweetControls from "../../redux/control/tweetControls";
-
-import { TweetType } from "../../types";
+import useTweetActions from "./useTweetActions";
 
 import TweetForm from "../tweet/TweetForm";
 
@@ -20,13 +17,7 @@ function NewTweetForm(props: NewTweetFormType) {
     props;
 
   const { user } = useUserControls();
-  const { addData } = useLocalStorage();
-  const { createTweet } = useTweetControls();
-
-  const createNewTweet = (newTweet: TweetType) => {
-    createTweet(newTweet);
-    addData(newTweet);
-  };
+  const { createNewTweet } = useTweetActions();
 
   return (
     <TweetForm

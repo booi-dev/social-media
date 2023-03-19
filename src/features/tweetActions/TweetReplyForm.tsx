@@ -3,8 +3,8 @@ import { nanoid } from "@reduxjs/toolkit";
 import { IoMdClose } from "react-icons/io";
 
 import useUserControls from "../../redux/control/userControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import useTweetControls from "../../redux/control/tweetControls";
+
+import useTweetActions from "./useTweetActions";
 import useGetProperties from "../../hooks/useGetProperties";
 
 import AppIcon from "../../components/ui/AppIcon";
@@ -22,30 +22,16 @@ function TweetReplyForm(props: TweetReplyFormType) {
   const { closeHandler, originalTweet } = props;
 
   const { user } = useUserControls();
-  const { addData, updateData } = useLocalStorage();
-  const { createTweet, updateTweet } = useTweetControls();
+  const { createNewTweet, addNewReply } = useTweetActions();
+
   const { getTweetCreator } = useGetProperties();
   const originalTweetCreator = getTweetCreator(originalTweet.createBy);
 
   const newTId = nanoid();
 
-  const addNewReply = () => {
-    updateTweet(originalTweet.tid, {
-      replies: [...originalTweet.replies, { byUid: user.uid, tweetId: newTId }],
-    });
-    updateData(originalTweet.tid, {
-      replies: [...originalTweet.replies, { byUid: user.uid, tweetId: newTId }],
-    });
-  };
-
-  const createNewTweet = (newTweet: TweetType) => {
-    createTweet(newTweet);
-    addData(newTweet);
-  };
-
   const handleSubmit = (newTweet: TweetType) => {
     createNewTweet(newTweet);
-    addNewReply();
+    addNewReply(originalTweet);
   };
 
   return (
