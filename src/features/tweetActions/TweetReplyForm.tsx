@@ -31,7 +31,7 @@ function TweetReplyForm(props: TweetReplyFormType) {
 
   const handleSubmit = (newTweet: TweetType) => {
     createNewTweet(newTweet);
-    addNewReply(originalTweet);
+    addNewReply(originalTweet, newTId);
   };
 
   return (

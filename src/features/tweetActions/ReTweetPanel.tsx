@@ -3,11 +3,10 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 
 import useUserControls from "../../redux/control/userControls";
-import useTweetControls from "../../redux/control/tweetControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 import BackDrop from "../../components/ui/BackDrop";
 import { TweetType } from "../../types";
+import useTweetActions from "./useTweetActions";
 
 type ReTweetType = {
   tweet: TweetType;
@@ -22,8 +21,7 @@ function ReTweetPanel(props: ReTweetType) {
   const { tweet, reTweetState, closeHandler } = props;
 
   const { user } = useUserControls();
-  const { addData, updateData, deleteData } = useLocalStorage();
-  const { createTweet, deleteTweet, updateTweet } = useTweetControls();
+  const { reTweet, undoReTweet } = useTweetActions();
 
   const newTid = nanoid();
 
@@ -43,42 +41,13 @@ function ReTweetPanel(props: ReTweetType) {
   };
 
   const handleReTweet = () => {
-    createTweet(newTweet);
-    addData(newTweet);
-    updateTweet(tweet.tid, {
-      reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
-    });
-    updateData(tweet.tid, {
-      reTweets: [...tweet.reTweets, { byUid: user.uid, reTweetTid: newTid }],
-    });
+    reTweet(newTweet, tweet);
     closeHandler();
   };
 
   const handleUndoReTweet = () => {
     console.log("undoing retweet", reTweetState.reTweetId);
-
-    // DELETE the retweeted tweet - redux store & LS
-    tweet.reTweets.forEach((retweet) => {
-      if (retweet.byUid === user.uid) {
-        deleteTweet(retweet.tweetId);
-        deleteData(retweet.tweetId);
-      }
-    });
-
-    // UPDATE reTweets - remove user-id from retweetby array
-    updateTweet(tweet.tid, {
-      reTweets: [
-        ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
-      ],
-    });
-
-    // UPDATE reTweets - remove user-id from retweetby array
-    updateData(tweet.tid, {
-      reTweets: [
-        ...tweet.reTweets.filter((retweet) => retweet.byUid !== user.uid),
-      ],
-    });
-    // close panel
+    undoReTweet(tweet);
     closeHandler();
   };
 
