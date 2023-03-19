@@ -32,7 +32,7 @@ function TweetActions(props: TweetActionsType) {
 
   return (
     <>
-      <div className="flex justify-between w-full bg-inherit text-inherit border-b-[1px] border-app-gray-1 ">
+      <div className="flex justify-between w-full bg-inherit text-inherit border-b-[0px] border-app-white-1 dark:border-app-gray-1 ">
         {/* ............reply............ */}
         <button
           type="button"

@@ -39,7 +39,7 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={tweet.tid}
-        className="relative flex px-1 pt-3 bg-inherit text-inherit  hover:bg-app-white-2  dark:hover:bg-transparent md:px-4 bg-inherited "
+        className="relative flex px-1 pt-3 bg-inherit text-inherit  hover:bg-app-white-5 dark:hover:bg-transparent border-b-[0px] border-app-white-5 dark:border-app-gray-1 md:px-4 bg-inherited "
       >
         <div className="w-12 h-12 shrink-0">
           <TweetCreatorPic tweetCreatorUid={tweet.createBy} />

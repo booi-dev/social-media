@@ -24,35 +24,46 @@ function FeedList() {
   const sortedTweets = useMemo(() => sortArray(tweetData), [tweetData]);
 
   return (
-    <div className="bg-inherit border-x-[1px] border-b-[1px] dark:border-app-gray-1">
+    <div className="bg-inherit">
       {sortedTweets.map((t: TweetType) => {
         if (t.tweetType?.type === "retweet" && t.tweetType.originalTweetId) {
           return (
-            <ReTweetFeed
+            <div
               key={t.tid}
-              tweet={t}
-              typeState={{
-                type: "retweet",
-                originalTweetId: t.tweetType.originalTweetId,
-              }}
-            />
+              className="border-x-[1px] border-b-[1px] border-app-white-5 dark:border-app-gray-1"
+            >
+              <ReTweetFeed
+                tweet={t}
+                typeState={{
+                  type: "retweet",
+                  originalTweetId: t.tweetType.originalTweetId,
+                }}
+              />
+            </div>
           );
         }
         if (t.tweetType?.type === "reply" && t.tweetType.originalTweetId) {
           return (
-            <ReplyTweedFeed
+            <div
               key={t.tid}
-              tweet={t}
-              typeState={{
-                type: "reply",
-                originalTweetId: t.tweetType.originalTweetId,
-              }}
-            />
+              className="border-b-[1px] border-x-[1px] border-app-white-5  dark:border-app-gray-1"
+            >
+              <ReplyTweedFeed
+                tweet={t}
+                typeState={{
+                  type: "reply",
+                  originalTweetId: t.tweetType.originalTweetId,
+                }}
+              />
+            </div>
           );
         }
 
         return (
-          <div key={t.tid}>
+          <div
+            key={t.tid}
+            className="border-x-[1px] border-b-[1px] border-app-white-5  dark:border-app-gray-1"
+          >
             <Feed
               tweet={t}
               typeState={{ type: "normal" }}

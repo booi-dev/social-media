@@ -29,7 +29,7 @@ function ReplyTweetFeed(props: ReplyTweetFeedType) {
 
   if (originalTweet) {
     wrappedTweet = (
-      <div className="border-[1px] border-app-gray-1 rounded-lg">
+      <div className="border-[1px] border-app-white-5 dark:border-app-gray-1 rounded-lg">
         <Feed tweet={originalTweet} typeState={typeState} />
       </div>
     );
