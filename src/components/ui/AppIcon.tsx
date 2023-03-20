@@ -2,6 +2,7 @@ import { IconType } from "react-icons";
 
 type IconPropType = {
   icon: IconType;
+  text?: string | number;
   size?: number;
   rotateDeg?: number;
   hoverColor?: "blue" | "pink" | "green" | "black";
@@ -17,7 +18,7 @@ type colorVariantsType = {
 };
 
 function AppIcon(props: IconPropType) {
-  const { icon: Icon, size, rotateDeg, hoverColor, color } = props;
+  const { icon: Icon, text, size, rotateDeg, hoverColor, color } = props;
 
   const colorVariants: colorVariantsType = {
     blue: "text-pri-blue-1",
@@ -42,7 +43,7 @@ function AppIcon(props: IconPropType) {
 
   return (
     <div
-      className={`p-2 md:p-3 group rounded-full ${
+      className={` flex items-center gap-2 p-2 md:p-3 group rounded-full ${
         hoverColor && hoverColorVariants[hoverColor]
       } transition-all duration-500 dark:hover:bg-transparent`}
     >
@@ -54,11 +55,22 @@ function AppIcon(props: IconPropType) {
         ${rotateDeg && "rotate-90"}
         h-15 w-15 transition-all  duration-300`}
       />
+      {text && (
+        <span
+          className={`
+      ${hoverColor && groupHoverColorVariants[hoverColor]} 
+      ${color && colorVariants[color]}`}
+        >
+          {" "}
+          {text.toString()}{" "}
+        </span>
+      )}
     </div>
   );
 }
 
 AppIcon.defaultProps = {
+  text: "",
   size: 18,
   rotateDeg: 0,
   hoverColor: "",

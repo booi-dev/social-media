@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-import { BsChat, BsSuitHeart, BsTextRight } from "react-icons/bs";
+import { BsChat, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 
 import useUserControls from "../../redux/control/userControls";
 
+import LikeUI from "../TweetUI/LikeUI";
 import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
 import ReTweetPanel from "./ReTweetPanel";
 import TweetReplyForm from "./TweetReplyForm";
 
 import { TweetType, TypeStateType } from "../../types";
-import useTweetActions from "./useTweetActions";
 
 type TweetActionsType = {
   tweet: TweetType;
@@ -23,7 +23,6 @@ function TweetActionsUI(props: TweetActionsType) {
   const { tweet, typeState } = props;
 
   const { user } = useUserControls();
-  const { likeTweet } = useTweetActions();
 
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
@@ -72,14 +71,7 @@ function TweetActionsUI(props: TweetActionsType) {
           )}
         </div>
         {/* ............like............ */}
-        <button
-          type="button"
-          onClick={() => likeTweet(tweet)}
-          className="flex items-center"
-        >
-          <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-          {tweet.likes.length > 0 && tweet.likes.length}
-        </button>
+        <LikeUI user={user} tweet={tweet} />
         {/* ............view............ */}
         <div className="hidden sm:block">
           <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
