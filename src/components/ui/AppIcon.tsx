@@ -43,7 +43,7 @@ function AppIcon(props: IconPropType) {
 
   return (
     <div
-      className={` flex items-center gap-2 p-2 md:p-3 group rounded-full ${
+      className={`group flex items-center gap-3 p-2 md:p-3 rounded-full ${
         hoverColor && hoverColorVariants[hoverColor]
       } transition-all duration-500 dark:hover:bg-transparent`}
     >
@@ -59,10 +59,12 @@ function AppIcon(props: IconPropType) {
         <span
           className={`
       ${hoverColor && groupHoverColorVariants[hoverColor]} 
-      ${color && colorVariants[color]}`}
+      ${color && colorVariants[color]}
+      ${+text === 0 && "invisible"}
+      
+      `}
         >
-          {" "}
-          {text.toString()}{" "}
+          {text.toString()}
         </span>
       )}
     </div>

@@ -20,15 +20,17 @@ function LikeUI(props: LikeUIType) {
       className="flex items-center"
     >
       {tweet.likes.includes(user.uid) ? (
-        <>
-          <AppIcon icon={BsSuitHeart} color="pink" />
-          {/* <span>{tweet.likes.length > 0 && tweet.likes.length}</span> */}
-        </>
+        <AppIcon
+          icon={BsSuitHeart}
+          color="pink"
+          text={tweet.likes.length > 0 ? tweet.likes.length : "0"}
+        />
       ) : (
-        <>
-          <AppIcon icon={BsSuitHeart} hoverColor="pink" />
-          {tweet.likes.length > 0 && tweet.likes.length}
-        </>
+        <AppIcon
+          icon={BsSuitHeart}
+          hoverColor="pink"
+          text={tweet.likes.length > 0 ? tweet.likes.length : "0"}
+        />
       )}
     </button>
   );

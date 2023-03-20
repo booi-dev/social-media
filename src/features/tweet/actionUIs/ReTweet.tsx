@@ -32,13 +32,18 @@ function ReTweet(props: ReTweetType) {
         className="flex items-center"
       >
         {hasReTweeted ? (
-          <AppIcon icon={AiOutlineRetweet} color="green" />
+          <AppIcon
+            icon={AiOutlineRetweet}
+            color="green"
+            text={tweet.reTweets.length > 0 ? tweet.reTweets.length : "0"}
+          />
         ) : (
-          <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+          <AppIcon
+            icon={AiOutlineRetweet}
+            hoverColor="green"
+            text={tweet.reTweets.length > 0 ? tweet.reTweets.length : "0"}
+          />
         )}
-        <span className={`${hasReTweeted && "text-green-400"}`}>
-          {tweet.reTweets.length > 0 && tweet.reTweets.length}
-        </span>
       </button>
       {isReTweetBtnClick && (
         <ReTweetPanel

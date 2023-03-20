@@ -20,8 +20,11 @@ function ReplyUI(props: { tweet: TweetType }) {
         onClick={() => setIsReplyBtnClick(true)}
         className="flex items-center"
       >
-        <AppIcon icon={BsChat} hoverColor="blue" />
-        {tweet.replies.length > 0 && tweet.replies.length}
+        <AppIcon
+          icon={BsChat}
+          hoverColor="blue"
+          text={tweet.replies.length > 0 ? tweet.replies.length : "0"}
+        />
       </button>
       {isReplyBtnClick && (
         <>
