@@ -12,16 +12,18 @@ import ReTweetPanel from "./ReTweetPanel";
 import TweetReplyForm from "./TweetReplyForm";
 
 import { TweetType, TypeStateType } from "../../types";
+import useTweetActions from "./useTweetActions";
 
 type TweetActionsType = {
   tweet: TweetType;
   typeState: TypeStateType;
 };
 
-function TweetActions(props: TweetActionsType) {
+function TweetActionsUI(props: TweetActionsType) {
   const { tweet, typeState } = props;
 
   const { user } = useUserControls();
+  const { likeTweet } = useTweetActions();
 
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
@@ -70,10 +72,14 @@ function TweetActions(props: TweetActionsType) {
           )}
         </div>
         {/* ............like............ */}
-        <div className="flex items-center">
+        <button
+          type="button"
+          onClick={() => likeTweet(tweet)}
+          className="flex items-center"
+        >
           <AppIcon icon={BsSuitHeart} hoverColor="pink" />
           {tweet.likes.length > 0 && tweet.likes.length}
-        </div>
+        </button>
         {/* ............view............ */}
         <div className="hidden sm:block">
           <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="blue" />
@@ -99,4 +105,4 @@ function TweetActions(props: TweetActionsType) {
   );
 }
 
-export default TweetActions;
+export default TweetActionsUI;

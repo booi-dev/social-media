@@ -54,12 +54,9 @@ function useTweetActions() {
   const undoReTweet = (originalTweet: TweetType) => {
     originalTweet.reTweets.forEach((retweet) => {
       if (retweet.byUid === user.uid) {
-        console.log(retweet.byUid === user.uid);
-        console.log(retweet.tweetId);
         deleteExistingTweet(retweet.tweetId);
       }
     });
-
     updateTweet(originalTweet.tid, {
       reTweets: [
         ...originalTweet.reTweets.filter(
@@ -67,7 +64,6 @@ function useTweetActions() {
         ),
       ],
     });
-
     updateData(originalTweet.tid, {
       reTweets: [
         ...originalTweet.reTweets.filter(
@@ -77,7 +73,14 @@ function useTweetActions() {
     });
   };
 
-  return { createNewTweet, addNewReply, reTweet, undoReTweet };
+  // Like
+
+  const likeTweet = (targetTweet: TweetType) => {
+    updateTweet(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
+    updateData(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
+  };
+
+  return { createNewTweet, addNewReply, reTweet, undoReTweet, likeTweet };
 }
 
 export default useTweetActions;

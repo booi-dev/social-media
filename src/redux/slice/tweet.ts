@@ -39,7 +39,11 @@ const tweetSlice = createSlice({
         tweets: updatedTweets,
       };
     },
-
+    //     addLike: (state, action) => {
+    //       state.tweets.forEach((tweet)=>{
+    // if(tweet.tid === action.payload) tweet.likes += tweet.likes
+    //       })
+    //     },
     replace: (state, action: PayloadAction<TweetType[]>) => {
       state.tweets = action.payload;
     },
