@@ -1,13 +1,13 @@
 import { AiOutlineRetweet } from "react-icons/ai";
 
-import useUserControls from "../../redux/control/userControls";
-import useTweetControls from "../../redux/control/tweetControls";
-import useGetProperties from "../../hooks/useGetProperties";
+import useUserControls from "../../../redux/control/userControls";
+import useTweetControls from "../../../redux/control/tweetControls";
+import useGetProperties from "../../../hooks/useGetProperties";
 
 import Feed from "./Feed";
-import TweetActions from "../tweetActions/TweetActionsUI";
+import TweetActionsUI from "../components/TweetActionsUI";
 
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
 type TypeStateType = {
   type: "normal" | "retweet" | "reply" | "mention";
@@ -45,7 +45,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
           <Feed
             tweet={originalTweet}
             typeState={typeState}
-            tweetActions={TweetActions}
+            tweetActionsUI={TweetActionsUI}
           />
         </div>
       ) : (

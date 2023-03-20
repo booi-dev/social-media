@@ -4,15 +4,15 @@ import { BsChat, BsTextRight } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { RxShare2 } from "react-icons/rx";
 
-import useUserControls from "../../redux/control/userControls";
+import useUserControls from "../../../redux/control/userControls";
 
-import LikeUI from "../TweetUI/LikeUI";
-import AppIcon from "../../components/ui/AppIcon";
-import BackDrop from "../../components/ui/BackDrop";
-import ReTweetPanel from "./ReTweetPanel";
-import TweetReplyForm from "./TweetReplyForm";
+import LikeUI from "./LikeUI";
+import AppIcon from "../../../components/ui/AppIcon";
+import BackDrop from "../../../components/ui/BackDrop";
+import ReTweetPanel from "../actions/ReTweetPanel";
+import TweetReplyForm from "../actions/TweetReplyForm";
 
-import { TweetType, TypeStateType } from "../../types";
+import { TweetType, TypeStateType } from "../../../types";
 
 type TweetActionsType = {
   tweet: TweetType;

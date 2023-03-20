@@ -3,13 +3,13 @@ import { useState, useRef } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 
-import AppIcon from "../../components/ui/AppIcon";
-import TweetBtnPanel from "../../components/tweetbox/TweetBtnPanel";
-import TweetAudienceFilter from "../../components/tweetbox/TweetAudienceFilter";
+import AppIcon from "../../../components/ui/AppIcon";
+import TweetBtnPanel from "../../../components/tweetbox/TweetBtnPanel";
+import TweetAudienceFilter from "../../../components/tweetbox/TweetAudienceFilter";
 
-import findHashTags from "../../utils/findHashTag";
+import findHashTags from "../../../utils/findHashTag";
 
-import { TweetType, UserType, HashTagType } from "../../types";
+import { TweetType, UserType, HashTagType } from "../../../types";
 
 type TweetFormType = {
   user: UserType;
@@ -43,7 +43,7 @@ function TweetForm(props: TweetFormType) {
     timespan: 0,
     createBy: user.uid,
     hashtags: [],
-    likes: ["01", "02"],
+    likes: [],
     replies: [],
     reTweets: [],
     mentions: [],

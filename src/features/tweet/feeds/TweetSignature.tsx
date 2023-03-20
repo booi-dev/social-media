@@ -1,6 +1,6 @@
 import React from "react";
-import useGetProperties from "../../hooks/useGetProperties";
-import VerificationBadge from "../../components/ui/VerificationBadge";
+import useGetProperties from "../../../hooks/useGetProperties";
+import VerificationBadge from "../../../components/ui/VerificationBadge";
 
 type TweetCreatorPicType = {
   tweetCreatorUid: string;

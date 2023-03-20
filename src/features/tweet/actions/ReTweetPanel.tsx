@@ -2,10 +2,10 @@ import { nanoid } from "@reduxjs/toolkit";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 
-import useUserControls from "../../redux/control/userControls";
+import useUserControls from "../../../redux/control/userControls";
 
-import BackDrop from "../../components/ui/BackDrop";
-import { TweetType } from "../../types";
+import BackDrop from "../../../components/ui/BackDrop";
+import { TweetType } from "../../../types";
 import useTweetActions from "./useTweetActions";
 
 type ReTweetType = {

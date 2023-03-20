@@ -1,13 +1,13 @@
 import { useEffect, useMemo } from "react";
-import useTweetControls from "../../redux/control/tweetControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import useTweetControls from "../../../redux/control/tweetControls";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
-import Feed from "./Feed";
-import TweetActionsUI from "../tweetActions/TweetActionsUI";
-import ReTweetFeed from "./ReTweetFeed";
-import ReplyTweedFeed from "./ReplyTweetFeed";
+import Feed from "../feeds/Feed";
+import TweetActionsUI from "./TweetActionsUI";
+import ReTweetFeed from "../feeds/ReTweetFeed";
+import ReplyTweedFeed from "../feeds/ReplyTweetFeed";
 
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
 function FeedList() {
   const { getData } = useLocalStorage();

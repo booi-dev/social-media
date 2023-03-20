@@ -1,8 +1,8 @@
 import React from "react";
 import { BsSuitHeart } from "react-icons/bs";
-import AppIcon from "../../components/ui/AppIcon";
-import useTweetActions from "../tweetActions/useTweetActions";
-import { TweetType, UserType } from "../../types";
+import AppIcon from "../../../components/ui/AppIcon";
+import useTweetActions from "../actions/useTweetActions";
+import { TweetType, UserType } from "../../../types";
 
 type LikeUIType = {
   user: UserType;

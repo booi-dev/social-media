@@ -9,7 +9,7 @@ import AppIcon from "../components/ui/AppIcon";
 import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
-import AddNewTweetForm from "../features/tweetActions/NewTweetForm";
+import AddNewTweetForm from "../features/tweet/actions/NewTweetForm";
 // import TweetForm from "../components/tweetbox/TweetBox";
 import BackDrop from "../components/ui/BackDrop";
 

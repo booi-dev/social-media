@@ -1,8 +1,8 @@
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
-import useUserControls from "../../redux/control/userControls";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import useTweetControls from "../../redux/control/tweetControls";
+import useUserControls from "../../../redux/control/userControls";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import useTweetControls from "../../../redux/control/tweetControls";
 
 function useTweetActions() {
   const { user } = useUserControls();

@@ -1,10 +1,10 @@
 import Feed from "./Feed";
 
-import useTweetControls from "../../redux/control/tweetControls";
+import useTweetControls from "../../../redux/control/tweetControls";
 
-import TweetActions from "../tweetActions/TweetActionsUI";
+import TweetActionsUI from "../components/TweetActionsUI";
 
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
 type TypeStateType = {
   type: "normal" | "retweet" | "reply" | "mention";
@@ -40,7 +40,7 @@ function ReplyTweetFeed(props: ReplyTweetFeedType) {
       <Feed
         tweet={tweet}
         typeState={typeState}
-        tweetActions={TweetActions}
+        tweetActionsUI={TweetActionsUI}
         wrappedTweet={wrappedTweet}
       />
     </div>

@@ -2,16 +2,16 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { IoMdClose } from "react-icons/io";
 
-import useUserControls from "../../redux/control/userControls";
+import useUserControls from "../../../redux/control/userControls";
 
 import useTweetActions from "./useTweetActions";
-import useGetProperties from "../../hooks/useGetProperties";
+import useGetProperties from "../../../hooks/useGetProperties";
 
-import AppIcon from "../../components/ui/AppIcon";
-import TweetSignature, { TweetCreatorPic } from "../tweet/TweetSignature";
-import TweetForm from "../tweet/TweetForm";
+import AppIcon from "../../../components/ui/AppIcon";
+import TweetSignature, { TweetCreatorPic } from "../feeds/TweetSignature";
+import TweetForm from "../components/TweetForm";
 
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
 type TweetReplyFormType = {
   originalTweet: TweetType;

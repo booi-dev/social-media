@@ -2,14 +2,14 @@ import { useState } from "react";
 
 import { GoKebabHorizontal } from "react-icons/go";
 
-import useUserControls from "../../redux/control/userControls";
+import useUserControls from "../../../redux/control/userControls";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
-import TweetOptions from "./TweetOptions";
-import BackDrop from "../../components/ui/BackDrop";
+import TweetOptions from "../components/TweetOptions";
+import BackDrop from "../../../components/ui/BackDrop";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
-import { TweetType, TypeStateType } from "../../types";
+import { TweetType, TypeStateType } from "../../../types";
 
 type TweetActionsType = {
   tweet: TweetType;
