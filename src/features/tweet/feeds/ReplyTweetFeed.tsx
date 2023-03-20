@@ -2,7 +2,7 @@ import Feed from "./Feed";
 
 import useTweetControls from "../../../redux/control/tweetControls";
 
-import TweetActionsUI from "../components/TweetActionsUI";
+import TweetActionsUI from "../components/ActionsPanel";
 
 import { TweetType } from "../../../types";
 

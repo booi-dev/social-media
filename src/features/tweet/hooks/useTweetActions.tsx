@@ -77,6 +77,7 @@ function useTweetActions() {
 
   const likeTweet = (targetTweet: TweetType) => {
     if (targetTweet.likes.includes(user.uid)) return;
+    if (targetTweet.createBy === user.uid) return;
     updateTweet(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
     updateData(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
   };

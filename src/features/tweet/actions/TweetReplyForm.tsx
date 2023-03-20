@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 
 import useUserControls from "../../../redux/control/userControls";
 
-import useTweetActions from "./useTweetActions";
+import useTweetActions from "../hooks/useTweetActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";

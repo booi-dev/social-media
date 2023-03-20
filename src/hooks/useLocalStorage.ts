@@ -3,7 +3,7 @@ import { TweetType } from "../types";
 function useLocalStorage() {
   const addData = (data: TweetType) => {
     console.log("add data to LS");
-    // localStorage.setItem(data.tid, JSON.stringify(data));
+    localStorage.setItem(data.tid, JSON.stringify(data));
   };
 
   const deleteData = (did: string) => {

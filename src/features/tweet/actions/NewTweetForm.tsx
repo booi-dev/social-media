@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 
 import useUserControls from "../../../redux/control/userControls";
-import useTweetActions from "./useTweetActions";
+import useTweetActions from "../hooks/useTweetActions";
 
 import TweetForm from "../components/TweetForm";
 

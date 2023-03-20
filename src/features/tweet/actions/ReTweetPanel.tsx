@@ -6,7 +6,7 @@ import useUserControls from "../../../redux/control/userControls";
 
 import BackDrop from "../../../components/ui/BackDrop";
 import { TweetType } from "../../../types";
-import useTweetActions from "./useTweetActions";
+import useTweetActions from "../hooks/useTweetActions";
 
 type ReTweetType = {
   tweet: TweetType;

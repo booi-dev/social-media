@@ -1,5 +1,5 @@
 import NewTweetForm from "../features/tweet/actions/NewTweetForm";
-import FeedList from "../features/tweet/components/FeedList";
+import FeedList from "../features/tweet/feeds/FeedList";
 
 function Home() {
   return (

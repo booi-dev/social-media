@@ -1,7 +1,7 @@
 import React from "react";
 import { BsSuitHeart } from "react-icons/bs";
 import AppIcon from "../../../components/ui/AppIcon";
-import useTweetActions from "../actions/useTweetActions";
+import useTweetActions from "../hooks/useTweetActions";
 import { TweetType, UserType } from "../../../types";
 
 type LikeUIType = {
@@ -22,11 +22,7 @@ function LikeUI(props: LikeUIType) {
     >
       {tweet.likes.includes(user.uid) ? (
         <>
-          <AppIcon
-            icon={BsSuitHeart}
-            color="pink"
-            text={tweet.likes.length > 0 ? tweet.likes.length : ""}
-          />
+          <AppIcon icon={BsSuitHeart} color="pink" />
           {/* <span>{tweet.likes.length > 0 && tweet.likes.length}</span> */}
         </>
       ) : (

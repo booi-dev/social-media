@@ -19,7 +19,7 @@ type TweetActionsType = {
 type TweetPropType = {
   tweet: TweetType;
   typeState: TypeStateType;
-  tweetActionsUI?: React.FC<TweetActionsType> | null;
+  actionsPanel?: React.FC<TweetActionsType> | null;
   wrappedTweet?: React.ReactElement | null;
 };
 
@@ -27,7 +27,7 @@ function Feed(props: TweetPropType) {
   const {
     tweet,
     typeState,
-    tweetActionsUI: TweetActionsUI,
+    actionsPanel: ActionsPanel,
     wrappedTweet: WrappedTweet,
   } = props;
 
@@ -66,9 +66,7 @@ function Feed(props: TweetPropType) {
             <TweetWithHighlightedHashTags tweet={tweet.tweet} />
           </div>
           {WrappedTweet}
-          {TweetActionsUI && (
-            <TweetActionsUI tweet={tweet} typeState={typeState} />
-          )}
+          {ActionsPanel && <ActionsPanel tweet={tweet} typeState={typeState} />}
         </div>
 
         {isOption && (
@@ -85,7 +83,7 @@ function Feed(props: TweetPropType) {
 }
 
 Feed.defaultProps = {
-  tweetActionsUI: null,
+  actionsPanel: null,
   wrappedTweet: null,
 };
 
