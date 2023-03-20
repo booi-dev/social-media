@@ -1,4 +1,3 @@
-import React from "react";
 import { BsSuitHeart } from "react-icons/bs";
 import AppIcon from "../../../components/ui/AppIcon";
 import useTweetActions from "../hooks/useTweetActions";

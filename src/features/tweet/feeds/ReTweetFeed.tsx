@@ -5,7 +5,7 @@ import useTweetControls from "../../../redux/control/tweetControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import Feed from "./Feed";
-import TweetActionsUI from "../components/ActionsPanel";
+import ActionsPanel from "../components/ActionsPanel";
 
 import { TweetType } from "../../../types";
 
@@ -45,7 +45,7 @@ function ReTweetFeed(props: ReTweetFeedType) {
           <Feed
             tweet={originalTweet}
             typeState={typeState}
-            tweetActionsUI={TweetActionsUI}
+            actionsPanel={ActionsPanel}
           />
         </div>
       ) : (

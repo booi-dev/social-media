@@ -2,7 +2,7 @@ import Feed from "./Feed";
 
 import useTweetControls from "../../../redux/control/tweetControls";
 
-import TweetActionsUI from "../components/ActionsPanel";
+import ActionsPanel from "../components/ActionsPanel";
 
 import { TweetType } from "../../../types";
 
@@ -40,7 +40,7 @@ function ReplyTweetFeed(props: ReplyTweetFeedType) {
       <Feed
         tweet={tweet}
         typeState={typeState}
-        tweetActionsUI={TweetActionsUI}
+        actionsPanel={ActionsPanel}
         wrappedTweet={wrappedTweet}
       />
     </div>
