@@ -47,6 +47,16 @@ module.exports = {
         'app-white-4': '#d6d9db',
         'app-white-5': '#cfd9de',
       },
+      animation: {
+        expanse: 'wiggle 1s ease-in-out infinite',
+      },
+      keyframes: {
+        expanse: {
+          '75%, 100%': {
+            transform: 'scale(1.5)', opacity: '0.5'
+          }
+        }
+      }
     },
   },
   plugins: [],

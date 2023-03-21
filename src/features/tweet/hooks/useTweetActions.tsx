@@ -73,10 +73,19 @@ function useTweetActions() {
     });
   };
 
-  // Like
+  // LIKE & UNDO UNLIKE
 
   const likeTweet = (targetTweet: TweetType) => {
-    if (targetTweet.likes.includes(user.uid)) return;
+    if (targetTweet.likes.includes(user.uid)) {
+      updateTweet(targetTweet.tid, {
+        likes: [...targetTweet.likes.filter((like) => like !== user.uid)],
+      });
+      updateData(targetTweet.tid, {
+        likes: [...targetTweet.likes.filter((like) => like !== user.uid)],
+      });
+      return;
+    }
+
     updateTweet(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
     updateData(targetTweet.tid, { likes: [...targetTweet.likes, user.uid] });
   };

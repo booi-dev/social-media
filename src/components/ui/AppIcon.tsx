@@ -4,6 +4,7 @@ type IconPropType = {
   icon: IconType;
   text?: string | number;
   size?: number;
+  animation?: string;
   rotateDeg?: number;
   hoverColor?: "blue" | "pink" | "green" | "black";
   color?: "blue" | "pink" | "green" | "black";
@@ -18,18 +19,26 @@ type colorVariantsType = {
 };
 
 function AppIcon(props: IconPropType) {
-  const { icon: Icon, text, size, rotateDeg, hoverColor, color } = props;
+  const {
+    icon: Icon,
+    text,
+    size,
+    rotateDeg,
+    hoverColor,
+    color,
+    animation,
+  } = props;
 
   const colorVariants: colorVariantsType = {
     blue: "text-pri-blue-1",
-    pink: "text-pink-400",
+    pink: "text-pink-600",
     green: "text-green-400",
     black: "text-black",
   };
 
   const groupHoverColorVariants: colorVariantsType = {
     blue: "group-hover:text-pri-blue-1",
-    pink: "group-hover:text-pink-400",
+    pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
     black: "group-hover:text-bg-app-white-3",
   };
@@ -50,10 +59,12 @@ function AppIcon(props: IconPropType) {
       <Icon
         size={size}
         className={`
+        h-15 w-15 transition-all duration-300
         ${hoverColor && groupHoverColorVariants[hoverColor]} 
         ${color && colorVariants[color]} 
         ${rotateDeg && "rotate-90"}
-        h-15 w-15 transition-all  duration-300`}
+        ${animation && animation}
+        `}
       />
       {text && (
         <span
@@ -61,7 +72,6 @@ function AppIcon(props: IconPropType) {
       ${hoverColor && groupHoverColorVariants[hoverColor]} 
       ${color && colorVariants[color]}
       ${+text === 0 && "invisible"}
-      
       `}
         >
           {text.toString()}
@@ -77,6 +87,7 @@ AppIcon.defaultProps = {
   rotateDeg: 0,
   hoverColor: "",
   color: "",
+  animation: "",
 };
 
 export default AppIcon;
