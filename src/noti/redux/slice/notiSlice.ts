@@ -5,9 +5,9 @@ import { NotiType } from "../../type/notiType";
 
 const initialNoti: NotiType = {
   open: false,
-  text: "",
+  text: "noti",
   timeout: 3,
-  position: "",
+  position: "top-center",
 };
 
 const notiSlice = createSlice({
@@ -21,7 +21,6 @@ const notiSlice = createSlice({
       state.open = false;
     },
     createProperty: (state, action) => {
-      console.log(action.payload);
       state.text = action.payload.text;
       state.timeout = action.payload.timeout;
       state.position = action.payload.position;

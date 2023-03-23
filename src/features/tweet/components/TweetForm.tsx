@@ -108,7 +108,6 @@ function TweetForm(props: TweetFormType) {
     closeHandler?.();
     openNotification?.();
     setNoti("Your tweet is sent", 3, "top-center");
-    // onNoti(true);
     console.log(newTweet);
   };
 

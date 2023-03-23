@@ -6,6 +6,7 @@ import useTweetControls from "../../../redux/control/tweetControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 import WarningMsg from "../../../components/ui/WarningMsg";
+import { useNoti } from "../../../noti";
 
 import { TweetType } from "../../../types";
 
@@ -17,6 +18,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   //
   const { deleteTweet } = useTweetControls();
   const { deleteData } = useLocalStorage();
+  const { setNoti } = useNoti();
 
   const [isWarning, setIsWarning] = useState(false);
 
@@ -33,6 +35,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
     deleteReTweets();
     deleteTweet(tweet.tid);
     deleteData(tweet.tid);
+    setNoti("Your tweet is deleleted", 3, "top-center");
   };
 
   return (
