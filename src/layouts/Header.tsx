@@ -9,7 +9,7 @@ import AppIcon from "../components/ui/AppIcon";
 import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
-import AddNewTweetForm from "../features/tweet/actions/NewTweetForm";
+import NewTweetForm from "../features/tweet/actions/NewTweetForm";
 // import TweetForm from "../components/tweetbox/TweetBox";
 import BackDrop from "../components/ui/BackDrop";
 
@@ -67,7 +67,7 @@ function Header() {
         {isTweetFormShow && (
           <>
             <div className="absolute inset-1 p-2 rounded-2xl bg-inherit z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
-              <AddNewTweetForm
+              <NewTweetForm
                 closeHandler={() => setIsTweetFormShow(false)}
                 isLargeTextArea
                 isBackBtnShow

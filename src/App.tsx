@@ -3,8 +3,6 @@ import Main from "./layouts/Main";
 
 import useThemeControls from "./redux/control/themControl";
 
-// import "./App.css";
-
 function App() {
   const { theme } = useThemeControls();
 

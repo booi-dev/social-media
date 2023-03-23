@@ -23,6 +23,7 @@ type TweetFormType = {
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
+  openNotification?: () => void;
 };
 
 function TweetForm(props: TweetFormType) {
@@ -35,6 +36,7 @@ function TweetForm(props: TweetFormType) {
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
+    openNotification,
   } = props;
 
   const rawTweet: TweetType = {
@@ -101,6 +103,7 @@ function TweetForm(props: TweetFormType) {
     submitHandler(newTweet);
     resetRawTweet();
     closeHandler?.();
+    openNotification?.();
     console.log(newTweet);
   };
 
@@ -163,10 +166,11 @@ function TweetForm(props: TweetFormType) {
 }
 
 TweetForm.defaultProps = {
-  closeHandler: undefined,
+  closeHandler: () => console.log("close handler is not defined"),
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
+  openNotification: () => console.log("open notification is not defined"),
 };
 
 export default TweetForm;

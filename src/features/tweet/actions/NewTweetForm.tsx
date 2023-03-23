@@ -10,11 +10,17 @@ type NewTweetFormType = {
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
+  openNotification: () => void;
 };
 
 function NewTweetForm(props: NewTweetFormType) {
-  const { closeHandler, isLargeTextArea, isBackBtnShow, isFilterBtnHidden } =
-    props;
+  const {
+    closeHandler,
+    isLargeTextArea,
+    isBackBtnShow,
+    isFilterBtnHidden,
+    openNotification,
+  } = props;
 
   const { user } = useUserControls();
   const { createNewTweet } = useTweetActions();
@@ -29,6 +35,7 @@ function NewTweetForm(props: NewTweetFormType) {
       isLargeTextArea={isLargeTextArea}
       isBackBtnShow={isBackBtnShow}
       isFilterBtnHidden={isFilterBtnHidden}
+      openNotification={openNotification}
     />
   );
 }
