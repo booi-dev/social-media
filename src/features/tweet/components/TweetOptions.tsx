@@ -23,7 +23,6 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   const [isWarning, setIsWarning] = useState(false);
 
   const deleteReTweets = () => {
-    // delete every retweets
     tweet.reTweets.forEach((retweeets) => {
       deleteTweet(retweeets.tweetId);
       deleteData(retweeets.tweetId);

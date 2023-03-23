@@ -17,7 +17,8 @@ function useNoti() {
     }, timeout * 1000);
   };
 
-  const setNoti = (text: string, timeout: number, position: PositionType) => {
+  /* eslint-disable default-param-last */
+  const setNoti = (text: string, timeout = 3, position?: PositionType) => {
     openNoti();
     const tobeSetData = {
       text,

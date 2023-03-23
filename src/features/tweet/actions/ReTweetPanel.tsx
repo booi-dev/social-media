@@ -3,10 +3,12 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 
 import useUserControls from "../../../redux/control/userControls";
+import useTweetActions from "../hooks/useTweetActions";
+import { useNoti } from "../../../noti";
 
 import BackDrop from "../../../components/ui/BackDrop";
+
 import { TweetType } from "../../../types";
-import useTweetActions from "../hooks/useTweetActions";
 
 type ReTweetType = {
   tweet: TweetType;
@@ -22,6 +24,7 @@ function ReTweetPanel(props: ReTweetType) {
 
   const { user } = useUserControls();
   const { reTweet, undoReTweet } = useTweetActions();
+  const { setNoti } = useNoti();
 
   const newTid = nanoid();
 
@@ -42,12 +45,13 @@ function ReTweetPanel(props: ReTweetType) {
 
   const handleReTweet = () => {
     reTweet(newTweet, tweet);
+    setNoti("Retweeted");
     closeHandler();
   };
 
   const handleUndoReTweet = () => {
-    console.log("undoing retweet", reTweetState.reTweetId);
     undoReTweet(tweet);
+    setNoti("Undo Retweet");
     closeHandler();
   };
 

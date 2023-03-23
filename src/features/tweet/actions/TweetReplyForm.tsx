@@ -3,7 +3,6 @@ import { nanoid } from "@reduxjs/toolkit";
 import { IoMdClose } from "react-icons/io";
 
 import useUserControls from "../../../redux/control/userControls";
-
 import useTweetActions from "../hooks/useTweetActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
