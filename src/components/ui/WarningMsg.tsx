@@ -19,6 +19,10 @@ function WarningMsg(props: WarningMsgType) {
     handleWarningClose,
   } = props;
 
+  const handleConfirmBtn = () => {
+    handleConfirm();
+  };
+
   return (
     <>
       <div className="fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-1/2 w-[300px] h-auto p-8 rounded-lg text-inherit bg-inherit shadow-lg z-20">
@@ -28,7 +32,7 @@ function WarningMsg(props: WarningMsgType) {
           <button
             type="button"
             className="text-app-white-1 bg-red-500 hover:bg-red-600 focus:bg-red-800 "
-            onClick={handleConfirm}
+            onClick={handleConfirmBtn}
           >
             {warningBtn}
           </button>

@@ -5,7 +5,7 @@ import { MdDarkMode } from "react-icons/md";
 import { BsSun } from "react-icons/bs";
 import { BiLogOutCircle } from "react-icons/bi";
 
-import useThemeControls from "../../redux/control/themControl";
+import useThemeControls from "../../redux/control/themeControl";
 
 import Option from "./Option";
 import BackDrop from "../ui/BackDrop";

@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 
+import { useNoti } from "../../../noti";
+
 import AppIcon from "../../../components/ui/AppIcon";
 import TweetBtnPanel from "../../../components/tweetbox/TweetBtnPanel";
 import TweetAudienceFilter from "../../../components/tweetbox/TweetAudienceFilter";
@@ -60,8 +62,9 @@ function TweetForm(props: TweetFormType) {
   const [hashtags, setHashtags] = useState<HashTagType[]>([]);
   const [characterCount, setCharacterCount] = useState(280);
 
-  // text area auto resizing
+  const { setNoti } = useNoti();
 
+  //
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const resizeArea = () => {
@@ -104,6 +107,8 @@ function TweetForm(props: TweetFormType) {
     resetRawTweet();
     closeHandler?.();
     openNotification?.();
+    setNoti("Your tweet is sent", 3, "top-center");
+    // onNoti(true);
     console.log(newTweet);
   };
 
