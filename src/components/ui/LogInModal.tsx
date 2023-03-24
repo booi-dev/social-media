@@ -47,7 +47,7 @@ function LogInModal(props: LogInModalType) {
           </div>
           <h1 className="text-2xl font-bold">{title}</h1>
           <p className="text-app-font-15 text-app-gray-3">{text}</p>
-          <div className="flex flex-col gap-2 mt-6 [&>button]:py-2 [&>button]:font-bold [&>button]:rounded-2xl">
+          <div className="flex flex-col gap-4 mt-4 [&>button]:py-2 [&>button]:font-bold [&>button]:rounded-2xl">
             <button type="button" className="bg-pri-blue-1">
               Log in{" "}
             </button>

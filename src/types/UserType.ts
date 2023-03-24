@@ -8,6 +8,8 @@ export type UserType = {
     state: boolean;
     type: string;
   };
+  following: string[];
+  followers: string[];
 };
 
 // verififiation type: blue, gold, gray
