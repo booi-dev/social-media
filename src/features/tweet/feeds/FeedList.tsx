@@ -4,7 +4,7 @@ import useLocalStorage from "../../../hooks/useLocalStorage";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
-import ReTweetFeed from "./ReTweetFeed";
+// import ReTweetFeed from "./ReTweetFeed";
 import ReplyTweedFeed from "./ReplyTweetFeed";
 
 import { TweetType } from "../../../types";
@@ -26,22 +26,22 @@ function FeedList() {
   return (
     <div className="bg-inherit">
       {sortedTweets.map((t: TweetType) => {
-        if (t.tweetType?.type === "retweet" && t.tweetType.originalTweetId) {
-          return (
-            <div
-              key={t.tid}
-              className="border-x-[1px] border-b-[1px] border-app-white-5 dark:border-app-gray-1"
-            >
-              <ReTweetFeed
-                tweet={t}
-                typeState={{
-                  type: "retweet",
-                  originalTweetId: t.tweetType.originalTweetId,
-                }}
-              />
-            </div>
-          );
-        }
+        // if (t.tweetType?.type === "retweet" && t.tweetType.originalTweetId) {
+        //   return (
+        //     <div
+        //       key={t.tid}
+        //       className="border-x-[1px] border-b-[1px] border-app-white-5 dark:border-app-gray-1"
+        //     >
+        //       <ReTweetFeed
+        //         tweet={t}
+        //         typeState={{
+        //           type: "retweet",
+        //           originalTweetId: t.tweetType.originalTweetId,
+        //         }}
+        //       />
+        //     </div>
+        //   );
+        // }
         if (t.tweetType?.type === "reply" && t.tweetType.originalTweetId) {
           return (
             <div
