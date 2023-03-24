@@ -8,7 +8,7 @@ import { NotiPortal } from "./noti";
 
 function App() {
   const { theme } = useThemeControls();
-  const { user } = useUserControls();
+  const { isAuthenticate } = useUserControls();
 
   return (
     <div className={theme}>
@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Main />
         <NotiPortal />
-        <LogSignIndicator />
+        {!isAuthenticate && <LogSignIndicator />}
       </div>
     </div>
   );
