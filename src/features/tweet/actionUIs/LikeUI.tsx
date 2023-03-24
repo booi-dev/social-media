@@ -5,6 +5,7 @@ import AppIcon from "../../../components/ui/AppIcon";
 
 import useTweetActions from "../hooks/useTweetActions";
 import useUserControls from "../../../redux/control/userControls";
+import useGetProperties from "../../../hooks/useGetProperties";
 
 import LogInModal from "../../../components/ui/LogInModal";
 import { TweetType, UserType } from "../../../types";
@@ -18,6 +19,7 @@ function LikeUI(props: LikeUIType) {
   const { user, tweet } = props;
   const { likeTweet } = useTweetActions();
   const { isAuthenticate } = useUserControls();
+  const { getTweetCreator } = useGetProperties();
 
   const [anim, setAnim] = useState("");
   const [IsModalShow, setIsModalShow] = useState(false);
@@ -60,7 +62,16 @@ function LikeUI(props: LikeUIType) {
           />
         )}
       </button>
-      {IsModalShow && <LogInModal closeHandler={() => setIsModalShow(false)} />}
+      {IsModalShow && (
+        <LogInModal
+          icon={BsFillHeartFill}
+          title="Like a Tweet to share the love."
+          text={`Join Twitter now to let ${getTweetCreator(
+            tweet.createBy
+          )?.displayName.toUpperCase()} know you like their Tweet.`}
+          closeHandler={() => setIsModalShow(false)}
+        />
+      )}
     </>
   );
 }

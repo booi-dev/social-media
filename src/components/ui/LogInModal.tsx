@@ -1,14 +1,19 @@
 import React from "react";
 import { createPortal } from "react-dom";
+import { IconType } from "react-icons";
+import AppIcon from "./AppIcon";
 
 import BackDrop from "./BackDrop";
 
 type LogInModalType = {
+  icon: IconType;
+  title: string;
+  text: string;
   closeHandler: () => void;
 };
 
 function LogInModal(props: LogInModalType) {
-  const { closeHandler } = props;
+  const { icon, title, text, closeHandler } = props;
 
   const portal = document.getElementById("portal");
 
@@ -16,10 +21,25 @@ function LogInModal(props: LogInModalType) {
   if (portal) {
     LogSignPortal = createPortal(
       <>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[200px] w-[200px] bg-red-300 z-20">
-          LogSignModal
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-black-1 text-app-white-1 rounded-xl z-20">
+          <div className="flex justify-center pb-6">
+            <AppIcon icon={icon} size={30} color="pink" />
+          </div>
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <p className="text-app-gray-3">{text}</p>
+          <div className="flex flex-col gap-2 mt-6 [&>button]:py-2 [&>button]:font-bold [&>button]:rounded-2xl">
+            <button type="button" className="bg-pri-blue-1">
+              Log in{" "}
+            </button>
+            <button
+              type="button"
+              className="border border-app-gray-1 text-pri-blue-1"
+            >
+              Sign up
+            </button>
+          </div>
         </div>
-        <BackDrop handleClose={closeHandler} color="blue" />
+        <BackDrop handleClose={closeHandler} color="white" />
       </>,
       portal
     );
