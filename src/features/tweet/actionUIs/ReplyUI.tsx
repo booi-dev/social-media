@@ -1,23 +1,38 @@
 import { useState } from "react";
-import { BsChat } from "react-icons/bs";
+import { BsChat, BsChatFill } from "react-icons/bs";
 
 import AppIcon from "../../../components/ui/AppIcon";
 import BackDrop from "../../../components/ui/BackDrop";
 
-import { TweetType } from "../../../types";
+import useUserControls from "../../../redux/control/userControls";
+import useGetProperties from "../../../hooks/useGetProperties";
 
 import TweetReplyForm from "../actions/TweetReplyForm";
+import LogInModal from "../../../components/ui/LogInModal";
+
+import { TweetType } from "../../../types";
 
 function ReplyUI(props: { tweet: TweetType }) {
   const { tweet } = props;
 
+  const { isAuthenticate } = useUserControls();
+  const { getTweetCreator } = useGetProperties();
+  const [IsModalShow, setIsModalShow] = useState(false);
+
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
+
+  const handleBtnClick = () => {
+    if (isAuthenticate) setIsReplyBtnClick(true);
+    else {
+      setIsModalShow(true);
+    }
+  };
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setIsReplyBtnClick(true)}
+        onClick={handleBtnClick}
         className="flex items-center"
       >
         <AppIcon
@@ -39,6 +54,16 @@ function ReplyUI(props: { tweet: TweetType }) {
             color="white"
           />
         </>
+      )}
+      {IsModalShow && (
+        <LogInModal
+          iconDetail={{ icon: BsChatFill, color: "blue" }}
+          title="Reply to join the conversation."
+          text={`Once you join Twitter, you can respond to ${getTweetCreator(
+            tweet.createBy
+          )?.displayName.toUpperCase()}'s Tweet.`}
+          closeHandler={() => setIsModalShow(false)}
+        />
       )}
     </>
   );

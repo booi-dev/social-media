@@ -18,11 +18,12 @@ type LikeUIType = {
 function LikeUI(props: LikeUIType) {
   const { user, tweet } = props;
   const { likeTweet } = useTweetActions();
+
   const { isAuthenticate } = useUserControls();
   const { getTweetCreator } = useGetProperties();
+  const [IsModalShow, setIsModalShow] = useState(false);
 
   const [anim, setAnim] = useState("");
-  const [IsModalShow, setIsModalShow] = useState(false);
 
   const setAnimation = () => {
     setAnim("scale-125");
@@ -64,7 +65,7 @@ function LikeUI(props: LikeUIType) {
       </button>
       {IsModalShow && (
         <LogInModal
-          icon={BsFillHeartFill}
+          iconDetail={{ icon: BsFillHeartFill, color: "pink" }}
           title="Like a Tweet to share the love."
           text={`Join Twitter now to let ${getTweetCreator(
             tweet.createBy

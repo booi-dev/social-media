@@ -7,14 +7,14 @@ import AppIcon from "./AppIcon";
 import BackDrop from "./BackDrop";
 
 type LogInModalType = {
-  icon: IconType;
+  iconDetail: { icon: IconType; color: "blue" | "pink" | "green" };
   title: string;
   text: string;
   closeHandler: () => void;
 };
 
 function LogInModal(props: LogInModalType) {
-  const { icon, title, text, closeHandler } = props;
+  const { iconDetail, title, text, closeHandler } = props;
 
   const portal = document.getElementById("portal");
 
@@ -31,7 +31,11 @@ function LogInModal(props: LogInModalType) {
             <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
           </button>
           <div className="flex justify-center pb-6">
-            <AppIcon icon={icon} size={30} color="pink" />
+            <AppIcon
+              icon={iconDetail.icon}
+              size={30}
+              color={iconDetail.color}
+            />
           </div>
           <h1 className="text-2xl font-bold">{title}</h1>
           <p className="text-app-gray-3">{text}</p>
