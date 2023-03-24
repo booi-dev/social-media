@@ -6,7 +6,7 @@ function NotiPortal() {
   const { open, text, position } = notis;
 
   const portal = document.getElementById("portal");
-  portal?.classList.add("relative");
+  // portal?.classList.add("relative");
 
   let notificationPosition = "top-6 left-1/2 -translate-x-1/2";
 

@@ -21,7 +21,7 @@ function BackDrop(props: BackDropPropType) {
     transperant: "",
     white: "bg-white bg-opacity-30",
     black: "bg-black bg-opacity-40",
-    blue: "bg-pri-blue-1 bg-opacity-40",
+    blue: "bg-pri-blue-1 bg-opacity-20",
   };
 
   return (
