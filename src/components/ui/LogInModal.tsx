@@ -26,7 +26,11 @@ function LogInModal(props: LogInModalType) {
   if (portal) {
     LogSignPortal = createPortal(
       <div className={theme}>
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-white-1 dark:bg-app-black-1 text-app-gray-1 dark:text-app-white-1 shadow shadow-app-gray-1 rounded-xl z-20">
+        <div
+          className="absolute top-0 bottom-0 w-full flex flex-col justify-center
+
+        sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[550px] p-12 bg-app-white-1 dark:bg-app-black-1 text-app-gray-1 dark:text-app-white-1 shadow shadow-app-gray-1 rounded-xl z-20"
+        >
           <button
             type="button"
             className="absolute top-2 left-2"
@@ -42,7 +46,7 @@ function LogInModal(props: LogInModalType) {
             />
           </div>
           <h1 className="text-2xl font-bold">{title}</h1>
-          <p className="text-app-gray-3">{text}</p>
+          <p className="text-app-font-15 text-app-gray-3">{text}</p>
           <div className="flex flex-col gap-2 mt-6 [&>button]:py-2 [&>button]:font-bold [&>button]:rounded-2xl">
             <button type="button" className="bg-pri-blue-1">
               Log in{" "}

@@ -2,7 +2,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 
-function LogInForm() {
+function LogInWidget() {
   return (
     <div className="p-4 mt-4 border border-app-gray-1  rounded-xl">
       <h1 className="text-xl font-bold">New to Twitter?</h1>
@@ -27,4 +27,4 @@ function LogInForm() {
   );
 }
 
-export default LogInForm;
+export default LogInWidget;
