@@ -16,7 +16,7 @@ import BackDrop from "../components/ui/BackDrop";
 function Header() {
   const userName = "nganu";
 
-  const { user } = useUserControls();
+  const { userData } = useUserControls();
 
   const [isTweetFormShow, setIsTweetFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
@@ -57,9 +57,9 @@ function Header() {
             </>
           )}
           <Profile
-            displayName={user.displayName}
-            displayPicURL={user.displayPicURL}
-            userName={user.userName}
+            displayName={userData.displayName}
+            displayPicURL={userData.displayPicURL}
+            userName={userData.userName}
             menuBtnHandler={() => setIsOptionShow(true)}
           />
         </div>

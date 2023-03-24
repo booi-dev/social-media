@@ -6,6 +6,8 @@ function useUserControls() {
   const user = useAppSelector((state) => state.userStore);
   const dispatch = useAppDispatch();
 
+  const { isAuthenticate, data: userData } = user;
+
   const setUser = (u: UserType) => {
     dispatch(createUser(u));
   };
@@ -14,7 +16,7 @@ function useUserControls() {
     dispatch(updateName(newName));
   };
 
-  return { user, setUser, changeName };
+  return { isAuthenticate, userData, setUser, changeName };
 }
 
 export default useUserControls;
