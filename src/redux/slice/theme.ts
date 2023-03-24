@@ -1,8 +1,27 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
+const getClientDefaultTheme = () => {
+  let defaultTheme: string;
+
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    defaultTheme = "dark";
+    console.log("User prefers dark mode");
+  } else {
+    defaultTheme = "light";
+    console.log("User prefers light mode");
+  }
+
+  return defaultTheme;
+};
+
+getClientDefaultTheme();
+
 const InitialTheme = {
-  theme: "dark",
+  theme: getClientDefaultTheme(),
 };
 
 const themeSlice = createSlice({
