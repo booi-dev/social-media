@@ -1,6 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { IconType } from "react-icons";
+import { RxCross2 } from "react-icons/rx";
 import AppIcon from "./AppIcon";
 
 import BackDrop from "./BackDrop";
@@ -22,6 +23,13 @@ function LogInModal(props: LogInModalType) {
     LogSignPortal = createPortal(
       <>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-black-1 text-app-white-1 rounded-xl z-20">
+          <button
+            type="button"
+            className="absolute top-2 left-2"
+            onClick={closeHandler}
+          >
+            <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
+          </button>
           <div className="flex justify-center pb-6">
             <AppIcon icon={icon} size={30} color="pink" />
           </div>

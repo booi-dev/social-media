@@ -6,7 +6,7 @@ type IconPropType = {
   size?: number;
   animation?: string;
   rotateDeg?: number;
-  hoverColor?: "blue" | "pink" | "green" | "black";
+  hoverColor?: "blue" | "pink" | "green" | "black" | "gray";
   color?: "blue" | "pink" | "green" | "black";
 };
 
@@ -34,6 +34,7 @@ function AppIcon(props: IconPropType) {
     pink: "text-pink-600",
     green: "text-green-400",
     black: "text-black",
+    gray: "text-app-gray-1",
   };
 
   const groupHoverColorVariants: colorVariantsType = {
@@ -41,6 +42,7 @@ function AppIcon(props: IconPropType) {
     pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
     black: "group-hover:text-bg-app-white-3",
+    gray: "group-hover:text-bg-app-gray-1",
   };
 
   const hoverColorVariants: colorVariantsType = {
@@ -48,6 +50,7 @@ function AppIcon(props: IconPropType) {
     pink: "hover:bg-pink-100",
     green: "hover:bg-green-100",
     black: "hover:bg-app-white-3",
+    gray: "hover:bg-app-gray-1",
   };
 
   return (
