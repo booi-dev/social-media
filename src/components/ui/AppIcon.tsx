@@ -41,8 +41,8 @@ function AppIcon(props: IconPropType) {
     blue: "group-hover:text-pri-blue-1",
     pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
-    black: "group-hover:text-bg-app-white-3",
-    gray: "group-hover:text-bg-app-gray-1",
+    black: "group-hover:text-app-white-3",
+    gray: "group-hover:text-app-white-1",
   };
 
   const hoverColorVariants: colorVariantsType = {
@@ -50,7 +50,7 @@ function AppIcon(props: IconPropType) {
     pink: "hover:bg-pink-100",
     green: "hover:bg-green-100",
     black: "hover:bg-app-white-3",
-    gray: "hover:bg-app-gray-1",
+    gray: "hover:bg-app-gray-3",
   };
 
   return (

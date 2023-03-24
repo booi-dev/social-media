@@ -2,6 +2,9 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { IconType } from "react-icons";
 import { RxCross2 } from "react-icons/rx";
+
+import useThemeControls from "../../redux/control/themeControl";
+
 import AppIcon from "./AppIcon";
 
 import BackDrop from "./BackDrop";
@@ -15,14 +18,15 @@ type LogInModalType = {
 
 function LogInModal(props: LogInModalType) {
   const { iconDetail, title, text, closeHandler } = props;
+  const { theme } = useThemeControls();
 
   const portal = document.getElementById("portal");
 
   let LogSignPortal: React.ReactPortal | React.ReactElement = <div />;
   if (portal) {
     LogSignPortal = createPortal(
-      <>
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-black-1 text-app-white-1 rounded-xl z-20">
+      <div className={theme}>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-white-1 dark:bg-app-black-1 text-app-gray-1 dark:text-app-white-1 shadow shadow-app-gray-1 rounded-xl z-20">
           <button
             type="button"
             className="absolute top-2 left-2"
@@ -52,7 +56,7 @@ function LogInModal(props: LogInModalType) {
           </div>
         </div>
         <BackDrop handleClose={closeHandler} color="white" />
-      </>,
+      </div>,
       portal
     );
   }
