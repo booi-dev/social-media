@@ -14,12 +14,16 @@ import {
   HiChatBubbleBottomCenter,
 } from "react-icons/hi2";
 
+import useUserControls from "../../redux/control/userControls";
+
 import Option from "./Option";
 import More from "./More";
 
 function HeaderOptions() {
   const [optionIndex, setOptionIndex] = useState("Home");
   const [isMoreClick, setIsMoreClick] = useState(false);
+
+  const { isAuthenticate } = useUserControls();
 
   return (
     <div className="relative flex flex-col bg-inherit lg:items-start md:gap-2 lg:gap-3">
@@ -30,6 +34,7 @@ function HeaderOptions() {
         isActive={optionIndex === "Home"}
         setActive={() => setOptionIndex("Home")}
       />
+
       <Option
         text="Explore"
         icon={CiHashtag}
@@ -38,43 +43,47 @@ function HeaderOptions() {
         setActive={() => setOptionIndex("Explore")}
         extraStyle="stroke-1"
       />
-      <Option
-        text="Notification"
-        icon={IoNotificationsOutline}
-        iconActive={IoNotificationsSharp}
-        isActive={optionIndex === "Notification"}
-        setActive={() => setOptionIndex("Notification")}
-      />
-      <Option
-        text="Messages"
-        icon={HiOutlineChatBubbleBottomCenter}
-        iconActive={HiChatBubbleBottomCenter}
-        isActive={optionIndex === "Messages"}
-        setActive={() => setOptionIndex("Messages")}
-      />
-      <Option
-        text="Bookmarks"
-        icon={IoBookmarkOutline}
-        iconActive={IoBookmark}
-        isActive={optionIndex === "Bookmarks"}
-        setActive={() => setOptionIndex("Bookmarks")}
-      />
-      <Option
-        text="Profile"
-        icon={BsPerson}
-        iconActive={BsPersonFill}
-        isActive={optionIndex === "Profile"}
-        setActive={() => setOptionIndex("Profile")}
-      />
-      <Option
-        text="More"
-        icon={CiCircleMore}
-        iconActive={CiCircleMore}
-        isActive={optionIndex === "More"}
-        setActive={() => setOptionIndex("More")}
-        clickHandler={() => setIsMoreClick(true)}
-      />
-      {isMoreClick && <More closeHandler={() => setIsMoreClick(false)} />}
+      {isAuthenticate && (
+        <>
+          <Option
+            text="Notification"
+            icon={IoNotificationsOutline}
+            iconActive={IoNotificationsSharp}
+            isActive={optionIndex === "Notification"}
+            setActive={() => setOptionIndex("Notification")}
+          />
+          <Option
+            text="Messages"
+            icon={HiOutlineChatBubbleBottomCenter}
+            iconActive={HiChatBubbleBottomCenter}
+            isActive={optionIndex === "Messages"}
+            setActive={() => setOptionIndex("Messages")}
+          />
+          <Option
+            text="Bookmarks"
+            icon={IoBookmarkOutline}
+            iconActive={IoBookmark}
+            isActive={optionIndex === "Bookmarks"}
+            setActive={() => setOptionIndex("Bookmarks")}
+          />
+          <Option
+            text="Profile"
+            icon={BsPerson}
+            iconActive={BsPersonFill}
+            isActive={optionIndex === "Profile"}
+            setActive={() => setOptionIndex("Profile")}
+          />
+          <Option
+            text="More"
+            icon={CiCircleMore}
+            iconActive={CiCircleMore}
+            isActive={optionIndex === "More"}
+            setActive={() => setOptionIndex("More")}
+            clickHandler={() => setIsMoreClick(true)}
+          />
+          {isMoreClick && <More closeHandler={() => setIsMoreClick(false)} />}
+        </>
+      )}
     </div>
   );
 }

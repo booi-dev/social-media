@@ -16,7 +16,7 @@ import BackDrop from "../components/ui/BackDrop";
 function Header() {
   const userName = "nganu";
 
-  const { userData } = useUserControls();
+  const { isAuthenticate, user } = useUserControls();
 
   const [isTweetFormShow, setIsTweetFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
@@ -34,14 +34,16 @@ function Header() {
             />
           </div>
           <HeaderOptions />
-          <button
-            type="button"
-            className="lg:w-[220px] p-4 mt-2 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 hover:bg-pri-blue-2 md:py-3"
-            onClick={() => setIsTweetFormShow(true)}
-          >
-            <FaFeatherAlt className="md:hidden" />
-            <span className="hidden md:block">Tweet</span>
-          </button>
+          {isAuthenticate && (
+            <button
+              type="button"
+              className="lg:w-[220px] p-4 mt-2 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 hover:bg-pri-blue-2 md:py-3"
+              onClick={() => setIsTweetFormShow(true)}
+            >
+              <FaFeatherAlt className="md:hidden" />
+              <span className="hidden md:block">Tweet</span>
+            </button>
+          )}
         </div>
 
         <div className="relative py-4 ">
@@ -56,12 +58,14 @@ function Header() {
               <BackDrop handleClose={() => setIsOptionShow(false)} />
             </>
           )}
-          <Profile
-            displayName={userData.displayName}
-            displayPicURL={userData.displayPicURL}
-            userName={userData.userName}
-            menuBtnHandler={() => setIsOptionShow(true)}
-          />
+          {isAuthenticate && (
+            <Profile
+              displayName={user.displayName}
+              displayPicURL={user.displayPicURL}
+              userName={user.userName}
+              menuBtnHandler={() => setIsOptionShow(true)}
+            />
+          )}
         </div>
 
         {isTweetFormShow && (

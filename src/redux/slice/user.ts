@@ -8,9 +8,9 @@ import { UserType } from "../../types/UserType";
 
 // const randomUser: UserType = users[Math.floor(Math.random() * users.length)];
 
-const initialUser: { isAuthenticate: boolean; data: UserType } = {
+const initialUser: { isAuthenticate: boolean; user: UserType } = {
   isAuthenticate: false,
-  data: {
+  user: {
     uid: "",
     displayName: "",
     displayPicURL:
@@ -26,10 +26,10 @@ const userSlice = createSlice({
   initialState: initialUser,
   reducers: {
     createUser: (state, action: PayloadAction<UserType>) => {
-      state.data = action.payload;
+      state.user = action.payload;
     },
     updateName: (state, action: PayloadAction<string>) => {
-      state.data = { ...state.data, displayName: action.payload };
+      state.user = { ...state.user, displayName: action.payload };
     },
   },
 });

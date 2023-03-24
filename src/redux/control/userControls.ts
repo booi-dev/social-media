@@ -3,10 +3,10 @@ import { createUser, updateName } from "../slice/user";
 import { UserType } from "../../types";
 
 function useUserControls() {
-  const user = useAppSelector((state) => state.userStore);
+  const userStore = useAppSelector((state) => state.userStore);
   const dispatch = useAppDispatch();
 
-  const { isAuthenticate, data: userData } = user;
+  const { isAuthenticate, user } = userStore;
 
   const setUser = (u: UserType) => {
     dispatch(createUser(u));
@@ -16,7 +16,7 @@ function useUserControls() {
     dispatch(updateName(newName));
   };
 
-  return { isAuthenticate, userData, setUser, changeName };
+  return { isAuthenticate, user, setUser, changeName };
 }
 
 export default useUserControls;
