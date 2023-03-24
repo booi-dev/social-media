@@ -1,11 +1,14 @@
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
+import LogSignIndicator from "./components/ui/LogSignIndicator";
 
+import useUserControls from "./redux/control/userControls";
 import useThemeControls from "./redux/control/themeControl";
 import { NotiPortal } from "./noti";
 
 function App() {
   const { theme } = useThemeControls();
+  const { user } = useUserControls();
 
   return (
     <div className={theme}>
@@ -13,6 +16,7 @@ function App() {
         <Header />
         <Main />
         <NotiPortal />
+        <LogSignIndicator />
       </div>
     </div>
   );
