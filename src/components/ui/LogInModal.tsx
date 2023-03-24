@@ -22,7 +22,7 @@ function LogInModal(props: LogInModalType) {
   if (portal) {
     LogSignPortal = createPortal(
       <>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-black-1 text-app-white-1 rounded-xl z-20">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[550px] p-12 bg-app-black-1 text-app-white-1 rounded-xl z-20">
           <button
             type="button"
             className="absolute top-2 left-2"
@@ -56,8 +56,6 @@ function LogInModal(props: LogInModalType) {
       portal
     );
   }
-
-  console.log("kdjhf");
 
   return LogSignPortal;
 }

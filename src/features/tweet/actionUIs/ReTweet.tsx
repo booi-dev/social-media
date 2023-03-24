@@ -3,9 +3,12 @@ import { useState } from "react";
 import { AiOutlineRetweet } from "react-icons/ai";
 
 import useUserControls from "../../../redux/control/userControls";
+import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";
 import ReTweetPanel from "../actions/ReTweetPanel";
+
+import LogInModal from "../../../components/ui/LogInModal";
 
 import { TweetType, TypeStateType } from "../../../types";
 
@@ -17,18 +20,28 @@ type ReTweetType = {
 function ReTweet(props: ReTweetType) {
   const { tweet, typeState } = props;
 
-  const { user } = useUserControls();
+  const { isAuthenticate, user } = useUserControls();
+  const { getTweetCreator } = useGetProperties();
+
+  const [IsModalShow, setIsModalShow] = useState(false);
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
 
   const hasReTweeted = !!tweet.reTweets.find(
     (retweet) => retweet.byUid === user.uid
   );
 
+  const handleBtnClick = () => {
+    if (isAuthenticate) setIsReTweetBtnClick(true);
+    else {
+      setIsModalShow(true);
+    }
+  };
+
   return (
     <div className="relative bg-inherit">
       <button
         type="button"
-        onClick={() => setIsReTweetBtnClick(true)}
+        onClick={handleBtnClick}
         className="flex items-center"
       >
         {hasReTweeted ? (
@@ -53,6 +66,16 @@ function ReTweet(props: ReTweetType) {
             state: hasReTweeted,
             reTweetId: typeState.originalTweetId,
           }}
+        />
+      )}
+      {IsModalShow && (
+        <LogInModal
+          iconDetail={{ icon: AiOutlineRetweet, color: "green" }}
+          title="Retweet to spread the word."
+          text={`When you join Twitter, you can share ${getTweetCreator(
+            tweet.createBy
+          )?.displayName.toUpperCase()}'s Tweet.`}
+          closeHandler={() => setIsModalShow(false)}
         />
       )}
     </div>

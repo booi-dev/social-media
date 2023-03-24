@@ -69,7 +69,7 @@ function LikeUI(props: LikeUIType) {
           title="Like a Tweet to share the love."
           text={`Join Twitter now to let ${getTweetCreator(
             tweet.createBy
-          )?.displayName.toUpperCase()} know you like their Tweet.`}
+          )?.displayName.toUpperCase()}'s Tweet with your followers.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}
