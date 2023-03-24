@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RxShare2 } from "react-icons/rx";
-import SharePanel from "../actions/SharePanel";
 
+import SharePanel from "../actions/SharePanel";
 import AppIcon from "../../../components/ui/AppIcon";
 
 function ShareUI() {
