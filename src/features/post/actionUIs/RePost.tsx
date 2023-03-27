@@ -6,7 +6,7 @@ import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";
-import ReTweetPanel from "../actions/ReTweetPanel";
+import RePostPanel from "../actions/RePostPanel";
 
 import LogInModal from "../../login-signup/LogInModal";
 
@@ -62,7 +62,7 @@ function RePost(props: ReTweetType) {
         </div>
       </button>
       {isReTweetBtnClick && (
-        <ReTweetPanel
+        <RePostPanel
           tweet={post}
           closeHandler={() => setIsReTweetBtnClick(false)}
           reTweetState={{

@@ -11,12 +11,12 @@ import TweetForm from "../components/PostForm";
 
 import { TweetType } from "../../../types";
 
-type TweetReplyFormType = {
+type PostReplyFormType = {
   originalTweet: TweetType;
   closeHandler: () => void;
 };
 
-function TweetReplyForm(props: TweetReplyFormType) {
+function PostReplyForm(props: PostReplyFormType) {
   const { closeHandler, originalTweet } = props;
 
   const { createNewTweet, addNewReply } = useTweetActions();
@@ -34,7 +34,7 @@ function TweetReplyForm(props: TweetReplyFormType) {
   return (
     <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
       <button type="button" onClick={closeHandler}>
-        <AppIcon icon={IoMdClose} size={26} hoverColor="coral" />
+        <AppIcon icon={IoMdClose} size={26} hoverColor="pri" />
       </button>
 
       <div className="flex flex-col px-4 ">
@@ -86,4 +86,4 @@ function TweetReplyForm(props: TweetReplyFormType) {
   );
 }
 
-export default TweetReplyForm;
+export default PostReplyForm;

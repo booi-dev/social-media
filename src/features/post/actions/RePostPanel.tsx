@@ -10,7 +10,7 @@ import BackDrop from "../../../components/ui/BackDrop";
 
 import { TweetType } from "../../../types";
 
-type ReTweetType = {
+type RePostPanelType = {
   tweet: TweetType;
   closeHandler: () => void;
   reTweetState: {
@@ -19,7 +19,7 @@ type ReTweetType = {
   };
 };
 
-function ReTweetPanel(props: ReTweetType) {
+function RePostPanel(props: RePostPanelType) {
   const { tweet, reTweetState, closeHandler } = props;
 
   const { user } = useUserControls();
@@ -88,4 +88,4 @@ function ReTweetPanel(props: ReTweetType) {
   );
 }
 
-export default ReTweetPanel;
+export default RePostPanel;

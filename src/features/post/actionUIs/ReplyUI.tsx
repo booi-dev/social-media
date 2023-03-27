@@ -7,7 +7,7 @@ import BackDrop from "../../../components/ui/BackDrop";
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
-import TweetReplyForm from "../actions/TweetReplyForm";
+import PostReplyForm from "../actions/PostReplyForm";
 import LogInModal from "../../login-signup/LogInModal";
 
 import { TweetType } from "../../../types";
@@ -47,7 +47,7 @@ function ReplyUI(props: { post: TweetType }) {
       {isReplyBtnClick && (
         <>
           <div className="fixed inset-0 z-20 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:h-min sm:w-[500px]  sm:-translate-x-1/2 sm:-translate-y-1/2">
-            <TweetReplyForm
+            <PostReplyForm
               originalTweet={post}
               closeHandler={() => setIsReplyBtnClick(false)}
             />

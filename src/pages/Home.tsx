@@ -1,25 +1,25 @@
 import useUserControls from "../redux/control/userControls";
 
-import NewTweetForm from "../features/tweet/actions/NewTweetForm";
-import FeedList from "../features/tweet/feeds/FeedList";
+import NewPostForm from "../features/post/actions/NewPostForm";
+import FeedList from "../features/post/feeds/FeedList";
 
 function Home() {
   const { isAuthenticate } = useUserControls();
 
   return (
-    <div className="w-full h-screen overflow-y-scroll hide-scrollbar max-w-[600px] bg-inherit text-inherit border-app-white-5 dark:border-app-gray-1">
-      <div className="sticky top-0 left-0 right-0 bg-inherit z-[5] border-[1px] dark:border-app-gray-1">
-        <h1 className="w-full h-[53px] py-2.5 px-3.5 text-app-font-20  font-bold">
+    <div className="hide-scrollbar h-screen w-full max-w-[600px] overflow-y-scroll border-app-white-5 bg-inherit text-inherit dark:border-app-gray-1">
+      <div className="sticky top-0 left-0 right-0 z-[5] border-[1px] bg-inherit dark:border-app-gray-1">
+        <h1 className="h-[53px] w-full py-2.5 px-3.5 text-app-font-20  font-bold">
           Home
         </h1>
-        <div className="flex justify-around items-center pb-2 h-[53px] font-medium bg-inherit text-inherited">
+        <div className="text-inherited flex h-[53px] items-center justify-around bg-inherit pb-2 font-medium">
           <h2 className="text-inherited">For you</h2>
           <h2>Following</h2>
         </div>
       </div>
       {isAuthenticate && (
-        <div className="p-2 border-x-[1px] border-b-[1px]  dark:border-app-gray-1 md:p-4">
-          <NewTweetForm />
+        <div className="border-x-[1px] border-b-[1px] p-2  dark:border-app-gray-1 md:p-4">
+          <NewPostForm />
         </div>
       )}
       <FeedList />

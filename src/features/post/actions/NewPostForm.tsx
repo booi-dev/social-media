@@ -4,14 +4,14 @@ import useTweetActions from "../hooks/useTweetActions";
 
 import TweetForm from "../components/PostForm";
 
-type NewTweetFormType = {
+type NewPostFormType = {
   closeHandler?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
 };
 
-function NewTweetForm(props: NewTweetFormType) {
+function NewPostForm(props: NewPostFormType) {
   const { closeHandler, isLargeTextArea, isBackBtnShow, isFilterBtnHidden } =
     props;
 
@@ -30,11 +30,11 @@ function NewTweetForm(props: NewTweetFormType) {
   );
 }
 
-NewTweetForm.defaultProps = {
+NewPostForm.defaultProps = {
   closeHandler: undefined,
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
 };
 
-export default NewTweetForm;
+export default NewPostForm;
