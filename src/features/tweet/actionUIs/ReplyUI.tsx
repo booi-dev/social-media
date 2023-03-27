@@ -12,8 +12,8 @@ import LogInModal from "../../login-signup/LogInModal";
 
 import { TweetType } from "../../../types";
 
-function ReplyUI(props: { tweet: TweetType }) {
-  const { tweet } = props;
+function ReplyUI(props: { post: TweetType }) {
+  const { post } = props;
 
   const { isAuthenticate } = useUserControls();
   const { getTweetCreator } = useGetProperties();
@@ -37,8 +37,8 @@ function ReplyUI(props: { tweet: TweetType }) {
       >
         <AppIcon icon={BsChat} hoverColor="pri" />
         <div className="pl-[1px] group-hover:text-pri-clr-1">
-          {tweet.replies.length > 0 ? (
-            tweet.replies.length
+          {post.replies.length > 0 ? (
+            post.replies.length
           ) : (
             <span className="opacity-0"> 0</span>
           )}
@@ -48,7 +48,7 @@ function ReplyUI(props: { tweet: TweetType }) {
         <>
           <div className="fixed inset-0 z-20 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:h-min sm:w-[500px]  sm:-translate-x-1/2 sm:-translate-y-1/2">
             <TweetReplyForm
-              originalTweet={tweet}
+              originalTweet={post}
               closeHandler={() => setIsReplyBtnClick(false)}
             />
           </div>
@@ -63,7 +63,7 @@ function ReplyUI(props: { tweet: TweetType }) {
           iconDetail={{ icon: BsChatFill, color: "blue" }}
           title="Reply to join the conversation."
           text={`Once you join Twitter, you can respond to ${getTweetCreator(
-            tweet.createBy
+            post.createBy
           )?.displayName.toUpperCase()}'s Tweet.`}
           closeHandler={() => setIsModalShow(false)}
         />

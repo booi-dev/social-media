@@ -13,12 +13,12 @@ import LogInModal from "../../login-signup/LogInModal";
 import { TweetType, TypeStateType } from "../../../types";
 
 type ReTweetType = {
-  tweet: TweetType;
+  post: TweetType;
   typeState: TypeStateType;
 };
 
-function ReTweet(props: ReTweetType) {
-  const { tweet, typeState } = props;
+function RePost(props: ReTweetType) {
+  const { post, typeState } = props;
 
   const { isAuthenticate, user } = useUserControls();
   const { getTweetCreator } = useGetProperties();
@@ -26,7 +26,7 @@ function ReTweet(props: ReTweetType) {
   const [IsModalShow, setIsModalShow] = useState(false);
   const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
 
-  const hasReTweeted = !!tweet.reTweets.find(
+  const hasReTweeted = !!post.reTweets.find(
     (retweet) => retweet.byUid === user.uid
   );
 
@@ -54,8 +54,8 @@ function ReTweet(props: ReTweetType) {
             hasReTweeted && "text-green-400"
           }`}
         >
-          {tweet.reTweets.length > 0 ? (
-            tweet.reTweets.length
+          {post.reTweets.length > 0 ? (
+            post.reTweets.length
           ) : (
             <span className="opacity-0"> 0</span>
           )}
@@ -63,7 +63,7 @@ function ReTweet(props: ReTweetType) {
       </button>
       {isReTweetBtnClick && (
         <ReTweetPanel
-          tweet={tweet}
+          tweet={post}
           closeHandler={() => setIsReTweetBtnClick(false)}
           reTweetState={{
             state: hasReTweeted,
@@ -76,7 +76,7 @@ function ReTweet(props: ReTweetType) {
           iconDetail={{ icon: AiOutlineRetweet, color: "green" }}
           title="Retweet to spread the word."
           text={`When you join Twitter, you can share ${getTweetCreator(
-            tweet.createBy
+            post.createBy
           )?.displayName.toUpperCase()}'s Tweet.`}
           closeHandler={() => setIsModalShow(false)}
         />
@@ -85,4 +85,4 @@ function ReTweet(props: ReTweetType) {
   );
 }
 
-export default ReTweet;
+export default RePost;

@@ -12,11 +12,11 @@ import { TweetType, UserType } from "../../../types";
 
 type LikeUIType = {
   user: UserType;
-  tweet: TweetType;
+  post: TweetType;
 };
 
 function LikeUI(props: LikeUIType) {
-  const { user, tweet } = props;
+  const { user, post } = props;
   const { likeTweet } = useTweetActions();
 
   const { isAuthenticate } = useUserControls();
@@ -34,7 +34,7 @@ function LikeUI(props: LikeUIType) {
 
   const handleBtnClick = () => {
     if (isAuthenticate) {
-      likeTweet(tweet);
+      likeTweet(post);
       setAnimation();
     } else {
       setIsModalShow(true);
@@ -48,17 +48,17 @@ function LikeUI(props: LikeUIType) {
         onClick={handleBtnClick}
         className="group flex items-center"
       >
-        {tweet.likes.includes(user.uid) ? (
+        {post.likes.includes(user.uid) ? (
           <AppIcon icon={BsFillHeartFill} color="pink" animation={anim} />
         ) : (
           <AppIcon icon={BsHeart} hoverColor="pink" />
         )}
         <div
           className={`pl-[1px] group-hover:text-pink-600
-           ${tweet.likes.includes(user.uid) && "text-pink-600"}`}
+           ${post.likes.includes(user.uid) && "text-pink-600"}`}
         >
-          {tweet.likes.length > 0 ? (
-            tweet.likes.length
+          {post.likes.length > 0 ? (
+            post.likes.length
           ) : (
             <span className="opacity-0"> 0</span>
           )}
@@ -69,7 +69,7 @@ function LikeUI(props: LikeUIType) {
           iconDetail={{ icon: BsFillHeartFill, color: "pink" }}
           title="Like a Tweet to share the love."
           text={`Join Twitter now to let ${getTweetCreator(
-            tweet.createBy
+            post.createBy
           )?.displayName.toUpperCase()}'s Tweet with your followers.`}
           closeHandler={() => setIsModalShow(false)}
         />
