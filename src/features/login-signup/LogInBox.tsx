@@ -66,14 +66,14 @@ function LogInForm(props: LogInFormType) {
             <div className="rounded-sm border-2 border-app-gray-1 p-2">
               <label
                 htmlFor="input"
-                className="text-app-font-15 text-pri-blue-1"
+                className="text-app-font-15 text-pri-clr-1"
               >
                 Phone, email, or username
                 <input id="input" className="w-full rounded-md py-1" />
               </label>
               <label
                 htmlFor="input"
-                className="text-app-font-15 text-pri-blue-1"
+                className="text-app-font-15 text-pri-clr-1"
               >
                 Password
                 <input id="input" className="w-full rounded-md py-1" />
@@ -98,7 +98,7 @@ function LogInForm(props: LogInFormType) {
             <button
               type="button"
               onClick={handleSignUpBtn}
-              className="text-pri-blue-1"
+              className="text-pri-clr-1"
             >
               Sign up
             </button>

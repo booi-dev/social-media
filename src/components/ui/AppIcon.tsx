@@ -6,8 +6,8 @@ type IconPropType = {
   size?: number;
   animation?: string;
   rotateDeg?: number;
-  hoverColor?: "blue" | "pink" | "green" | "black" | "gray";
-  color?: "blue" | "pink" | "green" | "black";
+  hoverColor?: "coral" | "pink" | "green" | "black" | "gray" | "blue";
+  color?: "coral" | "pink" | "green" | "black" | "blue";
 };
 
 type colorVariantsType = {
@@ -31,6 +31,7 @@ function AppIcon(props: IconPropType) {
 
   const colorVariants: colorVariantsType = {
     blue: "text-pri-blue-1",
+    coral: "text-pri-clr-1",
     pink: "text-pink-600",
     green: "text-green-400",
     black: "text-black",
@@ -39,6 +40,7 @@ function AppIcon(props: IconPropType) {
 
   const groupHoverColorVariants: colorVariantsType = {
     blue: "group-hover:text-pri-blue-1",
+    coral: "group-hover:text-pri-clr-1",
     pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
     black: "group-hover:text-app-white-3",
@@ -47,6 +49,7 @@ function AppIcon(props: IconPropType) {
 
   const hoverColorVariants: colorVariantsType = {
     blue: "hover:bg-blue-100",
+    coral: "hover:bg-[#F38D68]",
     pink: "hover:bg-pink-100",
     green: "hover:bg-green-100",
     black: "hover:bg-app-white-3",
@@ -55,7 +58,7 @@ function AppIcon(props: IconPropType) {
 
   return (
     <div
-      className={`group flex items-center gap-3 p-2 md:p-3 rounded-full ${
+      className={`group flex items-center gap-3 rounded-full p-2 md:p-3 ${
         hoverColor && hoverColorVariants[hoverColor]
       } transition-all duration-500 dark:hover:bg-transparent`}
     >

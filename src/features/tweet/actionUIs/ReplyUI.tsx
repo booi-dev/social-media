@@ -37,7 +37,7 @@ function ReplyUI(props: { tweet: TweetType }) {
       >
         <AppIcon
           icon={BsChat}
-          hoverColor="blue"
+          hoverColor="coral"
           text={tweet.replies.length > 0 ? tweet.replies.length : "0"}
         />
       </button>

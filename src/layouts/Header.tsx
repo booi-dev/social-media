@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { BsTwitter } from "react-icons/bs";
+import { BsChatSquareDotsFill } from "react-icons/bs";
 import { FaFeatherAlt } from "react-icons/fa";
 
 import useUserControls from "../redux/control/userControls";
@@ -22,26 +22,26 @@ function Header() {
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
-    <header className="flex justify-end h-screen lg:w-[540px] bg-inherit text-inherit">
-      <div className="flex flex-col justify-between items-center w-[80px] h-full bg-inherit transition-all duration-500 md:items-stretch md:px-2 md:w-[200px] lg:w-[275px]">
-        <div className="flex flex-col items-center lg:items-start bg-inherit ">
-          <div className="w-min mt-2 lg:mx-2">
+    <header className="flex h-screen justify-end bg-inherit text-inherit lg:w-[540px]">
+      <div className="flex h-full w-[80px] flex-col items-center justify-between bg-inherit transition-all duration-500 md:w-[200px] md:items-stretch md:px-2 lg:w-[275px]">
+        <div className="flex flex-col items-center bg-inherit lg:items-start ">
+          <div className="mt-2 w-min lg:mx-2">
             <AppIcon
-              icon={BsTwitter}
+              icon={BsChatSquareDotsFill}
               size={28}
-              color="blue"
-              hoverColor="blue"
+              color="coral"
+              hoverColor="coral"
             />
           </div>
           <HeaderOptions />
           {isAuthenticate && (
             <button
               type="button"
-              className="lg:w-[220px] p-4 mt-2 text-app-white-1 font-bold text-app-font-20 rounded-full bg-pri-blue-1 hover:bg-pri-blue-2 md:py-3"
+              className="mt-2 rounded-full bg-pri-clr-1 p-4 text-app-font-20 font-bold text-app-black-1 hover:bg-pri-clr-2 md:py-3 lg:w-[220px]"
               onClick={() => setIsTweetFormShow(true)}
             >
               <FaFeatherAlt className="md:hidden" />
-              <span className="hidden md:block">Tweet</span>
+              <span className="hidden md:block">Post</span>
             </button>
           )}
         </div>
@@ -49,7 +49,7 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute w-[250px] bottom-24 py-4 font-bold rounded-2xl z-20 space-y-1 bg-inherit dark:bg-app-black-3 shadow-lg cursor-pointer [&>h1]:px-4 [&>h1]:py-2">
+              <div className="absolute bottom-24 z-20 w-[250px] cursor-pointer space-y-1 rounded-2xl bg-inherit py-4 font-bold shadow-lg dark:bg-app-black-3 [&>h1]:px-4 [&>h1]:py-2">
                 <h1 className="hover:bg-app-white-3">
                   Add an existing account
                 </h1>
@@ -70,7 +70,7 @@ function Header() {
 
         {isTweetFormShow && (
           <>
-            <div className="absolute inset-1 p-2 rounded-2xl bg-inherit z-20 sm:h-max sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2  sm:w-[500px] md:p-4 ">
+            <div className="absolute inset-1 z-20 rounded-2xl bg-inherit p-2 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2  sm:-translate-y-1/2 md:p-4 ">
               <NewTweetForm
                 closeHandler={() => setIsTweetFormShow(false)}
                 isLargeTextArea

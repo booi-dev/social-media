@@ -9,7 +9,7 @@ function LogInSignUpIndicator(props: LogInIndicatorType) {
   const { setIsLogInClick, setIsSignUpClick } = props;
 
   return (
-    <div className="fixed bottom-0 flex h-[70px] w-full items-center  bg-pri-blue-1 md:justify-center">
+    <div className="fixed bottom-0 flex h-[70px] w-full items-center  bg-pri-clr-1 md:justify-center">
       <div className="hidden md:block md:w-[10px] lg:w-[230px]" />
       <div className="flex grow items-center px-4 md:w-[600px] md:grow-0 md:justify-between lg:w-[1000px] lg:pr-4">
         <div className="hidden md:block">

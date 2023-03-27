@@ -10,7 +10,7 @@ import useUserControls from "./redux/control/userControls";
 import useThemeControls from "./redux/control/themeControl";
 import { NotiPortal } from "./noti";
 
-import genUser from "./utils/genUser";
+import { UserType } from "./types";
 
 function App() {
   const { theme } = useThemeControls();
@@ -19,9 +19,20 @@ function App() {
   const [isLogInClick, setIsLogInClick] = useState(false);
   const [isSignUpClick, setIsSignUpClick] = useState(false);
 
+  const fakeUser: UserType = {
+    uid: "03",
+    displayName: "Katty",
+    displayPicURL:
+      "https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg?auto=compress&cs=tinysrgb&w=600",
+    userName: "keku",
+    email: "",
+    following: [],
+    followers: [],
+    verification: { state: false, type: "" },
+  };
+
   useEffect(() => {
     const setUserData = async () => {
-      const fakeUser = await genUser();
       setUser(fakeUser);
     };
 

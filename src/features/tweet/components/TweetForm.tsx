@@ -5,16 +5,17 @@ import { FiChevronDown } from "react-icons/fi";
 
 import { useNoti } from "../../../noti";
 
+import useUserControls from "../../../redux/control/userControls";
+
 import AppIcon from "../../../components/ui/AppIcon";
-import TweetBtnPanel from "../../../components/tweetbox/TweetBtnPanel";
-import TweetAudienceFilter from "../../../components/tweetbox/TweetAudienceFilter";
+import TweetBtnPanel from "./TweetBtnPanel";
+import TweetAudienceFilter from "./TweetAudienceFilter";
 
 import findHashTags from "../../../utils/findHashTag";
 
-import { TweetType, UserType, HashTagType } from "../../../types";
+import { TweetType, HashTagType } from "../../../types";
 
 type TweetFormType = {
-  user: UserType;
   newTId: string;
   submitHandler: (newTweet: TweetType) => void;
   tweetHaveType: {
@@ -30,7 +31,6 @@ type TweetFormType = {
 
 function TweetForm(props: TweetFormType) {
   const {
-    user,
     newTId,
     submitHandler,
     closeHandler,
@@ -40,6 +40,8 @@ function TweetForm(props: TweetFormType) {
     isFilterBtnHidden,
     openNotification,
   } = props;
+
+  const { user } = useUserControls();
 
   const rawTweet: TweetType = {
     tid: newTId,
@@ -99,6 +101,7 @@ function TweetForm(props: TweetFormType) {
       hashtags: tags,
       tweet: e.target.value,
     });
+    console.log(newTweet);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -114,19 +117,19 @@ function TweetForm(props: TweetFormType) {
   return (
     <div className="relative">
       {isBackBtnShow && (
-        <button type="button" onClick={closeHandler} className="md:hidden pt-2">
+        <button type="button" onClick={closeHandler} className="pt-2 md:hidden">
           <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
         </button>
       )}
 
-      <form className="flex gap-3 w-full pt-0" onSubmit={handleSubmit}>
+      <form className="flex w-full gap-3 pt-0" onSubmit={handleSubmit}>
         {isAudienceFilter && (
           <TweetAudienceFilter handleClose={() => setIsAudienceFilter(false)} />
         )}
 
-        <div className="shrink-0 w-14 h-14">
+        <div className="h-14 w-14 shrink-0">
           <img
-            className="w-full h-full rounded-full object-cover"
+            className="h-full w-full rounded-full object-cover"
             src={user.displayPicURL}
             alt="twitter profile"
           />
@@ -136,10 +139,10 @@ function TweetForm(props: TweetFormType) {
             <button
               type="button"
               onClick={() => setIsAudienceFilter(true)}
-              className="flex items-center gap-1 w-min px-3 mb-1 hover:bg-pri-blue-1 hover:bg-opacity-20 rounded-full text-pri-blue-1 font-bold border-[1px] border-app-white-5 "
+              className="mb-1 flex w-min items-center gap-1 rounded-full border-[1px] border-app-white-5 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
             >
               Everyone
-              <FiChevronDown className="stroke-2 translate-y-[2px]" />
+              <FiChevronDown className="translate-y-[2px] stroke-2" />
             </button>
           )}
 
@@ -151,9 +154,9 @@ function TweetForm(props: TweetFormType) {
             value={newTweet.tweet}
             className={`w-full px-1 ${isLargeTextArea && "min-h-[150px]"}  ${
               isFilterBtnHidden && "pt-3"
-            }  text-app-font-20 font-normal bg-inherit text-inherit focus:outline-none resize-none hide-scrollbar`}
+            }  hide-scrollbar resize-none bg-inherit text-app-font-20 font-normal text-inherit focus:outline-none`}
           />
-          <div className=" flex gap-2 px-2 text-pri-blue-1">
+          <div className=" flex gap-2 px-2 text-pri-clr-1">
             {hashtags.map((tag) => (
               <div key={tag.tagId}>{tag.tagName}</div>
             ))}

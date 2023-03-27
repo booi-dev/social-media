@@ -54,7 +54,7 @@ function SignUpBox(props: SignUpBoxType) {
             <button
               type="button"
               onClick={handleSignUpBtn}
-              className="text-pri-blue-1"
+              className="text-pri-clr-1"
             >
               Sign up
             </button>

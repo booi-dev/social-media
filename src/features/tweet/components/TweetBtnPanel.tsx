@@ -2,9 +2,9 @@ import { VscSmiley } from "react-icons/vsc";
 import { MdOutlineBallot } from "react-icons/md";
 import { ImImage } from "react-icons/im";
 
-import AppIcon from "../ui/AppIcon";
+import AppIcon from "../../../components/ui/AppIcon";
 
-import { TweetType } from "../../types";
+import { TweetType } from "../../../types";
 
 type TweetBtnPanelType = {
   tweet: TweetType;
@@ -19,33 +19,33 @@ function TweetBtnPanel(props: TweetBtnPanelType) {
     <div
       className={`flex ${
         !isLargeTextArea && "flex-col items-end"
-      } items-cente w-full py-1 sm:flex-row justify-between`}
+      } items-cente w-full justify-between py-1 sm:flex-row`}
     >
       <div className="flex items-center gap-1">
-        <AppIcon icon={ImImage} size={18} color="blue" hoverColor="blue" />
+        <AppIcon icon={ImImage} size={18} color="coral" hoverColor="coral" />
         <AppIcon
           icon={MdOutlineBallot}
           size={22}
-          color="blue"
-          hoverColor="blue"
+          color="coral"
+          hoverColor="coral"
         />
-        <AppIcon icon={VscSmiley} size={20} color="blue" hoverColor="blue" />
+        <AppIcon icon={VscSmiley} size={20} color="coral" hoverColor="coral" />
       </div>
-      <div className="flex gap-1.5 text-app-gray-3 items-center">
+      <div className="flex items-center gap-1.5 text-app-gray-3">
         <div className={`${characterCount < 0 && "text-red-500"}`}>
           {characterCount}
         </div>
 
-        <div className="border-r-[1px] border-app-gray-3 h-5 " />
+        <div className="h-5 border-r-[1px] border-app-gray-3 " />
 
-        <div className="[&>button]:rounded-3xl [&>button]:text-app-white-1 [&>button]:w-full  [&>button]:px-4 [&>button]:py-1 [&>button]:font-bold">
+        <div className="[&>button]:w-full [&>button]:rounded-3xl [&>button]:px-4  [&>button]:py-1 [&>button]:font-bold [&>button]:text-app-black-1">
           {tweet.tweet && characterCount > 0 && characterCount < 280 ? (
-            <button type="submit" className="bg-pri-blue-1">
-              Tweet
+            <button type="submit" className="bg-pri-clr-1">
+              Post
             </button>
           ) : (
-            <button type="button" className="bg-pri-blue-1 bg-opacity-60 ">
-              Tweet
+            <button type="button" className="bg-pri-clr-1 bg-opacity-60  ">
+              Post
             </button>
           )}
         </div>
