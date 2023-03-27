@@ -10,11 +10,11 @@ import { useNoti } from "../../../noti";
 
 import { TweetType } from "../../../types";
 
-type FeedOptionsType = {
-  tweet: TweetType;
+type PostOptionsType = {
+  post: TweetType;
 };
 
-function TweetOptions({ tweet }: FeedOptionsType) {
+function PostOptions({ post }: PostOptionsType) {
   //
   const { deleteTweet } = useTweetControls();
   const { deleteData } = useLocalStorage();
@@ -23,7 +23,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   const [isWarning, setIsWarning] = useState(false);
 
   const deleteReTweets = () => {
-    tweet.reTweets.forEach((retweeets) => {
+    post.reTweets.forEach((retweeets) => {
       deleteTweet(retweeets.tweetId);
       deleteData(retweeets.tweetId);
     });
@@ -32,8 +32,8 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   //
   const handleDelete = () => {
     deleteReTweets();
-    deleteTweet(tweet.tid);
-    deleteData(tweet.tid);
+    deleteTweet(post.tid);
+    deleteData(post.tid);
     setNoti("Your post is deleleted", 3, "top-center");
   };
 
@@ -72,4 +72,4 @@ function TweetOptions({ tweet }: FeedOptionsType) {
   );
 }
 
-export default TweetOptions;
+export default PostOptions;

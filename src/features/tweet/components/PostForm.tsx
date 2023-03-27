@@ -8,14 +8,14 @@ import { useNoti } from "../../../noti";
 import useUserControls from "../../../redux/control/userControls";
 
 import AppIcon from "../../../components/ui/AppIcon";
-import TweetBtnPanel from "./TweetBtnPanel";
-import TweetAudienceFilter from "./TweetAudienceFilter";
+import PostBtnPanel from "./PostBtnPanel";
+import PostAudienceFilter from "./PostAudienceFilter";
 
 import findHashTags from "../../../utils/findHashTag";
 
 import { TweetType, HashTagType } from "../../../types";
 
-type TweetFormType = {
+type PostFormType = {
   newTId: string;
   submitHandler: (newTweet: TweetType) => void;
   tweetHaveType: {
@@ -29,7 +29,7 @@ type TweetFormType = {
   openNotification?: () => void;
 };
 
-function TweetForm(props: TweetFormType) {
+function PostForm(props: PostFormType) {
   const {
     newTId,
     submitHandler,
@@ -43,7 +43,7 @@ function TweetForm(props: TweetFormType) {
 
   const { user } = useUserControls();
 
-  const rawTweet: TweetType = {
+  const rawPost: TweetType = {
     tid: newTId,
     tweet: "",
     timespan: 0,
@@ -59,7 +59,7 @@ function TweetForm(props: TweetFormType) {
     },
   };
 
-  const [newTweet, setNewTweet] = useState(rawTweet);
+  const [newPost, setNewPost] = useState(rawPost);
   const [isAudienceFilter, setIsAudienceFilter] = useState(false);
   const [hashtags, setHashtags] = useState<HashTagType[]>([]);
   const [characterCount, setCharacterCount] = useState(280);
@@ -86,7 +86,7 @@ function TweetForm(props: TweetFormType) {
   };
 
   const resetRawTweet = () => {
-    setNewTweet(rawTweet);
+    setNewPost(rawPost);
     setHashtags([]);
   };
 
@@ -95,8 +95,8 @@ function TweetForm(props: TweetFormType) {
     resizeArea();
     setCharacterCount(280 - value.length);
     const tags = createHashTags(value);
-    setNewTweet({
-      ...newTweet,
+    setNewPost({
+      ...newPost,
       createBy: user.uid,
       timespan: Date.now(),
       hashtags: tags,
@@ -107,12 +107,12 @@ function TweetForm(props: TweetFormType) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    submitHandler(newTweet);
+    submitHandler(newPost);
     resetRawTweet();
     closeHandler?.();
     openNotification?.();
     setNoti("Your post is sent", 3, "top-center");
-    console.log(newTweet);
+    console.log(newPost);
   };
 
   return (
@@ -125,7 +125,7 @@ function TweetForm(props: TweetFormType) {
 
       <form className="flex w-full gap-3 pt-0" onSubmit={handleSubmit}>
         {isAudienceFilter && (
-          <TweetAudienceFilter handleClose={() => setIsAudienceFilter(false)} />
+          <PostAudienceFilter handleClose={() => setIsAudienceFilter(false)} />
         )}
 
         <div className="h-14 w-14 shrink-0">
@@ -152,7 +152,7 @@ function TweetForm(props: TweetFormType) {
             maxLength={500}
             placeholder="What's happening"
             onChange={handleInput}
-            value={newTweet.tweet}
+            value={newPost.tweet}
             className={`w-full px-1 ${isLargeTextArea && "min-h-[150px]"}  ${
               isFilterBtnHidden && "pt-3"
             }  hide-scrollbar resize-none bg-inherit text-app-font-20 font-normal text-inherit focus:outline-none`}
@@ -162,8 +162,8 @@ function TweetForm(props: TweetFormType) {
               <div key={tag.tagId}>{tag.tagName}</div>
             ))}
           </div>
-          <TweetBtnPanel
-            tweet={newTweet}
+          <PostBtnPanel
+            post={newPost}
             characterCount={characterCount}
             isLargeTextArea={isLargeTextArea}
           />
@@ -173,7 +173,7 @@ function TweetForm(props: TweetFormType) {
   );
 }
 
-TweetForm.defaultProps = {
+PostForm.defaultProps = {
   closeHandler: () => console.log("close handler is not defined"),
   isLargeTextArea: false,
   isBackBtnShow: false,
@@ -181,4 +181,4 @@ TweetForm.defaultProps = {
   openNotification: () => console.log("open notification is not defined"),
 };
 
-export default TweetForm;
+export default PostForm;

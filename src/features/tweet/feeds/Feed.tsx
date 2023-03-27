@@ -5,7 +5,7 @@ import { GoKebabHorizontal } from "react-icons/go";
 import useUserControls from "../../../redux/control/userControls";
 
 import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
-import TweetOptions from "../components/TweetOptions";
+import PostOptions from "../components/PostOptions";
 import BackDrop from "../../../components/ui/BackDrop";
 import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
 
@@ -71,7 +71,7 @@ function Feed(props: TweetPropType) {
 
         {isOption && (
           <div className="absolute top-2 right-2 z-20 min-w-[250px] rounded-sm bg-inherit py-4 text-inherit shadow-lg dark:bg-app-black-3">
-            <TweetOptions tweet={tweet} />
+            <PostOptions post={tweet} />
           </div>
         )}
       </div>

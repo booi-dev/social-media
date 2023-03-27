@@ -8,7 +8,7 @@ type TweetAudienceFilterType = {
   handleClose: () => void;
 };
 
-function TweetAudienceFilter(props: TweetAudienceFilterType) {
+function PostAudienceFilter(props: TweetAudienceFilterType) {
   const { handleClose } = props;
 
   return (
@@ -36,4 +36,4 @@ function TweetAudienceFilter(props: TweetAudienceFilterType) {
   );
 }
 
-export default TweetAudienceFilter;
+export default PostAudienceFilter;

@@ -2,7 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import useTweetActions from "../hooks/useTweetActions";
 
-import TweetForm from "../components/TweetForm";
+import TweetForm from "../components/PostForm";
 
 type NewTweetFormType = {
   closeHandler?: () => void;

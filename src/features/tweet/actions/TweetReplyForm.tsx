@@ -7,7 +7,7 @@ import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";
 import TweetSignature, { TweetCreatorPic } from "../feeds/TweetSignature";
-import TweetForm from "../components/TweetForm";
+import TweetForm from "../components/PostForm";
 
 import { TweetType } from "../../../types";
 
