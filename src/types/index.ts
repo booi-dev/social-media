@@ -1,4 +1,4 @@
-export * from "./TweetType";
+export * from "./PostType";
 export * from "./UserType";
 export * from "./HashtagType";
 export * from "./TypeStateType";

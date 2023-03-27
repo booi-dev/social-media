@@ -13,14 +13,14 @@ import PostAudienceFilter from "./PostAudienceFilter";
 
 import findHashTags from "../../../utils/findHashTag";
 
-import { TweetType, HashTagType } from "../../../types";
+import { PostType, HashTagType } from "../../../types";
 
 type PostFormType = {
-  newTId: string;
-  submitHandler: (newTweet: TweetType) => void;
+  newPId: string;
+  submitHandler: (newTweet: PostType) => void;
   tweetHaveType: {
-    type: "normal" | "retweet" | "reply" | "mention";
-    originalTweetId?: string | null;
+    type: "normal" | "repost" | "reply" | "mention";
+    originalPostId?: string | null;
   };
   closeHandler?: () => void;
   isLargeTextArea?: boolean;
@@ -31,7 +31,7 @@ type PostFormType = {
 
 function PostForm(props: PostFormType) {
   const {
-    newTId,
+    newPId,
     submitHandler,
     closeHandler,
     tweetHaveType,
@@ -43,19 +43,19 @@ function PostForm(props: PostFormType) {
 
   const { user } = useUserControls();
 
-  const rawPost: TweetType = {
-    tid: newTId,
-    tweet: "",
+  const rawPost: PostType = {
+    pid: newPId,
+    post: "",
     timespan: 0,
     createBy: "1",
     hashtags: [],
     likes: [],
     replies: [],
-    reTweets: [],
+    reposts: [],
     mentions: [],
-    tweetType: {
+    postType: {
       type: tweetHaveType.type,
-      originalTweetId: tweetHaveType.originalTweetId,
+      originalPostId: tweetHaveType.originalPostId,
     },
   };
 
@@ -100,9 +100,8 @@ function PostForm(props: PostFormType) {
       createBy: user.uid,
       timespan: Date.now(),
       hashtags: tags,
-      tweet: e.target.value,
+      post: e.target.value,
     });
-    // console.log(user.uid, newTweet);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -152,7 +151,7 @@ function PostForm(props: PostFormType) {
             maxLength={500}
             placeholder="What's happening"
             onChange={handleInput}
-            value={newPost.tweet}
+            value={newPost.post}
             className={`w-full px-1 ${isLargeTextArea && "min-h-[150px]"}  ${
               isFilterBtnHidden && "pt-3"
             }  hide-scrollbar resize-none bg-inherit text-app-font-20 font-normal text-inherit focus:outline-none`}

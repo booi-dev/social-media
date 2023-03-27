@@ -6,13 +6,13 @@ import useTweetActions from "../hooks/useTweetActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";
-import TweetSignature, { TweetCreatorPic } from "../feeds/TweetSignature";
+import TweetSignature, { TweetCreatorPic } from "../feeds/PostSignature";
 import TweetForm from "../components/PostForm";
 
-import { TweetType } from "../../../types";
+import { PostType } from "../../../types";
 
 type PostReplyFormType = {
-  originalTweet: TweetType;
+  originalTweet: PostType;
   closeHandler: () => void;
 };
 
@@ -26,7 +26,7 @@ function PostReplyForm(props: PostReplyFormType) {
 
   const newTId = nanoid();
 
-  const handleSubmit = (newTweet: TweetType) => {
+  const handleSubmit = (newTweet: PostType) => {
     createNewTweet(newTweet);
     addNewReply(originalTweet, newTId);
   };
@@ -54,7 +54,7 @@ function PostReplyForm(props: PostReplyFormType) {
           <div className="flex w-12 justify-center">
             <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
-          <div>{originalTweet.tweet}</div>
+          <div>{originalTweet.post}</div>
         </div>
         <div className="flex gap-4">
           <div className="flex w-12 justify-center">
@@ -76,7 +76,7 @@ function PostReplyForm(props: PostReplyFormType) {
           closeHandler={closeHandler}
           tweetHaveType={{
             type: "reply",
-            originalTweetId: originalTweet.tid,
+            originalTweetId: originalTweet.pid,
           }}
           isLargeTextArea
           isFilterBtnHidden

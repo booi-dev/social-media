@@ -2,7 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import useTweetActions from "../hooks/useTweetActions";
 
-import TweetForm from "../components/PostForm";
+import PostForm from "../components/PostForm";
 
 type NewPostFormType = {
   closeHandler?: () => void;
@@ -18,7 +18,7 @@ function NewPostForm(props: NewPostFormType) {
   const { createNewTweet } = useTweetActions();
 
   return (
-    <TweetForm
+    <PostForm
       newTId={nanoid()}
       submitHandler={createNewTweet}
       tweetHaveType={{ type: "normal" }}

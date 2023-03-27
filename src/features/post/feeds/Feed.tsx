@@ -4,20 +4,20 @@ import { GoKebabHorizontal } from "react-icons/go";
 
 import useUserControls from "../../../redux/control/userControls";
 
-import TweetSignature, { TweetCreatorPic } from "./TweetSignature";
+import PostSignature, { TweetCreatorPic } from "./PostSignature";
 import PostOptions from "../components/PostOptions";
 import BackDrop from "../../../components/ui/BackDrop";
-import TweetWithHighlightedHashTags from "./TweetWithHighlightedHashTags";
+import PostWithHighlightedHashTags from "./PostWithHighlightedHashTags";
 
-import { TweetType, TypeStateType } from "../../../types";
+import { PostType, TypeStateType } from "../../../types";
 
 type TweetActionsType = {
-  tweet: TweetType;
+  post: PostType;
   typeState: TypeStateType;
 };
 
 type TweetPropType = {
-  tweet: TweetType;
+  post: PostType;
   typeState: TypeStateType;
   actionsPanel?: React.FC<TweetActionsType> | null;
   wrappedTweet?: React.ReactElement | null;
@@ -25,7 +25,7 @@ type TweetPropType = {
 
 function Feed(props: TweetPropType) {
   const {
-    tweet,
+    post,
     typeState,
     actionsPanel: ActionsPanel,
     wrappedTweet: WrappedTweet,
@@ -38,21 +38,21 @@ function Feed(props: TweetPropType) {
   return (
     <>
       <div
-        key={tweet.tid}
+        key={post.pid}
         className="bg-inherited relative flex border-b-[0px] border-app-white-5 bg-inherit  px-1 pt-3 text-inherit transition-all duration-500 hover:bg-app-white-2 dark:border-app-gray-1 dark:hover:bg-transparent md:px-4"
       >
         <div className="h-12 w-12 shrink-0">
-          <TweetCreatorPic tweetCreatorUid={tweet.createBy} />
+          <TweetCreatorPic tweetCreatorUid={post.createBy} />
         </div>
         <div className="flex-1 bg-inherit">
           <div className="bg flex justify-between bg-inherit px-2 text-inherit">
             <div className="flex items-center gap-1.5 text-inherit">
-              <TweetSignature
-                tweetCreatorUid={tweet.createBy}
-                tweetTimespan={tweet.timespan}
+              <PostSignature
+                tweetCreatorUid={post.createBy}
+                tweetTimespan={post.timespan}
               />
             </div>
-            {user.uid === tweet.createBy && (
+            {user.uid === post.createBy && (
               <button
                 type="button"
                 className=""
@@ -63,15 +63,15 @@ function Feed(props: TweetPropType) {
             )}
           </div>
           <div className="p-2">
-            <TweetWithHighlightedHashTags tweet={tweet.tweet} />
+            <PostWithHighlightedHashTags tweet={post.post} />
           </div>
           {WrappedTweet}
-          {ActionsPanel && <ActionsPanel tweet={tweet} typeState={typeState} />}
+          {ActionsPanel && <ActionsPanel post={post} typeState={typeState} />}
         </div>
 
         {isOption && (
           <div className="absolute top-2 right-2 z-20 min-w-[250px] rounded-sm bg-inherit py-4 text-inherit shadow-lg dark:bg-app-black-3">
-            <PostOptions post={tweet} />
+            <PostOptions post={post} />
           </div>
         )}
       </div>

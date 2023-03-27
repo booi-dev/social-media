@@ -5,20 +5,20 @@ type ActionType = {
   tweetId: string;
 };
 
-type TweetTypeType = {
-  type: "normal" | "reply" | "retweet" | "mention";
-  originalTweetId?: string | null;
+type PostTypeType = {
+  type: "normal" | "reply" | "repost" | "mention";
+  originalPostId?: string | null;
 };
 
-export type TweetType = {
-  tid: string;
-  tweet: string;
+export type PostType = {
+  pid: string;
+  post: string;
   timespan: number;
   createBy: string;
   hashtags: HashTagType[];
   likes: string[];
-  reTweets: ActionType[];
+  reposts: ActionType[];
   replies: ActionType[];
   mentions: ActionType[];
-  tweetType: TweetTypeType;
+  postType: PostTypeType;
 };

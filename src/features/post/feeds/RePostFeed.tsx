@@ -7,29 +7,29 @@ import useGetProperties from "../../../hooks/useGetProperties";
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
 
-import { TweetType } from "../../../types";
+import { PostType } from "../../../types";
 
 type TypeStateType = {
-  type: "normal" | "retweet" | "reply" | "mention";
-  originalTweetId: string;
+  type: "normal" | "repost" | "reply" | "mention";
+  originalPostId: string;
 };
 
 type ReTweetFeedType = {
-  tweet: TweetType;
+  post: PostType;
   typeState: TypeStateType;
 };
 
-function ReTweetFeed(props: ReTweetFeedType) {
-  const { tweet, typeState } = props;
+function RePostFeed(props: ReTweetFeedType) {
+  const { post, typeState } = props;
 
   const { user } = useUserControls();
   const { findTweet } = useTweetControls();
   const { getTweetCreator } = useGetProperties();
 
-  const tweetCreator = getTweetCreator(tweet.createBy);
+  const postCreator = getTweetCreator(post.createBy);
 
-  const originalTweet: TweetType | undefined = findTweet(
-    typeState.originalTweetId
+  const originalPost: PostType | undefined = findTweet(
+    typeState.originalPostId
   );
 
   return (
@@ -37,19 +37,19 @@ function ReTweetFeed(props: ReTweetFeedType) {
       <h1 className="flex items-center gap-2 px-2 pt-2 text-app-font-14 font-bold text-app-gray-3 ">
         <AiOutlineRetweet className="stroke-2" />
         {`${
-          user.uid === tweetCreator?.uid ? "You" : tweetCreator?.displayName
+          user.uid === postCreator?.uid ? "You" : postCreator?.displayName
         } Retweeted`}
       </h1>
-      {originalTweet ? (
+      {originalPost ? (
         <div>
           <Feed
-            tweet={originalTweet}
+            post={originalPost}
             typeState={typeState}
             actionsPanel={ActionsPanel}
           />
         </div>
       ) : (
-        <div className="px-2 border-b-[1px] border-inherit text-app-gray-3">
+        <div className="border-b-[1px] border-inherit px-2 text-app-gray-3">
           --Tweet not found
         </div>
       )}
@@ -57,4 +57,4 @@ function ReTweetFeed(props: ReTweetFeedType) {
   );
 }
 
-export default ReTweetFeed;
+export default RePostFeed;

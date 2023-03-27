@@ -1,4 +1,4 @@
 export type TypeStateType = {
-  type: "normal" | "retweet" | "reply" | "mention";
-  originalTweetId?: string;
+  type: "normal" | "repost" | "reply" | "mention";
+  originalPostId?: string;
 };

@@ -8,10 +8,10 @@ import { useNoti } from "../../../noti";
 
 import BackDrop from "../../../components/ui/BackDrop";
 
-import { TweetType } from "../../../types";
+import { PostType } from "../../../types";
 
 type RePostPanelType = {
-  tweet: TweetType;
+  tweet: PostType;
   closeHandler: () => void;
   reTweetState: {
     state: boolean;
@@ -28,19 +28,19 @@ function RePostPanel(props: RePostPanelType) {
 
   const newTid = nanoid();
 
-  const newTweet: TweetType = {
+  const newTweet: PostType = {
     ...tweet,
-    tweet: "retweeting..",
+    post: "reposting..",
     timespan: Date.now(),
     createBy: user.uid,
     hashtags: [],
     likes: [],
     replies: [],
-    tweetType: {
-      type: "retweet",
-      originalTweetId: tweet.tid,
+    postType: {
+      type: "repost",
+      originalTweetId: tweet.pid,
     },
-    tid: newTid,
+    pid: newTid,
   };
 
   const handleReTweet = () => {

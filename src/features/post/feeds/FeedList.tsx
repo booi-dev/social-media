@@ -4,17 +4,17 @@ import useLocalStorage from "../../../hooks/useLocalStorage";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
-// import ReTweetFeed from "./ReTweetFeed";
-import ReplyTweedFeed from "./ReplyTweetFeed";
 
-import { TweetType } from "../../../types";
+import ReplyPostFeed from "./ReplyPostFeed";
+
+import { PostType } from "../../../types";
 
 function FeedList() {
   const { getData } = useLocalStorage();
   const { tweetData, replaceTweets } = useTweetControls();
   const userData = getData();
 
-  const sortArray = ([...toBeSortArray]: TweetType[]) =>
+  const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
   useEffect(() => {
@@ -25,34 +25,18 @@ function FeedList() {
 
   return (
     <div className="bg-inherit">
-      {sortedTweets.map((t: TweetType) => {
-        // if (t.tweetType?.type === "retweet" && t.tweetType.originalTweetId) {
-        //   return (
-        //     <div
-        //       key={t.tid}
-        //       className="border-x-[1px] border-b-[1px] border-app-white-5 dark:border-app-gray-1"
-        //     >
-        //       <ReTweetFeed
-        //         tweet={t}
-        //         typeState={{
-        //           type: "retweet",
-        //           originalTweetId: t.tweetType.originalTweetId,
-        //         }}
-        //       />
-        //     </div>
-        //   );
-        // }
-        if (t.tweetType?.type === "reply" && t.tweetType.originalTweetId) {
+      {sortedTweets.map((p: PostType) => {
+        if (p.postType?.type === "reply" && p.postType.originalPostId) {
           return (
             <div
-              key={t.tid}
-              className="border-b-[1px] border-x-[1px] border-app-white-5  dark:border-app-gray-1"
+              key={p.pid}
+              className="border-x-[1px] border-b-[1px] border-app-white-5  dark:border-app-gray-1"
             >
-              <ReplyTweedFeed
-                tweet={t}
+              <ReplyPostFeed
+                post={p}
                 typeState={{
                   type: "reply",
-                  originalTweetId: t.tweetType.originalTweetId,
+                  originalPostId: p.postType.originalPostId,
                 }}
               />
             </div>
@@ -61,11 +45,11 @@ function FeedList() {
 
         return (
           <div
-            key={t.tid}
+            key={p.pid}
             className="border-x-[1px] border-b-[1px] border-app-white-5  dark:border-app-gray-1"
           >
             <Feed
-              tweet={t}
+              post={p}
               typeState={{ type: "normal" }}
               actionsPanel={ActionsPanel}
             />

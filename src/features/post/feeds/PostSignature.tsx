@@ -17,7 +17,7 @@ function TweetCreatorPic({ tweetCreatorUid }: TweetCreatorPicType) {
     <img
       src={tweetCreator?.displayPicURL}
       alt=""
-      className="w-full h-full rounded-full object-cover"
+      className="h-full w-full rounded-full object-cover"
     />
   );
 }
@@ -31,7 +31,7 @@ function TweetSignature(props: TweetSignatureType) {
 
   return (
     <>
-      <h2 className="text-inherit font-bold">{tweetCreator?.displayName}</h2>
+      <h2 className="font-bold text-inherit">{tweetCreator?.displayName}</h2>
       {tweetCreator?.verification.state && (
         <VerificationBadge type={tweetCreator?.verification.type} />
       )}
