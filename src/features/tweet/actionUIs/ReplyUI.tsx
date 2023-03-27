@@ -8,7 +8,7 @@ import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import TweetReplyForm from "../actions/TweetReplyForm";
-import LogInModal from "../../../components/ui/LogInModal";
+import LogInModal from "../../login/LogInModal";
 
 import { TweetType } from "../../../types";
 

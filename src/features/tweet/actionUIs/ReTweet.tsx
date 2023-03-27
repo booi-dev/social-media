@@ -8,7 +8,7 @@ import useGetProperties from "../../../hooks/useGetProperties";
 import AppIcon from "../../../components/ui/AppIcon";
 import ReTweetPanel from "../actions/ReTweetPanel";
 
-import LogInModal from "../../../components/ui/LogInModal";
+import LogInModal from "../../login/LogInModal";
 
 import { TweetType, TypeStateType } from "../../../types";
 

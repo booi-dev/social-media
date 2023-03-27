@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import sanitizeHtml from "sanitize-html";
-import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 
 function RichEditor() {
   const [content, setContent] = useState(
@@ -13,7 +12,7 @@ function RichEditor() {
     console.log("focusing");
   };
 
-  const handleChange = (e: ContentEditableEvent) => {
+  const handleChange = (e) => {
     const value = e.currentTarget.innerHTML;
     // console.log(value);
 

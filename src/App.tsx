@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
-import LogSignIndicator from "./components/ui/LogSignIndicator";
+import LogInIndicator from "./features/login/LogIndicator";
+import LogInForm from "./features/login/LogInForm";
 
 import useUserControls from "./redux/control/userControls";
 import useThemeControls from "./redux/control/themeControl";
@@ -13,6 +14,8 @@ import genUser from "./utils/genUser";
 function App() {
   const { theme } = useThemeControls();
   const { isAuthenticate, setUser } = useUserControls();
+
+  const [isLogInClick, setIsLogInClick] = useState(false);
 
   useEffect(() => {
     const setUserData = async () => {
@@ -29,7 +32,8 @@ function App() {
         <Header />
         <Main />
         <NotiPortal />
-        {!isAuthenticate && <LogSignIndicator />}
+        {!isAuthenticate && <LogInIndicator />}
+        {isLogInClick && <LogInForm />}
       </div>
     </div>
   );

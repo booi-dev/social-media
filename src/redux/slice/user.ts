@@ -2,9 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserType } from "../../types/UserType";
 
-import genUser from "../../utils/genUser";
-
-let userTemplate: UserType = {
+const userTemplate: UserType = {
   uid: "",
   displayName: "",
   displayPicURL:
@@ -16,18 +14,8 @@ let userTemplate: UserType = {
   verification: { state: false, type: "" },
 };
 
-const myFunction = async () => {
-  const setUserData = async () => {
-    const fakeUser = await genUser();
-    userTemplate = fakeUser;
-    console.log(userTemplate);
-  };
-};
-
-myFunction();
-
 const initialUser: { isAuthenticate: boolean; user: UserType } = {
-  isAuthenticate: true,
+  isAuthenticate: false,
   user: userTemplate,
 };
 

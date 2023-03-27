@@ -1,6 +1,6 @@
 import React from "react";
 
-function LogSignIndicator() {
+function LogInIndicator() {
   return (
     <div className="fixed bottom-0 flex items-center md:justify-center w-full  h-[70px] bg-pri-blue-1">
       <div className="hidden md:block md:w-[10px] lg:w-[230px]" />
@@ -28,4 +28,4 @@ function LogSignIndicator() {
   );
 }
 
-export default LogSignIndicator;
+export default LogInIndicator;

@@ -5,9 +5,9 @@ import { RxCross2 } from "react-icons/rx";
 
 import useThemeControls from "../../redux/control/themeControl";
 
-import AppIcon from "./AppIcon";
+import AppIcon from "../../components/ui/AppIcon";
 
-import BackDrop from "./BackDrop";
+import BackDrop from "../../components/ui/BackDrop";
 
 type LogInModalType = {
   iconDetail: { icon: IconType; color: "blue" | "pink" | "green" };
@@ -23,6 +23,7 @@ function LogInModal(props: LogInModalType) {
   const portal = document.getElementById("portal");
 
   let LogSignPortal: React.ReactPortal | React.ReactElement = <div />;
+
   if (portal) {
     LogSignPortal = createPortal(
       <div className={theme}>
