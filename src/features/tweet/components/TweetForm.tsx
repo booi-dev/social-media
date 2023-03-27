@@ -139,7 +139,7 @@ function TweetForm(props: TweetFormType) {
             <button
               type="button"
               onClick={() => setIsAudienceFilter(true)}
-              className="mb-1 flex w-min items-center gap-1 rounded-md border-[1px] border-app-white-5 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
+              className="mb-1 flex w-min items-center gap-1 rounded-sm border border-app-gray-2 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
             >
               Everyone
               <FiChevronDown className="translate-y-[2px] stroke-2" />

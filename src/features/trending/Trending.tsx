@@ -1,7 +1,7 @@
-import { HashTagType } from "../../types";
+import { HashTagDataType } from "../../types";
 
 type NewsPropType = {
-  tag: HashTagType;
+  tag: HashTagDataType;
 };
 
 function Trending({ tag }: NewsPropType) {
@@ -10,10 +10,10 @@ function Trending({ tag }: NewsPropType) {
 
   return (
     <div className="py-2 px-4 hover:bg-app-white-3 dark:hover:bg-transparent">
-      <h2 className="text-app-gray-3 capitalize">
+      <h2 className="capitalize text-app-gray-3">
         {`${randomCategory} · Trending`}
       </h2>
-      <h1 className="font-bold text-app-font-17"> {`#${tag.tag}`}</h1>
+      <h1 className="text-app-font-17 font-bold"> {`#${tag.tag}`}</h1>
       <h3 className="text-app-gray-3"> {`${tag.count} Tweets`}</h3>
     </div>
   );

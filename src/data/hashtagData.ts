@@ -1,7 +1,7 @@
-import { HashTagType } from "../types";
+import { HashTagDataType } from "../types";
 
 function hashtagData() {
-  const hashtags: HashTagType[] = [
+  const hashtags: HashTagDataType[] = [
     { tag: "js", count: 2, category: ["coding", "programming", "web dev"] },
     {
       tag: "tailwind.css",
