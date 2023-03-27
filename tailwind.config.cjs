@@ -27,6 +27,7 @@ module.exports = {
         'app-font-15': '15px',
         'app-font-17': '17px',
         'app-font-20': '20px',
+        'app-font-25': '25px',
       },
       colors: {
         'pri-blue-1': '#1d9bf0',

@@ -32,8 +32,10 @@ function App() {
         <Header />
         <Main />
         <NotiPortal />
-        {!isAuthenticate && <LogInIndicator />}
-        {isLogInClick && <LogInForm />}
+        {!isAuthenticate && (
+          <LogInIndicator setIsLogInClick={setIsLogInClick} />
+        )}
+        {isLogInClick && <LogInForm setIsLogInClick={setIsLogInClick} />}
       </div>
     </div>
   );

@@ -1,6 +1,12 @@
 import React from "react";
 
-function LogInIndicator() {
+type LogInIndicatorType = {
+  setIsLogInClick: (state: boolean) => void;
+};
+
+function LogInIndicator(props: LogInIndicatorType) {
+  const { setIsLogInClick } = props;
+
   return (
     <div className="fixed bottom-0 flex items-center md:justify-center w-full  h-[70px] bg-pri-blue-1">
       <div className="hidden md:block md:w-[10px] lg:w-[230px]" />
@@ -12,6 +18,7 @@ function LogInIndicator() {
         <div className="grow md:grow-0 w-[200px] flex items-center justify-between gap-4 ">
           <button
             type="button"
+            onClick={() => setIsLogInClick(true)}
             className="border w-full py-1 font-bold rounded-2xl"
           >
             Log in
