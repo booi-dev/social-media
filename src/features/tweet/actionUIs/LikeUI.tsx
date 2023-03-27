@@ -7,7 +7,7 @@ import useTweetActions from "../hooks/useTweetActions";
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
-import LogInModal from "../../login/LogInModal";
+import LogInModal from "../../login-signup/LogInModal";
 import { TweetType, UserType } from "../../../types";
 
 type LikeUIType = {

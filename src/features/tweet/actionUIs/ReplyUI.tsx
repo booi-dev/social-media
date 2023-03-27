@@ -8,7 +8,7 @@ import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import TweetReplyForm from "../actions/TweetReplyForm";
-import LogInModal from "../../login/LogInModal";
+import LogInModal from "../../login-signup/LogInModal";
 
 import { TweetType } from "../../../types";
 
@@ -43,7 +43,7 @@ function ReplyUI(props: { tweet: TweetType }) {
       </button>
       {isReplyBtnClick && (
         <>
-          <div className="fixed inset-0 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[500px]  sm:h-min z-20">
+          <div className="fixed inset-0 z-20 h-screen min-w-[480px] sm:top-1/2 sm:left-1/2 sm:h-min sm:w-[500px]  sm:-translate-x-1/2 sm:-translate-y-1/2">
             <TweetReplyForm
               originalTweet={tweet}
               closeHandler={() => setIsReplyBtnClick(false)}

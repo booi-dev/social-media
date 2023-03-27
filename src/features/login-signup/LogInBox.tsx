@@ -1,6 +1,8 @@
 import { createPortal } from "react-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
+import { RxCross2 } from "react-icons/rx";
+import AppIcon from "../../components/ui/AppIcon";
 import BackDrop from "../../components/ui/BackDrop";
 
 type LogInFormType = {
@@ -14,6 +16,10 @@ function LogInForm(props: LogInFormType) {
     setIsLogInClick(false);
   };
 
+  const handleSignUpBtn = () => {
+    closeForm();
+  };
+
   const portal = document.getElementById("portal");
 
   let LogInFormPortal: React.ReactPortal | React.ReactElement = <div />;
@@ -22,9 +28,17 @@ function LogInForm(props: LogInFormType) {
     LogInFormPortal = createPortal(
       <div className="dark">
         <div
-          className="absolute top-0 bottom-0 z-20 flex h-max w-full
-        flex-col justify-center rounded-xl bg-app-white-1 p-16 text-app-gray-1 shadow shadow-app-gray-1 dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+          className="absolute top-0 bottom-0 z-20 flex w-full flex-col
+        justify-center rounded-xl bg-app-white-1 p-16 text-app-gray-1 shadow shadow-app-gray-1 dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2"
         >
+          <button
+            type="button"
+            className="absolute top-2 left-2"
+            onClick={closeForm}
+          >
+            <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
+          </button>
+
           <h1 className="text-center text-3xl font-bold">Sign In to Socia</h1>
 
           <div
@@ -39,23 +53,29 @@ function LogInForm(props: LogInFormType) {
               <BsApple />
               Sign up with apple
             </button>
-            <button type="button"> Create account</button>
           </div>
 
           <div
             className="flex w-full items-center py-3 text-center
-          before:mr-1 before:h-2 before:w-full before:border-b-2 before:border-app-gray-3 before:content-[''] after:ml-1  after:h-2 after:w-full after:border-b-2 after:border-app-gray-3 after:content-['']"
+          before:mr-1 before:h-2 before:w-full before:border-b-2 before:border-app-gray-2 before:content-[''] after:ml-1  after:h-2 after:w-full after:border-b-2 after:border-app-gray-2 after:content-['']"
           >
             or
           </div>
 
           <form className="">
-            <div className="rounded-sm border-2 border-pri-blue-1 p-1">
+            <div className="rounded-sm border-2 border-app-gray-1 p-2">
               <label
                 htmlFor="input"
                 className="text-app-font-15 text-pri-blue-1"
               >
                 Phone, email, or username
+                <input id="input" className="w-full rounded-md py-1" />
+              </label>
+              <label
+                htmlFor="input"
+                className="text-app-font-15 text-pri-blue-1"
+              >
+                Password
                 <input id="input" className="w-full rounded-md py-1" />
               </label>
             </div>
@@ -75,7 +95,13 @@ function LogInForm(props: LogInFormType) {
           </div>
           <p className="mt-4 text-app-gray-3">
             {`Don't have an account?`}{" "}
-            <span className="text-pri-blue-1">Sign up</span>
+            <button
+              type="button"
+              onClick={handleSignUpBtn}
+              className="text-pri-blue-1"
+            >
+              Sign up
+            </button>
           </p>
         </div>
         <BackDrop handleClose={closeForm} color="blue" />

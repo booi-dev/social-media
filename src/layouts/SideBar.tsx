@@ -1,6 +1,6 @@
 import useUserControls from "../redux/control/userControls";
 
-import LogInForm from "../features/login/LogInWidget";
+import SignUpWidget from "../features/login-signup/SignUpWidget";
 import SearchForm from "../features/search/SearchForm";
 import Widget from "./Widget";
 import Footer from "./Footer";
@@ -8,10 +8,10 @@ import Footer from "./Footer";
 function SideBar() {
   const { isAuthenticate } = useUserControls();
   return (
-    <div className="hidden pb-1 mx-4 w-full max-w-[350px] h-screen space-y-4 overflow-y-scroll hide-scrollbar bg-inherit lg2:block">
-      {!isAuthenticate && <LogInForm />}
+    <div className="hide-scrollbar mx-4 hidden h-screen w-full max-w-[350px] space-y-4 overflow-y-scroll bg-inherit pb-1 lg2:block">
+      {!isAuthenticate && <SignUpWidget />}
       {isAuthenticate && (
-        <div className="sticky top-0 left-0 right-0 bg-inherit text-inherit pt-1.5 ">
+        <div className="sticky top-0 left-0 right-0 bg-inherit pt-1.5 text-inherit ">
           <SearchForm />
         </div>
       )}

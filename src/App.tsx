@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
-import LogInIndicator from "./features/login/LogIndicator";
-import LogInForm from "./features/login/LogInForm";
+import LogInIndicator from "./features/login-signup/LogInSignUpIndicator";
+import LogInBox from "./features/login-signup/LogInBox";
+import SignUpBox from "./features/login-signup/SignUpBox";
 
 import useUserControls from "./redux/control/userControls";
 import useThemeControls from "./redux/control/themeControl";
@@ -16,6 +17,7 @@ function App() {
   const { isAuthenticate, setUser } = useUserControls();
 
   const [isLogInClick, setIsLogInClick] = useState(false);
+  const [isSignUpClick, setIsSignUpClick] = useState(false);
 
   useEffect(() => {
     const setUserData = async () => {
@@ -33,9 +35,13 @@ function App() {
         <Main />
         <NotiPortal />
         {!isAuthenticate && (
-          <LogInIndicator setIsLogInClick={setIsLogInClick} />
+          <LogInIndicator
+            setIsLogInClick={setIsLogInClick}
+            setIsSignUpClick={setIsSignUpClick}
+          />
         )}
-        {isLogInClick && <LogInForm setIsLogInClick={setIsLogInClick} />}
+        {isLogInClick && <LogInBox setIsLogInClick={setIsLogInClick} />}
+        {isSignUpClick && <SignUpBox setIsSignUpClick={setIsSignUpClick} />}
       </div>
     </div>
   );
