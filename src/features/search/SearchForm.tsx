@@ -10,13 +10,13 @@ function SearchForm() {
   };
 
   return (
-    <form className="flex items-center gap-2 px-3 bg-app-white-2 dark:bg-app-black-3 rounded-3xl">
+    <form className="flex items-center gap-2 rounded-sm bg-app-white-2 px-3 dark:bg-app-black-3">
       <BiSearch size={23} className="text-app-gray-3" />
       <input
         onChange={handlerInputChange}
         value={searchValue}
         placeholder="Search Twitter"
-        className="w-full p-2.5 rounded-3xl bg-inherit focus:outline-none"
+        className="w-full rounded-sm bg-inherit p-2.5 focus:outline-none"
       />
     </form>
   );

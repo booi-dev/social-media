@@ -13,7 +13,7 @@ function TweetAudienceFilter(props: TweetAudienceFilterType) {
 
   return (
     <>
-      <div className="absolute top-8 z-20 w-[250px] rounded-xl bg-app-white-1  p-4  text-app-font-17  font-medium shadow shadow-app-gray-3 dark:bg-app-black-1">
+      <div className="absolute top-8 z-20 w-[250px] rounded-sm bg-app-white-1  p-4  text-app-font-17  font-medium shadow shadow-app-gray-3 dark:bg-app-black-1">
         <h1 className="py-2 text-app-font-20 font-bold">Choose audience</h1>
         <div className="flex items-center gap-1 py-2 px-1">
           <div className="rounded-full bg-pri-blue-1 p-2">

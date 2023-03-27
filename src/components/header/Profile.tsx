@@ -14,13 +14,13 @@ function Profile(props: ProfileType) {
     <button
       type="button"
       onClick={menuBtnHandler}
-      className="flex justify-between items-center bg-inherit bg-app-white-3 dark:bg-app-black-3 w-full p-2 rounded-full hover:bg-app-white-4 transition-all duration-500 cursor-pointer md:gap-2"
+      className="flex w-full cursor-pointer items-center justify-between rounded-sm bg-app-white-2 p-2 transition-all duration-500 hover:bg-app-white-4 dark:bg-app-black-3 md:gap-2"
     >
       <div className="flex gap-2">
         <img
           src={displayPicURL}
           alt=""
-          className="w-12 h-12 rounded-full object-cover"
+          className="h-12 w-12 rounded-md object-cover"
         />
         <div className="hidden text-start lg:block ">
           <h1>{displayName}</h1>

@@ -6,8 +6,8 @@ function SuggestionList() {
   const users = userData();
 
   return (
-    <div className="bg-app-white-2 dark:bg-app-black-3 text-inherit rounded-2xl">
-      <h1 className="px-4 py-3 text-app-font-20 font-bold rounded-2xl bg-inherit">
+    <div className="rounded-sm bg-app-white-2 text-inherit dark:bg-app-black-3">
+      <h1 className="rounded-sm bg-inherit px-4 py-3 text-app-font-20 font-bold">
         Who to follow
       </h1>
       {users.slice(0, 3).map((user) => (

@@ -57,7 +57,7 @@ function ReTweetPanel(props: ReTweetType) {
 
   return (
     <>
-      <div className="absolute -right-5 -left-5 -bottom-10 flex flex-col gap-3 p-3 rounded-md bg-app-white-1 dark:bg-app-black-1 text-inherit font-bold shadow shadow-app-gray-3 w-[170px] z-20">
+      <div className="absolute -right-5 -left-5 -bottom-10 z-20 flex w-[170px] flex-col gap-3 rounded-sm bg-app-white-1 p-3 font-bold text-inherit shadow shadow-app-gray-3 dark:bg-app-black-1">
         {reTweetState.state ? (
           <button
             type="button"

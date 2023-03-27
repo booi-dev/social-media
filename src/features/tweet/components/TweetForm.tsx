@@ -129,7 +129,7 @@ function TweetForm(props: TweetFormType) {
 
         <div className="h-14 w-14 shrink-0">
           <img
-            className="h-full w-full rounded-full object-cover"
+            className="h-full w-full rounded-md object-cover"
             src={user.displayPicURL}
             alt="twitter profile"
           />
@@ -139,7 +139,7 @@ function TweetForm(props: TweetFormType) {
             <button
               type="button"
               onClick={() => setIsAudienceFilter(true)}
-              className="mb-1 flex w-min items-center gap-1 rounded-full border-[1px] border-app-white-5 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
+              className="mb-1 flex w-min items-center gap-1 rounded-md border-[1px] border-app-white-5 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
             >
               Everyone
               <FiChevronDown className="translate-y-[2px] stroke-2" />

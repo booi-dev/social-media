@@ -25,20 +25,20 @@ function WarningMsg(props: WarningMsgType) {
 
   return (
     <>
-      <div className="fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-1/2 w-[300px] h-auto p-8 rounded-lg text-inherit bg-inherit shadow-lg z-20">
+      <div className="fixed top-1/2 left-1/2 z-20 h-auto w-[300px] -translate-x-2/4 -translate-y-1/2 rounded-sm bg-inherit p-8 text-inherit shadow-lg">
         <h1 className="text-app-font-20 font-bold"> {warningText}</h1>
-        <p className="text-app-font-14 text-inherit leading-4">{warningDesc}</p>
-        <div className="mt-4 [&>button]:block [&>button]:w-full [&>button]:font-bold [&>button]:p-2  [&>button]:rounded-3xl [&>button]:transition-all [&>button]:duration-500">
+        <p className="text-app-font-14 leading-4 text-inherit">{warningDesc}</p>
+        <div className="mt-4 [&>button]:block [&>button]:w-full [&>button]:rounded-md [&>button]:p-2  [&>button]:font-bold [&>button]:transition-all [&>button]:duration-500">
           <button
             type="button"
-            className="text-app-white-1 bg-red-500 hover:bg-red-600 focus:bg-red-800 "
+            className="bg-red-500 text-app-white-1 hover:bg-red-600 focus:bg-red-800 "
             onClick={handleConfirmBtn}
           >
             {warningBtn}
           </button>
           <button
             type="button"
-            className="mt-2 border-app-gray-3 border-[1px] border-opacity-40 hover:bg-app-white-3 hover:text-app-black-1 focus:bg-app-white-4"
+            className="mt-2 border-[1px] border-app-gray-3 border-opacity-40 hover:bg-app-white-3 hover:text-app-black-1 focus:bg-app-white-4"
             onClick={handleWarningClose}
           >
             Cancel

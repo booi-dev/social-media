@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
 import hashtagData from "../../data/hashtagData";
 import Trending from "./Trending";
 import { HashTagType } from "../../types";
@@ -18,12 +17,12 @@ function TrendingList() {
   const sortedTrendingTags = sortArray(trendingTags, "count");
 
   return (
-    <div className="py-4 bg-app-white-2 dark:bg-app-black-3 text-inherit rounded-2xl cursor-pointer">
+    <div className="cursor-pointer rounded-sm bg-app-white-2 py-4 text-inherit dark:bg-app-black-3">
       <h1 className="py-2 px-4 text-app-font-20 font-bold ">
         What's happening
       </h1>
       {sortedTrendingTags.slice(0, 4).map((tag) => (
-        <Trending key={tag.tag} tag={tag} />
+        <Trending key={tag.tagId} tag={tag} />
       ))}
     </div>
   );

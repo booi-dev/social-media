@@ -29,7 +29,7 @@ function SharePanel(props: SharePanelType) {
 
   return (
     <>
-      <div className="absolute right-[100px] -top-[20px] w-[200px] rounded-lg bg-app-white-1 dark:bg-app-black-1 shadow shadow-app-gray-3 p-3 space-y-3 z-20">
+      <div className="absolute right-[100px] -top-[20px] z-20 w-[200px] space-y-3 rounded-sm bg-app-white-1 p-3 shadow shadow-app-gray-3 dark:bg-app-black-1">
         <button
           type="button"
           onClick={handleCopy}

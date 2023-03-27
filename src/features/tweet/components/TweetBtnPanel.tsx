@@ -38,7 +38,7 @@ function TweetBtnPanel(props: TweetBtnPanelType) {
 
         <div className="h-5 border-r-[1px] border-app-gray-3 " />
 
-        <div className="[&>button]:w-full [&>button]:rounded-3xl [&>button]:px-4  [&>button]:py-1 [&>button]:font-bold [&>button]:text-app-black-1">
+        <div className="[&>button]:w-full [&>button]:rounded-sm [&>button]:px-4  [&>button]:py-1 [&>button]:font-bold [&>button]:text-app-black-1">
           {tweet.tweet && characterCount > 0 && characterCount < 280 ? (
             <button type="submit" className="bg-pri-clr-1">
               Post

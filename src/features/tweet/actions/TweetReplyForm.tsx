@@ -2,7 +2,6 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { IoMdClose } from "react-icons/io";
 
-import useUserControls from "../../../redux/control/userControls";
 import useTweetActions from "../hooks/useTweetActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
@@ -20,7 +19,6 @@ type TweetReplyFormType = {
 function TweetReplyForm(props: TweetReplyFormType) {
   const { closeHandler, originalTweet } = props;
 
-  const { user } = useUserControls();
   const { createNewTweet, addNewReply } = useTweetActions();
 
   const { getTweetCreator } = useGetProperties();
@@ -34,14 +32,14 @@ function TweetReplyForm(props: TweetReplyFormType) {
   };
 
   return (
-    <div className="relative w-screen sm:w-full h-full bg-app-white-1 shadow shadow-app-gray-3 dark:bg-app-black-1  rounded-xl z-20">
+    <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
       <button type="button" onClick={closeHandler}>
         <AppIcon icon={IoMdClose} size={26} hoverColor="blue" />
       </button>
 
       <div className="flex flex-col px-4 ">
         <div className="flex gap-4 ">
-          <div className="w-14 h-14 shrink-0">
+          <div className="h-14 w-14 shrink-0">
             <TweetCreatorPic tweetCreatorUid={originalTweet.createBy} />
           </div>
           <div className="flex items-center gap-1.5 text-inherit">
@@ -53,14 +51,14 @@ function TweetReplyForm(props: TweetReplyFormType) {
         </div>
 
         <div className="flex gap-4">
-          <div className="flex justify-center w-12">
-            <div className="w-[1px] h-full bg-app-white-3 dark:bg-app-gray-3" />
+          <div className="flex w-12 justify-center">
+            <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
           <div>{originalTweet.tweet}</div>
         </div>
         <div className="flex gap-4">
-          <div className="flex justify-center w-12">
-            <div className="w-[1px] h-full bg-app-white-3 dark:bg-app-gray-3" />
+          <div className="flex w-12 justify-center">
+            <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
           <h1 className=" py-3 text-app-gray-3">
             Replying to
@@ -73,7 +71,6 @@ function TweetReplyForm(props: TweetReplyFormType) {
 
       <div className="py-2 px-4 ">
         <TweetForm
-          user={user}
           newTId={newTId}
           submitHandler={handleSubmit}
           closeHandler={closeHandler}

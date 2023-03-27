@@ -42,7 +42,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
       <div className="text-app-font-17 font-bold text-inherit">
         <button
           type="button"
-          className="flex items-center gap-2 w-full p-3 text-left text-red-500 hover:bg-app-white-2 dark:hover:bg-app-gray-1"
+          className="flex w-full items-center gap-2 p-3 text-left text-red-500 hover:bg-app-white-2 dark:hover:bg-app-gray-1"
           onClick={() => setIsWarning(true)}
         >
           <RiDeleteBinLine />
@@ -51,7 +51,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
 
         <button
           type="button"
-          className="flex items-center gap-2 w-full p-3 text-left text-inherit hover:bg-app-white-2 dark:hover:bg-app-gray-1"
+          className="flex w-full items-center gap-2 p-3 text-left text-inherit hover:bg-app-white-2 dark:hover:bg-app-gray-1"
         >
           <BsPin />
           Pin to your profile

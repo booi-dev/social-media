@@ -1,6 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-import useUserControls from "../../../redux/control/userControls";
 import useTweetActions from "../hooks/useTweetActions";
 
 import TweetForm from "../components/TweetForm";
@@ -16,12 +15,10 @@ function NewTweetForm(props: NewTweetFormType) {
   const { closeHandler, isLargeTextArea, isBackBtnShow, isFilterBtnHidden } =
     props;
 
-  const { user } = useUserControls();
   const { createNewTweet } = useTweetActions();
 
   return (
     <TweetForm
-      user={user}
       newTId={nanoid()}
       submitHandler={createNewTweet}
       tweetHaveType={{ type: "normal" }}

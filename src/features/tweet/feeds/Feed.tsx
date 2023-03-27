@@ -39,13 +39,13 @@ function Feed(props: TweetPropType) {
     <>
       <div
         key={tweet.tid}
-        className="relative flex px-1 pt-3 bg-inherit text-inherit  hover:bg-app-white-2 dark:hover:bg-transparent border-b-[0px] border-app-white-5 dark:border-app-gray-1 md:px-4 bg-inherited transition-all duration-500"
+        className="bg-inherited relative flex border-b-[0px] border-app-white-5 bg-inherit  px-1 pt-3 text-inherit transition-all duration-500 hover:bg-app-white-2 dark:border-app-gray-1 dark:hover:bg-transparent md:px-4"
       >
-        <div className="w-12 h-12 shrink-0">
+        <div className="h-12 w-12 shrink-0">
           <TweetCreatorPic tweetCreatorUid={tweet.createBy} />
         </div>
         <div className="flex-1 bg-inherit">
-          <div className="flex justify-between px-2 bg-inherit text-inherit bg">
+          <div className="bg flex justify-between bg-inherit px-2 text-inherit">
             <div className="flex items-center gap-1.5 text-inherit">
               <TweetSignature
                 tweetCreatorUid={tweet.createBy}
@@ -70,7 +70,7 @@ function Feed(props: TweetPropType) {
         </div>
 
         {isOption && (
-          <div className="absolute top-2 right-2 min-w-[250px] py-4 rounded-lg text-inherit bg-inherit dark:bg-app-black-3 shadow-lg z-20">
+          <div className="absolute top-2 right-2 z-20 min-w-[250px] rounded-sm bg-inherit py-4 text-inherit shadow-lg dark:bg-app-black-3">
             <TweetOptions tweet={tweet} />
           </div>
         )}

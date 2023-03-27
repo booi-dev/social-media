@@ -11,12 +11,12 @@ type SuggestionType = {
 
 function Suggestion({ user }: SuggestionType) {
   return (
-    <div className="flex py-2 px-4 justify-between items-center gap-2 hover:bg-app-white-3 dark:hover:bg-transparent">
+    <div className="flex items-center justify-between gap-2 py-2 px-4 hover:bg-app-white-3 dark:hover:bg-transparent">
       <div className="flex items-center gap-2">
         <img
           src={user.displayPicURL}
           alt=""
-          className="w-14 h-14 object-cover rounded-full"
+          className="h-14 w-14 rounded-md object-cover"
         />
         <div>
           <h1 className="text-app-font-17 font-bold"> {user.displayName} </h1>
@@ -25,7 +25,7 @@ function Suggestion({ user }: SuggestionType) {
       </div>
       <button
         type="button"
-        className="py-2 px-5 bg-app-black-1 text-app-white-1 dark:text-inherit font-bold rounded-full"
+        className="rounded-sm bg-app-black-1 py-2 px-5 font-bold text-app-white-1 dark:text-inherit"
       >
         Follow
       </button>

@@ -33,7 +33,7 @@ function Option(props: OptionType) {
   return (
     <button
       type="button"
-      className="flex items-center justify-center gap-4 rounded-full  hover:bg-app-white-3 dark:hover:bg-app-black-3 cursor-pointer p-3 lg:justify-start lg:py-2 lg:px-4 "
+      className="flex cursor-pointer items-center justify-center gap-4  rounded-sm p-3 hover:bg-app-white-3 dark:hover:bg-app-black-3 lg:justify-start lg:py-2 lg:px-4 "
       onClick={handleBtnClick}
     >
       {isActive ? (
