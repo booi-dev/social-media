@@ -6,13 +6,13 @@ type IconPropType = {
   size?: number;
   animation?: string;
   rotateDeg?: number;
-  hoverColor?: "coral" | "pink" | "green" | "black" | "gray" | "blue";
-  color?: "coral" | "pink" | "green" | "black" | "blue";
+  hoverColor?: "pri" | "pink" | "green" | "black" | "gray";
+  color?: "pri" | "pink" | "green" | "black" | "blue";
 };
 
 type colorVariantsType = {
   [key: string]: string;
-  blue: string;
+  pri: string;
   pink: string;
   green: string;
   black: string;
@@ -30,8 +30,7 @@ function AppIcon(props: IconPropType) {
   } = props;
 
   const colorVariants: colorVariantsType = {
-    blue: "text-pri-blue-1",
-    coral: "text-pri-clr-1",
+    pri: "text-pri-clr-1",
     pink: "text-pink-600",
     green: "text-green-400",
     black: "text-black",
@@ -39,8 +38,7 @@ function AppIcon(props: IconPropType) {
   };
 
   const groupHoverColorVariants: colorVariantsType = {
-    blue: "group-hover:text-pri-blue-1",
-    coral: "group-hover:text-pri-clr-1",
+    pri: "group-hover:text-app-white-1",
     pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
     black: "group-hover:text-app-white-3",
@@ -48,10 +46,9 @@ function AppIcon(props: IconPropType) {
   };
 
   const hoverColorVariants: colorVariantsType = {
-    blue: "hover:bg-blue-100",
-    coral: "hover:bg-[#F38D68]",
-    pink: "hover:bg-pink-100",
-    green: "hover:bg-green-100",
+    pri: "hover:bg-pri-clr-1",
+    pink: "hover:bg-pink-300",
+    green: "hover:bg-green-300",
     black: "hover:bg-app-white-3",
     gray: "hover:bg-app-gray-3",
   };
@@ -60,12 +57,12 @@ function AppIcon(props: IconPropType) {
     <div
       className={`group flex items-center gap-3 rounded-full p-2 md:p-3 ${
         hoverColor && hoverColorVariants[hoverColor]
-      } transition-all duration-500 dark:hover:bg-transparent`}
+      } transition-all duration-700 dark:hover:bg-transparent`}
     >
       <Icon
         size={size}
         className={`
-        h-15 w-15 transition-all duration-300
+        h-15 w-15 transition-all duration-500
         ${hoverColor && groupHoverColorVariants[hoverColor]} 
         ${color && colorVariants[color]} 
         ${rotateDeg && "rotate-90"}

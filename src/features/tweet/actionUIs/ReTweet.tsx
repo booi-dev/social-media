@@ -42,21 +42,24 @@ function ReTweet(props: ReTweetType) {
       <button
         type="button"
         onClick={handleBtnClick}
-        className="flex items-center"
+        className="group flex items-center"
       >
         {hasReTweeted ? (
-          <AppIcon
-            icon={AiOutlineRetweet}
-            color="green"
-            text={tweet.reTweets.length > 0 ? tweet.reTweets.length : "0"}
-          />
+          <AppIcon icon={AiOutlineRetweet} color="green" />
         ) : (
-          <AppIcon
-            icon={AiOutlineRetweet}
-            hoverColor="green"
-            text={tweet.reTweets.length > 0 ? tweet.reTweets.length : "0"}
-          />
+          <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
         )}
+        <div
+          className={`pl-[1px] group-hover:text-green-400 ${
+            hasReTweeted && "text-green-400"
+          }`}
+        >
+          {tweet.reTweets.length > 0 ? (
+            tweet.reTweets.length
+          ) : (
+            <span className="opacity-0"> 0</span>
+          )}
+        </div>
       </button>
       {isReTweetBtnClick && (
         <ReTweetPanel

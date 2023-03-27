@@ -22,14 +22,14 @@ function TweetBtnPanel(props: TweetBtnPanelType) {
       } items-cente w-full justify-between py-1 sm:flex-row`}
     >
       <div className="flex items-center gap-1">
-        <AppIcon icon={ImImage} size={18} color="coral" hoverColor="coral" />
+        <AppIcon icon={ImImage} size={18} color="pri" hoverColor="pri" />
         <AppIcon
           icon={MdOutlineBallot}
           size={22}
-          color="coral"
-          hoverColor="coral"
+          color="pri"
+          hoverColor="pri"
         />
-        <AppIcon icon={VscSmiley} size={20} color="coral" hoverColor="coral" />
+        <AppIcon icon={VscSmiley} size={20} color="pri" hoverColor="pri" />
       </div>
       <div className="flex items-center gap-1.5 text-app-gray-3">
         <div className={`${characterCount < 0 && "text-red-500"}`}>

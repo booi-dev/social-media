@@ -5,7 +5,7 @@ import AppIcon from "../../../components/ui/AppIcon";
 function ViewUI() {
   return (
     <div className="hidden sm:block">
-      <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="coral" />
+      <AppIcon icon={BsTextRight} rotateDeg={90} hoverColor="pri" />
     </div>
   );
 }

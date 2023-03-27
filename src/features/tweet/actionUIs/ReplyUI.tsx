@@ -33,13 +33,16 @@ function ReplyUI(props: { tweet: TweetType }) {
       <button
         type="button"
         onClick={handleBtnClick}
-        className="flex items-center"
+        className="group flex items-center"
       >
-        <AppIcon
-          icon={BsChat}
-          hoverColor="coral"
-          text={tweet.replies.length > 0 ? tweet.replies.length : "0"}
-        />
+        <AppIcon icon={BsChat} hoverColor="pri" />
+        <div className="pl-[1px] group-hover:text-pri-clr-1">
+          {tweet.replies.length > 0 ? (
+            tweet.replies.length
+          ) : (
+            <span className="opacity-0"> 0</span>
+          )}
+        </div>
       </button>
       {isReplyBtnClick && (
         <>

@@ -19,7 +19,7 @@ function TweetActionsUI(props: TweetActionsType) {
   const { user } = useUserControls();
 
   return (
-    <div className="flex justify-between w-full bg-inherit text-inherit border-b-[0px] border-app-white-1 dark:border-app-gray-1 ">
+    <div className="my-1 flex w-full justify-between border-b-[0px] border-app-white-1 bg-inherit text-inherit dark:border-app-gray-1">
       <ReplyUI tweet={tweet} />
       <ReTweet tweet={tweet} typeState={typeState} />
       <LikeUI user={user} tweet={tweet} />

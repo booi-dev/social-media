@@ -10,7 +10,7 @@ function ShareUI() {
   return (
     <div className="relative">
       <button type="button" onClick={() => setIsSharePanelShow(true)}>
-        <AppIcon icon={RxShare2} hoverColor="coral" />
+        <AppIcon icon={RxShare2} hoverColor="pri" />
       </button>
       {isSharePanelShow && (
         <SharePanel closeHandler={() => setIsSharePanelShow(false)} />

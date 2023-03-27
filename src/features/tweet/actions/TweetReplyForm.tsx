@@ -34,7 +34,7 @@ function TweetReplyForm(props: TweetReplyFormType) {
   return (
     <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
       <button type="button" onClick={closeHandler}>
-        <AppIcon icon={IoMdClose} size={26} hoverColor="blue" />
+        <AppIcon icon={IoMdClose} size={26} hoverColor="coral" />
       </button>
 
       <div className="flex flex-col px-4 ">
@@ -62,7 +62,7 @@ function TweetReplyForm(props: TweetReplyFormType) {
           </div>
           <h1 className=" py-3 text-app-gray-3">
             Replying to
-            <span className="text-pri-blue-1">
+            <span className="text-pri-clr-1">
               @{originalTweetCreator?.userName}
             </span>
           </h1>

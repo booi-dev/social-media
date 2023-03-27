@@ -25,13 +25,11 @@ function Header() {
     <header className="flex h-screen justify-end bg-inherit text-inherit lg:w-[540px]">
       <div className="flex h-full w-[80px] flex-col items-center justify-between bg-inherit transition-all duration-500 md:w-[200px] md:items-stretch md:px-2 lg:w-[275px]">
         <div className="flex flex-col items-center bg-inherit lg:items-start ">
-          <div className="mt-2 w-min lg:mx-2">
-            <AppIcon
-              icon={BsChatSquareDotsFill}
-              size={28}
-              color="coral"
-              hoverColor="coral"
-            />
+          <div className="mt-2 flex w-min items-center lg:mx-2">
+            <AppIcon icon={BsChatSquareDotsFill} size={28} color="pri" />
+            <h1 className="hidden text-app-font-20 font-bold text-pri-clr-1 sm2:block">
+              SOCIA
+            </h1>
           </div>
           <HeaderOptions />
           {isAuthenticate && (

@@ -46,22 +46,23 @@ function LikeUI(props: LikeUIType) {
       <button
         type="button"
         onClick={handleBtnClick}
-        className="flex items-center "
+        className="group flex items-center"
       >
         {tweet.likes.includes(user.uid) ? (
-          <AppIcon
-            icon={BsFillHeartFill}
-            color="pink"
-            text={tweet.likes.length > 0 ? tweet.likes.length : "0"}
-            animation={anim}
-          />
+          <AppIcon icon={BsFillHeartFill} color="pink" animation={anim} />
         ) : (
-          <AppIcon
-            icon={BsHeart}
-            hoverColor="pink"
-            text={tweet.likes.length > 0 ? tweet.likes.length : "0"}
-          />
+          <AppIcon icon={BsHeart} hoverColor="pink" />
         )}
+        <div
+          className={`pl-[1px] group-hover:text-pink-600
+           ${tweet.likes.includes(user.uid) && "text-pink-600"}`}
+        >
+          {tweet.likes.length > 0 ? (
+            tweet.likes.length
+          ) : (
+            <span className="opacity-0"> 0</span>
+          )}
+        </div>
       </button>
       {IsModalShow && (
         <LogInModal
