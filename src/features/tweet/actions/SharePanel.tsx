@@ -21,7 +21,7 @@ function SharePanel(props: SharePanelType) {
     try {
       await navigator.clipboard.writeText("This is the text to be copied");
       closeHandler();
-      setNoti("ULR copied to clipbord");
+      setNoti("ULR copied to clipboard");
     } catch (err) {
       setNoti("ULR copy fail");
     }

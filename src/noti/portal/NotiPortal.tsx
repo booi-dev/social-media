@@ -24,7 +24,7 @@ function NotiPortal() {
   if (portal) {
     notificationPortal = createPortal(
       <div
-        className={`fixed text-white py-2 px-4 rounded-md bg-pri-blue-1 z-20 ${notificationPosition}`}
+        className={`fixed z-20 rounded-md bg-pri-clr-1 py-2 px-4 text-white ${notificationPosition}`}
       >
         {text}
       </div>,

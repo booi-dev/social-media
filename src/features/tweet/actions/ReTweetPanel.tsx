@@ -45,13 +45,13 @@ function ReTweetPanel(props: ReTweetType) {
 
   const handleReTweet = () => {
     reTweet(newTweet, tweet);
-    setNoti("Retweet sent");
+    setNoti("Post sent");
     closeHandler();
   };
 
   const handleUndoReTweet = () => {
     undoReTweet(tweet);
-    setNoti("Retweet undo");
+    setNoti("Post undo");
     closeHandler();
   };
 

@@ -34,7 +34,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
     deleteReTweets();
     deleteTweet(tweet.tid);
     deleteData(tweet.tid);
-    setNoti("Your tweet is deleleted", 3, "top-center");
+    setNoti("Your post is deleleted", 3, "top-center");
   };
 
   return (
@@ -60,7 +60,7 @@ function TweetOptions({ tweet }: FeedOptionsType) {
       {isWarning && (
         <div className="bg-inherit text-inherit">
           <WarningMsg
-            warningText="Delete Tweet?"
+            warningText="Delete Post?"
             warningDesc="This cant be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results."
             warningBtn="Delete"
             handleConfirm={handleDelete}

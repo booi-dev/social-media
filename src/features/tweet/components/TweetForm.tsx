@@ -47,7 +47,7 @@ function TweetForm(props: TweetFormType) {
     tid: newTId,
     tweet: "",
     timespan: 0,
-    createBy: user.uid,
+    createBy: "1",
     hashtags: [],
     likes: [],
     replies: [],
@@ -97,11 +97,12 @@ function TweetForm(props: TweetFormType) {
     const tags = createHashTags(value);
     setNewTweet({
       ...newTweet,
+      createBy: user.uid,
       timespan: Date.now(),
       hashtags: tags,
       tweet: e.target.value,
     });
-    console.log(newTweet);
+    // console.log(user.uid, newTweet);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -110,7 +111,7 @@ function TweetForm(props: TweetFormType) {
     resetRawTweet();
     closeHandler?.();
     openNotification?.();
-    setNoti("Your tweet is sent", 3, "top-center");
+    setNoti("Your post is sent", 3, "top-center");
     console.log(newTweet);
   };
 
