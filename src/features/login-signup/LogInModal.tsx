@@ -1,13 +1,11 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { IconType } from "react-icons";
-import { RxCross2 } from "react-icons/rx";
 
 import useThemeControls from "../../redux/control/themeControl";
 
-import AppIcon from "../../components/ui/AppIcon";
-
-import BackDrop from "../../components/ui/BackDrop";
+import { CrossIcon } from "../../components/icons";
+import { AppIcon, BackDrop } from "../../components/UI";
 
 type LogInModalType = {
   iconDetail: { icon: IconType; color: "blue" | "pink" | "green" };
@@ -33,7 +31,7 @@ function LogInModal(props: LogInModalType) {
             className="absolute top-2 left-2"
             onClick={closeHandler}
           >
-            <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
+            <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
           <div className="flex justify-center pb-6">
             <AppIcon

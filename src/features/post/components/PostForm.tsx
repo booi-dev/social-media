@@ -1,13 +1,11 @@
 import { useState, useRef } from "react";
 
-import { BsArrowLeftShort } from "react-icons/bs";
-import { FiChevronDown } from "react-icons/fi";
-
 import { useNoti } from "../../../noti";
-
 import useUserControls from "../../../redux/control/userControls";
 
-import AppIcon from "../../../components/ui/AppIcon";
+import { LeftArrowIcon, ChevronDownIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
+
 import PostBtnPanel from "./PostBtnPanel";
 import PostAudienceFilter from "./PostAudienceFilter";
 
@@ -118,7 +116,7 @@ function PostForm(props: PostFormType) {
     <div className="relative">
       {isBackBtnShow && (
         <button type="button" onClick={closeHandler} className="m-1 sm:hidden">
-          <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="pri" />
+          <AppIcon icon={LeftArrowIcon} size={28} hoverColor="pri" />
         </button>
       )}
 
@@ -142,7 +140,7 @@ function PostForm(props: PostFormType) {
               className="mb-1 flex w-min items-center gap-1 rounded-sm border border-app-gray-2 px-3 font-bold text-pri-clr-1 hover:bg-pri-clr-1 hover:bg-opacity-20 "
             >
               Everyone
-              <FiChevronDown className="translate-y-[2px] stroke-2" />
+              <ChevronDownIcon className="translate-y-[2px] stroke-2" />
             </button>
           )}
 

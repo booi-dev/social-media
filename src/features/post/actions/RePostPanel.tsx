@@ -1,12 +1,11 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { AiOutlineRetweet } from "react-icons/ai";
-import { TbPencilMinus } from "react-icons/tb";
 
 import useUserControls from "../../../redux/control/userControls";
 import usePostActions from "../hooks/usePostActions";
 import { useNoti } from "../../../noti";
 
-import BackDrop from "../../../components/ui/BackDrop";
+import { RepostIcon, PencilIcon } from "../../../components/icons";
+import { BackDrop } from "../../../components/UI";
 
 import { PostType } from "../../../types";
 
@@ -64,7 +63,7 @@ function RePostPanel(props: RePostPanelType) {
             onClick={handleUndoRePost}
             className="flex items-center gap-2"
           >
-            <AiOutlineRetweet />
+            <RepostIcon />
             Undo Repost
           </button>
         ) : (
@@ -73,13 +72,13 @@ function RePostPanel(props: RePostPanelType) {
             onClick={handleRePost}
             className="flex items-center gap-2"
           >
-            <AiOutlineRetweet />
+            <RepostIcon />
             Repost
           </button>
         )}
 
         <button type="button" className="flex items-center gap-2">
-          <TbPencilMinus />
+          <PencilIcon />
           Quote Post
         </button>
       </div>

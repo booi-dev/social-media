@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { BsHeart, BsFillHeartFill } from "react-icons/bs";
-import AppIcon from "../../../components/ui/AppIcon";
-
 import usePostActions from "../hooks/usePostActions";
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
+
+import { HeartIcon, HeartFillIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
 
 import LogInModal from "../../login-signup/LogInModal";
 import { PostType, UserType } from "../../../types";
@@ -49,9 +49,9 @@ function LikeUI(props: LikeUIType) {
         className="group flex items-center"
       >
         {post.likes.includes(user.uid) ? (
-          <AppIcon icon={BsFillHeartFill} color="pink" animation={anim} />
+          <AppIcon icon={HeartIcon} color="pink" animation={anim} />
         ) : (
-          <AppIcon icon={BsHeart} hoverColor="pink" />
+          <AppIcon icon={HeartIcon} hoverColor="pink" />
         )}
         <div
           className={`pl-[1px] group-hover:text-pink-600
@@ -66,7 +66,7 @@ function LikeUI(props: LikeUIType) {
       </button>
       {IsModalShow && (
         <LogInModal
-          iconDetail={{ icon: BsFillHeartFill, color: "pink" }}
+          iconDetail={{ icon: HeartFillIcon, color: "pink" }}
           title="Like a Post to share the love."
           text={`Join Twitter now to let ${getPostCreator(
             post.createBy

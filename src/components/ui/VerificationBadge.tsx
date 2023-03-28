@@ -1,4 +1,4 @@
-import { MdVerified } from "react-icons/md";
+import { VerifiedIcon } from "../icons";
 
 type VerificationBadgeType = {
   type?: string;
@@ -20,7 +20,7 @@ function VerificationBadge(props: VerificationBadgeType) {
     gray: "text-gray-500",
   };
 
-  return <MdVerified className={`${color && badgeColorVariant[color]}`} />;
+  return <VerifiedIcon className={`${color && badgeColorVariant[color]}`} />;
 }
 
 VerificationBadge.defaultProps = {

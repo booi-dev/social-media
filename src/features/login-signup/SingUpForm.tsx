@@ -1,6 +1,4 @@
-import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { BsApple } from "react-icons/bs";
+import { AppleIcon, GoogleIcon } from "../../components/icons";
 
 function SignUpForm() {
   return (
@@ -9,11 +7,11 @@ function SignUpForm() {
       [&>button]:text-app-black-1"
     >
       <button type="button">
-        <FcGoogle />
+        <GoogleIcon />
         Sign up with Google
       </button>
       <button type="button">
-        <BsApple />
+        <AppleIcon />
         Sign up with apple
       </button>
       <div

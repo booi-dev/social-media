@@ -1,13 +1,8 @@
-import React from "react";
 import { UserType } from "../../types";
 
 type SuggestionType = {
   user: UserType;
 };
-
-// type SuggestionPropType = {
-//   suggestion: SuggestionType;
-// };
 
 function Suggestion({ user }: SuggestionType) {
   return (

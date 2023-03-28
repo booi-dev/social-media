@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { RxShare2 } from "react-icons/rx";
+
+import { ShareIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
 
 import SharePanel from "../actions/SharePanel";
-import AppIcon from "../../../components/ui/AppIcon";
 
 function ShareUI() {
   const [isSharePanelShow, setIsSharePanelShow] = useState(false);
@@ -10,7 +11,7 @@ function ShareUI() {
   return (
     <div className="relative">
       <button type="button" onClick={() => setIsSharePanelShow(true)}>
-        <AppIcon icon={RxShare2} hoverColor="pri" />
+        <AppIcon icon={ShareIcon} hoverColor="pri" />
       </button>
       {isSharePanelShow && (
         <SharePanel closeHandler={() => setIsSharePanelShow(false)} />

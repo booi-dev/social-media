@@ -1,5 +1,3 @@
-import React from "react";
-
 import SignUpForm from "./SingUpForm";
 
 function SignUpWidget() {

@@ -1,4 +1,4 @@
-import { GoKebabHorizontal } from "react-icons/go";
+import { KebabHorizontalIcon } from "../icons";
 
 type ProfileType = {
   displayName: string;
@@ -28,7 +28,7 @@ function Profile(props: ProfileType) {
         </div>
       </div>
       <span>
-        <GoKebabHorizontal className="hidden md:block" />
+        <KebabHorizontalIcon className="hidden md:block" />
       </span>
     </button>
   );

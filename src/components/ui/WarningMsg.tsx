@@ -1,4 +1,3 @@
-import React from "react";
 import BackDrop from "./BackDrop";
 
 type WarningMsgType = {

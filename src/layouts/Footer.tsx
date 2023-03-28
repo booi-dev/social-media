@@ -1,4 +1,4 @@
-import { RiCopyrightLine } from "react-icons/ri";
+import { CopyrightIcon } from "../components/icons";
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -13,7 +13,7 @@ function Footer() {
         <button type="button">More ...</button>
       </div>
       <h1 className=" flex items-center py-2 text-app-gray-3">
-        <RiCopyrightLine className="translate-y-[1px]" /> {year} Socia, Inc.
+        <CopyrightIcon className="translate-y-[1px]" /> {year} Socia, Inc.
       </h1>
     </div>
   );

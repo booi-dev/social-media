@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-import { AiOutlineRetweet } from "react-icons/ai";
-
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
-import AppIcon from "../../../components/ui/AppIcon";
-import RePostPanel from "../actions/RePostPanel";
+import { RepostIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
 
+import RePostPanel from "../actions/RePostPanel";
 import LogInModal from "../../login-signup/LogInModal";
 
 import { PostType, TypeStateType } from "../../../types";
@@ -45,9 +44,9 @@ function RePostUI(props: RePostUIType) {
         className="group flex items-center"
       >
         {hasReposted ? (
-          <AppIcon icon={AiOutlineRetweet} color="green" />
+          <AppIcon icon={RepostIcon} color="green" />
         ) : (
-          <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
+          <AppIcon icon={RepostIcon} hoverColor="green" />
         )}
         <div
           className={`pl-[1px] group-hover:text-green-400 ${
@@ -73,7 +72,7 @@ function RePostUI(props: RePostUIType) {
       )}
       {IsModalShow && (
         <LogInModal
-          iconDetail={{ icon: AiOutlineRetweet, color: "green" }}
+          iconDetail={{ icon: RepostIcon, color: "green" }}
           title="Repost to spread the word."
           text={`When you join Twitter, you can share ${getPostCreator(
             post.createBy

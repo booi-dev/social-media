@@ -1,18 +1,19 @@
 import { useState } from "react";
 
-import { BsPerson, BsPersonFill } from "react-icons/bs";
-import { AiOutlineHome, AiFillHome } from "react-icons/ai";
-import { CiHashtag, CiCircleMore } from "react-icons/ci";
 import {
-  IoNotificationsOutline,
-  IoNotificationsSharp,
-  IoBookmarkOutline,
-  IoBookmark,
-} from "react-icons/io5";
-import {
-  HiOutlineChatBubbleBottomCenter,
-  HiChatBubbleBottomCenter,
-} from "react-icons/hi2";
+  HomeIcon,
+  HomeFillIcon,
+  HashTagIcon,
+  NotificationIcon,
+  NotificationFillIcon,
+  BookmarkIcon,
+  BookmarkFillIcon,
+  ChatBubbleBottomCenterIcon,
+  ChatBubbleBottomCenterFillIcon,
+  PersonIcon,
+  PersonFillIcon,
+  CircleMoreIcon,
+} from "../icons";
 
 import useUserControls from "../../redux/control/userControls";
 
@@ -26,19 +27,19 @@ function HeaderOptions() {
   const { isAuthenticate } = useUserControls();
 
   return (
-    <div className="relative flex flex-col bg-inherit lg:items-start md:gap-2 lg:gap-3">
+    <div className="relative flex flex-col bg-inherit md:gap-2 lg:items-start lg:gap-3">
       <Option
         text="Home"
-        icon={AiOutlineHome}
-        iconActive={AiFillHome}
+        icon={HomeIcon}
+        iconActive={HomeFillIcon}
         isActive={optionIndex === "Home"}
         setActive={() => setOptionIndex("Home")}
       />
 
       <Option
         text="Explore"
-        icon={CiHashtag}
-        iconActive={CiHashtag}
+        icon={HashTagIcon}
+        iconActive={HashTagIcon}
         isActive={optionIndex === "Explore"}
         setActive={() => setOptionIndex("Explore")}
         extraStyle="stroke-1"
@@ -47,36 +48,36 @@ function HeaderOptions() {
         <>
           <Option
             text="Notification"
-            icon={IoNotificationsOutline}
-            iconActive={IoNotificationsSharp}
+            icon={NotificationIcon}
+            iconActive={NotificationFillIcon}
             isActive={optionIndex === "Notification"}
             setActive={() => setOptionIndex("Notification")}
           />
           <Option
             text="Messages"
-            icon={HiOutlineChatBubbleBottomCenter}
-            iconActive={HiChatBubbleBottomCenter}
+            icon={ChatBubbleBottomCenterIcon}
+            iconActive={ChatBubbleBottomCenterFillIcon}
             isActive={optionIndex === "Messages"}
             setActive={() => setOptionIndex("Messages")}
           />
           <Option
             text="Bookmarks"
-            icon={IoBookmarkOutline}
-            iconActive={IoBookmark}
+            icon={BookmarkIcon}
+            iconActive={BookmarkFillIcon}
             isActive={optionIndex === "Bookmarks"}
             setActive={() => setOptionIndex("Bookmarks")}
           />
           <Option
             text="Profile"
-            icon={BsPerson}
-            iconActive={BsPersonFill}
+            icon={PersonIcon}
+            iconActive={PersonFillIcon}
             isActive={optionIndex === "Profile"}
             setActive={() => setOptionIndex("Profile")}
           />
           <Option
             text="More"
-            icon={CiCircleMore}
-            iconActive={CiCircleMore}
+            icon={CircleMoreIcon}
+            iconActive={CircleMoreIcon}
             isActive={optionIndex === "More"}
             setActive={() => setOptionIndex("More")}
             clickHandler={() => setIsMoreClick(true)}

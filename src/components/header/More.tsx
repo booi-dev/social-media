@@ -1,14 +1,16 @@
 import { useState } from "react";
-
-import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
-import { MdDarkMode } from "react-icons/md";
-import { BsSun } from "react-icons/bs";
-import { BiLogOutCircle } from "react-icons/bi";
-
 import useThemeControls from "../../redux/control/themeControl";
 
+import {
+  SettingIcon,
+  SettingFillIcon,
+  SunIcon,
+  LogOutIcon,
+  DarkModeIcon,
+} from "../icons";
+import { BackDrop } from "../UI";
+
 import Option from "./Option";
-import BackDrop from "../ui/BackDrop";
 
 type MoreType = {
   closeHandler: () => void;
@@ -26,16 +28,16 @@ function More(props: MoreType) {
       <div className="absolute bottom-0 left-0 -right-40 z-20 flex  flex-col items-start rounded-sm bg-inherit p-1 py-4 shadow shadow-app-gray-3 md:gap-2 lg:-right-24 lg:items-start lg:gap-3">
         <Option
           text="Setting"
-          icon={IoSettingsOutline}
-          iconActive={IoSettingsSharp}
+          icon={SettingIcon}
+          iconActive={SettingFillIcon}
           isActive={activeIndex === "Setting"}
           setActive={() => setActiveIndex("Setting")}
           isHideOnSmall={false}
         />
         <Option
           text={theme === "dark" ? "Light Theme" : "Dark Theme"}
-          icon={theme === "dark" ? BsSun : MdDarkMode}
-          iconActive={theme === "dark" ? BsSun : MdDarkMode}
+          icon={theme === "dark" ? SunIcon : DarkModeIcon}
+          iconActive={theme === "dark" ? SunIcon : DarkModeIcon}
           isActive={activeIndex === "Darkmode"}
           setActive={() => setActiveIndex("Darkmode")}
           isHideOnSmall={false}
@@ -43,8 +45,8 @@ function More(props: MoreType) {
         />
         <Option
           text="Logout"
-          icon={BiLogOutCircle}
-          iconActive={BiLogOutCircle}
+          icon={LogOutIcon}
+          iconActive={LogOutIcon}
           isActive={activeIndex === "Logout"}
           setActive={() => setActiveIndex("Logout")}
           isHideOnSmall={false}

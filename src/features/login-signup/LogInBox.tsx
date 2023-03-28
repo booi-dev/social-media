@@ -1,9 +1,7 @@
 import { createPortal } from "react-dom";
-import { FcGoogle } from "react-icons/fc";
-import { BsApple } from "react-icons/bs";
-import { RxCross2 } from "react-icons/rx";
-import AppIcon from "../../components/ui/AppIcon";
-import BackDrop from "../../components/ui/BackDrop";
+
+import { AppleIcon, GoogleIcon, CrossIcon } from "../../components/icons";
+import { AppIcon, BackDrop } from "../../components/UI";
 
 type LogInFormType = {
   setIsLogInClick: (state: boolean) => void;
@@ -36,7 +34,7 @@ function LogInForm(props: LogInFormType) {
             className="absolute top-2 left-2"
             onClick={closeForm}
           >
-            <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
+            <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
 
           <h1 className="text-center text-3xl font-bold">Sign In to Socia</h1>
@@ -46,11 +44,11 @@ function LogInForm(props: LogInFormType) {
       [&>button]:text-app-black-1"
           >
             <button type="button">
-              <FcGoogle />
+              <GoogleIcon />
               Sign up with Google
             </button>
             <button type="button">
-              <BsApple />
+              <AppleIcon />
               Sign up with apple
             </button>
           </div>

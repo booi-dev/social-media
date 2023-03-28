@@ -1,10 +1,8 @@
-import { AiOutlineLink } from "react-icons/ai";
-import { MdOutlineBookmarkAdd } from "react-icons/md";
-
 import useUserControls from "../../../redux/control/userControls";
 import { useNoti } from "../../../noti";
 
-import BackDrop from "../../../components/ui/BackDrop";
+import { LinkIcon, BookmarkAddIcon } from "../../../components/icons";
+import { BackDrop } from "../../../components/UI";
 
 type SharePanelType = {
   closeHandler: () => void;
@@ -34,12 +32,12 @@ function SharePanel(props: SharePanelType) {
           onClick={handleCopy}
           className="flex items-center gap-2"
         >
-          <AiOutlineLink />
+          <LinkIcon />
           Copy link to Post
         </button>
         {isAuthenticate && (
           <button type="button" className="flex items-center gap-2">
-            <MdOutlineBookmarkAdd />
+            <BookmarkAddIcon />
             Bookmark
           </button>
         )}

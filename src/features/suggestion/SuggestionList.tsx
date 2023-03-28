@@ -1,4 +1,3 @@
-import React from "react";
 import Suggestion from "./Suggestion";
 import userData from "../../data/usersData";
 

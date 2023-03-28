@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { BsChat, BsChatFill } from "react-icons/bs";
-
-import AppIcon from "../../../components/ui/AppIcon";
-import BackDrop from "../../../components/ui/BackDrop";
 
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
+
+import { ChatIcon, ChatFillIcon } from "../../../components/icons";
+import { AppIcon, BackDrop } from "../../../components/UI";
 
 import PostReplyForm from "../actions/PostReplyForm";
 import LogInModal from "../../login-signup/LogInModal";
@@ -35,7 +34,7 @@ function ReplyUI(props: { post: PostType }) {
         onClick={handleBtnClick}
         className="group flex items-center"
       >
-        <AppIcon icon={BsChat} hoverColor="pri" />
+        <AppIcon icon={ChatIcon} hoverColor="pri" />
         <div className="pl-[1px] group-hover:text-pri-clr-1">
           {post.replies.length > 0 ? (
             post.replies.length
@@ -60,7 +59,7 @@ function ReplyUI(props: { post: PostType }) {
       )}
       {IsModalShow && (
         <LogInModal
-          iconDetail={{ icon: BsChatFill, color: "blue" }}
+          iconDetail={{ icon: ChatFillIcon, color: "blue" }}
           title="Reply to join the conversation."
           text={`Once you join Twitter, you can respond to ${getPostCreator(
             post.createBy

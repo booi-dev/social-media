@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { BsPin } from "react-icons/bs";
 
+import { useNoti } from "../../../noti";
 import usePostControls from "../../../redux/control/postControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
-import WarningMsg from "../../../components/ui/WarningMsg";
-import { useNoti } from "../../../noti";
+import { PinIcon, DeleteIcon } from "../../../components/icons";
+import { WarningMsg } from "../../../components/UI";
 
 import { PostType } from "../../../types";
 
@@ -45,7 +44,7 @@ function PostOptions({ post }: PostOptionsType) {
           className="flex w-full items-center gap-2 p-3 text-left text-red-500 hover:bg-app-white-2 dark:hover:bg-app-gray-1"
           onClick={() => setIsWarning(true)}
         >
-          <RiDeleteBinLine />
+          <DeleteIcon />
           Delete
         </button>
 
@@ -53,7 +52,7 @@ function PostOptions({ post }: PostOptionsType) {
           type="button"
           className="flex w-full items-center gap-2 p-3 text-left text-inherit hover:bg-app-white-2 dark:hover:bg-app-gray-1"
         >
-          <BsPin />
+          <PinIcon />
           Pin to your profile
         </button>
       </div>

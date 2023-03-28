@@ -1,5 +1,5 @@
 import useGetProperties from "../../../hooks/useGetProperties";
-import VerificationBadge from "../../../components/ui/VerificationBadge";
+import { VerificationBadge } from "../../../components/UI";
 
 type PostCreatorPicType = {
   postCreatorUid: string;

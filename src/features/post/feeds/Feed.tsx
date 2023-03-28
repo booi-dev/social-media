@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { GoKebabHorizontal } from "react-icons/go";
-
 import useUserControls from "../../../redux/control/userControls";
+
+import { KebabHorizontalIcon } from "../../../components/icons";
+import { BackDrop } from "../../../components/UI";
 
 import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostOptions from "../components/PostOptions";
-import BackDrop from "../../../components/ui/BackDrop";
 import PostWithHighlightedHashTags from "./PostWithHighlightedHashTags";
 
 import { PostType, TypeStateType } from "../../../types";
@@ -58,7 +58,7 @@ function Feed(props: FeedType) {
                 className=""
                 onClick={() => setIsOption(true)}
               >
-                <GoKebabHorizontal />
+                <KebabHorizontalIcon />
               </button>
             )}
           </div>

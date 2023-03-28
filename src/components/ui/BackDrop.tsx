@@ -1,5 +1,3 @@
-import React from "react";
-
 type BackDropPropType = {
   handleClose: () => void;
   color?: string;
@@ -26,7 +24,7 @@ function BackDrop(props: BackDropPropType) {
 
   return (
     <div
-      className={`fixed inset-0 w-full h-full ${
+      className={`fixed inset-0 h-full w-full ${
         color && colorVariants[color]
       }  z-10`}
       id="backdrop"

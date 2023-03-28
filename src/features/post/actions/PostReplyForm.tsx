@@ -1,11 +1,11 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-import { IoMdClose } from "react-icons/io";
-
 import usePostActions from "../hooks/usePostActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
-import AppIcon from "../../../components/ui/AppIcon";
+import { CloseIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
+
 import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostForm from "../components/PostForm";
 
@@ -34,7 +34,7 @@ function PostReplyForm(props: PostReplyFormType) {
   return (
     <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
       <button type="button" onClick={closeHandler} className="m-1">
-        <AppIcon icon={IoMdClose} size={26} hoverColor="pri" />
+        <AppIcon icon={CloseIcon} size={26} hoverColor="pri" />
       </button>
 
       <div className="flex flex-col px-4 ">

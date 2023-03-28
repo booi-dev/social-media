@@ -1,8 +1,5 @@
-import { VscSmiley } from "react-icons/vsc";
-import { MdOutlineBallot } from "react-icons/md";
-import { ImImage } from "react-icons/im";
-
-import AppIcon from "../../../components/ui/AppIcon";
+import { ImageIcon, BallotIcon, SmileyIcon } from "../../../components/icons";
+import { AppIcon } from "../../../components/UI";
 
 import { PostType } from "../../../types";
 
@@ -22,14 +19,9 @@ function PostBtnPanel(props: PostBtnPanelType) {
       } items-cente w-full justify-between py-1 sm:flex-row`}
     >
       <div className="flex items-center gap-1">
-        <AppIcon icon={ImImage} size={18} color="pri" hoverColor="pri" />
-        <AppIcon
-          icon={MdOutlineBallot}
-          size={22}
-          color="pri"
-          hoverColor="pri"
-        />
-        <AppIcon icon={VscSmiley} size={20} color="pri" hoverColor="pri" />
+        <AppIcon icon={ImageIcon} size={18} color="pri" hoverColor="pri" />
+        <AppIcon icon={BallotIcon} size={22} color="pri" hoverColor="pri" />
+        <AppIcon icon={SmileyIcon} size={20} color="pri" hoverColor="pri" />
       </div>
       <div className="flex items-center gap-1.5 text-app-gray-3">
         <div className={`${characterCount < 0 && "text-red-500"}`}>

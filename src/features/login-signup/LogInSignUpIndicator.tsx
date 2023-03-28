@@ -1,5 +1,3 @@
-import React from "react";
-
 type LogInIndicatorType = {
   setIsLogInClick: (state: boolean) => void;
   setIsSignUpClick: (state: boolean) => void;

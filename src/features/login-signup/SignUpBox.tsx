@@ -1,8 +1,9 @@
 import { createPortal } from "react-dom";
-import { RxCross2 } from "react-icons/rx";
+
+import { CrossIcon } from "../../components/icons";
+import { AppIcon, BackDrop } from "../../components/UI";
+
 import SignUpForm from "./SingUpForm";
-import AppIcon from "../../components/ui/AppIcon";
-import BackDrop from "../../components/ui/BackDrop";
 
 type SignUpBoxType = {
   setIsSignUpClick: (state: boolean) => void;
@@ -35,7 +36,7 @@ function SignUpBox(props: SignUpBoxType) {
             className="absolute top-2 left-2"
             onClick={closeForm}
           >
-            <AppIcon icon={RxCross2} size={25} hoverColor="gray" />
+            <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
 
           <h1 className="mb-4 text-center text-3xl font-bold">

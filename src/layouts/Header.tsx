@@ -1,16 +1,13 @@
 import { useState } from "react";
 
-import { BsChatSquareDotsFill } from "react-icons/bs";
-import { FaFeatherAlt } from "react-icons/fa";
-
 import useUserControls from "../redux/control/userControls";
 
-import AppIcon from "../components/ui/AppIcon";
+import { ChatSquareDotsFillIcon, FeatherIcon } from "../components/icons";
+import { AppIcon, BackDrop } from "../components/UI";
 import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
 import NewPostForm from "../features/post/actions/NewPostForm";
-import BackDrop from "../components/ui/BackDrop";
 
 function Header() {
   const userName = "nganu";
@@ -25,7 +22,7 @@ function Header() {
       <div className="flex h-full w-[80px] flex-col items-center justify-between bg-inherit transition-all duration-500 md:w-[200px] md:items-stretch md:px-2 lg:w-[275px]">
         <div className="flex flex-col items-center bg-inherit lg:items-start ">
           <div className="mt-2 flex w-min items-center lg:mx-2">
-            <AppIcon icon={BsChatSquareDotsFill} size={28} color="pri" />
+            <AppIcon icon={ChatSquareDotsFillIcon} size={28} color="pri" />
             <h1 className="hidden text-app-font-20 font-bold text-pri-clr-1 sm2:block">
               SOCIA
             </h1>
@@ -37,7 +34,7 @@ function Header() {
               className="mt-2 rounded-sm bg-pri-clr-1 p-4 text-app-font-20 font-bold text-app-black-1 hover:bg-pri-clr-2 md:py-3 lg:w-[220px]"
               onClick={() => setIsPostFormShow(true)}
             >
-              <FaFeatherAlt className="md:hidden" />
+              <FeatherIcon className="md:hidden" />
               <span className="hidden md:block">+Post</span>
             </button>
           )}
