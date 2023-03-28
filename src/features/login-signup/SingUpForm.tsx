@@ -3,7 +3,7 @@ import { AppleIcon, GoogleIcon } from "../../components/icons";
 function SignUpForm() {
   return (
     <div
-      className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-2xl [&>button]:bg-app-white-1 [&>button]:py-2 
+      className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:bg-app-white-1 [&>button]:py-2 
       [&>button]:text-app-black-1"
     >
       <button type="button">

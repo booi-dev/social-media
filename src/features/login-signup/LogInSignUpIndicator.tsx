@@ -18,14 +18,14 @@ function LogInSignUpIndicator(props: LogInIndicatorType) {
           <button
             type="button"
             onClick={() => setIsLogInClick(true)}
-            className="w-full rounded-2xl border py-1 font-bold"
+            className="w-full rounded-sm border py-1 font-bold"
           >
             Log in
           </button>
           <button
             type="button"
             onClick={() => setIsSignUpClick(true)}
-            className="w-full rounded-2xl  border bg-app-white-1 py-1 font-bold text-app-black-1"
+            className="w-full rounded-sm  border bg-app-white-1 py-1 font-bold text-app-black-1"
           >
             Sign up
           </button>
