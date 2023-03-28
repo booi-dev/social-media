@@ -12,12 +12,12 @@ import LogInModal from "../../login-signup/LogInModal";
 
 import { PostType, TypeStateType } from "../../../types";
 
-type RePostType = {
+type RePostUIType = {
   post: PostType;
   typeState: TypeStateType;
 };
 
-function RePost(props: RePostType) {
+function RePostUI(props: RePostUIType) {
   const { post, typeState } = props;
 
   const { isAuthenticate, user } = useUserControls();
@@ -85,4 +85,4 @@ function RePost(props: RePostType) {
   );
 }
 
-export default RePost;
+export default RePostUI;

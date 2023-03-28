@@ -3,24 +3,24 @@ import { useState } from "react";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
 import AppIcon from "../../../components/ui/AppIcon";
 
-import useTweetActions from "../hooks/usePostActions";
+import usePostActions from "../hooks/usePostActions";
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import LogInModal from "../../login-signup/LogInModal";
-import { TweetType, UserType } from "../../../types";
+import { PostType, UserType } from "../../../types";
 
 type LikeUIType = {
   user: UserType;
-  post: TweetType;
+  post: PostType;
 };
 
 function LikeUI(props: LikeUIType) {
   const { user, post } = props;
-  const { likeTweet } = useTweetActions();
+  const { likePost } = usePostActions();
 
   const { isAuthenticate } = useUserControls();
-  const { getTweetCreator } = useGetProperties();
+  const { getPostCreator } = useGetProperties();
   const [IsModalShow, setIsModalShow] = useState(false);
 
   const [anim, setAnim] = useState("");
@@ -34,7 +34,7 @@ function LikeUI(props: LikeUIType) {
 
   const handleBtnClick = () => {
     if (isAuthenticate) {
-      likeTweet(post);
+      likePost(post);
       setAnimation();
     } else {
       setIsModalShow(true);
@@ -67,10 +67,10 @@ function LikeUI(props: LikeUIType) {
       {IsModalShow && (
         <LogInModal
           iconDetail={{ icon: BsFillHeartFill, color: "pink" }}
-          title="Like a Tweet to share the love."
-          text={`Join Twitter now to let ${getTweetCreator(
+          title="Like a Post to share the love."
+          text={`Join Twitter now to let ${getPostCreator(
             post.createBy
-          )?.displayName.toUpperCase()}'s Tweet with your followers.`}
+          )?.displayName.toUpperCase()}'s Post with your followers.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}
