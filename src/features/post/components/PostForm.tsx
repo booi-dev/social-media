@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { useNoti } from "../../../noti";
 import useUserControls from "../../../redux/control/userControls";
@@ -112,6 +112,10 @@ function PostForm(props: PostFormType) {
     console.log(newPost);
   };
 
+  useEffect(() => {
+    if (postHaveType.type === "reply") textAreaRef.current?.focus();
+  }, []);
+
   return (
     <div className="relative">
       {isBackBtnShow && (
@@ -147,12 +151,14 @@ function PostForm(props: PostFormType) {
           <textarea
             ref={textAreaRef}
             maxLength={500}
-            placeholder="What's happening"
+            placeholder={`${
+              postHaveType.type === "reply" ? "" : "What's happening "
+            }`}
             onChange={handleInput}
             value={newPost.post}
             className={`w-full px-1 ${isLargeTextArea && "min-h-[150px]"}  ${
               isFilterBtnHidden && "pt-3"
-            }  hide-scrollbar resize-none bg-inherit text-app-font-20 font-normal text-inherit focus:outline-none`}
+            }  hide-scrollbar resize-none bg-inherit text-app-font-20 font-normal text-inherit caret-pri-clr-1 focus:outline-none`}
           />
           <div className=" flex gap-2 px-2 text-pri-clr-1">
             {hashtags.map((tag) => (
