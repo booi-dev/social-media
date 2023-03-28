@@ -30,7 +30,7 @@ function WarningMsg(props: WarningMsgType) {
         <div className="mt-4 [&>button]:block [&>button]:w-full [&>button]:rounded-md [&>button]:p-2  [&>button]:font-bold [&>button]:transition-all [&>button]:duration-500">
           <button
             type="button"
-            className="bg-red-400 text-app-black-1 hover:bg-red-500 focus:bg-red-800 "
+            className="bg-red-400 text-app-black-1 hover:bg-red-500 focus:bg-red-800"
             onClick={handleConfirmBtn}
           >
             {warningBtn}

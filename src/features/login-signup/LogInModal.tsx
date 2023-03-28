@@ -31,7 +31,7 @@ function LogInModal(props: LogInModalType) {
             className="absolute top-2 left-2"
             onClick={closeHandler}
           >
-            <AppIcon icon={CrossIcon} size={25} hoverColor="pri" />
+            <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
           <div className="flex justify-center pb-6">
             <AppIcon
