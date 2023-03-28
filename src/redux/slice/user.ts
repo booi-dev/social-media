@@ -15,7 +15,7 @@ const userTemplate: UserType = {
 };
 
 const initialUser: { isAuthenticate: boolean; user: UserType } = {
-  isAuthenticate: false,
+  isAuthenticate: true,
   user: userTemplate,
 };
 

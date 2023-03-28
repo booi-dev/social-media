@@ -43,11 +43,14 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute bottom-24 z-20 w-[250px] cursor-pointer space-y-1 rounded-sm bg-inherit py-4 font-bold shadow shadow-app-gray-3 dark:bg-app-black-3 [&>h1]:px-4 [&>h1]:py-2">
-                <h1 className="hover:bg-app-white-3">
+              <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>h1]:px-4 [&>h1]:py-2">
+                <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
                   Add an existing account
                 </h1>
-                <h1 className="hover:bg-app-white-3"> Log out @{userName}</h1>
+                <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
+                  {" "}
+                  Log out @{userName}
+                </h1>
               </div>
               <BackDrop handleClose={() => setIsOptionShow(false)} />
             </>
@@ -65,7 +68,7 @@ function Header() {
         {isPostFormShow && (
           <>
             <div className="absolute inset-1 z-20 flex items-center rounded-sm bg-inherit sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2 ">
-              <div className="w-full border p-2 shadow md:p-4">
+              <div className="w-full border p-2 shadow dark:border-app-gray-2 md:p-4">
                 <NewPostForm
                   closeHandler={() => setIsPostFormShow(false)}
                   isLargeTextArea

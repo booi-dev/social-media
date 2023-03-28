@@ -15,7 +15,7 @@ function LogInSignUpIndicator(props: LogInIndicatorType) {
             Don’t miss what’s happening
           </h1>
           <h1 className="text-app-black-1">
-            People on Twitter are the first to know.
+            People on Socia are the first to know.
           </h1>
         </div>
         <div className="flex w-[200px] grow items-center justify-between gap-4 md:grow-0 ">

@@ -113,7 +113,8 @@ function PostForm(props: PostFormType) {
   };
 
   useEffect(() => {
-    if (postHaveType.type === "reply") textAreaRef.current?.focus();
+    if (postHaveType.type === "reply" || isLargeTextArea)
+      textAreaRef.current?.focus();
   }, []);
 
   return (

@@ -17,7 +17,7 @@ function SignUpForm() {
       </button>
       <div
         className="flex w-full items-center bg-inherit py-3 text-center
-          text-app-gray-3 before:mr-1 before:h-2 before:w-full before:border-b  before:border-app-gray-3 before:content-[''] after:ml-1 after:h-2 after:w-full  after:border-b after:border-app-gray-3 after:content-['']"
+          text-app-gray-3 before:mr-1 before:h-2 before:w-full before:border-b before:border-app-gray-1 before:content-[''] after:ml-1 after:h-2 after:w-full after:border-b  after:border-app-gray-1 after:content-[''] dark:before:border-app-gray-3 dark:after:border-app-gray-3"
       >
         or
       </div>
