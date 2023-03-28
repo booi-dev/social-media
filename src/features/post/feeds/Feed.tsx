@@ -75,9 +75,7 @@ function Feed(props: FeedType) {
           </div>
         )}
       </div>
-      {isOption && (
-        <BackDrop handleClose={() => setIsOption(false)} color="black" />
-      )}
+      {isOption && <BackDrop handleClose={() => setIsOption(false)} />}
     </>
   );
 }

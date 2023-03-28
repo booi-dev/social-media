@@ -32,7 +32,7 @@ function PostReplyForm(props: PostReplyFormType) {
   };
 
   return (
-    <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
+    <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3 dark:bg-app-black-1  dark:shadow-none sm:w-full">
       <button type="button" onClick={closeHandler} className="m-1">
         <AppIcon icon={CloseIcon} size={26} hoverColor="pri" />
       </button>
