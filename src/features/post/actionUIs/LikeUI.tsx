@@ -68,7 +68,7 @@ function LikeUI(props: LikeUIType) {
         <LogInModal
           iconDetail={{ icon: HeartFillIcon, color: "pink" }}
           title="Like a Post to share the love."
-          text={`Join Twitter now to let ${getPostCreator(
+          text={`Join Socia now to let ${getPostCreator(
             post.createBy
           )?.displayName.toUpperCase()}'s Post with your followers.`}
           closeHandler={() => setIsModalShow(false)}

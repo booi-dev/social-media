@@ -8,7 +8,7 @@ const getClientDefaultTheme = () => {
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    defaultTheme = "dark";
+    defaultTheme = "light";
   } else {
     defaultTheme = "light";
   }

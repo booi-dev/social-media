@@ -59,9 +59,9 @@ function ReplyUI(props: { post: PostType }) {
       )}
       {IsModalShow && (
         <LogInModal
-          iconDetail={{ icon: ChatFillIcon, color: "blue" }}
+          iconDetail={{ icon: ChatFillIcon, color: "pri" }}
           title="Reply to join the conversation."
-          text={`Once you join Twitter, you can respond to ${getPostCreator(
+          text={`Once you join Socia, you can respond to ${getPostCreator(
             post.createBy
           )?.displayName.toUpperCase()}'s Post.`}
           closeHandler={() => setIsModalShow(false)}

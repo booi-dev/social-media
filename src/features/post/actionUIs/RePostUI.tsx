@@ -74,7 +74,7 @@ function RePostUI(props: RePostUIType) {
         <LogInModal
           iconDetail={{ icon: RepostIcon, color: "green" }}
           title="Repost to spread the word."
-          text={`When you join Twitter, you can share ${getPostCreator(
+          text={`When you join Socia, you can share ${getPostCreator(
             post.createBy
           )?.displayName.toUpperCase()}'s Post.`}
           closeHandler={() => setIsModalShow(false)}
