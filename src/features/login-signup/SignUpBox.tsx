@@ -32,8 +32,8 @@ function SignUpBox(props: SignUpBoxType) {
     LogInFormPortal = createPortal(
       <div className={theme}>
         <div
-          className="absolute top-0 bottom-0 z-20 flex w-full flex-col
-        justify-center rounded-sm bg-app-white-1 p-16 text-app-gray-1 shadow shadow-app-gray-1 dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+          className="absolute top-0 bottom-0 z-20 flex w-full
+        flex-col justify-center rounded-sm bg-app-white-1 p-16 text-app-gray-1 shadow dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2"
         >
           <button
             type="button"
