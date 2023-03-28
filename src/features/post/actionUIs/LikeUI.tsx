@@ -49,7 +49,7 @@ function LikeUI(props: LikeUIType) {
         className="group flex items-center"
       >
         {post.likes.includes(user.uid) ? (
-          <AppIcon icon={HeartIcon} color="pink" animation={anim} />
+          <AppIcon icon={HeartFillIcon} color="pink" animation={anim} />
         ) : (
           <AppIcon icon={HeartIcon} hoverColor="pink" />
         )}
