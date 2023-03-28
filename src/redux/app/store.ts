@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../slice/user";
-import tweetReducer from "../slice/tweet";
+import postReducer from "../slice/post";
 import themeReducer from "../slice/theme";
 import { notiReducer } from "../../noti";
 
 const store = configureStore({
   reducer: {
     userStore: userReducer,
-    tweetStore: tweetReducer,
+    postStore: postReducer,
     themeStore: themeReducer,
     notiStore: notiReducer,
   },

@@ -2,7 +2,7 @@ import { HashTagType } from "./HashtagType";
 
 type ActionType = {
   byUid: string;
-  tweetId: string;
+  postId: string;
 };
 
 type PostTypeType = {

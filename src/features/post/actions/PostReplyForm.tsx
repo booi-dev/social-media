@@ -2,50 +2,50 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { IoMdClose } from "react-icons/io";
 
-import useTweetActions from "../hooks/useTweetActions";
+import usePostActions from "../hooks/usePostActions";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import AppIcon from "../../../components/ui/AppIcon";
-import TweetSignature, { TweetCreatorPic } from "../feeds/PostSignature";
-import TweetForm from "../components/PostForm";
+import PostSignature, { PostCreatorPic } from "../components/PostSignature";
+import PostForm from "../components/PostForm";
 
 import { PostType } from "../../../types";
 
 type PostReplyFormType = {
-  originalTweet: PostType;
+  originalPost: PostType;
   closeHandler: () => void;
 };
 
 function PostReplyForm(props: PostReplyFormType) {
-  const { closeHandler, originalTweet } = props;
+  const { closeHandler, originalPost } = props;
 
-  const { createNewTweet, addNewReply } = useTweetActions();
+  const { createNewPost, addNewReply } = usePostActions();
+  const { getPostCreator } = useGetProperties();
 
-  const { getTweetCreator } = useGetProperties();
-  const originalTweetCreator = getTweetCreator(originalTweet.createBy);
+  const originalPostCreator = getPostCreator(originalPost.createBy);
 
-  const newTId = nanoid();
+  const newPId = nanoid();
 
-  const handleSubmit = (newTweet: PostType) => {
-    createNewTweet(newTweet);
-    addNewReply(originalTweet, newTId);
+  const handleSubmit = (newPost: PostType) => {
+    createNewPost(newPost);
+    addNewReply(originalPost, newPId);
   };
 
   return (
     <div className="relative z-20 h-full w-screen rounded-sm bg-app-white-1 shadow shadow-app-gray-3  dark:bg-app-black-1 sm:w-full">
-      <button type="button" onClick={closeHandler}>
+      <button type="button" onClick={closeHandler} className="m-1">
         <AppIcon icon={IoMdClose} size={26} hoverColor="pri" />
       </button>
 
       <div className="flex flex-col px-4 ">
         <div className="flex gap-4 ">
           <div className="h-14 w-14 shrink-0">
-            <TweetCreatorPic tweetCreatorUid={originalTweet.createBy} />
+            <PostCreatorPic postCreatorUid={originalPost.createBy} />
           </div>
           <div className="flex items-center gap-1.5 text-inherit">
-            <TweetSignature
-              tweetCreatorUid={originalTweet.createBy}
-              tweetTimespan={originalTweet.timespan}
+            <PostSignature
+              postCreatorUid={originalPost.createBy}
+              postTimespan={originalPost.timespan}
             />
           </div>
         </div>
@@ -54,7 +54,7 @@ function PostReplyForm(props: PostReplyFormType) {
           <div className="flex w-12 justify-center">
             <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
-          <div>{originalTweet.post}</div>
+          <div>{originalPost.post}</div>
         </div>
         <div className="flex gap-4">
           <div className="flex w-12 justify-center">
@@ -63,20 +63,20 @@ function PostReplyForm(props: PostReplyFormType) {
           <h1 className=" py-3 text-app-gray-3">
             Replying to
             <span className="text-pri-clr-1">
-              @{originalTweetCreator?.userName}
+              @{originalPostCreator?.userName}
             </span>
           </h1>
         </div>
       </div>
 
       <div className="py-2 px-4 ">
-        <TweetForm
-          newTId={newTId}
+        <PostForm
+          newPId={newPId}
           submitHandler={handleSubmit}
           closeHandler={closeHandler}
-          tweetHaveType={{
+          postHaveType={{
             type: "reply",
-            originalTweetId: originalTweet.pid,
+            originalPostId: originalPost.pid,
           }}
           isLargeTextArea
           isFilterBtnHidden

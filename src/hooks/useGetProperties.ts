@@ -1,10 +1,10 @@
 import getTimeElapse from "../utils/getTimeElapse";
 import getCreateOn from "../utils/getCreateOn";
-import getTweetCreator from "../utils/getTweetCreator";
+import getPostCreator from "../utils/getPostCreator";
 
 function useGetProperties() {
   return {
-    getTweetCreator,
+    getPostCreator,
     getTimeElapse,
     getCreateOn,
   };

@@ -1,6 +1,6 @@
 import Feed from "./Feed";
 
-import useTweetControls from "../../../redux/control/tweetControls";
+import usePostControls from "../../../redux/control/postControls";
 
 import ActionsPanel from "../components/ActionsPanel";
 
@@ -19,18 +19,16 @@ type ReplyPostFeedType = {
 function ReplyPostFeed(props: ReplyPostFeedType) {
   const { post, typeState } = props;
 
-  const { findTweet } = useTweetControls();
+  const { findPost } = usePostControls();
 
-  const originalTweet: PostType | undefined = findTweet(
-    typeState.originalPostId
-  );
+  const originalPost: PostType | undefined = findPost(typeState.originalPostId);
 
-  let wrappedTweet: React.ReactElement | null = null;
+  let wrappedPost: React.ReactElement | null = null;
 
-  if (originalTweet) {
-    wrappedTweet = (
+  if (originalPost) {
+    wrappedPost = (
       <div className="rounded-lg border-[1px] border-app-white-5 dark:border-app-gray-1">
-        <Feed post={originalTweet} typeState={typeState} />
+        <Feed post={originalPost} typeState={typeState} />
       </div>
     );
   }
@@ -41,7 +39,7 @@ function ReplyPostFeed(props: ReplyPostFeedType) {
         post={post}
         typeState={typeState}
         actionsPanel={ActionsPanel}
-        wrappedTweet={wrappedTweet}
+        wrappedPost={wrappedPost}
       />
     </div>
   );

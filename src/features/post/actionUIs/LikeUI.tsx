@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
 import AppIcon from "../../../components/ui/AppIcon";
 
-import useTweetActions from "../hooks/useTweetActions";
+import useTweetActions from "../hooks/usePostActions";
 import useUserControls from "../../../redux/control/userControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 

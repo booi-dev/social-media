@@ -1,4 +1,4 @@
-import useTweetControls from "../redux/control/tweetControls";
+import useTweetControls from "../redux/control/postControls";
 
 // import { TweetType } from "../types";
 

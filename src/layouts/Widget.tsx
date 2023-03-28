@@ -1,4 +1,3 @@
-import React from "react";
 import TrendingList from "../features/trending/TrendingList";
 import SuggestionList from "../features/suggestion/SuggestionList";
 

@@ -1,7 +1,7 @@
 import { AiOutlineRetweet } from "react-icons/ai";
 
 import useUserControls from "../../../redux/control/userControls";
-import useTweetControls from "../../../redux/control/tweetControls";
+import usePostControls from "../../../redux/control/postControls";
 import useGetProperties from "../../../hooks/useGetProperties";
 
 import Feed from "./Feed";
@@ -14,23 +14,21 @@ type TypeStateType = {
   originalPostId: string;
 };
 
-type ReTweetFeedType = {
+type RePostFeedType = {
   post: PostType;
   typeState: TypeStateType;
 };
 
-function RePostFeed(props: ReTweetFeedType) {
+function RePostFeed(props: RePostFeedType) {
   const { post, typeState } = props;
 
   const { user } = useUserControls();
-  const { findTweet } = useTweetControls();
-  const { getTweetCreator } = useGetProperties();
+  const { findPost } = usePostControls();
+  const { getPostCreator } = useGetProperties();
 
-  const postCreator = getTweetCreator(post.createBy);
+  const postCreator = getPostCreator(post.createBy);
 
-  const originalPost: PostType | undefined = findTweet(
-    typeState.originalPostId
-  );
+  const originalPost: PostType | undefined = findPost(typeState.originalPostId);
 
   return (
     <div className="border-inherit">
@@ -38,7 +36,7 @@ function RePostFeed(props: ReTweetFeedType) {
         <AiOutlineRetweet className="stroke-2" />
         {`${
           user.uid === postCreator?.uid ? "You" : postCreator?.displayName
-        } Retweeted`}
+        } Reposted`}
       </h1>
       {originalPost ? (
         <div>
@@ -50,7 +48,7 @@ function RePostFeed(props: ReTweetFeedType) {
         </div>
       ) : (
         <div className="border-b-[1px] border-inherit px-2 text-app-gray-3">
-          --Tweet not found
+          --Post not found
         </div>
       )}
     </div>

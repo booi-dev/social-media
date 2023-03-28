@@ -10,28 +10,28 @@ import RePostPanel from "../actions/RePostPanel";
 
 import LogInModal from "../../login-signup/LogInModal";
 
-import { TweetType, TypeStateType } from "../../../types";
+import { PostType, TypeStateType } from "../../../types";
 
-type ReTweetType = {
-  post: TweetType;
+type RePostType = {
+  post: PostType;
   typeState: TypeStateType;
 };
 
-function RePost(props: ReTweetType) {
+function RePost(props: RePostType) {
   const { post, typeState } = props;
 
   const { isAuthenticate, user } = useUserControls();
-  const { getTweetCreator } = useGetProperties();
+  const { getPostCreator } = useGetProperties();
 
   const [IsModalShow, setIsModalShow] = useState(false);
-  const [isReTweetBtnClick, setIsReTweetBtnClick] = useState(false);
+  const [isRePostBtnClick, setIsRePostBtnClick] = useState(false);
 
-  const hasReTweeted = !!post.reTweets.find(
-    (retweet) => retweet.byUid === user.uid
+  const hasReposted = !!post.reposts.find(
+    (repost) => repost.byUid === user.uid
   );
 
   const handleBtnClick = () => {
-    if (isAuthenticate) setIsReTweetBtnClick(true);
+    if (isAuthenticate) setIsRePostBtnClick(true);
     else {
       setIsModalShow(true);
     }
@@ -44,40 +44,40 @@ function RePost(props: ReTweetType) {
         onClick={handleBtnClick}
         className="group flex items-center"
       >
-        {hasReTweeted ? (
+        {hasReposted ? (
           <AppIcon icon={AiOutlineRetweet} color="green" />
         ) : (
           <AppIcon icon={AiOutlineRetweet} hoverColor="green" />
         )}
         <div
           className={`pl-[1px] group-hover:text-green-400 ${
-            hasReTweeted && "text-green-400"
+            hasReposted && "text-green-400"
           }`}
         >
-          {post.reTweets.length > 0 ? (
-            post.reTweets.length
+          {post.reposts.length > 0 ? (
+            post.reposts.length
           ) : (
             <span className="opacity-0"> 0</span>
           )}
         </div>
       </button>
-      {isReTweetBtnClick && (
+      {isRePostBtnClick && (
         <RePostPanel
-          tweet={post}
-          closeHandler={() => setIsReTweetBtnClick(false)}
-          reTweetState={{
-            state: hasReTweeted,
-            reTweetId: typeState.originalTweetId,
+          post={post}
+          closeHandler={() => setIsRePostBtnClick(false)}
+          repostState={{
+            state: hasReposted,
+            rePostId: typeState.originalPostId,
           }}
         />
       )}
       {IsModalShow && (
         <LogInModal
           iconDetail={{ icon: AiOutlineRetweet, color: "green" }}
-          title="Retweet to spread the word."
-          text={`When you join Twitter, you can share ${getTweetCreator(
+          title="Repost to spread the word."
+          text={`When you join Twitter, you can share ${getPostCreator(
             post.createBy
-          )?.displayName.toUpperCase()}'s Tweet.`}
+          )?.displayName.toUpperCase()}'s Post.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}

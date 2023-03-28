@@ -1,7 +1,6 @@
-function TweetWithHighlightedHashTags({ tweet }: { tweet: string }) {
+function PostWithHighlightedHashTags({ post }: { post: string }) {
   const symbol = "#";
-  /* eslint-disable-next-line */
-  const words = tweet.split(" ");
+  const words = post.split(" ");
 
   const wordsWithClasses: JSX.Element[] = [];
 
@@ -20,4 +19,4 @@ function TweetWithHighlightedHashTags({ tweet }: { tweet: string }) {
   return <h1>{wordsWithClasses}</h1>;
 }
 
-export default TweetWithHighlightedHashTags;
+export default PostWithHighlightedHashTags;

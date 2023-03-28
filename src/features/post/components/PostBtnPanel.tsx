@@ -4,10 +4,10 @@ import { ImImage } from "react-icons/im";
 
 import AppIcon from "../../../components/ui/AppIcon";
 
-import { TweetType } from "../../../types";
+import { PostType } from "../../../types";
 
 type PostBtnPanelType = {
-  post: TweetType;
+  post: PostType;
   characterCount: number;
   isLargeTextArea?: boolean;
 };
@@ -39,7 +39,7 @@ function PostBtnPanel(props: PostBtnPanelType) {
         <div className="h-5 border-r-[1px] border-app-gray-3 " />
 
         <div className="[&>button]:w-full [&>button]:rounded-sm [&>button]:px-4  [&>button]:py-1 [&>button]:font-bold [&>button]:text-app-black-1">
-          {post.tweet && characterCount > 0 && characterCount < 280 ? (
+          {post.post && characterCount > 0 && characterCount < 280 ? (
             <button type="submit" className="bg-pri-clr-1">
               Post
             </button>

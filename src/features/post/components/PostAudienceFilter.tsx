@@ -4,11 +4,11 @@ import { BsGlobeAmericas, BsPersonHeart, BsCheck2 } from "react-icons/bs";
 
 import BackDrop from "../../../components/ui/BackDrop";
 
-type TweetAudienceFilterType = {
+type PostAudienceFilterType = {
   handleClose: () => void;
 };
 
-function PostAudienceFilter(props: TweetAudienceFilterType) {
+function PostAudienceFilter(props: PostAudienceFilterType) {
   const { handleClose } = props;
 
   return (

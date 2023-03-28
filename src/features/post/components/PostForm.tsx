@@ -17,8 +17,8 @@ import { PostType, HashTagType } from "../../../types";
 
 type PostFormType = {
   newPId: string;
-  submitHandler: (newTweet: PostType) => void;
-  tweetHaveType: {
+  submitHandler: (newPost: PostType) => void;
+  postHaveType: {
     type: "normal" | "repost" | "reply" | "mention";
     originalPostId?: string | null;
   };
@@ -34,7 +34,7 @@ function PostForm(props: PostFormType) {
     newPId,
     submitHandler,
     closeHandler,
-    tweetHaveType,
+    postHaveType,
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
@@ -54,8 +54,8 @@ function PostForm(props: PostFormType) {
     reposts: [],
     mentions: [],
     postType: {
-      type: tweetHaveType.type,
-      originalPostId: tweetHaveType.originalPostId,
+      type: postHaveType.type,
+      originalPostId: postHaveType.originalPostId,
     },
   };
 
@@ -85,7 +85,7 @@ function PostForm(props: PostFormType) {
     return tags;
   };
 
-  const resetRawTweet = () => {
+  const resetRawPost = () => {
     setNewPost(rawPost);
     setHashtags([]);
   };
@@ -107,7 +107,7 @@ function PostForm(props: PostFormType) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     submitHandler(newPost);
-    resetRawTweet();
+    resetRawPost();
     closeHandler?.();
     openNotification?.();
     setNoti("Your post is sent", 3, "top-center");
@@ -117,8 +117,8 @@ function PostForm(props: PostFormType) {
   return (
     <div className="relative">
       {isBackBtnShow && (
-        <button type="button" onClick={closeHandler} className="pt-2 md:hidden">
-          <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="black" />
+        <button type="button" onClick={closeHandler} className="m-1 sm:hidden">
+          <AppIcon icon={BsArrowLeftShort} size={28} hoverColor="pri" />
         </button>
       )}
 

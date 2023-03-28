@@ -13,5 +13,5 @@ export default defineConfig({
     // setupFiles: "@testing-library/jest-dom",
     // css: true,
   },
-  base: "/social-media-clone/",
+  base: "/social-media/",
 });

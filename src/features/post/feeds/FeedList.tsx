@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import useTweetControls from "../../../redux/control/tweetControls";
+import usePostControls from "../../../redux/control/postControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 import Feed from "./Feed";
@@ -11,21 +11,21 @@ import { PostType } from "../../../types";
 
 function FeedList() {
   const { getData } = useLocalStorage();
-  const { tweetData, replaceTweets } = useTweetControls();
+  const { postData, replacePosts } = usePostControls();
   const userData = getData();
 
   const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
   useEffect(() => {
-    replaceTweets(userData);
+    replacePosts(userData);
   }, []);
 
-  const sortedTweets = useMemo(() => sortArray(tweetData), [tweetData]);
+  const sortedPosts = useMemo(() => sortArray(postData), [postData]);
 
   return (
     <div className="bg-inherit">
-      {sortedTweets.map((p: PostType) => {
+      {sortedPosts.map((p: PostType) => {
         if (p.postType?.type === "reply" && p.postType.originalPostId) {
           return (
             <div

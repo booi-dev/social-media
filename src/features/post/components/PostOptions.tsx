@@ -2,38 +2,38 @@ import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsPin } from "react-icons/bs";
 
-import useTweetControls from "../../../redux/control/tweetControls";
+import usePostControls from "../../../redux/control/postControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 import WarningMsg from "../../../components/ui/WarningMsg";
 import { useNoti } from "../../../noti";
 
-import { TweetType } from "../../../types";
+import { PostType } from "../../../types";
 
 type PostOptionsType = {
-  post: TweetType;
+  post: PostType;
 };
 
 function PostOptions({ post }: PostOptionsType) {
   //
-  const { deleteTweet } = useTweetControls();
+  const { deletePost } = usePostControls();
   const { deleteData } = useLocalStorage();
   const { setNoti } = useNoti();
 
   const [isWarning, setIsWarning] = useState(false);
 
-  const deleteReTweets = () => {
-    post.reTweets.forEach((retweeets) => {
-      deleteTweet(retweeets.tweetId);
-      deleteData(retweeets.tweetId);
+  const deleteRePosts = () => {
+    post.reposts.forEach((retweeets) => {
+      deletePost(retweeets.postId);
+      deleteData(retweeets.postId);
     });
   };
 
   //
   const handleDelete = () => {
-    deleteReTweets();
-    deleteTweet(post.tid);
-    deleteData(post.tid);
+    deleteRePosts();
+    deletePost(post.pid);
+    deleteData(post.pid);
     setNoti("Your post is deleleted", 3, "top-center");
   };
 
@@ -61,7 +61,7 @@ function PostOptions({ post }: PostOptionsType) {
         <div className="bg-inherit text-inherit">
           <WarningMsg
             warningText="Delete Post?"
-            warningDesc="This cant be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results."
+            warningDesc="This cant be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Socia search results."
             warningBtn="Delete"
             handleConfirm={handleDelete}
             handleWarningClose={() => setIsWarning(false)}

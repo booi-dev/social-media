@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineLink } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 
@@ -36,7 +35,7 @@ function SharePanel(props: SharePanelType) {
           className="flex items-center gap-2"
         >
           <AiOutlineLink />
-          Copy link to Tweet
+          Copy link to Post
         </button>
         {isAuthenticate && (
           <button type="button" className="flex items-center gap-2">

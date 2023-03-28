@@ -9,8 +9,7 @@ import AppIcon from "../components/ui/AppIcon";
 import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
-import NewTweetForm from "../features/tweet/actions/NewTweetForm";
-// import TweetForm from "../components/tweetbox/TweetBox";
+import NewPostForm from "../features/post/actions/NewPostForm";
 import BackDrop from "../components/ui/BackDrop";
 
 function Header() {
@@ -18,7 +17,7 @@ function Header() {
 
   const { isAuthenticate, user } = useUserControls();
 
-  const [isTweetFormShow, setIsTweetFormShow] = useState(false);
+  const [isPostFormShow, setIsPostFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   return (
@@ -36,10 +35,10 @@ function Header() {
             <button
               type="button"
               className="mt-2 rounded-sm bg-pri-clr-1 p-4 text-app-font-20 font-bold text-app-black-1 hover:bg-pri-clr-2 md:py-3 lg:w-[220px]"
-              onClick={() => setIsTweetFormShow(true)}
+              onClick={() => setIsPostFormShow(true)}
             >
               <FaFeatherAlt className="md:hidden" />
-              <span className="hidden md:block">Post</span>
+              <span className="hidden md:block">+Post</span>
             </button>
           )}
         </div>
@@ -47,7 +46,7 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute bottom-24 z-20 w-[250px] cursor-pointer space-y-1 rounded-sm bg-inherit py-4 font-bold shadow-lg dark:bg-app-black-3 [&>h1]:px-4 [&>h1]:py-2">
+              <div className="absolute bottom-24 z-20 w-[250px] cursor-pointer space-y-1 rounded-sm bg-inherit py-4 font-bold shadow shadow-app-gray-3 dark:bg-app-black-3 [&>h1]:px-4 [&>h1]:py-2">
                 <h1 className="hover:bg-app-white-3">
                   Add an existing account
                 </h1>
@@ -66,18 +65,18 @@ function Header() {
           )}
         </div>
 
-        {isTweetFormShow && (
+        {isPostFormShow && (
           <>
-            <div className="absolute inset-1 z-20 rounded-sm bg-inherit p-2 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2  sm:-translate-y-1/2 md:p-4 ">
-              <NewTweetForm
-                closeHandler={() => setIsTweetFormShow(false)}
+            <div className="absolute inset-1 z-20 flex items-center rounded-sm bg-inherit p-2 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2 md:p-4 ">
+              <NewPostForm
+                closeHandler={() => setIsPostFormShow(false)}
                 isLargeTextArea
                 isBackBtnShow
               />
             </div>
             <BackDrop
-              handleClose={() => setIsTweetFormShow(false)}
-              color="white"
+              handleClose={() => setIsPostFormShow(false)}
+              color="blue"
             />
           </>
         )}

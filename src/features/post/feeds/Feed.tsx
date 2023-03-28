@@ -4,31 +4,31 @@ import { GoKebabHorizontal } from "react-icons/go";
 
 import useUserControls from "../../../redux/control/userControls";
 
-import PostSignature, { TweetCreatorPic } from "./PostSignature";
+import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostOptions from "../components/PostOptions";
 import BackDrop from "../../../components/ui/BackDrop";
 import PostWithHighlightedHashTags from "./PostWithHighlightedHashTags";
 
 import { PostType, TypeStateType } from "../../../types";
 
-type TweetActionsType = {
+type FeedActionsType = {
   post: PostType;
   typeState: TypeStateType;
 };
 
-type TweetPropType = {
+type FeedType = {
   post: PostType;
   typeState: TypeStateType;
-  actionsPanel?: React.FC<TweetActionsType> | null;
-  wrappedTweet?: React.ReactElement | null;
+  actionsPanel?: React.FC<FeedActionsType> | null;
+  wrappedPost?: React.ReactElement | null;
 };
 
-function Feed(props: TweetPropType) {
+function Feed(props: FeedType) {
   const {
     post,
     typeState,
     actionsPanel: ActionsPanel,
-    wrappedTweet: WrappedTweet,
+    wrappedPost: WrappedPost,
   } = props;
 
   const { user } = useUserControls();
@@ -42,14 +42,14 @@ function Feed(props: TweetPropType) {
         className="bg-inherited relative flex border-b-[0px] border-app-white-5 bg-inherit  px-1 pt-3 text-inherit transition-all duration-500 hover:bg-app-white-2 dark:border-app-gray-1 dark:hover:bg-transparent md:px-4"
       >
         <div className="h-12 w-12 shrink-0">
-          <TweetCreatorPic tweetCreatorUid={post.createBy} />
+          <PostCreatorPic postCreatorUid={post.createBy} />
         </div>
         <div className="flex-1 bg-inherit">
           <div className="bg flex justify-between bg-inherit px-2 text-inherit">
             <div className="flex items-center gap-1.5 text-inherit">
               <PostSignature
-                tweetCreatorUid={post.createBy}
-                tweetTimespan={post.timespan}
+                postCreatorUid={post.createBy}
+                postTimespan={post.timespan}
               />
             </div>
             {user.uid === post.createBy && (
@@ -63,9 +63,9 @@ function Feed(props: TweetPropType) {
             )}
           </div>
           <div className="p-2">
-            <PostWithHighlightedHashTags tweet={post.post} />
+            <PostWithHighlightedHashTags post={post.post} />
           </div>
-          {WrappedTweet}
+          {WrappedPost}
           {ActionsPanel && <ActionsPanel post={post} typeState={typeState} />}
         </div>
 
@@ -84,7 +84,7 @@ function Feed(props: TweetPropType) {
 
 Feed.defaultProps = {
   actionsPanel: null,
-  wrappedTweet: null,
+  wrappedPost: null,
 };
 
 export default Feed;
