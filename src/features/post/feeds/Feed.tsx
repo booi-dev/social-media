@@ -70,7 +70,7 @@ function Feed(props: FeedType) {
         </div>
 
         {isOption && (
-          <div className="absolute top-2 right-2 z-20 min-w-[250px] rounded-sm bg-inherit py-4 text-inherit shadow-lg dark:bg-app-black-3">
+          <div className="absolute top-2 right-2 z-20 min-w-[250px] rounded-sm  bg-app-white-1 py-4 text-inherit shadow-lg dark:bg-app-black-3">
             <PostOptions post={post} />
           </div>
         )}
