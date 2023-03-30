@@ -2,6 +2,7 @@ import useUserControls from "../../redux/control/userControls";
 import useAuth from "../../auth/useAuth";
 import useDb from "../../data/useDb";
 import getRandomPicURL from "../../utils/getRandomPic";
+import { useNoti } from "../../noti";
 
 import LogInBoxModal from "./LogInBoxModal";
 import { UserType } from "../../types";
@@ -16,6 +17,7 @@ function LogInForm(props: LogInFormType) {
   const { isAuthenticate, authenticateUser, setUser } = useUserControls();
   const { googleLogin, fbLogin } = useAuth();
   const { isUserInDb, addUserToDb, getUserFromDb } = useDb();
+  const { setNoti } = useNoti();
 
   let userTemplate: UserType = {
     uid: "",
@@ -38,6 +40,9 @@ function LogInForm(props: LogInFormType) {
       userName: authenticatedUser.email.split("@")[0],
       email: authenticatedUser.email,
     };
+    setNoti(
+      "a random display pic is generated. you can update in profile section"
+    );
   };
 
   const closeForm = () => {
@@ -60,14 +65,13 @@ function LogInForm(props: LogInFormType) {
   const handleGoogleLoginBtn = async () => {
     const authUser = await googleLogin();
     if (authUser) setUserCredentials(authUser);
+    else setNoti("something went wrong. try different credential");
   };
 
   const handleFbLoginBtn = async () => {
     const authUser = await fbLogin();
-    if (authUser.user) setUserCredentials(authUser.user);
-    console.log(
-      `${authUser.user.photoURL}?height=500&access_token=${authUser.accessToken}`
-    );
+    if (authUser) setUserCredentials(authUser);
+    else setNoti("something went wrong. try different credential");
   };
 
   const handleSignUpLink = () => {

@@ -6,6 +6,8 @@ import {
 import { auth } from "../../firebase";
 
 const useAuth = () => {
+  // const { setNoti } = useNoti();
+
   const googleProvider = new GoogleAuthProvider();
   const googleLogin = async () => {
     let user;
@@ -22,14 +24,13 @@ const useAuth = () => {
 
   const fbLogin = async () => {
     let user;
-    let accessToken;
     try {
       const res = await signInWithPopup(auth, fbProvider);
       user = res.user;
-    } catch (err) {
-      console.log(err);
+    } catch (e) {
+      console.log(e);
     }
-    return { user, accessToken };
+    return user;
   };
 
   return { googleLogin, fbLogin };
