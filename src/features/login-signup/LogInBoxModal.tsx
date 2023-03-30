@@ -2,8 +2,12 @@ import React from "react";
 import { createPortal } from "react-dom";
 import useThemeControls from "../../redux/control/themeControl";
 
-import { AppIcon, BackDrop } from "../UI";
-import { FacebookFillicon, GoogleFillIcon, CrossIcon } from "../icons";
+import { AppIcon, BackDrop } from "../../components/UI";
+import {
+  FacebookFillicon,
+  GoogleFillIcon,
+  CrossIcon,
+} from "../../components/icons";
 
 type LogInBoxModalProps = {
   isAuthenticate: boolean;

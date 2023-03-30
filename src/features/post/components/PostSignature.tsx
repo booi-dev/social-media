@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import useGetProperties from "../../../hooks/useGetProperties";
 import { VerificationBadge } from "../../../components/UI";
 
@@ -10,8 +11,18 @@ type PostSignatureType = PostCreatorPicType & {
 };
 
 function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
-  const { getPostCreator } = useGetProperties();
-  const postCreator = getPostCreator(postCreatorUid);
+  const { useGetPostCreator } = useGetProperties();
+  // const postCreator = useGetPostCreator(postCreatorUid);
+  const [postCreator, setPostCreator] = useState();
+
+  useEffect(() => {
+    const getProperty = async () => {
+      const creator = await useGetPostCreator(postCreatorUid);
+      setPostCreator(creator);
+    };
+    getProperty();
+  }, []);
+
   return (
     <img
       src={postCreator?.displayPicURL}
@@ -24,9 +35,9 @@ function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
 function PostSignature(props: PostSignatureType) {
   const { postCreatorUid, postTimespan } = props;
 
-  const { getPostCreator, getTimeElapse } = useGetProperties();
+  const { useGetPostCreator, getTimeElapse } = useGetProperties();
 
-  const postCreator = getPostCreator(postCreatorUid);
+  const postCreator = useGetPostCreator(postCreatorUid);
 
   return (
     <>

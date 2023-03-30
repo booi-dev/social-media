@@ -1,4 +1,4 @@
-import { FacebookFillicon, GoogleFillIcon } from "../icons";
+import { FacebookFillicon, GoogleFillIcon } from "../../components/icons";
 
 function SignUpForm() {
   return (

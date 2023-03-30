@@ -1,10 +1,10 @@
 import getTimeElapse from "../utils/getTimeElapse";
 import getCreateOn from "../utils/getCreateOn";
-import getPostCreator from "../utils/getPostCreator";
+import useGetPostCreator from "./useGetPostCreator";
 
 function useGetProperties() {
   return {
-    getPostCreator,
+    useGetPostCreator,
     getTimeElapse,
     getCreateOn,
   };

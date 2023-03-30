@@ -48,14 +48,17 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>h1]:px-4 [&>h1]:py-2">
-                {/* <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
+              <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>button]:w-full [&>button]:py-2 ">
+                <button
+                  type="button"
+                  className=" hover:bg-app-white-3 dark:hover:bg-app-gray-2"
+                >
                   Add an existing account
-                </h1> */}
+                </button>
                 <button
                   type="button"
                   onClick={signOut}
-                  className="w-full py-1 hover:bg-app-white-3 dark:hover:bg-app-gray-2"
+                  className=" hover:bg-app-white-3 dark:hover:bg-app-gray-2"
                 >
                   Log out @{user.userName}
                 </button>

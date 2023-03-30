@@ -7,7 +7,7 @@ import useGetProperties from "../../../hooks/useGetProperties";
 import { HeartIcon, HeartFillIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
 
-import LogInModal from "../../../components/login-signup/LogInModal";
+import LogInModal from "../../login-signup/LogInModal";
 import { PostType, UserType } from "../../../types";
 
 type LikeUIType = {

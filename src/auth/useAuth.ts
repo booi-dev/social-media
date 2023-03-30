@@ -7,8 +7,6 @@ import {
 import { auth } from "../../firebase";
 
 const useAuth = () => {
-  // const { setNoti } = useNoti();
-
   const googleProvider = new GoogleAuthProvider();
   const googleLogin = async () => {
     let user;

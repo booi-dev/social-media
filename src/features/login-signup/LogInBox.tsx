@@ -1,6 +1,6 @@
 import useUserControls from "../../redux/control/userControls";
 import useAuth from "../../auth/useAuth";
-import useDb from "../../data/useDb";
+import { useUsersData } from "../../data";
 import getRandomPicURL from "../../utils/getRandomPic";
 import { useNoti } from "../../noti";
 
@@ -16,7 +16,7 @@ function LogInForm(props: LogInFormType) {
 
   const { isAuthenticate, authenticateUser, setUser } = useUserControls();
   const { googleLogin, fbLogin } = useAuth();
-  const { isUserInDb, addUserToDb, getUserFromDb } = useDb();
+  const { isUserInDb, addUserToDb, getUserFromDb } = useUsersData();
   const { setNoti } = useNoti();
 
   let userTemplate: UserType = {
