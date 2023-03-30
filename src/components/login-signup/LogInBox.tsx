@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 
+import useUserControls from "../../redux/control/userControls";
 import useThemeControls from "../../redux/control/themeControl";
 import useAuth from "../../auth/useAuth";
 
@@ -13,6 +14,7 @@ type LogInFormType = {
 function LogInForm(props: LogInFormType) {
   const { setIsLogInClick } = props;
 
+  const { isAuthenticate } = useUserControls();
   const { theme } = useThemeControls();
   const googleLogin = useAuth();
 
@@ -20,7 +22,11 @@ function LogInForm(props: LogInFormType) {
     setIsLogInClick(false);
   };
 
-  const handleSignUpBtn = () => {
+  const handleGoogleLoginBtn = () => {
+    googleLogin();
+  };
+
+  const handleSignUpLink = () => {
     closeForm();
   };
 
@@ -43,19 +49,19 @@ function LogInForm(props: LogInFormType) {
             <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
 
-          <h1 className="text-center text-3xl font-bold">Sign In to Socia</h1>
+          <h1 className="text-center text-3xl font-bold">Log In to Socia</h1>
 
           <div
             className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:bg-app-white-2 [&>button]:py-2 
       [&>button]:text-app-black-1"
           >
-            <button type="button" onClick={googleLogin}>
+            <button type="button" onClick={handleGoogleLoginBtn}>
               <GoogleIcon />
-              Sign up with Google
+              Log in with Google
             </button>
             <button type="button">
               <AppleIcon />
-              Sign up with apple
+              Log in with apple
             </button>
           </div>
 
@@ -107,7 +113,7 @@ function LogInForm(props: LogInFormType) {
             {`Don't have an account?`}{" "}
             <button
               type="button"
-              onClick={handleSignUpBtn}
+              onClick={handleSignUpLink}
               className="text-pri-clr-1"
             >
               Sign up
@@ -119,6 +125,8 @@ function LogInForm(props: LogInFormType) {
       portal
     );
   }
+
+  if (isAuthenticate) return null;
 
   return LogInFormPortal;
 }

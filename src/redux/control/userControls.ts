@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { createUser, updateName } from "../slice/user";
+import { createUser, updateName, authenticate } from "../slice/user";
 import { UserType } from "../../types";
 
 function useUserControls() {
@@ -16,7 +16,11 @@ function useUserControls() {
     dispatch(updateName(newName));
   };
 
-  return { isAuthenticate, user, setUser, changeName };
+  const authenticateUser = () => {
+    dispatch(authenticate());
+  };
+
+  return { isAuthenticate, user, setUser, changeName, authenticateUser };
 }
 
 export default useUserControls;
