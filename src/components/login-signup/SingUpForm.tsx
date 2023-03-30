@@ -1,4 +1,4 @@
-import { AppleIcon, GoogleIcon } from "../../components/icons";
+import { AppleIcon, GoogleIcon } from "../icons";
 
 function SignUpForm() {
   return (

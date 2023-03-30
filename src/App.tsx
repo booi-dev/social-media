@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
-import LogInIndicator from "./features/login-signup/LogInSignUpIndicator";
-import LogInBox from "./features/login-signup/LogInBox";
-import SignUpBox from "./features/login-signup/SignUpBox";
+import LogInIndicator from "./components/login-signup/LogInSignUpIndicator";
+import LogInBox from "./components/login-signup/LogInBox";
+import SignUpBox from "./components/login-signup/SignUpBox";
 
 import useUserControls from "./redux/control/userControls";
 import useThemeControls from "./redux/control/themeControl";

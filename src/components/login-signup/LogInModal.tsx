@@ -4,8 +4,8 @@ import { IconType } from "react-icons";
 
 import useThemeControls from "../../redux/control/themeControl";
 
-import { CrossIcon } from "../../components/icons";
-import { AppIcon, BackDrop } from "../../components/UI";
+import { CrossIcon } from "../icons";
+import { AppIcon, BackDrop } from "../UI";
 
 type LogInModalType = {
   iconDetail: { icon: IconType; color: "pri" | "pink" | "green" };

@@ -2,8 +2,8 @@ import { createPortal } from "react-dom";
 
 import useThemeControls from "../../redux/control/themeControl";
 
-import { CrossIcon } from "../../components/icons";
-import { AppIcon, BackDrop } from "../../components/UI";
+import { CrossIcon } from "../icons";
+import { AppIcon, BackDrop } from "../UI";
 
 import SignUpForm from "./SingUpForm";
 

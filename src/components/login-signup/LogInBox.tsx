@@ -1,9 +1,10 @@
 import { createPortal } from "react-dom";
 
 import useThemeControls from "../../redux/control/themeControl";
+import useAuth from "../../auth/useAuth";
 
-import { AppleIcon, GoogleIcon, CrossIcon } from "../../components/icons";
-import { AppIcon, BackDrop } from "../../components/UI";
+import { AppleIcon, GoogleIcon, CrossIcon } from "../icons";
+import { AppIcon, BackDrop } from "../UI";
 
 type LogInFormType = {
   setIsLogInClick: (state: boolean) => void;
@@ -13,6 +14,7 @@ function LogInForm(props: LogInFormType) {
   const { setIsLogInClick } = props;
 
   const { theme } = useThemeControls();
+  const googleLogin = useAuth();
 
   const closeForm = () => {
     setIsLogInClick(false);
@@ -47,7 +49,7 @@ function LogInForm(props: LogInFormType) {
             className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:bg-app-white-2 [&>button]:py-2 
       [&>button]:text-app-black-1"
           >
-            <button type="button">
+            <button type="button" onClick={googleLogin}>
               <GoogleIcon />
               Sign up with Google
             </button>

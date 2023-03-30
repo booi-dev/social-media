@@ -1,6 +1,6 @@
 import useUserControls from "../redux/control/userControls";
 
-import SignUpWidget from "../features/login-signup/SignUpWidget";
+import SignUpWidget from "../components/login-signup/SignUpWidget";
 import SearchForm from "../features/search/SearchForm";
 import Widget from "./Widget";
 import Footer from "./Footer";
