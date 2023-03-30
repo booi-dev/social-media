@@ -7,7 +7,7 @@ import useAuth from "../../auth/useAuth";
 import useDb from "../../data/useDb";
 import getRandomPicURL from "../../utils/getRandomPic";
 
-import { AppleIcon, GoogleIcon, CrossIcon } from "../icons";
+import { FacebookFillicon, GoogleFillIcon, CrossIcon } from "../icons";
 import { AppIcon, BackDrop } from "../UI";
 
 import { UserType } from "../../types";
@@ -22,7 +22,7 @@ function LogInForm(props: LogInFormType) {
   const { isAuthenticate, authenticateUser, setUser } = useUserControls();
   const { theme } = useThemeControls();
   const googleLogin = useAuth();
-  const { isUserInDb, addUserToDb } = useDb();
+  const { isUserInDb, addUserToDb, getUserFromDb } = useDb();
 
   let userTemplate: UserType = {
     uid: "",
@@ -54,10 +54,15 @@ function LogInForm(props: LogInFormType) {
   const handleGoogleLoginBtn = async () => {
     const authUser = await googleLogin();
     authenticateUser();
-    setRawUser(authUser);
-    setUser(userTemplate);
-    const isUserInSystem = await isUserInDb(userTemplate.uid);
-    if (!isUserInSystem) addUserToDb(userTemplate);
+    const isUserInSystem = await isUserInDb(authUser.uid);
+    if (isUserInSystem) {
+      const userInSystem = await getUserFromDb(authUser.uid);
+      setUser(userInSystem);
+    } else {
+      setRawUser(authUser);
+      setUser(userTemplate);
+      addUserToDb(userTemplate);
+    }
   };
 
   const handleSignUpLink = () => {
@@ -90,12 +95,12 @@ function LogInForm(props: LogInFormType) {
       [&>button]:text-app-black-1"
           >
             <button type="button" onClick={handleGoogleLoginBtn}>
-              <GoogleIcon />
+              <GoogleFillIcon />
               Log in with Google
             </button>
             <button type="button">
-              <AppleIcon />
-              Log in with apple
+              <FacebookFillicon />
+              Log in with Facebook
             </button>
           </div>
 
@@ -129,13 +134,6 @@ function LogInForm(props: LogInFormType) {
                 />
               </label>
             </div>
-
-            {/* <button
-              type="button"
-              className="my-2 mt-6 w-full rounded-sm bg-app-white-2 py-2 font-bold text-app-black-1"
-            >
-              Next
-            </button> */}
           </form>
 
           <div className="mt-4 flex flex-col gap-4 [&>button]:rounded-sm [&>button]:py-2 [&>button]:font-bold">

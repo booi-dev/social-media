@@ -21,6 +21,7 @@ import {
   AiOutlineLink,
   AiOutlineHome,
   AiFillHome,
+  AiOutlineGoogle,
 } from "react-icons/ai";
 import { CiHashtag, CiCircleMore } from "react-icons/ci";
 import { RxShare2, RxCross2 } from "react-icons/rx";
@@ -34,7 +35,11 @@ import {
 import { VscSmiley } from "react-icons/vsc";
 import { ImImage } from "react-icons/im";
 import { FiChevronDown } from "react-icons/fi";
-import { RiDeleteBinLine, RiCopyrightLine } from "react-icons/ri";
+import {
+  RiDeleteBinLine,
+  RiCopyrightLine,
+  RiFacebookFill,
+} from "react-icons/ri";
 import { GoKebabHorizontal } from "react-icons/go";
 import { BiSearch, BiLogOutCircle } from "react-icons/bi";
 import { FaFeatherAlt } from "react-icons/fa";
@@ -100,6 +105,8 @@ export {
   MdDarkMode as DarkModeIcon,
   BiLogOutCircle as LogOutIcon,
   BsApple as AppleIcon,
-  FcGoogle as GoogleIcon,
+  FcGoogle as GoogleColorIcon,
   RxCross2 as CrossIcon,
+  RiFacebookFill as FacebookFillicon,
+  AiOutlineGoogle as GoogleFillIcon,
 };
