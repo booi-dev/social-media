@@ -1,4 +1,4 @@
-import { AppleIcon, GoogleIcon } from "../icons";
+import { FacebookFillicon, GoogleFillIcon } from "../icons";
 
 function SignUpForm() {
   return (
@@ -8,12 +8,12 @@ function SignUpForm() {
       [&>button]:text-app-black-1"
     >
       <button type="button" className="bg-app-white-2">
-        <GoogleIcon />
+        <GoogleFillIcon />
         Sign up with Google
       </button>
       <button type="button" className="bg-app-white-2">
-        <AppleIcon />
-        Sign up with apple
+        <FacebookFillicon />
+        Sign up with Facebook
       </button>
       <div
         className="flex w-full items-center bg-inherit py-3 text-center
