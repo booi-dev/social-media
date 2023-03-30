@@ -1,11 +1,16 @@
+// import { useState } from "react";
 import { createPortal } from "react-dom";
 
 import useUserControls from "../../redux/control/userControls";
 import useThemeControls from "../../redux/control/themeControl";
 import useAuth from "../../auth/useAuth";
+import useDb from "../../data/useDb";
+import getRandomPicURL from "../../utils/getRandomPic";
 
 import { AppleIcon, GoogleIcon, CrossIcon } from "../icons";
 import { AppIcon, BackDrop } from "../UI";
+
+import { UserType } from "../../types";
 
 type LogInFormType = {
   setIsLogInClick: (state: boolean) => void;
@@ -14,16 +19,45 @@ type LogInFormType = {
 function LogInForm(props: LogInFormType) {
   const { setIsLogInClick } = props;
 
-  const { isAuthenticate } = useUserControls();
+  const { isAuthenticate, authenticateUser, setUser } = useUserControls();
   const { theme } = useThemeControls();
   const googleLogin = useAuth();
+  const { isUserInDb, addUserToDb } = useDb();
+
+  let userTemplate: UserType = {
+    uid: "",
+    displayName: "",
+    displayPicURL:
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+    userName: "yo",
+    email: "",
+    following: [],
+    followers: [],
+    verification: { state: false, type: "" },
+  };
+
+  const setRawUser = async (authenticatedUser) => {
+    userTemplate = {
+      ...userTemplate,
+      uid: authenticatedUser.uid,
+      displayName: authenticatedUser.displayName,
+      displayPicURL: getRandomPicURL(),
+      userName: authenticatedUser.email.split("@")[0],
+      email: authenticatedUser.email,
+    };
+  };
 
   const closeForm = () => {
     setIsLogInClick(false);
   };
 
-  const handleGoogleLoginBtn = () => {
-    googleLogin();
+  const handleGoogleLoginBtn = async () => {
+    const authUser = await googleLogin();
+    authenticateUser();
+    setRawUser(authUser);
+    setUser(userTemplate);
+    const isUserInSystem = await isUserInDb(userTemplate.uid);
+    if (!isUserInSystem) addUserToDb(userTemplate);
   };
 
   const handleSignUpLink = () => {

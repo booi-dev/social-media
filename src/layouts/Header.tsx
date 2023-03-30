@@ -68,7 +68,7 @@ function Header() {
         {isPostFormShow && (
           <>
             <div className="absolute inset-1 z-20 flex items-center rounded-sm bg-inherit sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2 ">
-              <div className="w-full border p-2 shadow dark:border-app-gray-2 md:p-4">
+              <div className="w-full rounded-sm border p-2 shadow dark:border-app-gray-2 md:p-4">
                 <NewPostForm
                   closeHandler={() => setIsPostFormShow(false)}
                   isLargeTextArea

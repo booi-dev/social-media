@@ -36,7 +36,7 @@ function App() {
       setUser(fakeUser);
     };
 
-    setUserData();
+    // setUserData();
   }, []);
 
   return (
