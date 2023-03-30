@@ -22,12 +22,13 @@ const useDb = () => {
     return user;
   };
 
-  const isUserInDb = async (tobeGetUid: string) => {
+  const isUserInDb = async (tobeCheckUid: string) => {
     let isUserPresent;
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
+      console.log(doc.data());
       const data = doc.data();
-      if (data.uid === tobeGetUid) isUserPresent = true;
+      if (data.uid === tobeCheckUid) isUserPresent = true;
       else isUserPresent = false;
     });
     console.log(isUserPresent);

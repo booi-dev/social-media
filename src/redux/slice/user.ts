@@ -29,8 +29,8 @@ const userSlice = createSlice({
     updateName: (state, action: PayloadAction<string>) => {
       state.user = { ...state.user, displayName: action.payload };
     },
-    authenticate: (state) => {
-      state.isAuthenticate = true;
+    authenticate: (state, action: PayloadAction<boolean>) => {
+      state.isAuthenticate = action.payload;
     },
   },
 });

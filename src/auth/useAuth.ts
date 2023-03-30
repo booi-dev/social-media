@@ -2,6 +2,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 
@@ -33,7 +34,16 @@ const useAuth = () => {
     return user;
   };
 
-  return { googleLogin, fbLogin };
+  const signAuthOut = async () => {
+    try {
+      await signOut(auth);
+      console.log("signAuthOut");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return { googleLogin, fbLogin, signAuthOut };
 };
 
 export default useAuth;

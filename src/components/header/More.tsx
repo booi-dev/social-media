@@ -1,5 +1,7 @@
 import { useState } from "react";
 import useThemeControls from "../../redux/control/themeControl";
+import useAuth from "../../auth/useAuth";
+import useUserControls from "../../redux/control/userControls";
 
 import {
   SettingIcon,
@@ -20,8 +22,15 @@ function More(props: MoreType) {
   const { closeHandler } = props;
 
   const { theme, switchTheme } = useThemeControls();
+  const { signAuthOut } = useAuth();
+  const { removeUser } = useUserControls();
 
   const [activeIndex, setActiveIndex] = useState("");
+
+  const signOut = () => {
+    signAuthOut();
+    removeUser();
+  };
 
   return (
     <>
@@ -50,6 +59,7 @@ function More(props: MoreType) {
           isActive={activeIndex === "Logout"}
           setActive={() => setActiveIndex("Logout")}
           isHideOnSmall={false}
+          clickHandler={signOut}
         />
       </div>
       <BackDrop handleClose={closeHandler} />

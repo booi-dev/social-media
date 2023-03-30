@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import useAuth from "../auth/useAuth";
 import useUserControls from "../redux/control/userControls";
 
 import { ChatSquareDotsFillIcon, FeatherIcon } from "../components/icons";
@@ -10,12 +11,16 @@ import Profile from "../components/header/Profile";
 import NewPostForm from "../features/post/actions/NewPostForm";
 
 function Header() {
-  const userName = "nganu";
-
-  const { isAuthenticate, user } = useUserControls();
+  const { isAuthenticate, user, removeUser } = useUserControls();
+  const { signAuthOut } = useAuth();
 
   const [isPostFormShow, setIsPostFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
+
+  const signOut = () => {
+    signAuthOut();
+    removeUser();
+  };
 
   return (
     <header className="flex h-screen justify-end bg-inherit text-inherit lg:w-[540px]">
@@ -44,13 +49,16 @@ function Header() {
           {isOptionShow && (
             <>
               <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>h1]:px-4 [&>h1]:py-2">
-                <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
+                {/* <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
                   Add an existing account
-                </h1>
-                <h1 className="hover:bg-app-white-3 dark:hover:bg-app-gray-2">
-                  {" "}
-                  Log out @{userName}
-                </h1>
+                </h1> */}
+                <button
+                  type="button"
+                  onClick={signOut}
+                  className="w-full py-1 hover:bg-app-white-3 dark:hover:bg-app-gray-2"
+                >
+                  Log out @{user.userName}
+                </button>
               </div>
               <BackDrop handleClose={() => setIsOptionShow(false)} />
             </>

@@ -41,7 +41,8 @@ function LogInForm(props: LogInFormType) {
       email: authenticatedUser.email,
     };
     setNoti(
-      "a random display pic is generated. you can update in profile section"
+      "a random display pic is generated. you can update in profile section",
+      6
     );
   };
 
@@ -65,13 +66,13 @@ function LogInForm(props: LogInFormType) {
   const handleGoogleLoginBtn = async () => {
     const authUser = await googleLogin();
     if (authUser) setUserCredentials(authUser);
-    else setNoti("something went wrong. try different credential");
+    else setNoti("something went wrong. try different credential", 5);
   };
 
   const handleFbLoginBtn = async () => {
     const authUser = await fbLogin();
     if (authUser) setUserCredentials(authUser);
-    else setNoti("something went wrong. try different credential");
+    else setNoti("something went wrong. try different credential", 5);
   };
 
   const handleSignUpLink = () => {

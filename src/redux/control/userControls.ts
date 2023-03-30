@@ -17,10 +17,21 @@ function useUserControls() {
   };
 
   const authenticateUser = () => {
-    dispatch(authenticate());
+    dispatch(authenticate(true));
   };
 
-  return { isAuthenticate, user, setUser, changeName, authenticateUser };
+  const removeUser = () => {
+    dispatch(authenticate(false));
+  };
+
+  return {
+    isAuthenticate,
+    user,
+    setUser,
+    changeName,
+    authenticateUser,
+    removeUser,
+  };
 }
 
 export default useUserControls;
