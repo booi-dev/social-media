@@ -1,17 +1,18 @@
 import {
+  doc,
   collection,
+  getDocs,
   query,
   where,
-  getDocs,
-  doc,
-  deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const removeDataFromDb = async (
+const updateDataOfDb = async (
   collectionName: string,
   fieldName: string,
-  fieldValue: any
+  fieldValue: any,
+  tobeUpdatedData: any
 ) => {
   try {
     const q = query(
@@ -21,12 +22,12 @@ const removeDataFromDb = async (
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((d) => {
       const docRef = doc(collection(db, collectionName), d.id);
-      deleteDoc(docRef);
+      updateDoc(docRef, tobeUpdatedData);
     });
   } catch (e) {
     if (e instanceof Error) console.log(e.message);
-    console.error("Error removing document: ", e);
+    console.error(e);
   }
 };
 
-export default removeDataFromDb;
+export default updateDataOfDb;

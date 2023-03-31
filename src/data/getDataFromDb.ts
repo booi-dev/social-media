@@ -9,9 +9,12 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-export const getDataFromDb = async (toGetId: string, dbCollection: string) => {
+export const getDataFromDb = async (
+  toGetId: string,
+  collectionName: string
+) => {
   let data;
-  const querySnapshot = await getDocs(collection(db, dbCollection));
+  const querySnapshot = await getDocs(collection(db, collectionName));
   querySnapshot.forEach((doc) => {
     const res = doc.data();
     if (res.uid === toGetId) data = res;
@@ -21,30 +24,30 @@ export const getDataFromDb = async (toGetId: string, dbCollection: string) => {
 
 export const useGetDataFromDb = <T extends { uid: string }>(
   toGetId: string,
-  dbCollection: string
+  collectionName: string
 ) => {
   const [data, setData] = useState<T>();
 
   useEffect(() => {
     const getData = async () => {
-      const querySnapshot = await getDocs(collection(db, dbCollection));
+      const querySnapshot = await getDocs(collection(db, collectionName));
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
         if (res.uid === toGetId) setData(res);
       });
     };
     getData();
-  }, [toGetId, dbCollection]);
+  }, [toGetId, collectionName]);
 
   return data;
 };
 
-export const useGetDataAllFromDb = <T>(dbCollection: string) => {
+export const useGetDataAllFromDb = <T>(collectionName: string) => {
   const [dataAll, setDataAll] = useState<T[]>([]);
 
   useEffect(() => {
     const getDataAll = async () => {
-      const querySnapshot = await getDocs(collection(db, dbCollection));
+      const querySnapshot = await getDocs(collection(db, collectionName));
       const updatedDataAll: T[] = [];
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
@@ -53,13 +56,13 @@ export const useGetDataAllFromDb = <T>(dbCollection: string) => {
       setDataAll(updatedDataAll);
     };
     getDataAll();
-  }, [dbCollection]);
+  }, [collectionName]);
 
   return dataAll;
 };
 
 export const useGetSomeRealDataFromDb = <T>(
-  dbCollection: string,
+  collectionName: string,
   count: number
 ) => {
   const [dataSome, setDataSome] = useState<T[]>([]);
@@ -67,7 +70,7 @@ export const useGetSomeRealDataFromDb = <T>(
   useEffect(() => {
     // Set up the query for the collection with the specified count limit and ordering by "createAt"
     const q = query(
-      collection(db, dbCollection),
+      collection(db, collectionName),
       orderBy("createAt"),
       limit(count)
     );
@@ -85,7 +88,7 @@ export const useGetSomeRealDataFromDb = <T>(
     return () => {
       unsubscribe();
     };
-  }, [dbCollection, count]);
+  }, [collectionName, count]);
 
   return dataSome;
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import useUserControls from "../../../redux/control/userControls";
-import useGetProperties from "../../../hooks/useGetProperties";
+import { useGetDataFromDb } from "../../../data";
 
 import { RepostIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
@@ -9,7 +9,7 @@ import { AppIcon } from "../../../components/UI";
 import RePostPanel from "../actions/RePostPanel";
 import LogInModal from "../../login-signup/LogInModal";
 
-import { PostType, TypeStateType } from "../../../types";
+import { PostType, TypeStateType, UserType } from "../../../types";
 
 type RePostUIType = {
   post: PostType;
@@ -20,10 +20,11 @@ function RePostUI(props: RePostUIType) {
   const { post, typeState } = props;
 
   const { isAuthenticate, user } = useUserControls();
-  const { getPostCreator } = useGetProperties();
 
   const [IsModalShow, setIsModalShow] = useState(false);
   const [isRePostBtnClick, setIsRePostBtnClick] = useState(false);
+
+  const postCreator = useGetDataFromDb<UserType>(post.createBy, "users");
 
   const hasReposted = !!post.reposts.find(
     (repost) => repost.byUid === user.uid
@@ -74,9 +75,7 @@ function RePostUI(props: RePostUIType) {
         <LogInModal
           iconDetail={{ icon: RepostIcon, color: "green" }}
           title="Repost to spread the word."
-          text={`When you join Socia, you can share ${getPostCreator(
-            post.createBy
-          )?.displayName.toUpperCase()}'s Post.`}
+          text={`When you join Socia, you can share ${postCreator?.displayName.toUpperCase()}'s Post.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}

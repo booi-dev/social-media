@@ -1,4 +1,4 @@
-import { addDataToDb, removeDataFromDb } from "../../../data";
+import { addDataToDb, deleteDataFromDb } from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
@@ -21,8 +21,7 @@ function usePostActions() {
 
   const deleteExistingPost = (postId: string) => {
     console.log(postId);
-    removeDataFromDb("posts", "pid", postId);
-    // deleteData(postId);
+    deleteDataFromDb("posts", "pid", postId);
   };
 
   // REPLY TWEET
