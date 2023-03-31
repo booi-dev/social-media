@@ -1,15 +1,15 @@
-import { PostType } from "../../../types";
-import { useDb } from "../../../data";
+import { addDataToDb, removeDataFromDb } from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import usePostControls from "../../../redux/control/postControls";
 
+import { PostType } from "../../../types";
+
 function usePostActions() {
-  const { addDataToDb } = useDb();
   const { user } = useUserControls();
-  const { createPost, updatePost, deletePost } = usePostControls();
-  const { addData, updateData, deleteData } = useLocalStorage();
+  const { createPost, updatePost } = usePostControls();
+  const { addData, updateData } = useLocalStorage();
 
   // CREATE
   const createNewPost = (newPost: PostType) => {
@@ -20,8 +20,9 @@ function usePostActions() {
   // DELETE
 
   const deleteExistingPost = (postId: string) => {
-    // deletePost(postId);
-    deleteData(postId);
+    console.log(postId);
+    removeDataFromDb("posts", "pid", postId);
+    // deleteData(postId);
   };
 
   // REPLY TWEET
@@ -88,7 +89,14 @@ function usePostActions() {
     updateData(targetPost.pid, { likes: [...targetPost.likes, user.uid] });
   };
 
-  return { createNewPost, addNewReply, rePost, undoRePost, likePost };
+  return {
+    createNewPost,
+    addNewReply,
+    rePost,
+    deleteExistingPost,
+    undoRePost,
+    likePost,
+  };
 }
 
 export default usePostActions;

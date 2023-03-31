@@ -1,6 +1,6 @@
 import useUserControls from "../../redux/control/userControls";
 import useAuth from "../../auth/useAuth";
-import { useUsersData } from "../../data";
+import useUsersData from "../../hooks/useUsersData";
 import getRandomPicURL from "../../utils/getRandomPic";
 import { useNoti } from "../../noti";
 

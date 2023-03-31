@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 import { useNoti } from "../../../noti";
-import usePostControls from "../../../redux/control/postControls";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import usePostActions from "../hooks/usePostActions";
 
 import { PinIcon, DeleteIcon } from "../../../components/icons";
 import { WarningMsg } from "../../../components/UI";
@@ -15,24 +14,20 @@ type PostOptionsType = {
 
 function PostOptions({ post }: PostOptionsType) {
   //
-  const { deletePost } = usePostControls();
-  const { deleteData } = useLocalStorage();
+  const { deleteExistingPost } = usePostActions();
   const { setNoti } = useNoti();
 
   const [isWarning, setIsWarning] = useState(false);
 
   const deleteRePosts = () => {
     post.reposts.forEach((retweeets) => {
-      deletePost(retweeets.postId);
-      deleteData(retweeets.postId);
+      deleteExistingPost(retweeets.postId);
     });
   };
 
-  //
   const handleDelete = () => {
     deleteRePosts();
-    deletePost(post.pid);
-    deleteData(post.pid);
+    deleteExistingPost(post.pid);
     setNoti("Your post is deleleted", 3, "top-center");
   };
 

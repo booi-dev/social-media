@@ -1,5 +1,5 @@
 import Suggestion from "./Suggestion";
-import userData from "../../data/useUsersData";
+import userData from "../../hooks/useUsersData";
 
 function SuggestionList() {
   const users = userData();

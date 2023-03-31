@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import {
   collection,
-  addDoc,
   getDocs,
   onSnapshot,
   query,
@@ -9,18 +8,8 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { PostType } from "../types";
 
 const useDb = () => {
-  const addDataToDb = async (toAddData: PostType, dbCollection: string) => {
-    try {
-      const docRef = await addDoc(collection(db, dbCollection), toAddData);
-      console.log(`data added to ${dbCollection}, with ID ${docRef.id}`);
-    } catch (err) {
-      console.error("Error adding document: ", err);
-    }
-  };
-
   // get data from fb firestore
   const getDataFromDb = async (toGetId: string, dbCollection: string) => {
     let data;
@@ -137,7 +126,6 @@ const useDb = () => {
   };
 
   return {
-    addDataToDb,
     getDataFromDb,
     isDataInDb,
     useGetDataFromDb,

@@ -1,4 +1,4 @@
-import useDb from "./useDb";
+import useDb from "../data/useDb";
 import { UserType } from "../types";
 
 function useUsersData() {
