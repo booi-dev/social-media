@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useDb } from "../../../data";
+import { useGetSomeRealDataFromDb } from "../../../data";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
@@ -9,8 +9,6 @@ import ReplyPostFeed from "./ReplyPostFeed";
 import { PostType } from "../../../types";
 
 function FeedList() {
-  const { useGetSomeRealDataFromDb } = useDb();
-
   const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 

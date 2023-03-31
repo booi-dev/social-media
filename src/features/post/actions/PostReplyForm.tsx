@@ -1,6 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-import useDb from "../../../data/useDb";
+import { useGetDataFromDb } from "../../../data";
 
 import usePostActions from "../hooks/usePostActions";
 
@@ -20,7 +20,6 @@ type PostReplyFormType = {
 function PostReplyForm(props: PostReplyFormType) {
   const { closeHandler, originalPost } = props;
 
-  const { useGetDataFromDb } = useDb();
   const { createNewPost, addNewReply } = usePostActions();
 
   const originalPostCreator = useGetDataFromDb<UserType>(

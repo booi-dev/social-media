@@ -1,10 +1,13 @@
-import useDb from "../data/useDb";
+// import useDb from "../data/isDataInDb";
+import {
+  addDataToDb,
+  getDataFromDb,
+  useGetDataAllFromDb,
+  isDataInDb,
+} from "../data";
 import { UserType } from "../types";
 
 function useUsersData() {
-  const { addDataToDb, getDataFromDb, useGetDataALlFromDb, isDataInDb } =
-    useDb();
-
   const addUserToDb = (data) => {
     addDataToDb(data, "users");
   };
@@ -15,7 +18,7 @@ function useUsersData() {
   };
 
   const useGetUserAllFromDb = (dbCollection: string) => {
-    const res = useGetDataALlFromDb(dbCollection);
+    const res = useGetDataAllFromDb(dbCollection);
     return res;
   };
 
