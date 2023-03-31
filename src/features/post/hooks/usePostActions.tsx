@@ -1,4 +1,4 @@
-import { addDataToDb, deleteDataFromDb } from "../../../data";
+import { addDataToDb, deleteDataFromDb, updateDataInDb } from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
@@ -8,13 +8,13 @@ import { PostType } from "../../../types";
 
 function usePostActions() {
   const { user } = useUserControls();
-  const { createPost, updatePost } = usePostControls();
-  const { addData, updateData } = useLocalStorage();
+  const { updatePost } = usePostControls();
+  const { updateData } = useLocalStorage();
 
   // CREATE
   const createNewPost = (newPost: PostType) => {
     console.log(newPost);
-    addDataToDb(newPost, "posts");
+    addDataToDb("posts", newPost);
   };
 
   // DELETE
@@ -25,31 +25,33 @@ function usePostActions() {
   };
 
   // REPLY TWEET
-  const addNewReply = (originalPost: PostType, newTId: string) => {
-    updatePost(originalPost.pid, {
-      replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
-    });
-    updateData(originalPost.pid, {
-      replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
-    });
+  const addNewReply = (
+    originalPost: PostType,
+    postId: string,
+    newTId: string
+  ) => {
+    // updatePost(originalPost.pid, {
+    //   replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
+    // });
+    // updateData(originalPost.pid, {
+    //   replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
+    // });
+    // updateDataInDb("posts", "pid", postId);
   };
 
   //  RETWEET
   const rePost = (newPost: PostType, originalPost: PostType) => {
-    createPost(newPost);
-    addData(newPost);
-    updatePost(originalPost.pid, {
+    addDataToDb("posts", newPost);
+
+    const originalPostId = originalPost.pid;
+    const tobeUpdatedProperty = {
       reposts: [
         ...originalPost.reposts,
         { byUid: user.uid, postId: newPost.pid },
       ],
-    });
-    updateData(originalPost.pid, {
-      reposts: [
-        ...originalPost.reposts,
-        { byUid: user.uid, postId: newPost.pid },
-      ],
-    });
+    };
+
+    updateDataInDb("posts", "pid", originalPostId, tobeUpdatedProperty);
   };
 
   // UNDO RETWEET

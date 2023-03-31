@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const updateDataOfDb = async (
+const updateDataInDb = async (
   collectionName: string,
   fieldName: string,
   fieldValue: any,
@@ -30,4 +30,4 @@ const updateDataOfDb = async (
   }
 };
 
-export default updateDataOfDb;
+export default updateDataInDb;
