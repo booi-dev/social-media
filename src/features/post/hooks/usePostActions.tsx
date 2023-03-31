@@ -1,10 +1,12 @@
 import { PostType } from "../../../types";
+import { useDb } from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import usePostControls from "../../../redux/control/postControls";
 
 function usePostActions() {
+  const { addDataToDb } = useDb();
   const { user } = useUserControls();
   const { createPost, updatePost, deletePost } = usePostControls();
   const { addData, updateData, deleteData } = useLocalStorage();
@@ -12,7 +14,8 @@ function usePostActions() {
   // CREATE
   const createNewPost = (newPost: PostType) => {
     createPost(newPost);
-    addData(newPost);
+    console.log(newPost);
+    addDataToDb(newPost, "posts");
   };
 
   // DELETE

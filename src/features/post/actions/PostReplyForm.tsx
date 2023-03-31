@@ -1,7 +1,8 @@
 import { nanoid } from "@reduxjs/toolkit";
 
+import useDb from "../../../data/useDb";
+
 import usePostActions from "../hooks/usePostActions";
-import useGetProperties from "../../../hooks/useGetProperties";
 
 import { CloseIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
@@ -9,7 +10,7 @@ import { AppIcon } from "../../../components/UI";
 import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostForm from "../components/PostForm";
 
-import { PostType } from "../../../types";
+import { PostType, UserType } from "../../../types";
 
 type PostReplyFormType = {
   originalPost: PostType;
@@ -19,10 +20,13 @@ type PostReplyFormType = {
 function PostReplyForm(props: PostReplyFormType) {
   const { closeHandler, originalPost } = props;
 
+  const { useGetDataFromDb } = useDb();
   const { createNewPost, addNewReply } = usePostActions();
-  const { getPostCreator } = useGetProperties();
 
-  const originalPostCreator = getPostCreator(originalPost.createBy);
+  const originalPostCreator = useGetDataFromDb<UserType>(
+    originalPost.createBy,
+    "users"
+  );
 
   const newPId = nanoid();
 

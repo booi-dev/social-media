@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import { PostType } from "../types";
 
 const useDb = () => {
-  const addDataToDb = async (toAddData, dbCollection) => {
+  const addDataToDb = async (toAddData: PostType, dbCollection: string) => {
     try {
       const docRef = await addDoc(collection(db, dbCollection), toAddData);
       console.log(`data added to ${dbCollection}, with ID ${docRef.id}`);
@@ -94,9 +95,9 @@ const useDb = () => {
   return {
     addDataToDb,
     getDataFromDb,
+    isDataInDb,
     useGetDataFromDb,
     useGetDataALlFromDb,
-    isDataInDb,
     useIsDataInDb,
   };
 };

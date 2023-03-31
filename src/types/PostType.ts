@@ -5,9 +5,9 @@ type ActionType = {
   postId: string;
 };
 
-type PostTypeType = {
+export type PostTypeType = {
   type: "normal" | "reply" | "repost" | "mention";
-  originalPostId?: string | null;
+  originalPostId?: string | "";
 };
 
 export type PostType = {

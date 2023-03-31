@@ -21,7 +21,7 @@ function NewPostForm(props: NewPostFormType) {
     <PostForm
       newPId={nanoid()}
       submitHandler={createNewPost}
-      postHaveType={{ type: "normal" }}
+      postHaveType={{ type: "normal", originalPostId: "" }}
       closeHandler={closeHandler}
       isLargeTextArea={isLargeTextArea}
       isBackBtnShow={isBackBtnShow}

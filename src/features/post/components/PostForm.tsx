@@ -11,15 +11,12 @@ import PostAudienceFilter from "./PostAudienceFilter";
 
 import findHashTags from "../../../utils/findHashTag";
 
-import { PostType, HashTagType } from "../../../types";
+import { PostType, HashTagType, PostTypeType } from "../../../types";
 
 type PostFormType = {
   newPId: string;
   submitHandler: (newPost: PostType) => void;
-  postHaveType: {
-    type: "normal" | "repost" | "reply" | "mention";
-    originalPostId?: string | null;
-  };
+  postHaveType: PostTypeType;
   closeHandler?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
