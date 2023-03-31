@@ -1,6 +1,4 @@
-import { useEffect, useMemo } from "react";
-import usePostControls from "../../../redux/control/postControls";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useMemo } from "react";
 import { useDb } from "../../../data";
 
 import Feed from "./Feed";
@@ -11,20 +9,12 @@ import ReplyPostFeed from "./ReplyPostFeed";
 import { PostType } from "../../../types";
 
 function FeedList() {
-  // const { getData } = useLocalStorage();
-  const { useGetDataALlFromDb } = useDb();
-  // const { postData, replacePosts } = usePostControls();
-  // const userData = getData();
+  const { useGetSomeRealDataFromDb } = useDb();
 
   const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
-  const posts = useGetDataALlFromDb<PostType>("posts");
-
-  console.log(posts);
-  // useEffect(() => {
-  //   replacePosts(userData);
-  // }, []);
+  const posts = useGetSomeRealDataFromDb<PostType>("posts", 5);
 
   const sortedPosts = useMemo(() => sortArray(posts), [posts]);
 

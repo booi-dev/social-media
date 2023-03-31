@@ -21,6 +21,7 @@ const useDb = () => {
     }
   };
 
+  // get data from fb firestore
   const getDataFromDb = async (toGetId: string, dbCollection: string) => {
     let data;
     const querySnapshot = await getDocs(collection(db, dbCollection));
@@ -31,6 +32,7 @@ const useDb = () => {
     return data;
   };
 
+  // get data from fb firestore - hook
   const useGetDataFromDb = <T extends { uid: string }>(
     toGetId: string,
     dbCollection: string
@@ -51,8 +53,8 @@ const useDb = () => {
     return data;
   };
 
-  // get all data from a collection
-  const useGetDataALlFromDb = <T>(dbCollection: string) => {
+  // get all data from a collection - hook
+  const useGetDataAllFromDb = <T>(dbCollection: string) => {
     const [dataAll, setDataAll] = useState<T[]>([]);
 
     useEffect(() => {
@@ -71,24 +73,32 @@ const useDb = () => {
     return dataAll;
   };
 
-  // get some data according to the given count argument
+  // get some reall time data according to the given count argument - hook
   const useGetSomeRealDataFromDb = <T>(dbCollection: string, count: number) => {
     const [dataSome, setDataSome] = useState<T[]>([]);
 
     useEffect(() => {
-      const getDataSome = async () => {
-        const querySnapshot = await getDocs(
-          query(collection(db, dbCollection), orderBy("createAt"), limit(count))
-        );
+      // Set up the query for the collection with the specified count limit and ordering by "createAt"
+      const q = query(
+        collection(db, dbCollection),
+        orderBy("createAt"),
+        limit(count)
+      );
+
+      // Subscribe to the database collection with onSnapshot
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const updatedDataSome: T[] = [];
         querySnapshot.forEach((doc) => {
           const res = doc.data() as T;
           updatedDataSome.push(res);
         });
         setDataSome(updatedDataSome);
+      });
+
+      return () => {
+        unsubscribe();
       };
-      getDataSome();
-    }, [dbCollection, limit]);
+    }, [dbCollection, count]);
 
     return dataSome;
   };
@@ -132,7 +142,7 @@ const useDb = () => {
     isDataInDb,
     useGetDataFromDb,
     useGetSomeRealDataFromDb,
-    useGetDataALlFromDb,
+    useGetDataAllFromDb,
     useIsDataInDb,
   };
 };

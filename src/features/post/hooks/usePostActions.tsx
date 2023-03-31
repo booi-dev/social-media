@@ -13,7 +13,6 @@ function usePostActions() {
 
   // CREATE
   const createNewPost = (newPost: PostType) => {
-    createPost(newPost);
     console.log(newPost);
     addDataToDb(newPost, "posts");
   };
@@ -21,7 +20,7 @@ function usePostActions() {
   // DELETE
 
   const deleteExistingPost = (postId: string) => {
-    deletePost(postId);
+    // deletePost(postId);
     deleteData(postId);
   };
 
