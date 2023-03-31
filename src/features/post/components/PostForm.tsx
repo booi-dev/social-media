@@ -43,6 +43,7 @@ function PostForm(props: PostFormType) {
     post: "",
     timespan: 0,
     createBy: "1",
+    createAt: new Date(),
     hashtags: [],
     likes: [],
     replies: [],
@@ -93,6 +94,7 @@ function PostForm(props: PostFormType) {
     setNewPost({
       ...newPost,
       createBy: user.uid,
+      createAt: new Date(),
       timespan: Date.now(),
       hashtags: tags,
       post: e.target.value,

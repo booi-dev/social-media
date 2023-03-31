@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import usePostControls from "../../../redux/control/postControls";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useDb } from "../../../data";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
@@ -10,18 +11,22 @@ import ReplyPostFeed from "./ReplyPostFeed";
 import { PostType } from "../../../types";
 
 function FeedList() {
-  const { getData } = useLocalStorage();
-  const { postData, replacePosts } = usePostControls();
-  const userData = getData();
+  // const { getData } = useLocalStorage();
+  const { useGetDataALlFromDb } = useDb();
+  // const { postData, replacePosts } = usePostControls();
+  // const userData = getData();
 
   const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
-  useEffect(() => {
-    replacePosts(userData);
-  }, []);
+  const posts = useGetDataALlFromDb<PostType>("posts");
 
-  const sortedPosts = useMemo(() => sortArray(postData), [postData]);
+  console.log(posts);
+  // useEffect(() => {
+  //   replacePosts(userData);
+  // }, []);
+
+  const sortedPosts = useMemo(() => sortArray(posts), [posts]);
 
   return (
     <div className="bg-inherit">

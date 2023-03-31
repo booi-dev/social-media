@@ -15,6 +15,7 @@ export type PostType = {
   post: string;
   timespan: number;
   createBy: string;
+  createAt: Date;
   hashtags: HashTagType[];
   likes: string[];
   reposts: ActionType[];
