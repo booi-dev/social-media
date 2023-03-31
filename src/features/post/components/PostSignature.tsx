@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import useGetProperties from "../../../hooks/useGetProperties";
 import { VerificationBadge } from "../../../components/UI";
+import useDb from "../../../data/useDb";
+import { UserType } from "../../../types";
 
 type PostCreatorPicType = {
   postCreatorUid: string;
@@ -11,17 +12,9 @@ type PostSignatureType = PostCreatorPicType & {
 };
 
 function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
-  const { useGetPostCreator } = useGetProperties();
-  // const postCreator = useGetPostCreator(postCreatorUid);
-  const [postCreator, setPostCreator] = useState();
+  const { useGetDataFromDb } = useDb();
 
-  useEffect(() => {
-    const getProperty = async () => {
-      const creator = await useGetPostCreator(postCreatorUid);
-      setPostCreator(creator);
-    };
-    getProperty();
-  }, []);
+  const postCreator = useGetDataFromDb<UserType>(postCreatorUid, "users");
 
   return (
     <img
@@ -35,9 +28,10 @@ function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
 function PostSignature(props: PostSignatureType) {
   const { postCreatorUid, postTimespan } = props;
 
-  const { useGetPostCreator, getTimeElapse } = useGetProperties();
+  const { getTimeElapse } = useGetProperties();
+  const { useGetDataFromDb } = useDb();
 
-  const postCreator = useGetPostCreator(postCreatorUid);
+  const postCreator = useGetDataFromDb<UserType>(postCreatorUid, "users");
 
   return (
     <>

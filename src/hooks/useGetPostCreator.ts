@@ -1,8 +1,9 @@
 import { useUsersData } from "../data";
+import { UserType } from "../types";
 
-function useGetPostCreator(toGetUid: string) {
+async function useGetPostCreator(toGetUid: string): Promise<UserType> {
   const { getUserFromDb } = useUsersData();
-  const user = getUserFromDb(toGetUid);
+  const user = await getUserFromDb(toGetUid);
   return user;
 }
 

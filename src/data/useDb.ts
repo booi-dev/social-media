@@ -12,6 +12,16 @@ const useDb = () => {
     }
   };
 
+  const getDataFromDb = async (toGetId: string, dbCollection: string) => {
+    let data;
+    const querySnapshot = await getDocs(collection(db, dbCollection));
+    querySnapshot.forEach((doc) => {
+      const res = doc.data();
+      if (res.uid === toGetId) data = res;
+    });
+    return data;
+  };
+
   const useGetDataFromDb = <U extends { uid: string }>(
     toGetId: string,
     dbCollection: string
@@ -49,6 +59,17 @@ const useDb = () => {
     return dataAll;
   };
 
+  const isDataInDb = async (toCheckId: string, dbCollection: string) => {
+    let isDataIn;
+    const querySnapshot = await getDocs(collection(db, dbCollection));
+    querySnapshot.forEach((doc) => {
+      const res = doc.data();
+      if (res.uid === toCheckId) isDataIn = true;
+      else isDataIn = false;
+    });
+    return isDataIn as boolean;
+  };
+
   const useIsDataInDb = <U extends { uid: string }>(
     toCheckId: string,
     dbCollection: string
@@ -70,7 +91,14 @@ const useDb = () => {
     return isData;
   };
 
-  return { addDataToDb, useGetDataFromDb, useGetDataALlFromDb, useIsDataInDb };
+  return {
+    addDataToDb,
+    getDataFromDb,
+    useGetDataFromDb,
+    useGetDataALlFromDb,
+    isDataInDb,
+    useIsDataInDb,
+  };
 };
 
 export default useDb;

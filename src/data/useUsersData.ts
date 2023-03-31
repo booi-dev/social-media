@@ -1,15 +1,16 @@
 import useDb from "./useDb";
+import { UserType } from "../types";
 
 function useUsersData() {
-  const { addDataToDb, useGetDataFromDb, useGetDataALlFromDb, useIsDataInDb } =
+  const { addDataToDb, getDataFromDb, useGetDataALlFromDb, isDataInDb } =
     useDb();
 
   const addUserToDb = (data) => {
     addDataToDb(data, "users");
   };
 
-  const useGetUserFromDb = (toGetUId: string) => {
-    const res = useGetDataFromDb(toGetUId, "users");
+  const getUserFromDb = async (toGetUId: string): Promise<UserType> => {
+    const res = await getDataFromDb(toGetUId, "users");
     return res;
   };
 
@@ -18,12 +19,12 @@ function useUsersData() {
     return res;
   };
 
-  const useIsUserInDb = (toCheckUId: string) => {
-    const res = useIsDataInDb(toCheckUId, "users");
+  const isUserInDb = (toCheckUId: string) => {
+    const res = isDataInDb(toCheckUId, "users");
     return res;
   };
 
-  return { addUserToDb, useGetUserFromDb, useGetUserAllFromDb, useIsUserInDb };
+  return { addUserToDb, getUserFromDb, useGetUserAllFromDb, isUserInDb };
 }
 
 export default useUsersData;
