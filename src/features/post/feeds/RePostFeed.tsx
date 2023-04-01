@@ -1,13 +1,12 @@
 import { AiOutlineRetweet } from "react-icons/ai";
 
 import useUserControls from "../../../redux/control/userControls";
-import usePostControls from "../../../redux/control/postControls";
-import useGetProperties from "../../../hooks/useGetProperties";
+import { useGetDataFromDb } from "../../../data";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";
 
-import { PostType } from "../../../types";
+import { PostType, UserType } from "../../../types";
 
 type TypeStateType = {
   type: "normal" | "repost" | "reply" | "mention";
@@ -23,12 +22,13 @@ function RePostFeed(props: RePostFeedType) {
   const { post, typeState } = props;
 
   const { user } = useUserControls();
-  const { findPost } = usePostControls();
-  const { getPostCreator } = useGetProperties();
 
-  const postCreator = getPostCreator(post.createBy);
+  const postCreator = useGetDataFromDb<UserType>("users", post.createBy);
 
-  const originalPost: PostType | undefined = findPost(typeState.originalPostId);
+  const originalPost = useGetDataFromDb<PostType>(
+    "posts",
+    typeState.originalPostId
+  );
 
   return (
     <div className="border-inherit">

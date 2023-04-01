@@ -7,7 +7,7 @@ import ActionsPanel from "../components/ActionsPanel";
 import { PostType } from "../../../types";
 
 type TypeStateType = {
-  type: "normal" | "repost" | "reply" | "mention";
+  type: "reply";
   originalPostId: string;
 };
 

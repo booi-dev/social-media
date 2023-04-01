@@ -22,7 +22,12 @@ export const getDataFromDb = async (
   return data;
 };
 
-export const useGetDataFromDb = <T extends { uid: string }>(
+type generic = {
+  uid?: string;
+  pid?: string;
+};
+
+export const useGetDataFromDb = <T extends generic>(
   toGetId: string,
   collectionName: string
 ) => {

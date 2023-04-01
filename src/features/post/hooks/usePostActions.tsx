@@ -18,6 +18,7 @@ function usePostActions() {
   const deleteExistingPost = (postId: string) => {
     console.log(postId);
     deleteDataFromDb("posts", "pid", postId);
+    // delete original posts - for reply and repost
   };
 
   //  REPOST
