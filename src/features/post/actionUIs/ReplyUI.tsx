@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import useUserControls from "../../../redux/control/userControls";
-import useGetProperties from "../../../hooks/useGetProperties";
+import { useGetDataFromDb } from "../../../data";
 
 import { ChatIcon, ChatFillIcon } from "../../../components/icons";
 import { AppIcon, BackDrop } from "../../../components/UI";
@@ -9,16 +9,17 @@ import { AppIcon, BackDrop } from "../../../components/UI";
 import PostReplyForm from "../actions/PostReplyForm";
 import LogInModal from "../../login-signup/LogInModal";
 
-import { PostType } from "../../../types";
+import { PostType, UserType } from "../../../types";
 
 function ReplyUI(props: { post: PostType }) {
   const { post } = props;
 
   const { isAuthenticate } = useUserControls();
-  const { getPostCreator } = useGetProperties();
   const [IsModalShow, setIsModalShow] = useState(false);
 
   const [isReplyBtnClick, setIsReplyBtnClick] = useState(false);
+
+  const postCreator = useGetDataFromDb<UserType>("users", post.createBy);
 
   const handleBtnClick = () => {
     if (isAuthenticate) setIsReplyBtnClick(true);
@@ -61,9 +62,7 @@ function ReplyUI(props: { post: PostType }) {
         <LogInModal
           iconDetail={{ icon: ChatFillIcon, color: "pri" }}
           title="Reply to join the conversation."
-          text={`Once you join Socia, you can respond to ${getPostCreator(
-            post.createBy
-          )?.displayName.toUpperCase()}'s Post.`}
+          text={`Once you join Socia, you can respond to ${postCreator?.displayName.toUpperCase()}'s Post.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}

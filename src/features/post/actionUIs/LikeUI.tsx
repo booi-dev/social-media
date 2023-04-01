@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import usePostActions from "../hooks/usePostActions";
 import useUserControls from "../../../redux/control/userControls";
-import useGetProperties from "../../../hooks/useGetProperties";
+import { useGetDataFromDb } from "../../../data";
 
 import { HeartIcon, HeartFillIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
@@ -20,10 +20,11 @@ function LikeUI(props: LikeUIType) {
   const { likePost } = usePostActions();
 
   const { isAuthenticate } = useUserControls();
-  const { getPostCreator } = useGetProperties();
   const [IsModalShow, setIsModalShow] = useState(false);
 
   const [anim, setAnim] = useState("");
+
+  const postCreator = useGetDataFromDb<UserType>("users", post.createBy);
 
   const setAnimation = () => {
     setAnim("scale-125");
@@ -68,9 +69,7 @@ function LikeUI(props: LikeUIType) {
         <LogInModal
           iconDetail={{ icon: HeartFillIcon, color: "pink" }}
           title="Like a Post to share the love."
-          text={`Join Socia now to let ${getPostCreator(
-            post.createBy
-          )?.displayName.toUpperCase()}'s Post with your followers.`}
+          text={`Join Socia now to let ${postCreator?.displayName.toUpperCase()}'s Post with your followers.`}
           closeHandler={() => setIsModalShow(false)}
         />
       )}
