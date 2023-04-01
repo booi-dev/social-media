@@ -1,15 +1,11 @@
 import { addDataToDb, deleteDataFromDb, updateDataInDb } from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
-import useLocalStorage from "../../../hooks/useLocalStorage";
-import usePostControls from "../../../redux/control/postControls";
 
 import { PostType } from "../../../types";
 
 function usePostActions() {
   const { user } = useUserControls();
-  const { updatePost } = usePostControls();
-  const { updateData } = useLocalStorage();
 
   // CREATE POST
   const createNewPost = (newPost: PostType) => {
@@ -72,17 +68,14 @@ function usePostActions() {
 
   const likePost = (targetPost: PostType) => {
     if (targetPost.likes.includes(user.uid)) {
-      updatePost(targetPost.pid, {
-        likes: [...targetPost.likes.filter((like) => like !== user.uid)],
-      });
-      updateData(targetPost.pid, {
+      updateDataInDb("posts", "pid", targetPost.pid, {
         likes: [...targetPost.likes.filter((like) => like !== user.uid)],
       });
       return;
     }
-
-    updatePost(targetPost.pid, { likes: [...targetPost.likes, user.uid] });
-    updateData(targetPost.pid, { likes: [...targetPost.likes, user.uid] });
+    updateDataInDb("posts", "pid", targetPost.pid, {
+      likes: [...targetPost.likes, user.uid],
+    });
   };
 
   return {
