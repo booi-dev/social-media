@@ -12,7 +12,7 @@ function FeedList() {
   const sortArray = ([...toBeSortArray]: PostType[]) =>
     toBeSortArray.sort((a, b) => b.timespan - a.timespan);
 
-  const posts = useGetSomeRealDataFromDb<PostType>("posts", 5);
+  const posts = useGetSomeRealDataFromDb<PostType>("posts", 10);
 
   const sortedPosts = useMemo(() => sortArray(posts), [posts]);
 
@@ -20,7 +20,7 @@ function FeedList() {
     <>
       {sortedPosts.map((p: PostType) => (
         <div key={p.pid}>
-          {p.postType.type === "normal" && (
+          {(p.postType.type === "normal" || p.postType.type === "repost") && (
             <Feed
               post={p}
               typeState={{ type: "normal" }}

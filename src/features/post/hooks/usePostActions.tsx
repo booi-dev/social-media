@@ -11,20 +11,20 @@ function usePostActions() {
   const { updatePost } = usePostControls();
   const { updateData } = useLocalStorage();
 
-  // CREATE
+  // CREATE POST
   const createNewPost = (newPost: PostType) => {
     console.log(newPost);
     addDataToDb("posts", newPost);
   };
 
-  // DELETE
+  // DELETE POST
 
   const deleteExistingPost = (postId: string) => {
     console.log(postId);
     deleteDataFromDb("posts", "pid", postId);
   };
 
-  // REPLY TWEET
+  // REPLY POST
   const addNewReply = (
     originalPost: PostType,
     postId: string,
@@ -39,7 +39,7 @@ function usePostActions() {
     // updateDataInDb("posts", "pid", postId);
   };
 
-  //  RETWEET
+  //  REPOST
   const rePost = (newPost: PostType, originalPost: PostType) => {
     addDataToDb("posts", newPost);
 
@@ -50,27 +50,22 @@ function usePostActions() {
         { byUid: user.uid, postId: newPost.pid },
       ],
     };
-
     updateDataInDb("posts", "pid", originalPostId, tobeUpdatedProperty);
   };
 
-  // UNDO RETWEET
+  // UNDO REPOST
   const undoRePost = (originalPost: PostType) => {
     originalPost.reposts.forEach((repost) => {
-      if (repost.byUid === user.uid) {
-        deleteExistingPost(repost.postId);
-      }
+      if (repost.byUid === user.uid) deleteExistingPost(repost.postId);
     });
-    updatePost(originalPost.pid, {
+
+    const originalPostId = originalPost.pid;
+    const tobeUpdatedProperty = {
       reposts: [
         ...originalPost.reposts.filter((repost) => repost.byUid !== user.uid),
       ],
-    });
-    updateData(originalPost.pid, {
-      reposts: [
-        ...originalPost.reposts.filter((repost) => repost.byUid !== user.uid),
-      ],
-    });
+    };
+    updateDataInDb("posts", "pid", originalPostId, tobeUpdatedProperty);
   };
 
   // LIKE & UNDO UNLIKE
