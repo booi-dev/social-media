@@ -16,30 +16,31 @@ function FeedList() {
 
   const sortedPosts = useMemo(() => sortArray(posts), [posts]);
 
-  return sortedPosts.map((p: PostType) => (
-    <div
-      key={p.pid}
-      className="border-x-[1px] border-b-[1px] border-app-white-5  dark:border-app-gray-1"
-    >
-      {p.postType.type === "normal" && (
-        <Feed
-          post={p}
-          typeState={{ type: "normal" }}
-          actionsPanel={ActionsPanel}
-        />
-      )}
+  return (
+    <>
+      {sortedPosts.map((p: PostType) => (
+        <div key={p.pid}>
+          {p.postType.type === "normal" && (
+            <Feed
+              post={p}
+              typeState={{ type: "normal" }}
+              actionsPanel={ActionsPanel}
+            />
+          )}
 
-      {p.postType?.type === "reply" && p.postType.originalPostId && (
-        <ReplyPostFeed
-          post={p}
-          typeState={{
-            type: "reply",
-            originalPostId: p.postType.originalPostId,
-          }}
-        />
-      )}
-    </div>
-  ));
+          {p.postType?.type === "reply" && p.postType.originalPostId && (
+            <ReplyPostFeed
+              post={p}
+              typeState={{
+                type: "reply",
+                originalPostId: p.postType.originalPostId,
+              }}
+            />
+          )}
+        </div>
+      ))}
+    </>
+  );
 }
 
 export default FeedList;

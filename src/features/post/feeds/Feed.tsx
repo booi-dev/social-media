@@ -39,7 +39,9 @@ function Feed(props: FeedType) {
     <>
       <div
         key={post.pid}
-        className="bg-inherited relative flex border-b-[0px] border-app-white-5 bg-inherit  px-1 pt-3 text-inherit transition-all duration-500 hover:bg-app-white-2 dark:border-app-gray-1 dark:hover:bg-transparent md:px-4"
+        className="bg-inherited relative flex 
+        border-x border-b bg-inherit
+        px-1 pt-3 text-inherit transition-all duration-500 hover:bg-app-white-2 dark:border-app-gray-1 dark:hover:bg-transparent md:px-4"
       >
         <div className="h-12 w-12 shrink-0">
           <PostCreatorPic postCreatorUid={post.createBy} />

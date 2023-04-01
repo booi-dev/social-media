@@ -18,7 +18,7 @@ function Home() {
         </div>
       </div>
       {isAuthenticate && (
-        <div className="border-x-[1px] border-b-[1px] p-2  dark:border-app-gray-1 md:p-4">
+        <div className="border-x border-b p-2  dark:border-app-gray-1 md:p-4">
           <NewPostForm />
         </div>
       )}
