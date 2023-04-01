@@ -20,21 +20,6 @@ function usePostActions() {
     deleteDataFromDb("posts", "pid", postId);
   };
 
-  // REPLY POST
-  const addNewReply = (
-    originalPost: PostType,
-    postId: string,
-    newTId: string
-  ) => {
-    // updatePost(originalPost.pid, {
-    //   replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
-    // });
-    // updateData(originalPost.pid, {
-    //   replies: [...originalPost.replies, { byUid: user.uid, postId: newTId }],
-    // });
-    // updateDataInDb("posts", "pid", postId);
-  };
-
   //  REPOST
   const rePost = (newPost: PostType, originalPost: PostType) => {
     addDataToDb("posts", newPost);
@@ -64,7 +49,7 @@ function usePostActions() {
     updateDataInDb("posts", "pid", originalPostId, tobeUpdatedProperty);
   };
 
-  // LIKE & UNDO UNLIKE
+  // LIKE & UNDO LIKE POST
 
   const likePost = (targetPost: PostType) => {
     if (targetPost.likes.includes(user.uid)) {
@@ -76,6 +61,14 @@ function usePostActions() {
     updateDataInDb("posts", "pid", targetPost.pid, {
       likes: [...targetPost.likes, user.uid],
     });
+  };
+
+  // REPLY POST
+  const addNewReply = (originalPost: PostType, newPId: string) => {
+    const tobeUpdatedProperty = {
+      replies: [...originalPost.replies, { byUid: user.uid, postId: newPId }],
+    };
+    updateDataInDb("posts", "pid", originalPost.pid, tobeUpdatedProperty);
   };
 
   return {
