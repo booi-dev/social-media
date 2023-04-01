@@ -12,7 +12,7 @@ type PostSignatureType = PostCreatorPicType & {
 };
 
 function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
-  const postCreator = useGetDataFromDb<UserType>(postCreatorUid, "users");
+  const postCreator = useGetDataFromDb<UserType>("users", postCreatorUid);
 
   return (
     <img
@@ -28,7 +28,7 @@ function PostSignature(props: PostSignatureType) {
 
   const { getTimeElapse } = useGetProperties();
 
-  const postCreator = useGetDataFromDb<UserType>(postCreatorUid, "users");
+  const postCreator = useGetDataFromDb<UserType>("users", postCreatorUid);
 
   return (
     <>

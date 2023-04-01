@@ -10,8 +10,8 @@ import {
 import { db } from "../../firebase";
 
 export const getDataFromDb = async (
-  toGetId: string,
-  collectionName: string
+  collectionName: string,
+  toGetId: string
 ) => {
   let data;
   const querySnapshot = await getDocs(collection(db, collectionName));
@@ -22,14 +22,14 @@ export const getDataFromDb = async (
   return data;
 };
 
-type generic = {
+type GenericIDs = {
   uid?: string;
   pid?: string;
 };
 
-export const useGetDataFromDb = <T extends generic>(
-  toGetId: string,
-  collectionName: string
+export const useGetDataFromDb = <T extends GenericIDs>(
+  collectionName: string,
+  toGetId: string
 ) => {
   const [data, setData] = useState<T>();
 
@@ -38,11 +38,11 @@ export const useGetDataFromDb = <T extends generic>(
       const querySnapshot = await getDocs(collection(db, collectionName));
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
-        if (res.uid === toGetId) setData(res);
+        if (res.uid === toGetId || res.pid === toGetId) setData(res);
       });
     };
     getData();
-  }, [toGetId, collectionName]);
+  }, [collectionName, toGetId]);
 
   return data;
 };

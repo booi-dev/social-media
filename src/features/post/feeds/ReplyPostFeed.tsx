@@ -1,6 +1,6 @@
 import Feed from "./Feed";
 
-import usePostControls from "../../../redux/control/postControls";
+import { useGetDataFromDb } from "../../../data";
 
 import ActionsPanel from "../components/ActionsPanel";
 
@@ -19,15 +19,16 @@ type ReplyPostFeedType = {
 function ReplyPostFeed(props: ReplyPostFeedType) {
   const { post, typeState } = props;
 
-  const { findPost } = usePostControls();
-
-  const originalPost: PostType | undefined = findPost(typeState.originalPostId);
+  const originalPost = useGetDataFromDb<PostType>(
+    "posts",
+    typeState.originalPostId
+  );
 
   let wrappedPost: React.ReactElement | null = null;
 
   if (originalPost) {
     wrappedPost = (
-      <div className="rounded-lg border-[1px] border-app-white-5 dark:border-app-gray-1">
+      <div className="border-t border-app-white-5 dark:border-app-gray-1">
         <Feed post={originalPost} typeState={typeState} />
       </div>
     );
