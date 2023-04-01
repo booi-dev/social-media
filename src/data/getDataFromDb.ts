@@ -9,7 +9,12 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-export const getDataFromDb = async (
+type GenericIDs = {
+  uid?: string;
+  pid?: string;
+};
+
+export const getDataFromDb = async <T extends GenericIDs>(
   collectionName: string,
   toGetId: string
 ) => {
@@ -17,14 +22,9 @@ export const getDataFromDb = async (
   const querySnapshot = await getDocs(collection(db, collectionName));
   querySnapshot.forEach((doc) => {
     const res = doc.data();
-    if (res.uid === toGetId) data = res;
+    if (res.uid === toGetId || res.pid === toGetId) data = res;
   });
-  return data;
-};
-
-type GenericIDs = {
-  uid?: string;
-  pid?: string;
+  return data as T;
 };
 
 export const useGetDataFromDb = <T extends GenericIDs>(

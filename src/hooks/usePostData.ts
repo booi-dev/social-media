@@ -1,10 +1,30 @@
-// function usePostData() {
-//   const getPostFromDb = async (toGetUId: string): Promise<UserType> => {
-//     const res = await getDataFromDb(toGetUId, "users");
-//     return res;
-//   };
+import { useState, useEffect } from "react";
+import { getDataFromDb } from "../data";
 
-//   return { getPostFromDb };
-// }
+import { PostType, UserType } from "../types";
 
-// export default usePostData;
+function usePostData() {
+  const useGetPostCreatorFromPostId = (postId: string) => {
+    const [originalPostCreator, setOriginalPostCreator] = useState<UserType>();
+
+    useEffect(() => {
+      const getPostCreator = async () => {
+        if (postId) {
+          const originalPost = await getDataFromDb<PostType>("posts", postId);
+          const postCreator = await getDataFromDb<UserType>(
+            "users",
+            originalPost.createBy
+          );
+          setOriginalPostCreator(postCreator);
+        }
+      };
+      getPostCreator();
+    }, []);
+
+    return originalPostCreator;
+  };
+
+  return { useGetPostCreatorFromPostId };
+}
+
+export default usePostData;

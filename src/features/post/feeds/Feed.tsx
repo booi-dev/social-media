@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import useUserControls from "../../../redux/control/userControls";
+import usePostData from "../../../hooks/usePostData";
 
 import { KebabHorizontalIcon } from "../../../components/icons";
 import { BackDrop } from "../../../components/UI";
@@ -32,8 +33,13 @@ function Feed(props: FeedType) {
   } = props;
 
   const { user } = useUserControls();
+  const { useGetPostCreatorFromPostId } = usePostData();
 
   const [isOption, setIsOption] = useState(false);
+
+  const originalPostCreator = useGetPostCreatorFromPostId(
+    post.postType?.originalPostId ?? ""
+  );
 
   return (
     <>
@@ -64,6 +70,13 @@ function Feed(props: FeedType) {
               </button>
             )}
           </div>
+
+          {post.postType.type === "reply" && (
+            <div className="ml-2 text-app-gray-3">
+              Replying to @{originalPostCreator?.userName}
+            </div>
+          )}
+
           <div className="p-2">
             <PostWithHighlightedHashTags post={post.post} />
           </div>
