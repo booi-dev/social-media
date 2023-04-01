@@ -18,13 +18,14 @@ export const getDataFromDb = async <T extends GenericIDs>(
   collectionName: string,
   toGetId: string
 ) => {
-  let data;
+  let data: T | undefined;
   const querySnapshot = await getDocs(collection(db, collectionName));
   querySnapshot.forEach((doc) => {
-    const res = doc.data();
+    const res = doc.data() as T;
     if (res.uid === toGetId || res.pid === toGetId) data = res;
   });
-  return data as T;
+  if (!data) throw new Error(`Could not find document with id ${toGetId}`);
+  return data;
 };
 
 export const useGetDataFromDb = <T extends GenericIDs>(

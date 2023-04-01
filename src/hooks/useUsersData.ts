@@ -12,8 +12,8 @@ function useUsersData() {
     addDataToDb(data, "users");
   };
 
-  const getUserFromDb = async (toGetUId: string): Promise<UserType> => {
-    const res = await getDataFromDb(toGetUId, "users");
+  const getUserFromDb = async (toGetUId: string) => {
+    const res = await getDataFromDb<UserType>("users", toGetUId);
     return res;
   };
 
@@ -23,7 +23,7 @@ function useUsersData() {
   };
 
   const isUserInDb = (toCheckUId: string) => {
-    const res = isDataInDb(toCheckUId, "users");
+    const res = isDataInDb("users", toCheckUId);
     return res;
   };
 

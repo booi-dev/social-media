@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
-export const isDataInDb = async (toCheckId: string, dbCollection: string) => {
+export const isDataInDb = async (dbCollection: string, toCheckId: string) => {
   let isDataIn;
   const querySnapshot = await getDocs(collection(db, dbCollection));
   querySnapshot.forEach((doc) => {
@@ -14,8 +14,8 @@ export const isDataInDb = async (toCheckId: string, dbCollection: string) => {
 };
 
 export const useIsDataInDb = <T extends { uid: string }>(
-  toCheckId: string,
-  dbCollection: string
+  dbCollection: string,
+  toCheckId: string
 ) => {
   const [isData, setIsData] = useState(false);
 
