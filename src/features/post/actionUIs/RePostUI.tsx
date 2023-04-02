@@ -7,7 +7,7 @@ import { RepostIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
 
 import RePostPanel from "../actions/RePostPanel";
-import LogInModal from "../../login-signup/LogInAlert";
+import LogInAlert from "../../login-signup/LogInAlert";
 
 import { PostType, TypeStateType, UserType } from "../../../types";
 
@@ -72,7 +72,7 @@ function RePostUI(props: RePostUIType) {
         />
       )}
       {IsModalShow && (
-        <LogInModal
+        <LogInAlert
           iconDetail={{ icon: RepostIcon, color: "green" }}
           title="Repost to spread the word."
           text={`When you join Socia, you can share ${postCreator?.displayName.toUpperCase()}'s Post.`}

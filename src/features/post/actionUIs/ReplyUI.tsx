@@ -7,7 +7,7 @@ import { ChatIcon, ChatFillIcon } from "../../../components/icons";
 import { AppIcon, BackDrop } from "../../../components/UI";
 
 import PostReplyForm from "../actions/PostReplyForm";
-import LogInModal from "../../login-signup/LogInAlert";
+import LogInAlert from "../../login-signup/LogInAlert";
 
 import { PostType, UserType } from "../../../types";
 
@@ -59,7 +59,7 @@ function ReplyUI(props: { post: PostType }) {
         </>
       )}
       {IsModalShow && (
-        <LogInModal
+        <LogInAlert
           iconDetail={{ icon: ChatFillIcon, color: "pri" }}
           title="Reply to join the conversation."
           text={`Once you join Socia, you can respond to ${postCreator?.displayName.toUpperCase()}'s Post.`}

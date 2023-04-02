@@ -7,7 +7,7 @@ import { useGetDataFromDb } from "../../../data";
 import { HeartIcon, HeartFillIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
 
-import LogInModal from "../../login-signup/LogInAlert";
+import LogInAlert from "../../login-signup/LogInAlert";
 import { PostType, UserType } from "../../../types";
 
 type LikeUIType = {
@@ -66,7 +66,7 @@ function LikeUI(props: LikeUIType) {
         </div>
       </button>
       {IsModalShow && (
-        <LogInModal
+        <LogInAlert
           iconDetail={{ icon: HeartFillIcon, color: "pink" }}
           title="Like a Post to share the love."
           text={`Join Socia now to let ${postCreator?.displayName.toUpperCase()}'s Post with your followers.`}
