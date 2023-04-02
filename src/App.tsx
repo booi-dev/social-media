@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import useUserControls from "./redux/control/userControls";
+import useThemeControls from "./redux/control/themeControl";
 
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
@@ -6,38 +9,14 @@ import LogInIndicator from "./features/login-signup/LogInSignUpIndicator";
 import LogInBox from "./features/login-signup/LogInBox";
 import SignUpBox from "./features/login-signup/SignUpBox";
 
-import useUserControls from "./redux/control/userControls";
-import useThemeControls from "./redux/control/themeControl";
 import { NotiPortal } from "./noti";
-
-import { UserType } from "./types";
 
 function App() {
   const { theme } = useThemeControls();
-  const { isAuthenticate, setUser } = useUserControls();
+  const { isAuthenticate } = useUserControls();
 
   const [isLogInClick, setIsLogInClick] = useState(false);
   const [isSignUpClick, setIsSignUpClick] = useState(false);
-
-  const fakeUser: UserType = {
-    uid: "03",
-    displayName: "Katty",
-    displayPicURL:
-      "https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg?auto=compress&cs=tinysrgb&w=600",
-    userName: "keku",
-    email: "",
-    following: [],
-    followers: [],
-    verification: { state: false, type: "" },
-  };
-
-  useEffect(() => {
-    const setUserData = async () => {
-      setUser(fakeUser);
-    };
-
-    // setUserData();
-  }, []);
 
   return (
     <div className={theme}>
