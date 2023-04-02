@@ -12,10 +12,6 @@ type IconPropType = {
 
 type colorVariantsType = {
   [key: string]: string;
-  pri: string;
-  pink: string;
-  green: string;
-  black: string;
 };
 
 function AppIcon(props: IconPropType) {
@@ -38,7 +34,7 @@ function AppIcon(props: IconPropType) {
   };
 
   const groupHoverColorVariants: colorVariantsType = {
-    pri: "group-hover:text-app-white-1",
+    pri: "group-hover:text-pri-clr-1",
     pink: "group-hover:text-pink-600",
     green: "group-hover:text-green-400",
     black: "group-hover:text-app-white-3",
