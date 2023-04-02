@@ -7,14 +7,14 @@ import useThemeControls from "../../redux/control/themeControl";
 import { CrossIcon } from "../../components/icons";
 import { AppIcon, BackDrop } from "../../components/UI";
 
-type LogInModalType = {
+type LogInAlertProps = {
   iconDetail: { icon: IconType; color: "pri" | "pink" | "green" };
   title: string;
   text: string;
   closeHandler: () => void;
 };
 
-function LogInModal(props: LogInModalType) {
+function LogInAlert(props: LogInAlertProps) {
   const { iconDetail, title, text, closeHandler } = props;
   const { theme } = useThemeControls();
 
@@ -63,4 +63,4 @@ function LogInModal(props: LogInModalType) {
   return LogSignPortal;
 }
 
-export default LogInModal;
+export default LogInAlert;

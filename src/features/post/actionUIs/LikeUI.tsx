@@ -7,7 +7,7 @@ import { useGetDataFromDb } from "../../../data";
 import { HeartIcon, HeartFillIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
 
-import LogInModal from "../../login-signup/LogInModal";
+import LogInModal from "../../login-signup/LogInAlert";
 import { PostType, UserType } from "../../../types";
 
 type LikeUIType = {
