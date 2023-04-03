@@ -4,11 +4,11 @@ import useAuth from "../auth/useAuth";
 import useUserControls from "../redux/control/userControls";
 
 import { ChatSquareDotsFillIcon, FeatherIcon } from "../components/icons";
-import { AppIcon, BackDrop } from "../components/UI";
 import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
 import NewPostForm from "../features/post/actions/NewPostForm";
+import { AppIcon, BackDrop, WarningMsg } from "../components/UI";
 
 function Header() {
   const { isAuthenticate, user, removeUser } = useUserControls();
@@ -16,10 +16,16 @@ function Header() {
 
   const [isPostFormShow, setIsPostFormShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
+  const [isLogOutWarningShow, setIsLogOutWarningShow] = useState(false);
 
   const signOut = () => {
     signAuthOut();
     removeUser();
+  };
+
+  const handleLogOutBtn = () => {
+    setIsLogOutWarningShow(true);
+    setIsOptionShow(false);
   };
 
   return (
@@ -57,7 +63,7 @@ function Header() {
                 </button>
                 <button
                   type="button"
-                  onClick={signOut}
+                  onClick={handleLogOutBtn}
                   className=" hover:bg-app-white-3 dark:hover:bg-app-gray-2"
                 >
                   Log out @{user.userName}
@@ -75,7 +81,6 @@ function Header() {
             />
           )}
         </div>
-
         {isPostFormShow && (
           <>
             <div className="absolute inset-1 z-20 flex items-center rounded-sm bg-inherit sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2 ">
@@ -92,6 +97,16 @@ function Header() {
               color="blue"
             />
           </>
+        )}
+        {isLogOutWarningShow && (
+          <WarningMsg
+            warningText="Log out of Socia?"
+            warningDesc="You can always log back in at any time. If you just want to switch accounts, you can do that by adding an existing account."
+            warningBtn="Log out"
+            warningBtnClr="white"
+            handleConfirm={signOut}
+            handleWarningClose={() => setIsLogOutWarningShow(false)}
+          />
         )}
       </div>
     </header>

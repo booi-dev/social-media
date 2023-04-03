@@ -4,6 +4,7 @@ type WarningMsgType = {
   warningText: string;
   warningDesc: string;
   warningBtn: string;
+  warningBtnClr?: string;
   handleConfirm: () => void;
   handleWarningClose: () => void;
 };
@@ -14,13 +15,18 @@ function WarningMsg(props: WarningMsgType) {
     warningText,
     warningDesc,
     warningBtn,
+    warningBtnClr,
     handleConfirm,
     handleWarningClose,
   } = props;
 
   const handleConfirmBtn = () => {
     handleConfirm();
+    handleWarningClose();
   };
+
+  let btnBgClr = "bg-red-400 hover:bg-red-500 focus:bg-red-800";
+  if (warningBtnClr === "white") btnBgClr = "bg-app-white-1";
 
   return (
     <>
@@ -30,7 +36,7 @@ function WarningMsg(props: WarningMsgType) {
         <div className="mt-4 [&>button]:block [&>button]:w-full [&>button]:rounded-md [&>button]:p-2  [&>button]:font-bold [&>button]:transition-all [&>button]:duration-500">
           <button
             type="button"
-            className="bg-red-400 text-app-black-1 hover:bg-red-500 focus:bg-red-800"
+            className={`${btnBgClr} text-app-black-1`}
             onClick={handleConfirmBtn}
           >
             {warningBtn}
@@ -48,5 +54,8 @@ function WarningMsg(props: WarningMsgType) {
     </>
   );
 }
+WarningMsg.defaultProps = {
+  warningBtnClr: "red",
+};
 
 export default WarningMsg;

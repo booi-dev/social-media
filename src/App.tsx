@@ -5,9 +5,9 @@ import useThemeControls from "./redux/control/themeControl";
 
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
-import LogInIndicator from "./features/login-signup/LogInSignUpIndicator";
-import LogInBox from "./features/login-signup/login/LogIn";
-import SignUpBox from "./features/login-signup/signup/SignUpBox";
+import LogInIndicator from "./features/login-signup/login/LogInIndicator";
+import LogIn from "./features/login-signup/login/LogIn";
+import SignUp from "./features/login-signup/signup/SignUp";
 
 import { NotiPortal } from "./noti";
 
@@ -30,8 +30,13 @@ function App() {
             setIsSignUpClick={setIsSignUpClick}
           />
         )}
-        {isLogInClick && <LogInBox setIsLogInClick={setIsLogInClick} />}
-        {isSignUpClick && <SignUpBox setIsSignUpClick={setIsSignUpClick} />}
+        {isLogInClick && <LogIn setIsLogInClick={setIsLogInClick} />}
+        {isSignUpClick && (
+          <SignUp
+            SignUpType="modal"
+            closeSignUp={() => setIsSignUpClick(false)}
+          />
+        )}
       </div>
     </div>
   );

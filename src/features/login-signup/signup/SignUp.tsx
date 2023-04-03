@@ -1,14 +1,26 @@
-import React from "react";
+import useUserControls from "../../../redux/control/userControls";
+import useUsersData from "../../../hooks/useUsersData";
+import useAuth from "../../../auth/useAuth";
 import { useNoti } from "../../../noti";
 import getRandomPicURL from "../../../utils/getRandomPic";
 
-import useUsersData from "../../../hooks/useUsersData";
+import SignUpBox from "./SignUpBox";
+import SignUpWidget from "./SignUpWidget";
 
 import { UserType } from "../../../types";
 
-function SignUp() {
+type SignUpProps = {
+  SignUpType: "modal" | "widget";
+  closeSignUp?: () => void;
+};
+
+function SignUp(props: SignUpProps) {
+  const { SignUpType, closeSignUp } = props;
+
   const { setNoti } = useNoti();
+  const { authenticateUser, setUser } = useUserControls();
   const { isUserInDb, addUserToDb, getUserFromDb } = useUsersData();
+  const { googleLogin, fbLogin, emailLogin } = useAuth();
 
   let userTemplate: UserType = {
     uid: "",
@@ -20,6 +32,10 @@ function SignUp() {
     following: [],
     followers: [],
     verification: { state: false, type: "" },
+  };
+
+  const handleCloseSignUp = () => {
+    if (closeSignUp) closeSignUp();
   };
 
   const setRawUser = async (authenticatedUser) => {
@@ -37,7 +53,58 @@ function SignUp() {
     );
   };
 
-  return <div>SignUp</div>;
+  const setUserCredentials = async (authUser) => {
+    const isUserInSystem = await isUserInDb(authUser.uid);
+    if (isUserInSystem) {
+      const userInSystem = await getUserFromDb(authUser.uid);
+      setUser(userInSystem);
+      authenticateUser();
+    } else {
+      setRawUser(authUser);
+      setUser(userTemplate);
+      addUserToDb(userTemplate);
+      setNoti("user not found. sign-up instead.");
+    }
+  };
+
+  const handleGoogleLoginBtn = async () => {
+    const authUser = await googleLogin();
+    if (authUser) setUserCredentials(authUser);
+    else setNoti("something went wrong. try different credential", 5);
+  };
+
+  const handleFbLoginBtn = async () => {
+    const authUser = await fbLogin();
+    if (authUser) setUserCredentials(authUser);
+    else setNoti("something went wrong. try different credential", 5);
+  };
+
+  const handleEmailLoginBtn = async (email, password) => {
+    const authUser = await emailLogin(email, password);
+    if (authUser) setUserCredentials(authUser);
+  };
+
+  if (SignUpType === "widget")
+    return (
+      <SignUpWidget
+        handleGoogleLoginBtn={handleGoogleLoginBtn}
+        handleFbLoginBtn={handleFbLoginBtn}
+        handleEmailLoginBtn={handleEmailLoginBtn}
+      />
+    );
+
+  return (
+    <SignUpBox
+      closeSignUp={handleCloseSignUp}
+      handleGoogleLoginBtn={handleGoogleLoginBtn}
+      handleFbLoginBtn={handleFbLoginBtn}
+      handleEmailLoginBtn={handleEmailLoginBtn}
+    />
+  );
 }
+
+SignUp.defaultProps = {
+  closeSignUp: undefined,
+};
 
 export default SignUp;

@@ -7,23 +7,28 @@ import { AppIcon, BackDrop } from "../../../components/UI";
 
 import SignUpForm from "./SingUpForm";
 
-type SignUpBoxType = {
-  setIsSignUpClick: (state: boolean) => void;
+type SignUpBoxProps = {
+  closeSignUp: () => void;
+  handleGoogleLoginBtn: () => void;
+  handleFbLoginBtn: () => void;
+  handleEmailLoginBtn: (email, password) => void;
 };
 
-function SignUpBox(props: SignUpBoxType) {
-  const { setIsSignUpClick } = props;
+function SignUpBox(props: SignUpBoxProps) {
+  const {
+    closeSignUp,
+    handleGoogleLoginBtn,
+    handleFbLoginBtn,
+    handleEmailLoginBtn,
+  } = props;
 
   const { theme } = useThemeControls();
 
-  const closeForm = () => {
-    setIsSignUpClick(false);
-  };
-
   const handleSignUpBtn = () => {
-    closeForm();
+    closeSignUp();
   };
 
+  //
   const portal = document.getElementById("portal");
 
   let LogInFormPortal: React.ReactPortal | React.ReactElement = <div />;
@@ -38,7 +43,7 @@ function SignUpBox(props: SignUpBoxType) {
           <button
             type="button"
             className="absolute top-2 left-2"
-            onClick={closeForm}
+            onClick={closeSignUp}
           >
             <AppIcon icon={CrossIcon} size={25} hoverColor="gray" />
           </button>
@@ -47,7 +52,11 @@ function SignUpBox(props: SignUpBoxType) {
             Join Socia today
           </h1>
 
-          <SignUpForm />
+          <SignUpForm
+            handleGoogleLoginBtn={handleGoogleLoginBtn}
+            handleFbLoginBtn={handleFbLoginBtn}
+            handleEmailLoginBtn={handleEmailLoginBtn}
+          />
 
           <p className="text-app-font-14 text-app-gray-3">
             By signing up, you agree to the Terms of Service and Privacy Policy,
@@ -55,17 +64,17 @@ function SignUpBox(props: SignUpBoxType) {
           </p>
 
           <p className="mt-4 text-app-gray-3">
-            {`Don't have an account?`}{" "}
+            Already have an account?
             <button
               type="button"
               onClick={handleSignUpBtn}
               className="text-pri-clr-1"
             >
-              Sign up
+              Log in
             </button>
           </p>
         </div>
-        <BackDrop handleClose={closeForm} color="blue" />
+        <BackDrop handleClose={closeSignUp} color="blue" />
       </div>,
       portal
     );

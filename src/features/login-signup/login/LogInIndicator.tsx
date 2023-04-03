@@ -3,7 +3,7 @@ type LogInIndicatorType = {
   setIsSignUpClick: (state: boolean) => void;
 };
 
-function LogInSignUpIndicator(props: LogInIndicatorType) {
+function LogInIndicator(props: LogInIndicatorType) {
   const { setIsLogInClick, setIsSignUpClick } = props;
 
   return (
@@ -39,4 +39,4 @@ function LogInSignUpIndicator(props: LogInIndicatorType) {
   );
 }
 
-export default LogInSignUpIndicator;
+export default LogInIndicator;

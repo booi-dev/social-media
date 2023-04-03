@@ -1,6 +1,14 @@
 import { FacebookFillicon, GoogleFillIcon } from "../../../components/icons";
 
-function SignUpForm() {
+type SignUpFormProps = {
+  handleGoogleLoginBtn: () => void;
+  handleFbLoginBtn: () => void;
+  handleEmailLoginBtn: (email, password) => void;
+};
+
+function SignUpForm(props: SignUpFormProps) {
+  const { handleGoogleLoginBtn, handleFbLoginBtn, handleEmailLoginBtn } = props;
+
   return (
     <div
       className="mt-4 flex flex-col gap-4 bg-app-white-1 dark:bg-app-black-1
