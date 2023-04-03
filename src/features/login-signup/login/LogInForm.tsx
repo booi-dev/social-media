@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "../../components/icons";
+import { EyeIcon, EyeSlashIcon } from "../../../components/icons";
 
 type LogInFormProps = {
   handleEmailLoginBtn: (email: string, password: string) => void;
@@ -27,6 +27,7 @@ function LogInForm(props: LogInFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(inputField, passwordField);
+    handleEmailLoginBtn(inputField, passwordField);
   };
 
   return (
@@ -50,7 +51,7 @@ function LogInForm(props: LogInFormProps) {
               type={showPassword ? "text" : "password"}
               value={passwordField}
               onChange={handlePassword}
-              className="w-full rounded-sm bg-inherit py-2 outline-none"
+              className="text-security-disc w-full rounded-sm bg-inherit py-2 outline-none"
             />
             <button
               type="button"

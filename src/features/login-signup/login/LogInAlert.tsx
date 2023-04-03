@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { IconType } from "react-icons";
 
-import useThemeControls from "../../redux/control/themeControl";
+import useThemeControls from "../../../redux/control/themeControl";
 
-import { CrossIcon } from "../../components/icons";
-import { AppIcon, BackDrop } from "../../components/UI";
+import { CrossIcon } from "../../../components/icons";
+import { AppIcon, BackDrop } from "../../../components/UI";
 
-import LogInBox from "./LogInBox";
-import SignUpBox from "./SignUpBox";
+import LogInBox from "./LogIn";
+import SignUpBox from "../signup/SignUpBox";
 
 type LogInAlertProps = {
   iconDetail: { icon: IconType; color: "pri" | "pink" | "green" };

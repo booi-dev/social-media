@@ -6,8 +6,8 @@ import useThemeControls from "./redux/control/themeControl";
 import Header from "./layouts/Header";
 import Main from "./layouts/Main";
 import LogInIndicator from "./features/login-signup/LogInSignUpIndicator";
-import LogInBox from "./features/login-signup/LogInBox";
-import SignUpBox from "./features/login-signup/SignUpBox";
+import LogInBox from "./features/login-signup/login/LogIn";
+import SignUpBox from "./features/login-signup/signup/SignUpBox";
 
 import { NotiPortal } from "./noti";
 

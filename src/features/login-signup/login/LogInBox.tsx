@@ -1,13 +1,13 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import useThemeControls from "../../redux/control/themeControl";
+import useThemeControls from "../../../redux/control/themeControl";
 
-import { AppIcon, BackDrop } from "../../components/UI";
+import { AppIcon, BackDrop } from "../../../components/UI";
 import {
   FacebookFillicon,
   GoogleFillIcon,
   CrossIcon,
-} from "../../components/icons";
+} from "../../../components/icons";
 
 import LogInForm from "./LogInForm";
 
@@ -20,7 +20,7 @@ type LogInBoxModalProps = {
   handleEmailLoginBtn: (email: string, password: string) => void;
 };
 
-function LogInBoxModal(props: LogInBoxModalProps) {
+function LogInBox(props: LogInBoxModalProps) {
   const {
     isAuthenticate,
     closeForm,
@@ -97,4 +97,4 @@ function LogInBoxModal(props: LogInBoxModalProps) {
   return LogInFormPortal;
 }
 
-export default LogInBoxModal;
+export default LogInBox;

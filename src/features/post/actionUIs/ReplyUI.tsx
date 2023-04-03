@@ -7,7 +7,7 @@ import { ChatIcon, ChatFillIcon } from "../../../components/icons";
 import { AppIcon, BackDrop } from "../../../components/UI";
 
 import PostReplyForm from "../actions/PostReplyForm";
-import LogInAlert from "../../login-signup/LogInAlert";
+import LogInAlert from "../../login-signup/login/LogInAlert";
 
 import { PostType, UserType } from "../../../types";
 

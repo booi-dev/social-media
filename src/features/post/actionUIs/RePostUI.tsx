@@ -7,7 +7,7 @@ import { RepostIcon } from "../../../components/icons";
 import { AppIcon } from "../../../components/UI";
 
 import RePostPanel from "../actions/RePostPanel";
-import LogInAlert from "../../login-signup/LogInAlert";
+import LogInAlert from "../../login-signup/login/LogInAlert";
 
 import { PostType, TypeStateType, UserType } from "../../../types";
 
