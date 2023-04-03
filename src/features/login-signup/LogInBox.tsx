@@ -15,7 +15,7 @@ function LogInForm(props: LogInFormType) {
   const { setIsLogInClick } = props;
 
   const { isAuthenticate, authenticateUser, setUser } = useUserControls();
-  const { googleLogin, fbLogin } = useAuth();
+  const { googleLogin, fbLogin, emailLogin } = useAuth();
   const { isUserInDb, addUserToDb, getUserFromDb } = useUsersData();
   const { setNoti } = useNoti();
 
@@ -75,6 +75,11 @@ function LogInForm(props: LogInFormType) {
     else setNoti("something went wrong. try different credential", 5);
   };
 
+  const handleEmailLoginBtn = async (email, password) => {
+    const authUser = await emailLogin(email, password);
+    if (authUser) console.log(authUser);
+  };
+
   const handleSignUpLink = () => {
     closeForm();
   };
@@ -86,6 +91,7 @@ function LogInForm(props: LogInFormType) {
       handleGoogleLoginBtn={handleGoogleLoginBtn}
       handleFbLoginBtn={handleFbLoginBtn}
       handleSignUpLink={handleSignUpLink}
+      handleEmailLoginBtn={handleEmailLoginBtn}
     />
   );
 }

@@ -9,12 +9,15 @@ import {
   CrossIcon,
 } from "../../components/icons";
 
+import LogInForm from "./LogInForm";
+
 type LogInBoxModalProps = {
   isAuthenticate: boolean;
   closeForm: () => void;
   handleGoogleLoginBtn: () => void;
   handleFbLoginBtn: () => void;
   handleSignUpLink: () => void;
+  handleEmailLoginBtn: (email: string, password: string) => void;
 };
 
 function LogInBoxModal(props: LogInBoxModalProps) {
@@ -24,6 +27,7 @@ function LogInBoxModal(props: LogInBoxModalProps) {
     handleGoogleLoginBtn,
     handleFbLoginBtn,
     handleSignUpLink,
+    handleEmailLoginBtn,
   } = props;
 
   const { theme } = useThemeControls();
@@ -36,7 +40,7 @@ function LogInBoxModal(props: LogInBoxModalProps) {
       <div className={theme}>
         <div
           className="absolute top-0 bottom-0 z-20 flex w-full flex-col
-          justify-center rounded-sm bg-app-white-1 p-16 text-app-gray-1 shadow dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+          justify-center rounded-sm bg-app-white-1 p-8 text-app-gray-1 shadow dark:bg-app-black-1 dark:text-app-white-1 sm:top-1/2 sm:left-1/2 sm:h-max sm:w-[500px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-16"
         >
           <button
             type="button"
@@ -69,36 +73,8 @@ function LogInBoxModal(props: LogInBoxModalProps) {
             or
           </div>
 
-          <form className="">
-            <div className="rounded-sm border border-app-gray-3 p-2">
-              <label
-                htmlFor="input"
-                className="text-app-font-15 text-pri-clr-1"
-              >
-                Phone, email, or username
-                <input
-                  id="input"
-                  className="w-full rounded-sm bg-app-white-2 py-2"
-                />
-              </label>
-              <label
-                htmlFor="input"
-                className="text-app-font-15 text-pri-clr-1"
-              >
-                Password
-                <input
-                  id="input"
-                  className="w-full rounded-sm bg-app-white-2 py-2"
-                />
-              </label>
-            </div>
-          </form>
+          <LogInForm handleEmailLoginBtn={handleEmailLoginBtn} />
 
-          <div className="mt-4 flex flex-col gap-4 [&>button]:rounded-sm [&>button]:py-2 [&>button]:font-bold">
-            <button type="button" className="bg-pri-clr-1 text-app-black-1">
-              Log in
-            </button>
-          </div>
           <p className="mt-4 text-app-gray-3">
             {`Don't have an account?`}{" "}
             <button

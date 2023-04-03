@@ -42,7 +42,7 @@ import {
 } from "react-icons/ri";
 import { GoKebabHorizontal } from "react-icons/go";
 import { BiSearch, BiLogOutCircle } from "react-icons/bi";
-import { FaFeatherAlt } from "react-icons/fa";
+import { FaFeatherAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import {
   IoNotificationsOutline,
   IoNotificationsSharp,
@@ -104,6 +104,9 @@ export {
   IoSettingsSharp as SettingFillIcon,
   MdDarkMode as DarkModeIcon,
   BiLogOutCircle as LogOutIcon,
+  FaEye as EyeIcon,
+  FaEyeSlash as EyeSlashIcon,
+  //
   BsApple as AppleIcon,
   FcGoogle as GoogleColorIcon,
   RxCross2 as CrossIcon,
