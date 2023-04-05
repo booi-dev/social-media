@@ -28,6 +28,7 @@ function LogIn(props: LogInFormType) {
       setUser(userInSystem);
       authenticateUser();
     } else {
+      console.log(authUser);
       setNoti("user not found. sign-up instead.");
     }
   };

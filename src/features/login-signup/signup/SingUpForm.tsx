@@ -9,17 +9,29 @@ type SignUpFormProps = {
 function SignUpForm(props: SignUpFormProps) {
   const { handleGoogleLoginBtn, handleFbLoginBtn, handleEmailLoginBtn } = props;
 
+  const handleGoogleSignUp = () => {
+    handleGoogleLoginBtn();
+  };
+
+  const handleFbSignUp = () => {
+    handleFbLoginBtn();
+  };
+
   return (
     <div
       className="mt-4 flex flex-col gap-4 bg-app-white-1 dark:bg-app-black-1
       [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:py-2 
       [&>button]:text-app-black-1"
     >
-      <button type="button" className="bg-app-white-2">
+      <button
+        type="button"
+        onClick={handleGoogleSignUp}
+        className="bg-app-white-2"
+      >
         <GoogleFillIcon />
         Sign up with Google
       </button>
-      <button type="button" className="bg-app-white-2">
+      <button type="button" onClick={handleFbSignUp} className="bg-app-white-2">
         <FacebookFillicon />
         Sign up with Facebook
       </button>

@@ -32,7 +32,7 @@ function Feed(props: FeedType) {
     wrappedPost: WrappedPost,
   } = props;
 
-  const { user } = useUserControls();
+  const { isAuthenticate, user } = useUserControls();
   const { useGetPostCreatorFromPostId } = usePostData();
 
   const [isOption, setIsOption] = useState(false);
@@ -60,7 +60,7 @@ function Feed(props: FeedType) {
                 postTimespan={post.timespan}
               />
             </div>
-            {user.uid === post.createBy && (
+            {user.uid === post.createBy && isAuthenticate && (
               <button
                 type="button"
                 className=""

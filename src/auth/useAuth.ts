@@ -29,7 +29,7 @@ const useAuth = () => {
       const res = await signInWithPopup(auth, fbProvider);
       user = res.user;
     } catch (e) {
-      console.log(e);
+      if (e instanceof Error) console.log(e.message);
     }
     return user;
   };

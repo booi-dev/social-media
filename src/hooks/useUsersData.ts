@@ -1,4 +1,3 @@
-// import useDb from "../data/isDataInDb";
 import {
   addDataToDb,
   getDataFromDb,
@@ -8,8 +7,8 @@ import {
 import { UserType } from "../types";
 
 function useUsersData() {
-  const addUserToDb = (data) => {
-    addDataToDb(data, "users");
+  const addUserToDb = (data: UserType) => {
+    addDataToDb("users", data);
   };
 
   const getUserFromDb = async (toGetUId: string) => {
@@ -22,8 +21,8 @@ function useUsersData() {
     return res;
   };
 
-  const isUserInDb = (toCheckUId: string) => {
-    const res = isDataInDb("users", toCheckUId);
+  const isUserInDb = async (toCheckUId: string) => {
+    const res = await isDataInDb("users", toCheckUId);
     return res;
   };
 

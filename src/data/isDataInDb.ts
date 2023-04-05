@@ -3,14 +3,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
 export const isDataInDb = async (dbCollection: string, toCheckId: string) => {
-  let isDataIn;
+  let isDataIn = false;
   const querySnapshot = await getDocs(collection(db, dbCollection));
   querySnapshot.forEach((doc) => {
     const res = doc.data();
     if (res.uid === toCheckId || res.pid === toCheckId) isDataIn = true;
-    else isDataIn = false;
   });
-  return isDataIn as boolean;
+  return isDataIn;
 };
 
 export const useIsDataInDb = <T extends { uid: string }>(

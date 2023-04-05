@@ -56,15 +56,15 @@ function SignUp(props: SignUpProps) {
   const setUserCredentials = async (authUser) => {
     const isUserInSystem = await isUserInDb(authUser.uid);
     if (isUserInSystem) {
-      const userInSystem = await getUserFromDb(authUser.uid);
-      setUser(userInSystem);
-      authenticateUser();
+      // const userInSystem = await getUserFromDb(authUser.uid);
+      setNoti("account already exist. try login instead.");
     } else {
       setRawUser(authUser);
       setUser(userTemplate);
       addUserToDb(userTemplate);
-      setNoti("user not found. sign-up instead.");
+      setNoti("sign-up successful. you can login.");
     }
+    handleCloseSignUp();
   };
 
   const handleGoogleLoginBtn = async () => {

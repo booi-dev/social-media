@@ -25,8 +25,9 @@ function WarningMsg(props: WarningMsgType) {
     handleWarningClose();
   };
 
-  let btnBgClr = "bg-red-400 hover:bg-red-500 focus:bg-red-800";
-  if (warningBtnClr === "white") btnBgClr = "bg-app-white-1";
+  let btnBgClr = "bg-red-500 hover:bg-red-600 focus:bg-red-400";
+  if (warningBtnClr === "white")
+    btnBgClr = "bg-app-white-1 hover:bg-app-white-2 focus:bg-app-white-3";
 
   return (
     <>
