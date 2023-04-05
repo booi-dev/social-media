@@ -54,7 +54,7 @@ function Header() {
         <div className="relative py-4 ">
           {isOptionShow && (
             <>
-              <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>button]:w-full [&>button]:py-2 ">
+              <div className="absolute bottom-24 z-20 w-[260px] cursor-pointer space-y-1 rounded-sm bg-inherit py-2 font-bold shadow shadow-app-gray-3 dark:bg-app-black-1 [&>button]:w-full [&>button]:p-2 ">
                 <button
                   type="button"
                   className=" hover:bg-app-white-3 dark:hover:bg-app-gray-2"
@@ -64,7 +64,7 @@ function Header() {
                 <button
                   type="button"
                   onClick={handleLogOutBtn}
-                  className=" hover:bg-app-white-3 dark:hover:bg-app-gray-2"
+                  className="m-auto w-[150px] truncate hover:bg-app-white-3 dark:hover:bg-app-gray-2"
                 >
                   Log out @{user.userName}
                 </button>
