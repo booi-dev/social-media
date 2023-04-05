@@ -18,8 +18,8 @@ function SignUp(props: SignUpProps) {
   const { SignUpType, closeSignUp } = props;
 
   const { setNoti } = useNoti();
-  const { authenticateUser, setUser } = useUserControls();
-  const { isUserInDb, addUserToDb, getUserFromDb } = useUsersData();
+  const { setUser } = useUserControls();
+  const { isUserInDb, addUserToDb } = useUsersData();
   const { googleLogin, fbLogin, emailLogin } = useAuth();
 
   let userTemplate: UserType = {
@@ -27,7 +27,8 @@ function SignUp(props: SignUpProps) {
     displayName: "",
     displayPicURL:
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-    userName: "yo",
+    userName: "",
+    password: "",
     email: "",
     following: [],
     followers: [],
@@ -56,13 +57,12 @@ function SignUp(props: SignUpProps) {
   const setUserCredentials = async (authUser) => {
     const isUserInSystem = await isUserInDb(authUser.uid);
     if (isUserInSystem) {
-      // const userInSystem = await getUserFromDb(authUser.uid);
       setNoti("account already exist. try login instead.");
     } else {
       setRawUser(authUser);
       setUser(userTemplate);
       addUserToDb(userTemplate);
-      setNoti("sign-up successful. you can login.");
+      setNoti("sign up successful. you can login.");
     }
     handleCloseSignUp();
   };

@@ -33,21 +33,21 @@ function LogInForm(props: LogInFormProps) {
   return (
     <form className="" onSubmit={handleSubmit}>
       <div className="rounded-sm border border-app-gray-3 p-2">
-        <label htmlFor="input" className="text-app-font-15 text-pri-clr-1">
+        <label htmlFor="email" className="text-app-font-15 text-pri-clr-1">
           Phone, email, or username
           <input
             type="email"
-            id="input"
+            id="email"
             value={inputField}
             onChange={handleInput}
             className="w-full rounded-sm bg-app-white-2 p-2"
           />
         </label>
-        <label htmlFor="input" className="text-app-font-15 text-pri-clr-1">
+        <label htmlFor="password" className="text-app-font-15 text-pri-clr-1">
           Password
           <div className="flex items-center bg-app-white-2 px-2">
             <input
-              id="input"
+              id="password"
               type={showPassword ? "text" : "password"}
               value={passwordField}
               onChange={handlePassword}

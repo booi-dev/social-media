@@ -3,6 +3,7 @@ export type UserType = {
   displayName: string;
   displayPicURL: string;
   userName: string;
+  password: string;
   email: string;
   verification: {
     state: boolean;
