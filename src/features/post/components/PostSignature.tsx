@@ -32,11 +32,13 @@ function PostSignature(props: PostSignatureType) {
 
   return (
     <>
-      <h2 className="font-bold text-inherit">{postCreator?.displayName}</h2>
+      <h2 className="w-[70px] truncate font-bold text-inherit sm:w-full">
+        {postCreator?.displayName}
+      </h2>
       {postCreator?.verification.state && (
         <VerificationBadge type={postCreator?.verification.type} />
       )}
-      <h2 className="text-inherited">{`@${postCreator?.userName}`}</h2>
+      <h2 className="text-inherited w-[70px] truncate sm:w-full">{`@${postCreator?.userName}`}</h2>
       <div className="mx-.5 text-inherited">·</div>
       <h2 className="text-inherited">{getTimeElapse(postTimespan)}</h2>
     </>
