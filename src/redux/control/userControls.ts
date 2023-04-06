@@ -8,6 +8,8 @@ function useUserControls() {
 
   const { isAuthenticate, user } = userStore;
 
+  const userId = user.uid;
+
   const setUser = (u: UserType) => {
     dispatch(createUser(u));
   };
@@ -27,6 +29,7 @@ function useUserControls() {
   return {
     isAuthenticate,
     user,
+    userId,
     setUser,
     changeName,
     authenticateUser,

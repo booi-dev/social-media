@@ -3,6 +3,7 @@ import {
   collection,
   getDocs,
   query,
+  where,
   orderBy,
   limit,
   onSnapshot,
@@ -44,6 +45,36 @@ export const useGetDataFromDb = <T extends GenericIDs>(
     };
     getData();
   }, [collectionName, toGetId]);
+
+  return data;
+};
+
+//
+
+export const useGetRealDataFromDb = <T extends GenericIDs>(
+  collectionName: string,
+  targetField: string,
+  targetFieldId: any,
+  toGetDataField?: any
+) => {
+  const [data, setData] = useState<T>();
+
+  useEffect(() => {
+    const q = query(
+      collection(db, collectionName),
+      where(targetField, "==", targetFieldId)
+    );
+
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const res = doc.data() as T;
+        setData(res);
+      });
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [collectionName]);
 
   return data;
 };

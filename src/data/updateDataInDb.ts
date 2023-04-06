@@ -5,19 +5,21 @@ import {
   query,
   where,
   updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const updateDataInDb = async (
+export const updateDataInDb = async (
   collectionName: string,
-  fieldName: string,
-  fieldValue: any,
+  targetField: string,
+  targetFieldValue: any,
   tobeUpdatedData: any
 ) => {
   try {
     const q = query(
       collection(db, collectionName),
-      where(fieldName, "==", fieldValue)
+      where(targetField, "==", targetFieldValue)
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((d) => {
@@ -30,4 +32,64 @@ const updateDataInDb = async (
   }
 };
 
-export default updateDataInDb;
+export const addArrayDataValueInDb = async (
+  collectionName: string,
+  targetField: string,
+  targetFieldId: any,
+  tobeUpdatedArrayField: string,
+  tobeAddedArrayFieldValue: string
+) => {
+  try {
+    const q = query(
+      collection(db, collectionName),
+      where(targetField, "==", targetFieldId)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((docSnap) => {
+      const docRef = doc(collection(db, collectionName), docSnap.id);
+      updateDoc(docRef, {
+        [tobeUpdatedArrayField]: arrayUnion(tobeAddedArrayFieldValue),
+      });
+    });
+
+    console.log(
+      `${tobeUpdatedArrayField} added to ${collectionName}/${tobeAddedArrayFieldValue}`
+    );
+  } catch (error) {
+    console.error(
+      `Error adding ${tobeAddedArrayFieldValue} to ${collectionName}/${tobeUpdatedArrayField}:`,
+      error
+    );
+  }
+};
+
+export const removeArrayDataValueInDb = async (
+  collectionName: string,
+  targetField: string,
+  targetFieldId: any,
+  tobeUpdatedArrayField: string,
+  tobeAddedArrayFieldValue: string
+) => {
+  try {
+    const q = query(
+      collection(db, collectionName),
+      where(targetField, "==", targetFieldId)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((docSnap) => {
+      const docRef = doc(collection(db, collectionName), docSnap.id);
+      updateDoc(docRef, {
+        [tobeUpdatedArrayField]: arrayRemove(tobeAddedArrayFieldValue),
+      });
+    });
+
+    console.log(
+      `${tobeUpdatedArrayField} remove from ${collectionName}/${tobeAddedArrayFieldValue}`
+    );
+  } catch (error) {
+    console.error(
+      `Error removing ${tobeAddedArrayFieldValue} to ${collectionName}/${tobeUpdatedArrayField}:`,
+      error
+    );
+  }
+};
