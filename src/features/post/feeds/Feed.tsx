@@ -60,6 +60,7 @@ function Feed(props: FeedType) {
                 postTimespan={post.timespan}
               />
             </div>
+
             {user.uid === post.createBy && isAuthenticate && (
               <button
                 type="button"
@@ -80,6 +81,7 @@ function Feed(props: FeedType) {
           <div className="p-2">
             <PostWithHighlightedHashTags post={post.post} />
           </div>
+
           {WrappedPost}
           {ActionsPanel && <ActionsPanel post={post} typeState={typeState} />}
         </div>

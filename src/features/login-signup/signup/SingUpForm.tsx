@@ -20,7 +20,7 @@ function SignUpForm(props: SignUpFormProps) {
   return (
     <div
       className="mt-4 flex flex-col gap-4 bg-app-white-1 dark:bg-app-black-1
-      [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:py-2 
+      [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-1 [&>button]:rounded-sm [&>button]:py-2 
       [&>button]:text-app-black-1"
     >
       <button

@@ -54,7 +54,7 @@ function LogInBox(props: LogInBoxModalProps) {
           <h1 className="text-center text-3xl font-bold">Log In to Socia</h1>
 
           <div
-            className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-2 [&>button]:rounded-sm [&>button]:bg-app-white-2 [&>button]:py-2 
+            className="mt-4 flex flex-col gap-4 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-1 [&>button]:rounded-sm [&>button]:bg-app-white-2 [&>button]:py-2 
         [&>button]:text-app-black-1"
           >
             <button type="button" onClick={handleGoogleLoginBtn}>
