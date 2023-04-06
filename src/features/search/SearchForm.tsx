@@ -15,7 +15,7 @@ function SearchForm() {
       <input
         onChange={handlerInputChange}
         value={searchValue}
-        placeholder="Search Twitter"
+        placeholder="Search Socia"
         className="w-full rounded-sm bg-inherit p-2.5 focus:outline-none"
       />
     </form>

@@ -1,4 +1,4 @@
-import { HashTagType } from "./HashtagType";
+// import { HashTagType } from "./HashtagType";
 
 type ActionType = {
   byUid: string;
@@ -16,7 +16,7 @@ export type PostType = {
   timespan: number;
   createBy: string;
   createAt: Date;
-  hashtags: HashTagType[];
+  hashtags: { tagId: string; tagName: string }[];
   likes: string[];
   reposts: ActionType[];
   replies: ActionType[];

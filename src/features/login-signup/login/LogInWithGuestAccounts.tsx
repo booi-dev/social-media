@@ -39,7 +39,7 @@ function LogInWithGuestAccounts() {
 
   return (
     <div className="">
-      <p className="mb-">Log in with a guest account.</p>
+      <p className="mb-2">Log in with a guest account.</p>
       <div
         className="flex gap-1 [&>button>img]:rounded-sm [&>button>img]:transition-all [&>button>img]:duration-300 hover:[&>button>img]:origin-center hover:[&>button>img]:scale-110 [&>button]:relative [&>button]:min-h-[60px] [&>button]:w-[100px] [&>button]:overflow-hidden [&>button]:rounded-md [&>button]:border-4  [&>button]:transition-all [&>button]:duration-300 hover:[&>button]:border-pri-clr-1 
       "

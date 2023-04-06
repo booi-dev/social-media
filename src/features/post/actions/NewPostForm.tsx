@@ -1,5 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
-
 import usePostActions from "../hooks/usePostActions";
 
 import PostForm from "../components/PostForm";
@@ -19,7 +17,6 @@ function NewPostForm(props: NewPostFormType) {
 
   return (
     <PostForm
-      newPId={nanoid()}
       submitHandler={createNewPost}
       postHaveType={{ type: "normal", originalPostId: "" }}
       closeHandler={closeHandler}

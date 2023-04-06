@@ -1,8 +1,8 @@
 export type HashTagDataType = {
-  tag: string;
-  count: number;
-  category: string[];
-  [key: string]: string | number | string[];
+  tagId: string;
+  tagName: string;
+  tagCount: number;
+  tagCategory: string[];
 };
 
 export type HashTagType = {

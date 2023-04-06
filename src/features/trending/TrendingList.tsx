@@ -19,10 +19,10 @@ function TrendingList() {
   return (
     <div className="cursor-pointer rounded-sm bg-app-white-2 py-4 text-inherit dark:bg-app-black-3">
       <h1 className="py-2 px-4 text-app-font-20 font-bold ">
-        What's happening
+        Trending on Socia
       </h1>
-      {sortedTrendingTags.slice(0, 4).map((tag, idx) => (
-        <Trending key={tag.tag} tag={tag} />
+      {sortedTrendingTags.slice(0, 3).map((tag, idx) => (
+        <Trending key={tag.tagName} tag={tag} />
       ))}
     </div>
   );

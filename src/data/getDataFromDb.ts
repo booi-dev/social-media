@@ -114,7 +114,7 @@ export const useGetSomeRealDataFromDb = <T>(
   useEffect(() => {
     const q = query(
       collection(db, collectionName),
-      orderBy("createAt"),
+      orderBy("createAt", "desc"),
       limit(count)
     );
 

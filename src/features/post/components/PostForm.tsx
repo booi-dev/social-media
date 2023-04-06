@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { useNoti } from "../../../noti";
 import useUserControls from "../../../redux/control/userControls";
@@ -9,37 +10,34 @@ import { AppIcon } from "../../../components/UI";
 import PostBtnPanel from "./PostBtnPanel";
 import PostAudienceFilter from "./PostAudienceFilter";
 
-import findHashTags from "../../../utils/findHashTag";
+import findHashTags from "../../hashtag/findHashTag";
+import useHashTags from "../../hashtag/useHashTags";
 
 import { PostType, HashTagType, PostTypeType } from "../../../types";
 
 type PostFormType = {
-  newPId: string;
   submitHandler: (newPost: PostType) => void;
   postHaveType: PostTypeType;
   closeHandler?: () => void;
   isLargeTextArea?: boolean;
   isFilterBtnHidden?: boolean;
   isBackBtnShow?: boolean;
-  openNotification?: () => void;
 };
 
 function PostForm(props: PostFormType) {
   const {
-    newPId,
     submitHandler,
     closeHandler,
     postHaveType,
     isLargeTextArea,
     isBackBtnShow,
     isFilterBtnHidden,
-    openNotification,
   } = props;
 
   const { user } = useUserControls();
 
   const rawPost: PostType = {
-    pid: newPId,
+    pid: "",
     post: "",
     timespan: 0,
     createBy: "1",
@@ -61,6 +59,7 @@ function PostForm(props: PostFormType) {
   const [characterCount, setCharacterCount] = useState(280);
 
   const { setNoti } = useNoti();
+  const { createHashTag } = useHashTags();
 
   //
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -74,7 +73,6 @@ function PostForm(props: PostFormType) {
   };
 
   // hash tags
-
   const createHashTags = (sentence: string) => {
     const tags = findHashTags(sentence);
     setHashtags(tags);
@@ -93,6 +91,7 @@ function PostForm(props: PostFormType) {
     const tags = createHashTags(value);
     setNewPost({
       ...newPost,
+      pid: nanoid(),
       createBy: user.uid,
       createAt: new Date(),
       timespan: Date.now(),
@@ -106,9 +105,8 @@ function PostForm(props: PostFormType) {
     submitHandler(newPost);
     resetRawPost();
     closeHandler?.();
-    openNotification?.();
     setNoti("Your post is sent", 3, "top-center");
-    console.log(newPost);
+    // createHashTag("my");
   };
 
   useEffect(() => {
@@ -181,7 +179,6 @@ PostForm.defaultProps = {
   isLargeTextArea: false,
   isBackBtnShow: false,
   isFilterBtnHidden: false,
-  openNotification: () => console.log("open notification is not defined"),
 };
 
 export default PostForm;

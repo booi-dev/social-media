@@ -1,5 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { HashTagType } from "../types";
+import { HashTagType } from "../../types";
 
 function findHashTags(sentence: string) {
   const symbol = "#";

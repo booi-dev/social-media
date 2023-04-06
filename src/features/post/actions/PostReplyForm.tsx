@@ -1,5 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
-
 import { useGetDataFromDb } from "../../../data";
 
 import usePostActions from "../hooks/usePostActions";
@@ -27,11 +25,11 @@ function PostReplyForm(props: PostReplyFormType) {
     "users"
   );
 
-  const newPId = nanoid();
+  // const newPId = nanoid();
 
   const handleSubmit = (newPost: PostType) => {
     createNewPost(newPost);
-    addNewReply(originalPost, newPId);
+    addNewReply(originalPost, newPost.pid);
   };
 
   return (
@@ -74,7 +72,6 @@ function PostReplyForm(props: PostReplyFormType) {
 
       <div className="py-2 px-4 ">
         <PostForm
-          newPId={newPId}
           submitHandler={handleSubmit}
           closeHandler={closeHandler}
           postHaveType={{

@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useGetSomeRealDataFromDb } from "../../../data";
 
 import Feed from "./Feed";
@@ -9,16 +8,11 @@ import ReplyPostFeed from "./ReplyPostFeed";
 import { PostType } from "../../../types";
 
 function FeedList() {
-  const sortArray = ([...toBeSortArray]: PostType[]) =>
-    toBeSortArray.sort((a, b) => b.timespan - a.timespan);
-
   const posts = useGetSomeRealDataFromDb<PostType>("posts", 10);
-
-  const sortedPosts = useMemo(() => sortArray(posts), [posts]);
 
   return (
     <>
-      {sortedPosts.map((p: PostType) => (
+      {posts.map((p: PostType) => (
         <div key={p.pid}>
           {p.postType.type === "normal" && (
             <Feed
