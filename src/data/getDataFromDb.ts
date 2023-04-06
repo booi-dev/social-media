@@ -48,18 +48,24 @@ export const useGetDataFromDb = <T extends GenericIDs>(
   return data;
 };
 
-export const useGetDataAllFromDb = <T>(collectionName: string) => {
+//
+export const useGetDataAllFromDb = <T extends { uid: string }>(
+  collectionName: string,
+  skipIds?: string[]
+) => {
   const [dataAll, setDataAll] = useState<T[]>([]);
 
   useEffect(() => {
     const getDataAll = async () => {
       const querySnapshot = await getDocs(collection(db, collectionName));
-      const updatedDataAll: T[] = [];
+      const retrievedData: T[] = [];
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
-        updatedDataAll.push(res);
+        if (skipIds) {
+          if (!skipIds?.includes(res.uid)) retrievedData.push(res);
+        } else retrievedData.push(res);
       });
-      setDataAll(updatedDataAll);
+      setDataAll(retrievedData);
     };
     getDataAll();
   }, [collectionName]);
@@ -67,6 +73,7 @@ export const useGetDataAllFromDb = <T>(collectionName: string) => {
   return dataAll;
 };
 
+//
 export const useGetSomeRealDataFromDb = <T>(
   collectionName: string,
   count: number
@@ -74,21 +81,19 @@ export const useGetSomeRealDataFromDb = <T>(
   const [dataSome, setDataSome] = useState<T[]>([]);
 
   useEffect(() => {
-    // Set up the query for the collection with the specified count limit and ordering by "createAt"
     const q = query(
       collection(db, collectionName),
       orderBy("createAt"),
       limit(count)
     );
 
-    // Subscribe to the database collection with onSnapshot
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const updatedDataSome: T[] = [];
+      const retrievedData: T[] = [];
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
-        updatedDataSome.push(res);
+        retrievedData.push(res);
       });
-      setDataSome(updatedDataSome);
+      setDataSome(retrievedData);
     });
 
     return () => {

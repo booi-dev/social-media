@@ -16,8 +16,8 @@ function useUsersData() {
     return res;
   };
 
-  const useGetUserAllFromDb = (dbCollection: string) => {
-    const res = useGetDataAllFromDb(dbCollection);
+  const useGetUserAllFromDb = (skipIds?: string[]) => {
+    const res = useGetDataAllFromDb<UserType>("users", skipIds);
     return res;
   };
 
