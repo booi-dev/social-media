@@ -10,6 +10,7 @@ import {
 } from "../../../components/icons";
 
 import LogInForm from "./LogInForm";
+import LogInWithGuestAccounts from "./LogInWithGuestAccounts";
 
 type LogInBoxModalProps = {
   isAuthenticate: boolean;
@@ -73,9 +74,10 @@ function LogInBox(props: LogInBoxModalProps) {
             or
           </div>
 
-          <LogInForm handleEmailLoginBtn={handleEmailLoginBtn} />
+          {/* <LogInForm handleEmailLoginBtn={handleEmailLoginBtn} /> */}
+          <LogInWithGuestAccounts />
 
-          <p className="mt-4 text-app-gray-3">
+          <p className="absolute bottom-2 text-app-gray-3">
             {`Don't have an account?`}{" "}
             <button
               type="button"
