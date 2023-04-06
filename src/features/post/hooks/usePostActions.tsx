@@ -1,4 +1,9 @@
-import { addDataToDb, deleteDataFromDb, updateDataInDb } from "../../../data";
+import {
+  addDataToDb,
+  getDataFromDb,
+  deleteDataFromDb,
+  updateDataInDb,
+} from "../../../data";
 
 import useUserControls from "../../../redux/control/userControls";
 
@@ -15,10 +20,24 @@ function usePostActions() {
 
   // DELETE POST
 
-  const deleteExistingPost = (postId: string) => {
-    console.log(postId);
+  const deletePost = (postId: string) => {
     deleteDataFromDb("posts", "pid", postId);
-    // delete original posts - for reply and repost
+  };
+
+  const deleteOriginalPost = async (
+    originalPostId: string,
+    targetField: string,
+    toRemovePostId: string
+  ) => {
+    const originalPost = await getDataFromDb<PostType>("posts", originalPostId);
+
+    updateDataInDb("posts", "pid", originalPostId, {
+      [targetField]: [
+        ...originalPost.replies.filter(
+          (reply) => reply.postId !== toRemovePostId
+        ),
+      ],
+    });
   };
 
   //  REPOST
@@ -38,7 +57,7 @@ function usePostActions() {
   // UNDO REPOST
   const undoRePost = (originalPost: PostType) => {
     originalPost.reposts.forEach((repost) => {
-      if (repost.byUid === user.uid) deleteExistingPost(repost.postId);
+      if (repost.byUid === user.uid) deletePost(repost.postId);
     });
 
     const originalPostId = originalPost.pid;
@@ -76,7 +95,8 @@ function usePostActions() {
     createNewPost,
     addNewReply,
     rePost,
-    deleteExistingPost,
+    deletePost,
+    deleteOriginalPost,
     undoRePost,
     likePost,
   };

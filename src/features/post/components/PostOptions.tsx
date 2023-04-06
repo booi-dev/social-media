@@ -14,20 +14,22 @@ type PostOptionsType = {
 
 function PostOptions({ post }: PostOptionsType) {
   //
-  const { deleteExistingPost } = usePostActions();
+  const { deletePost, deleteOriginalPost } = usePostActions();
   const { setNoti } = useNoti();
 
   const [isWarning, setIsWarning] = useState(false);
 
   const deleteRePosts = () => {
     post.reposts.forEach((retweeets) => {
-      deleteExistingPost(retweeets.postId);
+      deletePost(retweeets.postId);
     });
   };
 
   const handleDelete = () => {
     deleteRePosts();
-    deleteExistingPost(post.pid);
+    if (post.postType.originalPostId)
+      deleteOriginalPost(post.postType.originalPostId, "replies", post.pid);
+    deletePost(post.pid);
     setNoti("Your post is deleleted", 3, "top-center");
   };
 

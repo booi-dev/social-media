@@ -71,9 +71,10 @@ export const removeArrayDataValueInDb = async (
   collectionName: string,
   targetField: string,
   targetFieldId: any,
-  tobeUpdatedArrayField: string,
-  tobeAddedArrayFieldValue: string
+  toUpdateArrayField: string,
+  toRemoveArrayFieldValue: string
 ) => {
+  console.log(targetFieldId, toRemoveArrayFieldValue);
   try {
     const q = query(
       collection(db, collectionName),
@@ -83,16 +84,16 @@ export const removeArrayDataValueInDb = async (
     querySnapshot.forEach((docSnap) => {
       const docRef = doc(collection(db, collectionName), docSnap.id);
       updateDoc(docRef, {
-        [tobeUpdatedArrayField]: arrayRemove(tobeAddedArrayFieldValue),
+        [toUpdateArrayField]: arrayRemove(toRemoveArrayFieldValue),
       });
     });
 
     console.log(
-      `${tobeUpdatedArrayField} remove from ${collectionName}/${tobeAddedArrayFieldValue}`
+      `${toRemoveArrayFieldValue} remove from ${collectionName}/${toUpdateArrayField}`
     );
   } catch (error) {
     console.error(
-      `Error removing ${tobeAddedArrayFieldValue} to ${collectionName}/${tobeUpdatedArrayField}:`,
+      `Error removing ${toRemoveArrayFieldValue} to ${collectionName}/${toUpdateArrayField}:`,
       error
     );
   }
