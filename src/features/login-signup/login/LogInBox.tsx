@@ -77,7 +77,7 @@ function LogInBox(props: LogInBoxModalProps) {
           {/* <LogInForm handleEmailLoginBtn={handleEmailLoginBtn} /> */}
           <LogInWithGuestAccounts />
 
-          <p className="absolute bottom-2 text-app-gray-3">
+          <p className="absolute bottom-4 text-app-gray-3">
             {`Don't have an account?`}{" "}
             <button
               type="button"

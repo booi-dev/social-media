@@ -4,17 +4,11 @@ type VerificationBadgeType = {
   type?: string;
 };
 
-type BadgeColorVariant = {
-  [key: string]: string;
-  blue: string;
-  gold: string;
-  gray: string;
-};
-
 function VerificationBadge(props: VerificationBadgeType) {
   const { type: color } = props;
 
-  const badgeColorVariant: BadgeColorVariant = {
+  const badgeColorVariant: Record<string, string> = {
+    pri: "text-pri-clr-1",
     blue: "text-sky-600",
     gold: "text-yellow-500",
     gray: "text-gray-500",
