@@ -20,7 +20,7 @@ function FeedList() {
     <>
       {sortedPosts.map((p: PostType) => (
         <div key={p.pid}>
-          {(p.postType.type === "normal" || p.postType.type === "repost") && (
+          {p.postType.type === "normal" && (
             <Feed
               post={p}
               typeState={{ type: "normal" }}

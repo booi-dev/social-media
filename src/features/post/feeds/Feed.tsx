@@ -53,14 +53,11 @@ function Feed(props: FeedType) {
           <PostCreatorPic postCreatorUid={post.createBy} />
         </div>
         <div className="flex-1 bg-inherit">
-          <div className="bg flex justify-between bg-inherit px-2 text-inherit">
-            <div className="flex items-center gap-1.5 text-inherit">
-              <PostSignature
-                postCreatorUid={post.createBy}
-                postTimespan={post.timespan}
-              />
-            </div>
-
+          <div className="bg font-inherited flex justify-between bg-inherit px-2">
+            <PostSignature
+              postCreatorUid={post.createBy}
+              postTimespan={post.timespan}
+            />
             {user.uid === post.createBy && isAuthenticate && (
               <button
                 type="button"
