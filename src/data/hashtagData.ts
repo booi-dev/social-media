@@ -2,21 +2,48 @@ import { HashTagDataType } from "../types";
 
 function hashtagData() {
   const hashtags: HashTagDataType[] = [
-    { tag: "js", count: 2, category: ["coding", "programming", "web dev"] },
     {
-      tag: "tailwind.css",
-      count: 2,
-      category: ["coding", "styling", "web dev"],
+      tagId: "DYmG7to1Di9aHR9d6t26A",
+      tagName: "js",
+      tagCount: 20,
+      tagCategory: ["coding", "programming", "web dev"],
     },
-    { tag: "react.js", count: 3, category: ["js", "programming", "web dev"] },
     {
-      tag: "next.js",
-      count: 6,
-      category: ["js", "programming", "web dev", "framework"],
+      tagId: "gS2S03OblGADEHNaL6jgw",
+      tagName: "tailwind.css",
+      tagCount: 27,
+      tagCategory: ["coding", "styling", "web dev"],
     },
-    { tag: "anime", count: 5, category: ["anime", "japanese", "show"] },
-    { tag: "hbo", count: 8, category: ["tv", "hbo"] },
-    { tag: "netflix", count: 10, category: ["netflix", "tv show"] },
+    {
+      tagId: "rrX6c5u3apeJESwbcMttx",
+      tagName: "react.js",
+      tagCount: 39,
+      tagCategory: ["js", "programming", "web dev"],
+    },
+    {
+      tagId: "qpIahIwMTNSWfEmWKpUCj",
+      tagName: "next.js",
+      tagCount: 63,
+      tagCategory: ["js", "programming", "web dev", "framework"],
+    },
+    {
+      tagId: "Y_GPrGU99tjbka7x_TgRw",
+      tagName: "anime",
+      tagCount: 51,
+      tagCategory: ["anime", "japanese", "show"],
+    },
+    {
+      tagId: "2Zn4UolKlvu0nMDOIBnLH",
+      tagName: "hbo",
+      tagCount: 38,
+      tagCategory: ["tv", "hbo"],
+    },
+    {
+      tagId: "gTBjcJcLZVIgCpvgQ9PDe",
+      tagName: "netflix",
+      tagCount: 19,
+      tagCategory: ["netflix", "tv show"],
+    },
   ];
 
   return hashtags;
