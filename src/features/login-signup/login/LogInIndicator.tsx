@@ -1,4 +1,4 @@
-import useHashTagData from "../../hashtag/useHashTagData";
+// import useHashTagData from "../../hashtag/useHashTagData";
 
 type LogInIndicatorType = {
   setIsLogInClick: (state: boolean) => void;
@@ -8,11 +8,11 @@ type LogInIndicatorType = {
 function LogInIndicator(props: LogInIndicatorType) {
   const { setIsLogInClick, setIsSignUpClick } = props;
 
-  const { createHashTag } = useHashTagData();
+  // const { createHashTag } = useHashTagData();
 
-  const handleAddTag = () => {
-    createHashTag("money");
-  };
+  // const handleAddTag = () => {
+  //   createHashTag("money");
+  // };
 
   return (
     <div className="fixed bottom-0 flex h-[70px] w-full items-center  bg-pri-clr-1 md:justify-center">
@@ -41,9 +41,9 @@ function LogInIndicator(props: LogInIndicatorType) {
           >
             Sign up
           </button>
-          <button type="button" onClick={handleAddTag}>
+          {/* <button type="button" onClick={handleAddTag}>
             add tag
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

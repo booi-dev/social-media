@@ -31,7 +31,7 @@ function LogInWithGuestAccounts() {
 
     setUser(guestUser);
     authenticateUser();
-    setNoti(`Welcome ${guestUser.displayName}`);
+    setNoti(`Welcome, ${guestUser.displayName}`);
   };
 
   const handleGuestIconClick = (value: string) => {
