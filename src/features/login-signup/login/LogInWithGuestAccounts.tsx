@@ -1,6 +1,9 @@
 import { useState } from "react";
 import useUserControls from "../../../redux/control/userControls";
 import useUsersData from "../../../hooks/useUsersData";
+import { useNoti } from "../../../noti";
+
+import { UserType } from "../../../types";
 
 const EREN_UID = "ViLKAVyp6MSnwrV2gMgX9NBkP3K7";
 const MATT_UID = "KuyMAVyp6USvwrV8tMgX5NOkP3D2";
@@ -12,13 +15,15 @@ function LogInWithGuestAccounts() {
 
   const { setUser, authenticateUser } = useUserControls();
   const { getUserFromDb } = useUsersData();
+  const { setNoti } = useNoti();
 
   const setActive = (value: string) => {
     setactiveAccount(value);
   };
 
   const handleGuestLogin = async () => {
-    let guestUser;
+    let guestUser!: UserType;
+
     if (activeAccount === "eren") guestUser = await getUserFromDb(EREN_UID);
     if (activeAccount === "walter") guestUser = await getUserFromDb(WALTER_UID);
     if (activeAccount === "luffy") guestUser = await getUserFromDb(LUFFY_UID);
@@ -26,6 +31,7 @@ function LogInWithGuestAccounts() {
 
     setUser(guestUser);
     authenticateUser();
+    setNoti(`Welcome ${guestUser.displayName}`);
   };
 
   const handleGuestIconClick = (value: string) => {

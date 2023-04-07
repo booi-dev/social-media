@@ -13,6 +13,7 @@ import { db } from "../../firebase";
 type GenericIDs = {
   uid?: string;
   pid?: string;
+  tagId?: string;
 };
 
 export const getDataFromDb = async <T extends GenericIDs>(
@@ -85,7 +86,7 @@ export const useGetRealDataFromDb = <T extends GenericIDs>(
 };
 
 //
-export const useGetDataAllFromDb = <T extends { uid: string }>(
+export const useGetDataAllFromDb = <T extends GenericIDs>(
   collectionName: string,
   skipIds?: string[]
 ) => {
@@ -98,7 +99,10 @@ export const useGetDataAllFromDb = <T extends { uid: string }>(
       querySnapshot.forEach((doc) => {
         const res = doc.data() as T;
         if (skipIds) {
-          if (!skipIds?.includes(res.uid)) retrievedData.push(res);
+          if (res.uid) if (!skipIds?.includes(res.uid)) retrievedData.push(res);
+          if (res.pid) if (!skipIds?.includes(res.pid)) retrievedData.push(res);
+          if (res.tagId)
+            if (!skipIds?.includes(res.tagId)) retrievedData.push(res);
         } else retrievedData.push(res);
       });
       setDataAll(retrievedData);

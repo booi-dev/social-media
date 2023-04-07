@@ -4,18 +4,21 @@ import {
   deleteDataFromDb,
   isDataInDb,
   increaseNumDataValueInDb,
+  useGetDataAllFromDb,
+  useGetSomeRealDataFromDb,
 } from "../../data";
 import { HashTagDataType } from "../../types";
 
-function useHashTags() {
+function useHashTagData() {
   const rawTag: HashTagDataType = {
+    createAt: new Date(),
     tagId: "",
     tagName: "",
-    tagCount: 0,
+    tagCount: 29,
     tagCategory: [],
   };
 
-  const addHashTagTo = (toAddTag: HashTagDataType) => {
+  const addHashTag = (toAddTag: HashTagDataType) => {
     addDataToDb("hashtags", toAddTag);
   };
 
@@ -32,22 +35,37 @@ function useHashTags() {
     increaseNumDataValueInDb("hashtags", "tagName", targetTag, "tagCount");
   };
 
+  const useGetHashTags = () => {
+    const res = useGetDataAllFromDb<HashTagDataType>("hashtags");
+    return res;
+  };
+
+  const useGetLatestHashTags = (count: number) => {
+    const res = useGetSomeRealDataFromDb<HashTagDataType>("hashtags", count);
+    console.log(res);
+    return res;
+  };
+
   const createHashTag = (tag: string) => {
     const newTag = {
       ...rawTag,
+      createAt: new Date(),
       tagId: nanoid(),
       tagName: tag,
     };
     console.log(newTag);
+    addHashTag(newTag);
   };
 
   return {
-    addHashTagTo,
+    addHashTag,
     deleteHashTag,
     isTagExist,
     addTagCount,
+    useGetHashTags,
+    useGetLatestHashTags,
     createHashTag,
   };
 }
 
-export default useHashTags;
+export default useHashTagData;

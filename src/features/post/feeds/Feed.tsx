@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import useUserControls from "../../../redux/control/userControls";
-import usePostData from "../../../hooks/usePostData";
+import usePostData from "../hooks/usePostData";
 
 import { KebabHorizontalIcon } from "../../../components/icons";
 import { BackDrop } from "../../../components/UI";

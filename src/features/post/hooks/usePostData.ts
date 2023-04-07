@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getDataFromDb, useGetRealDataFromDb } from "../data";
+import { getDataFromDb, useGetRealDataFromDb } from "../../../data";
 
-import { PostType, UserType } from "../types";
+import { PostType, UserType } from "../../../types";
 
 function usePostData() {
   const useGetPostCreatorFromPostId = (postId: string) => {
@@ -17,7 +17,7 @@ function usePostData() {
           );
           setOriginalPostCreator(postCreator);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       };
       getPostCreator();

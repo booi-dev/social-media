@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import usePostData from "../../../hooks/usePostData";
+import usePostData from "../hooks/usePostData";
 
 import Feed from "./Feed";
 import ActionsPanel from "../components/ActionsPanel";

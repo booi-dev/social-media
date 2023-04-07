@@ -11,7 +11,7 @@ import PostBtnPanel from "./PostBtnPanel";
 import PostAudienceFilter from "./PostAudienceFilter";
 
 import findHashTags from "../../hashtag/findHashTag";
-import useHashTags from "../../hashtag/useHashTags";
+import useHashTagData from "../../hashtag/useHashTagData";
 
 import { PostType, HashTagType, PostTypeType } from "../../../types";
 
@@ -59,7 +59,7 @@ function PostForm(props: PostFormType) {
   const [characterCount, setCharacterCount] = useState(280);
 
   const { setNoti } = useNoti();
-  const { createHashTag } = useHashTags();
+  const { createHashTag } = useHashTagData();
 
   //
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
