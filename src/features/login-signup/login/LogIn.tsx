@@ -3,23 +3,19 @@ import useAuth from "../../../auth/useAuth";
 import useUsersData from "../../../hooks/useUsersData";
 import { useNoti } from "../../../noti";
 
-import LogInBoxModal from "./LogInBox";
+import LogInBox from "./LogInBox";
 
-type LogInFormType = {
-  setIsLogInClick: (state: boolean) => void;
+type LogInProps = {
+  closeLogIn: () => void;
 };
 
-function LogIn(props: LogInFormType) {
-  const { setIsLogInClick } = props;
+function LogIn(props: LogInProps) {
+  const { closeLogIn } = props;
 
   const { isAuthenticate, authenticateUser, setUser } = useUserControls();
   const { googleLogin, fbLogin, emailLogin } = useAuth();
   const { isUserInDb, getUserFromDb } = useUsersData();
   const { setNoti } = useNoti();
-
-  const closeForm = () => {
-    setIsLogInClick(false);
-  };
 
   const checkUserIsTheSystem = async (authUser) => {
     const isUserInSystem = await isUserInDb(authUser.uid);
@@ -51,13 +47,13 @@ function LogIn(props: LogInFormType) {
   };
 
   const handleSignUpLink = () => {
-    closeForm();
+    closeLogIn();
   };
 
   return (
-    <LogInBoxModal
+    <LogInBox
       isAuthenticate={isAuthenticate}
-      closeForm={closeForm}
+      closeForm={closeLogIn}
       handleGoogleLoginBtn={handleGoogleLoginBtn}
       handleFbLoginBtn={handleFbLoginBtn}
       handleSignUpLink={handleSignUpLink}

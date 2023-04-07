@@ -71,7 +71,7 @@ function RePostUI(props: RePostUIType) {
           }}
         />
       )}
-      {IsModalShow && (
+      {IsModalShow && !isAuthenticate && (
         <LogInAlert
           iconDetail={{ icon: RepostIcon, color: "green" }}
           title="Repost to spread the word."

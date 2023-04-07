@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import Feed from "./Feed";
 
-import { useGetDataFromDb } from "../../../data";
+import { useGetDataFromDb, useGetRealDataFromDb } from "../../../data";
 
 import ActionsPanel from "../components/ActionsPanel";
 
@@ -19,20 +20,30 @@ type ReplyPostFeedType = {
 function ReplyPostFeed(props: ReplyPostFeedType) {
   const { post, typeState } = props;
 
-  const originalPost = useGetDataFromDb<PostType>(
+  const [wrappedPost, setWrappedPost] = useState<React.ReactElement | null>(
+    null
+  );
+
+  const originalPost = useGetRealDataFromDb<PostType>(
     "posts",
+    "pid",
     typeState.originalPostId
   );
 
-  let wrappedPost: React.ReactElement | null = null;
-
-  if (originalPost) {
-    wrappedPost = (
-      <div className="border-t border-app-white-5 dark:border-app-gray-1">
-        <Feed post={originalPost} typeState={typeState} />
-      </div>
-    );
-  }
+  useEffect(() => {
+    console.log("op", originalPost);
+    if (originalPost) {
+      setWrappedPost(
+        <div className="border-t border-app-white-5 dark:border-app-gray-1">
+          <Feed post={originalPost} typeState={typeState} />
+        </div>
+      );
+    } else {
+      setWrappedPost(
+        <div className="text-app-gray-3"> [ post not found ] </div>
+      );
+    }
+  }, [originalPost, typeState]);
 
   return (
     <div>

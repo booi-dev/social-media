@@ -7,8 +7,8 @@ import useThemeControls from "../../../redux/control/themeControl";
 import { CrossIcon } from "../../../components/icons";
 import { AppIcon, BackDrop } from "../../../components/UI";
 
-import LogInBox from "./LogIn";
-import SignUpBox from "../signup/SignUpBox";
+import LogIn from "./LogIn";
+import SignUp from "../signup/SignUp";
 
 type LogInAlertProps = {
   iconDetail: { icon: IconType; color: "pri" | "pink" | "green" };
@@ -82,8 +82,13 @@ function LogInAlert(props: LogInAlertProps) {
   return (
     <>
       {LogInAlertPortal}
-      {isLogInClick && <LogInBox setIsLogInClick={setIsLogInClick} />}
-      {isSignUpClick && <SignUpBox setIsSignUpClick={setIsSignUpClick} />}
+      {isLogInClick && <LogIn closeLogIn={() => setIsLogInClick(false)} />}
+      {isSignUpClick && (
+        <SignUp
+          closeSignUp={() => setIsSignUpClick(false)}
+          SignUpType="modal"
+        />
+      )}
     </>
   );
 }

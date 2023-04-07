@@ -58,7 +58,7 @@ function ReplyUI(props: { post: PostType }) {
           />
         </>
       )}
-      {IsModalShow && (
+      {IsModalShow && !isAuthenticate && (
         <LogInAlert
           iconDetail={{ icon: ChatFillIcon, color: "pri" }}
           title="Reply to join the conversation."

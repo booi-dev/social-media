@@ -65,7 +65,7 @@ function LikeUI(props: LikeUIType) {
           )}
         </div>
       </button>
-      {IsModalShow && (
+      {IsModalShow && !isAuthenticate && (
         <LogInAlert
           iconDetail={{ icon: HeartFillIcon, color: "pink" }}
           title="Like a Post to share the love."

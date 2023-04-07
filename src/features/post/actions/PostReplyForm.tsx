@@ -25,8 +25,6 @@ function PostReplyForm(props: PostReplyFormType) {
     "users"
   );
 
-  // const newPId = nanoid();
-
   const handleSubmit = (newPost: PostType) => {
     createNewPost(newPost);
     addNewReply(originalPost, newPost.pid);

@@ -39,6 +39,7 @@ module.exports = {
         "no-console": "off",
         'react/react-in-jsx-scope': 'off',
         'react-hooks/exhaustive-deps': 'off',
+        "react/require-default-props": 'off',
         "@typescript-eslint/no-explicit-any": 'off'
     }
 }

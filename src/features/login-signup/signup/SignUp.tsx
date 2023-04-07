@@ -15,7 +15,7 @@ type SignUpProps = {
 };
 
 function SignUp(props: SignUpProps) {
-  const { SignUpType, closeSignUp } = props;
+  const { SignUpType, closeSignUp = undefined } = props;
 
   const { setNoti } = useNoti();
   const { setUser } = useUserControls();
@@ -102,9 +102,5 @@ function SignUp(props: SignUpProps) {
     />
   );
 }
-
-SignUp.defaultProps = {
-  closeSignUp: undefined,
-};
 
 export default SignUp;
