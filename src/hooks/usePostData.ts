@@ -9,13 +9,15 @@ function usePostData() {
 
     useEffect(() => {
       const getPostCreator = async () => {
-        if (postId) {
+        try {
           const originalPost = await getDataFromDb<PostType>("posts", postId);
           const postCreator = await getDataFromDb<UserType>(
             "users",
             originalPost.createBy
           );
           setOriginalPostCreator(postCreator);
+        } catch (err) {
+          console.log(err);
         }
       };
       getPostCreator();

@@ -1,6 +1,7 @@
 import {
   addArrayDataValueInDb,
   removeArrayDataValueInDb,
+  useGetDataFromDb,
   useGetRealDataFromDb,
 } from "../data";
 import { UserType } from "../types";
@@ -20,12 +21,17 @@ function useUserData() {
     );
   };
 
-  const useGetUserRealTime = (uid: string) => {
-    const user = useGetRealDataFromDb<UserType>("users", "uid", uid);
+  const useGetUserData = (toGetUid: string) => {
+    const user = useGetDataFromDb<UserType>("users", toGetUid);
     return user;
   };
 
-  return { addFollower, removeFollower, useGetUserRealTime };
+  const useGetUserRealTime = (toGetUid: string) => {
+    const user = useGetRealDataFromDb<UserType>("users", "uid", toGetUid);
+    return user;
+  };
+
+  return { addFollower, removeFollower, useGetUserData, useGetUserRealTime };
 }
 
 export default useUserData;

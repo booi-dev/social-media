@@ -1,6 +1,7 @@
 import useGetProperties from "../../../hooks/useGetProperties";
 import { VerificationBadge } from "../../../components/UI";
 import { useGetDataFromDb } from "../../../data";
+import useUserData from "../../../hooks/useUserData";
 import { UserType } from "../../../types";
 
 type PostCreatorPicType = {
@@ -12,7 +13,9 @@ type PostSignatureType = PostCreatorPicType & {
 };
 
 function PostCreatorPic({ postCreatorUid }: PostCreatorPicType) {
-  const postCreator = useGetDataFromDb<UserType>("users", postCreatorUid);
+  const { useGetUserData } = useUserData();
+
+  const postCreator = useGetUserData(postCreatorUid);
 
   return (
     <img

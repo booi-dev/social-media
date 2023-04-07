@@ -71,7 +71,8 @@ function Feed(props: FeedType) {
 
           {post.postType.type === "reply" && (
             <div className="ml-2 text-app-gray-3">
-              Replying to @{originalPostCreator?.userName}
+              Replying to @
+              {originalPostCreator ? originalPostCreator?.userName : "UNKNOWN"}
             </div>
           )}
 
