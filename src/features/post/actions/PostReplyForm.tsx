@@ -52,13 +52,13 @@ function PostReplyForm(props: PostReplyFormType) {
         </div>
 
         <div className="flex gap-4">
-          <div className="flex w-12 justify-center">
+          <div className="flex w-12 shrink-0 justify-center ">
             <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
-          <div>{originalPost.post}</div>
+          <div className="">{originalPost.post}</div>
         </div>
         <div className="flex gap-4">
-          <div className="flex w-12 justify-center">
+          <div className="flex w-12  shrink-0 justify-center ">
             <div className="h-full w-[1px] bg-app-white-3 dark:bg-app-gray-3" />
           </div>
           <h1 className=" py-3 text-app-gray-3">
