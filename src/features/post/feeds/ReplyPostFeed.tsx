@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+
+import usePostData from "../../../hooks/usePostData";
+
 import Feed from "./Feed";
-
-import { useGetDataFromDb, useGetRealDataFromDb } from "../../../data";
-
 import ActionsPanel from "../components/ActionsPanel";
 
 import { PostType } from "../../../types";
@@ -20,30 +20,27 @@ type ReplyPostFeedType = {
 function ReplyPostFeed(props: ReplyPostFeedType) {
   const { post, typeState } = props;
 
+  const { useGetRealTimePost } = usePostData();
+
   const [wrappedPost, setWrappedPost] = useState<React.ReactElement | null>(
     null
   );
 
-  const originalPost = useGetRealDataFromDb<PostType>(
-    "posts",
-    "pid",
-    typeState.originalPostId
-  );
+  const originalPost = useGetRealTimePost(typeState.originalPostId);
 
   useEffect(() => {
-    console.log("op", originalPost);
-    if (originalPost) {
+    if (originalPost.error) {
+      setWrappedPost(
+        <div className="text-app-gray-3"> [ original post not found ] </div>
+      );
+    } else if (originalPost.data) {
       setWrappedPost(
         <div className="border-t border-app-white-5 dark:border-app-gray-1">
-          <Feed post={originalPost} typeState={typeState} />
+          <Feed post={originalPost.data} typeState={typeState} />
         </div>
       );
-    } else {
-      setWrappedPost(
-        <div className="text-app-gray-3"> [ post not found ] </div>
-      );
     }
-  }, [originalPost, typeState]);
+  }, [originalPost.data, originalPost.error, typeState]);
 
   return (
     <div>

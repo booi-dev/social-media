@@ -49,15 +49,16 @@ export const useGetDataFromDb = <T extends GenericIDs>(
   return data;
 };
 
-//
-
+// real time
 export const useGetRealDataFromDb = <T extends GenericIDs>(
   collectionName: string,
   targetField: string,
   targetFieldId: any,
   toGetDataField?: any
 ) => {
+  // console.log(targetFieldId);
   const [data, setData] = useState<T>();
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     const q = query(
@@ -66,17 +67,21 @@ export const useGetRealDataFromDb = <T extends GenericIDs>(
     );
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const res = doc.data() as T;
-        setData(res);
-      });
+      if (querySnapshot.empty) setError(true);
+      else {
+        querySnapshot.forEach((doc) => {
+          const res = doc.data() as T;
+          setData(res);
+          setError(false);
+        });
+      }
     });
     return () => {
       unsubscribe();
     };
   }, [collectionName]);
 
-  return data;
+  return { data, error };
 };
 
 //

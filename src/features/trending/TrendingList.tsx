@@ -22,7 +22,7 @@ function TrendingList() {
         Trending on Socia
       </h1>
       {sortedTrendingTags.slice(0, 3).map((tag, idx) => (
-        <Trending key={tag.tagName} tag={tag} />
+        <Trending key={tag.tagId} tag={tag} />
       ))}
     </div>
   );

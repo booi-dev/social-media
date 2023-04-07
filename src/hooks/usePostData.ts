@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDataFromDb } from "../data";
+import { getDataFromDb, useGetRealDataFromDb } from "../data";
 
 import { PostType, UserType } from "../types";
 
@@ -24,7 +24,12 @@ function usePostData() {
     return originalPostCreator;
   };
 
-  return { useGetPostCreatorFromPostId };
+  const useGetRealTimePost = (toGetPostId: string) => {
+    const post = useGetRealDataFromDb<PostType>("posts", "pid", toGetPostId);
+    return post;
+  };
+
+  return { useGetPostCreatorFromPostId, useGetRealTimePost };
 }
 
 export default usePostData;

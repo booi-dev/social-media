@@ -30,7 +30,7 @@ function App() {
             setIsSignUpClick={setIsSignUpClick}
           />
         )}
-        {isLogInClick && <LogIn setIsLogInClick={setIsLogInClick} />}
+        {isLogInClick && <LogIn closeLogIn={() => setIsLogInClick(false)} />}
         {isSignUpClick && (
           <SignUp
             SignUpType="modal"

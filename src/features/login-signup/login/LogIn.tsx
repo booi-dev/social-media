@@ -56,8 +56,8 @@ function LogIn(props: LogInProps) {
       closeForm={closeLogIn}
       handleGoogleLoginBtn={handleGoogleLoginBtn}
       handleFbLoginBtn={handleFbLoginBtn}
-      handleSignUpLink={handleSignUpLink}
       handleEmailLoginBtn={handleEmailLoginBtn}
+      handleSignUpLink={handleSignUpLink}
     />
   );
 }

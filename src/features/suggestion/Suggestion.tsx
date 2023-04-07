@@ -14,7 +14,7 @@ function Suggestion({ user }: SuggestionType) {
   const currentUser = useGetUserRealTime(userId);
 
   const isFollowing = (tobeCheckUid: string) =>
-    !!currentUser?.following.includes(tobeCheckUid);
+    !!currentUser.data?.following.includes(tobeCheckUid);
 
   const handleFollowBtn = () => {
     addFollower(userId, user.uid);
