@@ -7,6 +7,7 @@ import {
   useGetDataAllFromDb,
   useGetSomeRealDataFromDb,
 } from "../../data";
+
 import { HashTagDataType } from "../../types";
 
 function useHashTagData() {
@@ -42,7 +43,6 @@ function useHashTagData() {
 
   const useGetLatestHashTags = (count: number) => {
     const res = useGetSomeRealDataFromDb<HashTagDataType>("hashtags", count);
-    console.log(res);
     return res;
   };
 
@@ -53,7 +53,6 @@ function useHashTagData() {
       tagId: nanoid(),
       tagName: tag,
     };
-    console.log(newTag);
     addHashTag(newTag);
   };
 
