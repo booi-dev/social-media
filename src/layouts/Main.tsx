@@ -1,5 +1,5 @@
-import Home from "../pages/Home";
 import SideBar from "./Sidebar";
+import Home from "../pages/Home";
 
 function Main() {
   return (
