@@ -1,3 +1,3 @@
-function characterCounter(sentence:string) {
-    return sentence.length.
-}
+const characterCounter = (sentence: string) => sentence.length;
+
+export default characterCounter;
