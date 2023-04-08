@@ -10,7 +10,7 @@ import {
   LogOutIcon,
   DarkModeIcon,
 } from "../icons";
-import { BackDrop } from "../UI";
+import { BackDrop } from "../ui";
 
 import Option from "./Option";
 

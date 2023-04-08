@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import useThemeControls from "../../../redux/control/themeControl";
 
-import { AppIcon, BackDrop } from "../../../components/UI";
+import { AppIcon, BackDrop } from "../../../components/ui";
 import {
   FacebookFillicon,
   GoogleFillIcon,

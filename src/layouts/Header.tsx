@@ -8,7 +8,7 @@ import HeaderOptions from "../components/header/HeaderOptions";
 
 import Profile from "../components/header/Profile";
 import NewPostForm from "../features/post/actions/NewPostForm";
-import { AppIcon, BackDrop, WarningMsg } from "../components/UI";
+import { AppIcon, BackDrop, WarningMsg } from "../components/ui";
 
 function Header() {
   const { isAuthenticate, user, removeUser } = useUserControls();

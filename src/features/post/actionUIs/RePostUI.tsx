@@ -4,7 +4,7 @@ import useUserControls from "../../../redux/control/userControls";
 import { useGetDataFromDb } from "../../../data";
 
 import { RepostIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import RePostPanel from "../actions/RePostPanel";
 import LogInAlert from "../../login-signup/login/LogInAlert";

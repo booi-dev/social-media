@@ -5,7 +5,7 @@ import usePostActions from "../hooks/usePostActions";
 import { useNoti } from "../../../noti";
 
 import { RepostIcon, PencilIcon } from "../../../components/icons";
-import { BackDrop } from "../../../components/UI";
+import { BackDrop } from "../../../components/ui";
 
 import { PostType } from "../../../types";
 

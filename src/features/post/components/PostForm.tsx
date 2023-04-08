@@ -5,7 +5,7 @@ import { useNoti } from "../../../noti";
 import useUserControls from "../../../redux/control/userControls";
 
 import { LeftArrowIcon, ChevronDownIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import PostBtnPanel from "./PostBtnPanel";
 import PostAudienceFilter from "./PostAudienceFilter";

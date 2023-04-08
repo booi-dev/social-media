@@ -5,7 +5,7 @@ import { IconType } from "react-icons";
 import useThemeControls from "../../../redux/control/themeControl";
 
 import { CrossIcon } from "../../../components/icons";
-import { AppIcon, BackDrop } from "../../../components/UI";
+import { AppIcon, BackDrop } from "../../../components/ui";
 
 import LogIn from "./LogIn";
 import SignUp from "../signup/SignUp";

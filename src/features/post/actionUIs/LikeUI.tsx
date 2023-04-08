@@ -5,7 +5,7 @@ import useUserControls from "../../../redux/control/userControls";
 import { useGetDataFromDb } from "../../../data";
 
 import { HeartIcon, HeartFillIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import LogInAlert from "../../login-signup/login/LogInAlert";
 import { PostType, UserType } from "../../../types";

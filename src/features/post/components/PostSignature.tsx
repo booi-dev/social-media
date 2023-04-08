@@ -1,5 +1,5 @@
 import useGetProperties from "../../../hooks/useGetProperties";
-import { VerificationBadge } from "../../../components/UI";
+import { VerificationBadge } from "../../../components/ui";
 import { useGetDataFromDb } from "../../../data";
 import useUserData from "../../../hooks/useUserData";
 import { UserType } from "../../../types";

@@ -1,5 +1,5 @@
 import { ImageIcon, BallotIcon, SmileyIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import { PostType } from "../../../types";
 

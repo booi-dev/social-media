@@ -4,7 +4,7 @@ import useUserControls from "../../../redux/control/userControls";
 import usePostData from "../hooks/usePostData";
 
 import { KebabHorizontalIcon } from "../../../components/icons";
-import { BackDrop } from "../../../components/UI";
+import { BackDrop } from "../../../components/ui";
 
 import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostOptions from "../components/PostOptions";

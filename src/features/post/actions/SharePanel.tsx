@@ -2,7 +2,7 @@ import useUserControls from "../../../redux/control/userControls";
 import { useNoti } from "../../../noti";
 
 import { LinkIcon, BookmarkAddIcon } from "../../../components/icons";
-import { BackDrop } from "../../../components/UI";
+import { BackDrop } from "../../../components/ui";
 
 type SharePanelType = {
   closeHandler: () => void;

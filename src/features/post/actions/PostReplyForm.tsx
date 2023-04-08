@@ -3,7 +3,7 @@ import { useGetDataFromDb } from "../../../data";
 import usePostActions from "../hooks/usePostActions";
 
 import { CloseIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import PostSignature, { PostCreatorPic } from "../components/PostSignature";
 import PostForm from "../components/PostForm";

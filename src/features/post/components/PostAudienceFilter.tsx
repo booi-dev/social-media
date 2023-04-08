@@ -3,7 +3,7 @@ import {
   PersonHeartIcon,
   CheckIcon,
 } from "../../../components/icons";
-import { BackDrop } from "../../../components/UI";
+import { BackDrop } from "../../../components/ui";
 
 type PostAudienceFilterType = {
   handleClose: () => void;

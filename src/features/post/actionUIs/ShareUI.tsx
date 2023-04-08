@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { ShareIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 import SharePanel from "../actions/SharePanel";
 

@@ -1,5 +1,5 @@
 import { ViewIcon } from "../../../components/icons";
-import { AppIcon } from "../../../components/UI";
+import { AppIcon } from "../../../components/ui";
 
 function ViewUI() {
   return (

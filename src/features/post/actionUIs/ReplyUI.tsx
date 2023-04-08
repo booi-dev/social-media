@@ -4,7 +4,7 @@ import useUserControls from "../../../redux/control/userControls";
 import { useGetDataFromDb } from "../../../data";
 
 import { ChatIcon, ChatFillIcon } from "../../../components/icons";
-import { AppIcon, BackDrop } from "../../../components/UI";
+import { AppIcon, BackDrop } from "../../../components/ui";
 
 import PostReplyForm from "../actions/PostReplyForm";
 import LogInAlert from "../../login-signup/login/LogInAlert";

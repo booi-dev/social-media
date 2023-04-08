@@ -4,7 +4,7 @@ import { useNoti } from "../../../noti";
 import usePostActions from "../hooks/usePostActions";
 
 import { PinIcon, DeleteIcon } from "../../../components/icons";
-import { WarningMsg } from "../../../components/UI";
+import { WarningMsg } from "../../../components/ui";
 
 import { PostType } from "../../../types";
 
