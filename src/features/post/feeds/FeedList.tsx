@@ -8,7 +8,7 @@ import ReplyPostFeed from "./ReplyPostFeed";
 import { PostType } from "../../../types";
 
 function FeedList() {
-  const posts = useGetSomeRealDataFromDb<PostType>("posts", 10);
+  const posts = useGetSomeRealDataFromDb<PostType>("posts", 50);
 
   return (
     <>
